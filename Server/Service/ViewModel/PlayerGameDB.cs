@@ -27,7 +27,8 @@ namespace ViewModel
             return con;
         }
 
-        public ConnectionList SelectByGameID(string game_id)
+
+        public ConnectionList SelectByGameID(int game_id)
         {
             command.CommandText = ("SELECT * FROM Player_Game_Table WHERE 'game_id'= @id");
 
@@ -40,7 +41,8 @@ namespace ViewModel
             return con_list;
         }
 
-        public ConnectionList SelectByPlayerID(string player_id)
+
+        public ConnectionList SelectByPlayerID(int player_id)
         {
             command.CommandText = ("SELECT * FROM Player_Game_Table WHERE 'player_id'= @id");
 
@@ -52,6 +54,7 @@ namespace ViewModel
             ConnectionList con_list = new ConnectionList(Select());
             return con_list;
         }
+
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
@@ -67,6 +70,7 @@ namespace ViewModel
             Console.WriteLine("connection between player" + con.SideA + " and game" + con.SideB + " has been created and inserted");
         }
 
+
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
             Connection con = entity as Connection;
@@ -81,6 +85,7 @@ namespace ViewModel
             Console.WriteLine("connection between player" + con.SideA + " and game" + con.SideB + " has been deleted");
         }
 
+        //BaseDB abstract implemantation.
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
             throw new NotImplementedException();

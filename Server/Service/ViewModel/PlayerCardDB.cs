@@ -27,7 +27,7 @@ namespace ViewModel
             return con;
         }
 
-        public ConnectionList SelectByGameID(string card_id)
+        public ConnectionList SelectByGameID(int card_id)
         {
             command.CommandText = ("SELECT * FROM Player_Card_Table WHERE 'card_id'= @id");
 
@@ -40,7 +40,7 @@ namespace ViewModel
             return con_list;
         }
 
-        public ConnectionList SelectByPlayerID(string player_id)
+        public ConnectionList SelectByPlayerID(int player_id)
         {
             command.CommandText = ("SELECT * FROM Player_Card_Table WHERE 'player_id'= @id");
 
@@ -81,9 +81,24 @@ namespace ViewModel
             Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been deleted");
         }
 
+
+        //BUG
+        //cannot update the SET the WHERE parameters
+        //solution: use insert and delete for every player-card connection(delete the old, insert updated)
+
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
-            throw new NotImplementedException();
+            Connection con = entity as Connection;
+
+            command.CommandText = ("UPDATE Player_Card_Table SET card_id = @card_id");
+
+            //parameters
+
+            command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
+            command.Parameters.Add(new OleDbParameter("@card_id", con.SideB));
+
+            Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been updated");
         }
     }
 }
+

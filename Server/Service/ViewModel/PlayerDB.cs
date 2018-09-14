@@ -76,39 +76,50 @@ namespace ViewModel
                 inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
             }
         }
+ 
 
-        //public override void Delete(BaseEntity entity)
-        //{
-        //    LessonDB db = new LessonDB();
 
-        //    LessonsList sl = db.SelectByStudent(entity as Student);
+        public override void Delete(BaseEntity entity)
+        {
+            Player p = entity as Player;
+            PlayerCardDB PCdb = new PlayerCardDB();
+            PlayerGameDB PGdb = new PlayerGameDB();
 
-        //    Student student = entity as Student;
-        //    if (student != null)
-        //    {
-        //        if (sl.Count != 0)
-        //        {
-        //            updated.Add(new ChangeEntity(db.CreateDeleteSql, entity));
-        //        }
-        //        updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));
-        //        updated.Add(new ChangeEntity(base.CreateDeleteSql, entity));
-        //    }
-        //}
+            ConnectionList PC = PCdb.SelectByPlayerID(p.Id);
+            ConnectionList PG = PGdb.SelectByPlayerID(p.Id);
 
-        //public override void Update(BaseEntity entity)
-        //{
-        //    Student student = entity as Student;
-        //    if (student != null)
-        //    {
-        //        updated.Add(new ChangeEntity(base.CreateUpdateSql, entity));
-        //    }
-        //}
 
+            if (p != null)
+            {
+                foreach(Connection c in PC)//delete all cards connections to this player using PlayerCardDB
+                {
+                    updated.Add(new ChangeEntity(PCdb.CreateDeleteSql, c));
+                }
+
+                foreach (Connection c in PG)//delete all games connections to this player using PlayerGameDB
+                {
+                    updated.Add(new ChangeEntity(PGdb.CreateDeleteSql, c));
+                }
+
+                updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));//delete the player itself
+            }
+        }
+
+        public override void Update(BaseEntity entity)
+        {
+            Player player = entity as Player;
+            if (player != null)
+            {
+                updated.Add(new ChangeEntity(this.CreateUpdateSql, entity));
+            }
+        }
+
+        //this function recieves a USER entity, and creats a new player for that user, therfore, it uses User.id
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
             User user = entity as User;
 
-            command.CommandText = ("INSERT INTO Player_Table (ID) VALUES (@id)");
+            command.CommandText = ("INSERT INTO Player_Table (user_id) VALUES (@id)");
 
             //parameters
 
@@ -118,18 +129,26 @@ namespace ViewModel
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
-            User student = entity as User;
+            User user = entity as User;
 
-            command.CommandText = ("DELETE FROM User_Table WHERE ID = @id");
+            command.CommandText = ("DELETE FROM User_Table WHERE user_id = @id");
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id", student.Id));
+            command.Parameters.Add(new OleDbParameter("@id", user.Id));
         }
 
+
+        //only used to update the score
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
-            throw new NotImplementedException();
+            Player player = entity as Player;
+
+            command.CommandText = ("UPDATE Player_Table SET temp_score = @score");
+
+            //parameters
+
+            command.Parameters.Add(new OleDbParameter("@score", player.Temp_score));
         }
     }
 }

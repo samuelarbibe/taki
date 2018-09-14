@@ -16,5 +16,10 @@ namespace BL
             CardList deck = db.SelectAll();
             return deck;
         }
+
+        public void StartGame(Game g)
+        {
+
+        }
     }
 }

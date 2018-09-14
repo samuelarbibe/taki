@@ -38,14 +38,13 @@ namespace ViewModel
         }
         
 
-        public UserList SelectByName(string FirstName, string LastName)
+        public UserList SelectByName(string username)
         {
-            command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName");
+            command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @uName");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@fName", FirstName));
-            command.Parameters.Add(new OleDbParameter("@lName", LastName));
+            command.Parameters.Add(new OleDbParameter("@uName", username));
 
 
             UserList temp = new UserList(Select());
