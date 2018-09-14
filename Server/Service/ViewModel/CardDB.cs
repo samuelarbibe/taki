@@ -34,7 +34,7 @@ namespace ViewModel
 
         public CardList SelectAll()
         {
-            command.CommandText = ("SELECT * FROM Cards_Table WHERE ID=1");
+            command.CommandText = ("SELECT * FROM Cards_Table");
             CardList list = new CardList(base.Select());
             return list;
         }

@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +47,8 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardList.cs" />
     <Compile Include="ComputerPlayer.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionList.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameList.cs" />

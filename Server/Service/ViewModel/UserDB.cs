@@ -32,11 +32,9 @@ namespace ViewModel
 
         public UserList SelectAll()
         {
-
             command.CommandText = ("SELECT * FROM User_Table");
             UserList temp = new UserList(Select());
             return temp;
-
         }
         
 
@@ -75,7 +73,7 @@ namespace ViewModel
         {
             User user = entity as User;
 
-            command.CommandText = ("INSERT INTO UserTable (ID) VALUES (@id)");
+            command.CommandText = ("INSERT INTO User_Table (ID) VALUES (@id)");
 
             //parameters
 
@@ -87,7 +85,7 @@ namespace ViewModel
         {
             User student = entity as User;
 
-            command.CommandText = ("DELETE FROM UserTable WHERE ID = @id");
+            command.CommandText = ("DELETE FROM User_Table WHERE ID = @id");
 
             //parameters
 

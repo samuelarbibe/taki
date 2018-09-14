@@ -1,0 +1,15 @@
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\MainWindow.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\App.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form_MarkupCompile.cache
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form_MarkupCompile.lref
+C:\Users\samue\Desktop\Taki\Client\Client\Form\bin\Debug\Form.exe.config
+C:\Users\samue\Desktop\Taki\Client\Client\Form\bin\Debug\Form.exe
+C:\Users\samue\Desktop\Taki\Client\Client\Form\bin\Debug\Form.pdb
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\MainWindow.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.g.resources
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.Properties.Resources.resources
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.csproj.GenerateResource.cache
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.csproj.CoreCompileInputs.cache
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.exe
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Form.pdb

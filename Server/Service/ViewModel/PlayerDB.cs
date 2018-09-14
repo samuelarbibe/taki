@@ -70,40 +70,39 @@ namespace ViewModel
 
         public override void Insert(BaseEntity entity)
         {
-            Student student = entity as Student;
-            if (student != null)
+            Player p = entity as Player;
+            if (p != null)
             {
-                inserted.Add(new ChangeEntity(base.CreateInsertSql, entity));
                 inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
             }
         }
 
-        public override void Delete(BaseEntity entity)
-        {
-            LessonDB db = new LessonDB();
+        //public override void Delete(BaseEntity entity)
+        //{
+        //    LessonDB db = new LessonDB();
 
-            LessonsList sl = db.SelectByStudent(entity as Student);
+        //    LessonsList sl = db.SelectByStudent(entity as Student);
 
-            Student student = entity as Student;
-            if (student != null)
-            {
-                if (sl.Count != 0)
-                {
-                    updated.Add(new ChangeEntity(db.CreateDeleteSql, entity));
-                }
-                updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));
-                updated.Add(new ChangeEntity(base.CreateDeleteSql, entity));
-            }
-        }
+        //    Student student = entity as Student;
+        //    if (student != null)
+        //    {
+        //        if (sl.Count != 0)
+        //        {
+        //            updated.Add(new ChangeEntity(db.CreateDeleteSql, entity));
+        //        }
+        //        updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));
+        //        updated.Add(new ChangeEntity(base.CreateDeleteSql, entity));
+        //    }
+        //}
 
-        public override void Update(BaseEntity entity)
-        {
-            Student student = entity as Student;
-            if (student != null)
-            {
-                updated.Add(new ChangeEntity(base.CreateUpdateSql, entity));
-            }
-        }
+        //public override void Update(BaseEntity entity)
+        //{
+        //    Student student = entity as Student;
+        //    if (student != null)
+        //    {
+        //        updated.Add(new ChangeEntity(base.CreateUpdateSql, entity));
+        //    }
+        //}
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
@@ -121,7 +120,7 @@ namespace ViewModel
         {
             User student = entity as User;
 
-            command.CommandText = ("DELETE FROM UserTable WHERE ID = @id");
+            command.CommandText = ("DELETE FROM User_Table WHERE ID = @id");
 
             //parameters
 

@@ -45,7 +45,9 @@
     <Compile Include="CardDB.cs" />
     <Compile Include="ChangeEntity.cs" />
     <Compile Include="MatchDB.cs" />
+    <Compile Include="PlayerCardDB.cs" />
     <Compile Include="PlayerDB.cs" />
+    <Compile Include="PlayerGameDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDB.cs" />
   </ItemGroup>

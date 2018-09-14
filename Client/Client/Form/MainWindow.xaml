@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Get Deck from Server" HorizontalAlignment="Left" Margin="355,106,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBlock x:Name="status" HorizontalAlignment="Left" Margin="367,235,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

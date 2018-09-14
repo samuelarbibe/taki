@@ -4,3 +4,7 @@ C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csprojA
 C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CoreCompileInputs.cache
 C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.dll
 C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\Database.accdb
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\Model.dll
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\Model.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete

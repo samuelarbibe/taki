@@ -1,7 +1,14 @@
-C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Service.dll.config
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Service.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Service.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.csprojAssemblyReference.cache
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Database.accdb
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\BL.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Model.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\ViewModel.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\BL.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Model.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\ViewModel.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.csproj.CopyComplete
