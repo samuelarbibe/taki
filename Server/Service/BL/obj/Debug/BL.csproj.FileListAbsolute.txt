@@ -1,0 +1,6 @@
+C:\Users\samue\Desktop\Taki\Server\Service\BL\bin\Debug\BL.dll
+C:\Users\samue\Desktop\Taki\Server\Service\BL\bin\Debug\BL.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\samue\Desktop\Taki\Server\Service\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\samue\Desktop\Taki\Server\Service\BL\obj\Debug\BL.dll
+C:\Users\samue\Desktop\Taki\Server\Service\BL\obj\Debug\BL.pdb

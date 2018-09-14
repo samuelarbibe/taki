@@ -1,0 +1,6 @@
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\ViewModel.dll
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\ViewModel.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csprojAssemblyReference.cache
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CoreCompileInputs.cache
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.dll
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.pdb
