@@ -12,11 +12,9 @@ namespace Service
 {
     public class Service : IService
     {
-        public CardList buildDeck()
+        public Card buildDeck()
         {
             test t = new test();
-            CardDB db = new CardDB();
-            CardList deck = db.SelectAll();
 
             return t.BlBuildDeck();
         }

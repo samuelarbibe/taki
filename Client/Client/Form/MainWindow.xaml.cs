@@ -24,15 +24,19 @@ namespace Form
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ServiceClient service;
+
         public MainWindow()
         {
             InitializeComponent();
+            service = new ServiceClient();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ServiceClient service = new ServiceClient();
-            service.DisplayInitializationUI();
+            
+            Card card = service.buildDeck();
+            status.Text = "Color: " + card.Color + ", Value: " + card.Value;
         }
     }
 }

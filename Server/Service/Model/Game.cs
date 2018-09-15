@@ -1,64 +1,36 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Model
 {
+    [DataContract]
     public class Game : BaseEntity
     {
-        private PlayerList players;
+        private Player player_1;
+        private Player player_2;
+        private Player player_3;
+        private Player player_4;
         private int winner;
         private int player_count;
 
+        [DataMember]
+        public Player Player_1 { set; get; }
 
+        [DataMember]
+        public Player Player_2 { set; get; }
 
-        public Player GetPlayer_1()
-        {
-            return players[0];
-        }
+        [DataMember]
+        public Player Player_3 { set; get; }
 
-        public void SetPlayer_1(Player x)
-        {
-            this.players[0] = x;
-        }
+        [DataMember]
+        public Player Player_4 { set; get; }
 
-
-        public Player GetPlayer_2()
-        {
-            return players[1];
-        }
-
-        public void SetPlayer_2(Player x)
-        {
-            this.players[1] = x;
-        }
-
-
-
-        public Player GetPlayer_3()
-        {
-            return players[2];
-        }
-
-        public void SetPlayer_3(Player x)
-        {
-            this.players[2] = x;
-        }
-
-
-
-        public Player GetPlayer_4()
-        {
-            return players[3];
-        }
-
-        public void SetPlayer_4(Player x)
-        {
-            this.players[3] = x;
-        }
-
-
+        [DataMember]
         public int Player_count { set; get; }
+
+        [DataMember]
         public int Winner { set; get; }
     }
 }

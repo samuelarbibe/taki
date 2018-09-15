@@ -10,11 +10,11 @@ namespace BL
 {
     public class test
     {
-        public CardList BlBuildDeck()
+        public Card BlBuildDeck()
         {
             CardDB db = new CardDB();
             CardList deck = db.SelectAll();
-            return deck;
+            return deck[0] as Card;
         }
 
         public void StartGame(Game g)

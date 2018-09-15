@@ -14,7 +14,7 @@ namespace Service
     public interface IService
     {
         [OperationContract]
-        CardList buildDeck();
+        Card buildDeck();
 
     }
 

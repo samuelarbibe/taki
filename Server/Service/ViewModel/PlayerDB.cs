@@ -8,7 +8,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerDB : UserDB
+    public class PlayerDB : BaseDB
     {
         protected override BaseEntity newEntity()
         {
@@ -20,7 +20,7 @@ namespace ViewModel
         {
 
             Player p = entity as Player;
-            base.CreateModel(p);
+            //base.CreateModel(p);
             p.Hand = null;
             p.Temp_score = 0;
             p.Game_id = 0;

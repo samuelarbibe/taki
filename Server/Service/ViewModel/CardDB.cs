@@ -39,6 +39,25 @@ namespace ViewModel
             return list;
         }
 
+
+        public CardList SelectByID(int id)
+        {
+
+            command.CommandText = ("SELECT * FROM Cards_Table WHERE 'ID' = '@id'");
+
+            //parameters
+            command.Parameters.Add(new OleDbParameter("@Id", id));
+
+            CardList temp = new CardList(Select());
+
+            if (temp.Count() > 0)
+            {
+                return temp;
+            }
+            return null;
+        }
+
+
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
             throw new NotImplementedException();

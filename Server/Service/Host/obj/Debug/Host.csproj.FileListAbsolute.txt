@@ -20,6 +20,5 @@ C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Model.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\ViewModel.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Model.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\ViewModel.pdb
-C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Database.accdb
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\BL.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\BL.pdb

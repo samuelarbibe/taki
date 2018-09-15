@@ -38,18 +38,35 @@ namespace ViewModel
         }
         
 
-        public UserList SelectByName(string username)
+        public UserList SelectByName(string first_name, string last_name)
         {
-            command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @uName");
+            command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@uName", username));
+            command.Parameters.Add(new OleDbParameter("@fName", first_name));
+            command.Parameters.Add(new OleDbParameter("@lName", last_name));
 
 
             UserList temp = new UserList(Select());
             return temp;
         }
+
+
+        public UserList SelectByUsername(string username, string password)
+        {
+            command.CommandText = ("SELECT * FROM User_Table WHERE 'username'= @uName AND 'password' = @pWord");
+
+
+            //parameters
+            command.Parameters.Add(new OleDbParameter("@uName", username));
+            command.Parameters.Add(new OleDbParameter("@pWord", password));
+
+
+            UserList temp = new UserList(Select());
+            return temp;
+        }
+
 
         public User SelectByID(int id)
         {

@@ -13,7 +13,7 @@
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies />
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="00f350a2-5477-4f1e-acf3-0d2e9cbf3c8c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="21488e93-d8a9-44de-aace-9353d1d61ca9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="fcaae565-ba00-441e-b71b-a95e1ce547ad" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="d62d97db-83f4-452f-9a09-67204f7a36a0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="646dc81c-ea23-422b-8cc7-17815d615348" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="b7294ba7-34df-4fe2-aca2-9df8f490ac36" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="deb99e77-0ef4-47bf-8226-815d95b156ac" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="3ea9130e-6496-4233-847a-3c0aba582b3e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
