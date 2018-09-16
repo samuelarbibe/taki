@@ -8,3 +8,14 @@ C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\Database.accdb
 C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\Model.dll
 C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\Model.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete
+D:\Users\User1\Github\Server\Service\ViewModel\bin\Debug\Database.accdb
+D:\Users\User1\Github\Server\Service\ViewModel\bin\Debug\ViewModel.dll.config
+D:\Users\User1\Github\Server\Service\ViewModel\bin\Debug\ViewModel.dll
+D:\Users\User1\Github\Server\Service\ViewModel\bin\Debug\ViewModel.pdb
+D:\Users\User1\Github\Server\Service\ViewModel\bin\Debug\Model.dll
+D:\Users\User1\Github\Server\Service\ViewModel\bin\Debug\Model.pdb
+D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.csprojAssemblyReference.cache
+D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CoreCompileInputs.cache
+D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete
+D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.dll
+D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.pdb

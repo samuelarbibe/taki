@@ -18,5 +18,15 @@ namespace Service
 
             return t.BlBuildDeck();
         }
+
+        public Game startGame()
+        {
+            return null;
+        }
+
+        public PlayerList GetPlayerList()
+        {
+            return null;
+        }
     }
 }

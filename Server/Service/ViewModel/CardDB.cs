@@ -34,7 +34,7 @@ namespace ViewModel
 
         public CardList SelectAll()
         {
-            command.CommandText = ("SELECT * FROM Cards_Table");
+            command.CommandText = ("SELECT * FROM Card_Table");
             CardList list = new CardList(base.Select());
             return list;
         }
@@ -43,7 +43,7 @@ namespace ViewModel
         public CardList SelectByID(int id)
         {
 
-            command.CommandText = ("SELECT * FROM Cards_Table WHERE 'ID' = '@id'");
+            command.CommandText = ("SELECT * FROM Card_Table WHERE 'ID' = '@id'");
 
             //parameters
             command.Parameters.Add(new OleDbParameter("@Id", id));

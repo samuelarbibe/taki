@@ -12,13 +12,10 @@ namespace Model
         private string action;
         private Card card;
 
-        [DataMember]
-        public int Sender { set; get; }
+        public int Sender { get => sender; set => sender = value; }
 
-        [DataMember]
-        public string Action { set; get; }
+        public string Action { get => action; set => action = value; }
 
-        [DataMember]
-        public Card Card { set; get; }
+        public Card Card { get => card; set => card = value; }
     }
 }

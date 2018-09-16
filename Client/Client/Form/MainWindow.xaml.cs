@@ -25,18 +25,16 @@ namespace Form
     public partial class MainWindow : Window
     {
         public ServiceClient service;
+        public static Frame BigFrame;
 
         public MainWindow()
         {
             InitializeComponent();
             service = new ServiceClient();
-        }
+            BigFrame = MainFrame;
+            BigFrame.Navigate(new LoginMenu());
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
             
-            Card card = service.buildDeck();
-            status.Text = "Color: " + card.Color + ", Value: " + card.Value;
         }
     }
 }

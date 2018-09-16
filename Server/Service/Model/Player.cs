@@ -12,13 +12,10 @@ namespace Model
         private int temp_score;
         private int game_id;
 
-        [DataMember]
-        public Hand Hand { set; get; }
+        public Hand Hand { get => hand; set => hand = value; }
 
-        [DataMember]
-        public int Temp_score { set; get; }
+        public int Temp_score { get => temp_score; set => temp_score = value; }
 
-        [DataMember]
-        public int Game_id { set; get; }
+        public int Game_id { get => game_id; set => game_id = value; }
     }
 }

@@ -75,8 +75,8 @@ namespace ViewModel
         public BaseDB()
         {
             connectionString =
-            @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\Database.accdb;Persist Security Info=True";
-
+           // @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\Database.accdb;Persist Security ////Info=True";
+           @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Users\User1\Github\Server\Service\ViewModel\Database.accdb; Persist Security Info = True";
 
             connection = new OleDbConnection(connectionString);
             command = new OleDbCommand();

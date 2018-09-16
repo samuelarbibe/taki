@@ -12,7 +12,7 @@ namespace Model
         
         private int id;
 
-        [DataMember]
+        
         public int Id { get; set; }
     }
 }

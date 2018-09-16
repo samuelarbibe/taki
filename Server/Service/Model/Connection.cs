@@ -14,13 +14,10 @@ namespace Model
         private int sideB;
         private string connection_type;
 
-        [DataMember]
-        public int SideA { set; get; }
+        public int SideA { get => sideA; set => sideA = value; }
 
-        [DataMember]
-        public int SideB { set; get; }
+        public int SideB { get => sideB; set => sideB = value; }
 
-        [DataMember]
-        public string Connection_type { set; get; }
+        public string Connection_type { get => connection_type; set => connection_type = value; }
     }
 }

@@ -12,16 +12,12 @@ namespace Model
         private bool special;
         private string image;
 
-        [DataMember]
-        public string Color { set; get; }
+        public string Color { get => color; set => color = value; }
 
-        [DataMember]
-        public int Value { set; get; }
+        public int Value { get => value; set => this.value = value; }
 
-        [DataMember]
-        public bool Special { set; get; }
+        public bool Special { get => special; set => special = value; }
 
-        [DataMember]
-        public string Image { set; get; }
+        public string Image { get => image; set => image = value; }
     }
 }

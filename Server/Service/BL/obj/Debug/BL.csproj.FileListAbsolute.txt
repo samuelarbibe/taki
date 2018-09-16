@@ -10,3 +10,16 @@ C:\Users\samue\Desktop\Taki\Server\Service\BL\bin\Debug\ViewModel.dll
 C:\Users\samue\Desktop\Taki\Server\Service\BL\bin\Debug\Model.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\BL\bin\Debug\ViewModel.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\BL\obj\Debug\BL.csproj.CopyComplete
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\Database.accdb
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\BL.dll
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\BL.pdb
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\Model.dll
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\ViewModel.dll
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\Model.pdb
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\ViewModel.pdb
+D:\Users\User1\Github\Server\Service\BL\bin\Debug\ViewModel.dll.config
+D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.csprojAssemblyReference.cache
+D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.csproj.CopyComplete
+D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.dll
+D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.pdb

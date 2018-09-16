@@ -10,5 +10,6 @@ namespace Model
     {
         private int min_length;
 
+        public int Min_length { get => min_length; set => min_length = value; }
     }
 }

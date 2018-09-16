@@ -16,6 +16,11 @@ namespace Service
         [OperationContract]
         Card buildDeck();
 
+        [OperationContract]
+        Game startGame();
+
+        [OperationContract]
+         PlayerList GetPlayerList();
     }
 
 }

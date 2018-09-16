@@ -4,3 +4,8 @@ C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.csproj.CoreComp
 C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\Users\User1\Github\Server\Service\Model\bin\Debug\Model.dll
+D:\Users\User1\Github\Server\Service\Model\bin\Debug\Model.pdb
+D:\Users\User1\Github\Server\Service\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Users\User1\Github\Server\Service\Model\obj\Debug\Model.dll
+D:\Users\User1\Github\Server\Service\Model\obj\Debug\Model.pdb

@@ -17,6 +17,9 @@ namespace Form.TakiService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntity", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Game))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Player))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Card))]
     public partial class BaseEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -57,6 +60,124 @@ namespace Form.TakiService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Game : Form.TakiService.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WinnerField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Winner {
+            get {
+                return this.WinnerField;
+            }
+            set {
+                if ((this.WinnerField.Equals(value) != true)) {
+                    this.WinnerField = value;
+                    this.RaisePropertyChanged("Winner");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Player))]
+    public partial class User : Form.TakiService.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string First_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Last_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string First_name {
+            get {
+                return this.First_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.First_nameField, value) != true)) {
+                    this.First_nameField = value;
+                    this.RaisePropertyChanged("First_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Last_name {
+            get {
+                return this.Last_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Last_nameField, value) != true)) {
+                    this.Last_nameField = value;
+                    this.RaisePropertyChanged("Last_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Score {
+            get {
+                return this.ScoreField;
+            }
+            set {
+                if ((this.ScoreField.Equals(value) != true)) {
+                    this.ScoreField = value;
+                    this.RaisePropertyChanged("Score");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Player : Form.TakiService.User {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -130,6 +251,13 @@ namespace Form.TakiService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PlayerList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Player")]
+    [System.SerializableAttribute()]
+    public class PlayerList : System.Collections.Generic.List<Form.TakiService.Player> {
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TakiService.IService")]
     public interface IService {
@@ -139,6 +267,18 @@ namespace Form.TakiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/buildDeck", ReplyAction="http://tempuri.org/IService/buildDeckResponse")]
         System.Threading.Tasks.Task<Form.TakiService.Card> buildDeckAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/startGame", ReplyAction="http://tempuri.org/IService/startGameResponse")]
+        Form.TakiService.Game startGame();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/startGame", ReplyAction="http://tempuri.org/IService/startGameResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.Game> startGameAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerList", ReplyAction="http://tempuri.org/IService/GetPlayerListResponse")]
+        Form.TakiService.PlayerList GetPlayerList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerList", ReplyAction="http://tempuri.org/IService/GetPlayerListResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.PlayerList> GetPlayerListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -174,6 +314,22 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<Form.TakiService.Card> buildDeckAsync() {
             return base.Channel.buildDeckAsync();
+        }
+        
+        public Form.TakiService.Game startGame() {
+            return base.Channel.startGame();
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.Game> startGameAsync() {
+            return base.Channel.startGameAsync();
+        }
+        
+        public Form.TakiService.PlayerList GetPlayerList() {
+            return base.Channel.GetPlayerList();
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.PlayerList> GetPlayerListAsync() {
+            return base.Channel.GetPlayerListAsync();
         }
     }
 }
