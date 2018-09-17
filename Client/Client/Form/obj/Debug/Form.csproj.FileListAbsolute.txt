@@ -34,3 +34,13 @@ D:\Users\User1\Github\Client\Client\Form\obj\Debug\Login.baml
 D:\Users\User1\Github\Client\Client\Form\obj\Debug\Register.baml
 D:\Users\User1\Github\Client\Client\Form\obj\Debug\LoginMenu.g.cs
 D:\Users\User1\Github\Client\Client\Form\obj\Debug\LoginMenu.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\GamePage.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Login.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\LoginMenu.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\MainMenu.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Register.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\GamePage.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Login.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\LoginMenu.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\MainMenu.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Register.baml

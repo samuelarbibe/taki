@@ -9,8 +9,29 @@
       Title="Login">
 
     <Grid>
-        <TextBlock Text="Login Page" TextAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="Register" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Margin="363,271,362,159" Click="Button_Click"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Login Page" FontSize="35" FontWeight="DemiBold"  TextAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" FontFamily="Aharoni"/>
+        <TextBox x:Name="Username" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap"/>
+        <TextBox x:Name="Password" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap"/>
+        <Button x:Name="LoginButton" Content="Login" Grid.Column="1" Grid.Row="6" Background="#FF617CD9" Click="LoginButton_Click"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Don't have a user created?" />
+        <Button Grid.Row="7" Grid.Column="1" Width="120" Height="15" Padding="-10"  HorizontalAlignment="right" VerticalAlignment="Bottom" Content="Register here." Background="{x:Null}" Click="RegisterButton_Click" BorderThickness="0" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Username"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Password"/>
     </Grid>
 </Page>

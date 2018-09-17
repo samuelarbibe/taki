@@ -33,8 +33,6 @@ namespace Form
             service = new ServiceClient();
             BigFrame = MainFrame;
             BigFrame.Navigate(new LoginMenu());
-
-            
         }
     }
 }

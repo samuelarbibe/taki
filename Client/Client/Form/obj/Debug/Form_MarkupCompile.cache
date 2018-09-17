@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Users\User1\Github\Client\Client\Form\obj\Debug\
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\
 Form
 none
 false
 DEBUG;TRACE
-D:\Users\User1\Github\Client\Client\Form\App.xaml
-4-838211669
+C:\Users\samue\Desktop\Taki\Client\Client\Form\App.xaml
+61754979997
 
-9-387148897
+11-358670305
 15833945659
-Login.xaml;LoginMenu.xaml;MainWindow.xaml;Register.xaml;
+GamePage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;Register.xaml;
 
 False
 

@@ -9,6 +9,36 @@
       Title="Register">
 
     <Grid>
-        <TextBlock Text="Register Page" TextAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="282.4"/>
+            <ColumnDefinition Width="47.2"/>
+            <ColumnDefinition Width="282.4"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Register" FontSize="35" FontWeight="DemiBold"  TextAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" FontFamily="Aharoni"/>
+        <TextBox x:Name="First_name" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBox x:Name="Last_Name" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="First Name"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Last Name"/>
+        <Button x:Name="RegisterButton" Content="Register" Grid.Column="3" Grid.Row="6" Background="#FF617CD9" Click="RegisterButton_Click"/>
+
+
+        <TextBox x:Name="Username" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBox x:Name="Password" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Username"/>
+        <TextBlock Grid.Row="3" Grid.Column="3" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Password"/>
+
     </Grid>
 </Page>

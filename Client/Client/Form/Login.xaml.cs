@@ -25,9 +25,14 @@ namespace Form
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            //LoginMenu.LoginMenuFrame.Navigate(new Register());
+            LoginMenu.LoginFrame.Navigate(new Register());
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

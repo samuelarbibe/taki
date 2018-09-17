@@ -20,10 +20,13 @@ namespace Form
     /// </summary>
     public partial class LoginMenu : Page
     {
+        public static Frame LoginFrame;
+
         public LoginMenu()
         {
             InitializeComponent();
-            LoginMenuFrame.Navigate(new Login());
+            LoginFrame = LoginMenuFrame;
+            LoginFrame.Navigate(new Login());
         }
     }
 }
