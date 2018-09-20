@@ -59,6 +59,7 @@ namespace ViewModel
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
             Connection con = entity as Connection;
+            
 
             command.CommandText = ("INSERT INTO Player_Game_Table (player_id, game_id) VALUES (@player_id, @game_id)");
 

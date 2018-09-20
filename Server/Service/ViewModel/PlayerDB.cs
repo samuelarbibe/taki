@@ -105,6 +105,7 @@ namespace ViewModel
             }
         }
 
+
         public override void Update(BaseEntity entity)
         {
             Player player = entity as Player;
