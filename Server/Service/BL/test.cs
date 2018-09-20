@@ -17,9 +17,13 @@ namespace BL
             return deck[0] as Card;
         }
 
-        public void StartGame(Game g)
+        //recieves a messege from the service, calculates according to the algorithms
+        //makes changes to the database 
+        //returns 
+        public Messege Action(MessegeList list)
         {
-
+            //return a messe
+            return null;
         }
     }
 }

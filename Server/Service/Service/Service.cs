@@ -28,5 +28,12 @@ namespace Service
         {
             return null;
         }
+
+        public MessegeList Action(Messege m)
+        {
+            //send m to BL
+            //return a new Massage to the Client, with orders what to do with the cards and players
+            return null;
+        }
     }
 }

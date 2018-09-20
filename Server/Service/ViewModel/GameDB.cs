@@ -37,7 +37,7 @@ namespace ViewModel
         public GameList SelectAll()
         {
 
-            command.CommandText = ("SELECT * FROM Gamees_Table");
+            command.CommandText = ("SELECT * FROM Games_Table");
             GameList temp = new GameList(Select());
             return temp;
 

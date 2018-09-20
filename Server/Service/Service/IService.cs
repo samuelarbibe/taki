@@ -21,6 +21,9 @@ namespace Service
 
         [OperationContract]
          PlayerList GetPlayerList();
+
+        [OperationContract]
+        MessegeList Action(Messege m);
     }
 
 }
