@@ -48,3 +48,5 @@ D:\Users\User1\Github\Server\Service\Host\obj\Debug\Host.csproj.CoreCompileInput
 D:\Users\User1\Github\Server\Service\Host\obj\Debug\Host.csproj.CopyComplete
 D:\Users\User1\Github\Server\Service\Host\obj\Debug\Host.exe
 D:\Users\User1\Github\Server\Service\Host\obj\Debug\Host.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Database.accdb
+C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\ViewModel.dll.config

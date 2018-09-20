@@ -46,12 +46,12 @@ namespace ViewModel
          public override void Delete(BaseEntity entity)
         {
             Game game = entity as Game;
-            PlayerGameDB PGdb = new PlayerGameDB();//delete all connections rtelated to this game
+            PlayerGameDB PGdb = new PlayerGameDB();//delete all connections realted to this game
 
             ConnectionList PG = PGdb.SelectByGameID(game.Id);
 
 
-            if (p != null)
+            if (PG != null)
             {
                 foreach (Connection c in PG)//delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
                 {
@@ -69,13 +69,13 @@ namespace ViewModel
 
             command.CommandText = ("DELETE FROM Game_Table WHERE ID = @game_id");
 
-            PlayerGameDB player-game = new PlayerGameDB();
+            PlayerGameDB player_game = new PlayerGameDB();
 
             //parameters
 
             command.Parameters.Add(new OleDbParameter("@game_id", game.Id));
 
-            Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been deleted");
+            Console.WriteLine("All Connections and games related to this game have been deleted");
         }
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)

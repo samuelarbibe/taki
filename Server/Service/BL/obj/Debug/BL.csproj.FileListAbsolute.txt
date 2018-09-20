@@ -23,3 +23,4 @@ D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.csproj.CoreCompileInputs.ca
 D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.csproj.CopyComplete
 D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.dll
 D:\Users\User1\Github\Server\Service\BL\obj\Debug\BL.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\BL\bin\Debug\ViewModel.dll.config

@@ -19,3 +19,4 @@ D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CoreCo
 D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete
 D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.dll
 D:\Users\User1\Github\Server\Service\ViewModel\obj\Debug\ViewModel.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\bin\Debug\ViewModel.dll.config
