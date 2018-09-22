@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ServiceModel;
+using Form.TakiService;
 
 namespace Form
 {
@@ -20,6 +22,7 @@ namespace Form
     /// </summary>
     public partial class Login : Page
     {
+
         public Login()
         {
             InitializeComponent();
@@ -32,7 +35,21 @@ namespace Form
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            string usernameValue = Username.Text;
+            string passwordValue = Password.Text;
 
+            User currentUserCheck = MainWindow.Service.Login(usernameValue, passwordValue);
+
+            if (currentUserCheck != null)
+            {
+                noUserError.Text = "";
+                MainWindow.CurrentUser = currentUserCheck;
+                MainWindow.BigFrame.Navigate(new MainMenu());
+            }
+            else
+            {
+                noUserError.Text = "Your Password or Username are incorrect. Try again";
+            }
         }
     }
 }

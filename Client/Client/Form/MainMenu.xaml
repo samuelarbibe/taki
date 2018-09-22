@@ -9,8 +9,20 @@
       Title="MainMenu">
 
     <Grid>
-        <Button Content="Play Game" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="175"/>
-        <TextBlock HorizontalAlignment="Left" Margin="287,72,0,0" TextWrapping="Wrap" FontSize="50" Text="MainMenu" VerticalAlignment="Top" Height="81" Width="250"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="140*"/>
+            <RowDefinition Height="69*"/>
+            <RowDefinition Height="195*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Play Game" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock TextAlignment="Center" FontSize="50" Text="MainMenu" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="UserButton" Content="Profile" Click="UserButton_Click"/>
 
     </Grid>
 </Page>

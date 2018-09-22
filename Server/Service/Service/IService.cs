@@ -14,16 +14,25 @@ namespace Service
     public interface IService
     {
         [OperationContract]
-        Card buildDeck();
+        Card BuildDeck();
 
         [OperationContract]
-        Game startGame();
+        Game StartGame();
 
         [OperationContract]
          PlayerList GetPlayerList();
 
         [OperationContract]
-        MessegeList Action(Messege m);
+        MessageList Action(Message m);
+
+        [OperationContract]
+        User Login(string username, string password);
+
+        [OperationContract]
+        bool Register(string firstName, string lastName, string username, string password);
+
+        [OperationContract]
+        bool PasswordAvailable(string password);
     }
 
 }

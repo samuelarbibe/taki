@@ -8,10 +8,10 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerCardDB : BaseDB
+    public class PlayerCardDb : BaseDb
     {
 
-        protected override BaseEntity newEntity()
+        protected override BaseEntity NewEntity()
         {
             return new Connection();
         }
@@ -20,37 +20,37 @@ namespace ViewModel
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             Connection con = entity as Connection;
-            con.Id = (int)reader["ID"];
-            con.SideA = (int)reader["player_id"];
-            con.SideB = (int)reader["card_id"];
-            con.Connection_type = "player-card";
+            con.Id = (int)Reader["ID"];
+            con.SideA = (int)Reader["player_id"];
+            con.SideB = (int)Reader["card_id"];
+            con.ConnectionType = "player-card";
             return con;
         }
 
-        public ConnectionList SelectByGameID(int card_id)
+        public ConnectionList SelectByGameId(int cardId)
         {
-            command.CommandText = ("SELECT * FROM Player_Card_Table WHERE 'card_id'= @id");
+            Command.CommandText = ("SELECT * FROM Player_Card_Table WHERE 'card_id'= @id");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@id", card_id));
+            Command.Parameters.Add(new OleDbParameter("@id", cardId));
 
 
-            ConnectionList con_list = new ConnectionList(Select());
-            return con_list;
+            ConnectionList conList = new ConnectionList(Select());
+            return conList;
         }
 
-        public ConnectionList SelectByPlayerID(int player_id)
+        public ConnectionList SelectByPlayerId(int playerId)
         {
-            command.CommandText = ("SELECT * FROM Player_Card_Table WHERE 'player_id'= @id");
+            Command.CommandText = ("SELECT * FROM Player_Card_Table WHERE 'player_id'= @id");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@id", player_id));
+            Command.Parameters.Add(new OleDbParameter("@id", playerId));
 
 
-            ConnectionList con_list = new ConnectionList(Select());
-            return con_list;
+            ConnectionList conList = new ConnectionList(Select());
+            return conList;
         }
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)

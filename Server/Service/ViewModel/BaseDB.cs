@@ -10,18 +10,18 @@ using Model;
 
 namespace ViewModel
 {
-    public abstract class BaseDB
+    public abstract class BaseDb
     {
         //database
-        protected string connectionString;
-        protected OleDbConnection connection;
-        protected OleDbCommand command;
-        protected OleDbDataReader reader;
+        protected string ConnectionString;
+        protected OleDbConnection Connection;
+        protected OleDbCommand Command;
+        protected OleDbDataReader Reader;
 
  
 
         //base entity
-        protected abstract BaseEntity newEntity();
+        protected abstract BaseEntity NewEntity();
 
 
 
@@ -31,8 +31,8 @@ namespace ViewModel
 
 
         //update, insert, delete
-        protected static List<ChangeEntity> inserted = new List<ChangeEntity>();
-        protected static List<ChangeEntity> updated = new List<ChangeEntity>();
+        protected static List<ChangeEntity> Inserted = new List<ChangeEntity>();
+        protected static List<ChangeEntity> Updated = new List<ChangeEntity>();
 
 
 
@@ -45,41 +45,41 @@ namespace ViewModel
         public virtual void Insert(BaseEntity entity)
         {
 
-            BaseEntity reqEntity = this.newEntity();
+            BaseEntity reqEntity = this.NewEntity();
             if (entity != null && entity.GetType() == reqEntity.GetType())
             {
-                inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
+                Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
             }
         }
 
         public virtual void Update(BaseEntity entity)
         {
-            BaseEntity reqEntity = this.newEntity();
+            BaseEntity reqEntity = this.NewEntity();
             if (entity != null && entity.GetType() == reqEntity.GetType())
             {
-                updated.Add(new ChangeEntity(this.CreateUpdateSql, entity));
+                Updated.Add(new ChangeEntity(this.CreateUpdateSql, entity));
             }
         }
 
         public virtual void Delete(BaseEntity entity)
         {
-            BaseEntity reqEntity = this.newEntity();
+            BaseEntity reqEntity = this.NewEntity();
             if (entity != null && entity.GetType() == reqEntity.GetType())
             {
-                updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));
+                Updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));
             }
         }
 
         /*---------------------------------------------------------------*/
 
-        public BaseDB()
+        public BaseDb()
         {
-            connectionString =
-           // @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\Database.accdb;Persist Security ////Info=True";
-           @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Users\User1\Github\Server\Service\ViewModel\Database.accdb; Persist Security Info = True";
+            ConnectionString =
+           @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\samue\Desktop\Taki\Server\Service\ViewModel\Database.accdb; Persist Security Info = True";
+           //@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Users\User1\Github\Server\Service\ViewModel\Database.accdb; Persist Security Info = True";
 
-            connection = new OleDbConnection(connectionString);
-            command = new OleDbCommand();
+            Connection = new OleDbConnection(ConnectionString);
+            Command = new OleDbCommand();
         }
 
         /*---------------------------------------------------------------*/
@@ -87,50 +87,50 @@ namespace ViewModel
         public int SaveChanges()
         {
 
-            int records_affected = 0;
+            int recordsAffected = 0;
             try
             {
                 OleDbCommand command = new OleDbCommand();
-                command.Connection = connection;
-                connection.Open();
+                command.Connection = Connection;
+                Connection.Open();
 
                 //inserted
-                foreach (var item in inserted)
+                foreach (var item in Inserted)
                 {
 
                     command.Parameters.Clear();
                     item.CreateSql(item.Entity, command);
-                    records_affected += command.ExecuteNonQuery();
+                    recordsAffected += command.ExecuteNonQuery();
 
-                    command.CommandText = "SELECT @@IDENTITY"; //get last ID
+                    command.CommandText = "SELECT @@identity "; //get last ID
                     item.Entity.Id = (int)command.ExecuteScalar();
                 }
-                inserted.Clear();
+                Inserted.Clear();
 
                 //updated, deleted
-                foreach (var item in updated)
+                foreach (var item in Updated)
                 {
                     command.Parameters.Clear();
                     item.CreateSql(item.Entity, command);
-                    records_affected += command.ExecuteNonQuery();
+                    recordsAffected += command.ExecuteNonQuery();
                 }
-                updated.Clear();
+                Updated.Clear();
 
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e.Message + "\nSQL:" + command.CommandText);
+                System.Diagnostics.Debug.WriteLine(e.Message + "\nSQL:" + Command.CommandText);
             }
             finally
             {
-                reader?.Close();
+                Reader?.Close();
 
-                if (connection.State == ConnectionState.Open)
+                if (Connection.State == ConnectionState.Open)
                 {
-                    connection.Close();
+                    Connection.Close();
                 }
             }
-            return records_affected;
+            return recordsAffected;
         }
 
         /*---------------------------------------------------------------*/
@@ -141,13 +141,13 @@ namespace ViewModel
 
             try
             {
-                command.Connection = connection;
-                connection.Open();
-                reader = command.ExecuteReader();
+                Command.Connection = Connection;
+                Connection.Open();
+                Reader = Command.ExecuteReader();
 
-                while (reader.Read())
+                while (Reader.Read())
                 {
-                    BaseEntity entity = newEntity();
+                    BaseEntity entity = NewEntity();
                     list.Add(CreateModel(entity));
                 }
             }
@@ -157,11 +157,11 @@ namespace ViewModel
             }
             finally
             {
-                reader?.Close();
+                Reader?.Close();
 
-                if (connection.State == ConnectionState.Open)
+                if (Connection.State == ConnectionState.Open)
                 {
-                    connection.Close();
+                    Connection.Close();
                 }
             }
             return list;

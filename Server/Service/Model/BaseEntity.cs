@@ -9,10 +9,9 @@ namespace Model
     [DataContract]
     public class BaseEntity
     {
-        
-        private int id;
+        private int _id;
 
         
-        public int Id { get; set; }
+        public int Id { get => _id; set => _id = value; }
     }
 }

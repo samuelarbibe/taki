@@ -8,25 +8,34 @@ namespace Model
     [DataContract]
     public class User : BaseEntity
     {
-        private string first_name;
-        private string last_name;
-        private string username;
-        private string password;
-        private int score;
+        private string _firstName;
+        private string _lastName;
+        private string _username;
+        private string _password;
+        private int _level;
+        private int _score;
+        private bool _admin;
 
-        
-        public string First_name { set; get; }
+        [DataMember]
+        public string FirstName {get => _firstName; set => _firstName = value;  }
 
-        
-        public string Last_name { set; get; }
+        [DataMember]
+        public string LastName { get => _lastName; set => _lastName = value; }
 
-        
-        public string Username { set; get; }
+        [DataMember]
+        public string Username { get => _username; set => _username = value; }
 
-        
-        public string Password { set; get; }
+        [DataMember]
+        public string Password { get => _password; set => _password = value; }
 
-        
-        public int Score { set; get; }
+        [DataMember]
+        public int Score { get => _score; set => _score = value; }
+
+        [DataMember]
+        public int Level { get => _level; set => _level = value; }
+
+        [DataMember]
+        public bool Admin { get => _admin; set => _admin = value; }
+
     }
 }

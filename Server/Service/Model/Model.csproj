@@ -53,8 +53,8 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameList.cs" />
     <Compile Include="Hand.cs" />
-    <Compile Include="Messege.cs" />
-    <Compile Include="MessegeList.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MessageList.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

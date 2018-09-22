@@ -8,13 +8,13 @@ using Model;
 
 namespace ViewModel
 {
-    public class CardDB : BaseDB
+    public class CardDb : BaseDb
     {
 
-        private static CardList list;
+        private static CardList _list;
 
 
-        protected override BaseEntity newEntity()
+        protected override BaseEntity NewEntity()
         {
             return new Card();
         }
@@ -23,30 +23,30 @@ namespace ViewModel
         {
             Card card = entity as Card;
 
-            card.Color = reader["color"].ToString();
-            card.Value = (int)reader["value"];
-            card.Special = (bool)reader["special"];
-            card.Image = reader["image"].ToString();
-            card.Id = (int)reader["ID"];
+            card.Color = Reader["color"].ToString();
+            card.Value = (int)Reader["value"];
+            card.Special = (bool)Reader["special"];
+            card.Image = Reader["image"].ToString();
+            card.Id = (int)Reader["ID"];
 
             return card;
         }
 
         public CardList SelectAll()
         {
-            command.CommandText = ("SELECT * FROM Card_Table");
+            Command.CommandText = ("SELECT * FROM Card_Table");
             CardList list = new CardList(base.Select());
             return list;
         }
 
 
-        public CardList SelectByID(int id)
+        public CardList SelectById(int id)
         {
 
-            command.CommandText = ("SELECT * FROM Card_Table WHERE 'ID' = '@id'");
+            Command.CommandText = ("SELECT * FROM Card_Table WHERE 'ID' = '@id'");
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@Id", id));
+            Command.Parameters.Add(new OleDbParameter("@Id", id));
 
             CardList temp = new CardList(Select());
 

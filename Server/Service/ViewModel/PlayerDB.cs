@@ -8,9 +8,9 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerDB : BaseDB
+    public class PlayerDb : BaseDb
     {
-        protected override BaseEntity newEntity()
+        protected override BaseEntity NewEntity()
         {
             return new User();
         }
@@ -22,15 +22,15 @@ namespace ViewModel
             Player p = entity as Player;
             //base.CreateModel(p);
             p.Hand = null;
-            p.Temp_score = 0;
-            p.Game_id = 0;
+            p.TempScore = 0;
+            p.GameId = 0;
             return p;
         }
 
         public PlayerList SelectAll()
         {
 
-            command.CommandText = ("SELECT *, User_Table.ID as id FROM (User_Table INNER JOIN  PlayerTable ON User_Table.ID = Player_Table.user_id)");
+            Command.CommandText = ("SELECT *, User_Table.ID as id FROM (User_Table INNER JOIN  PlayerTable ON User_Table.ID = Player_Table.user_id)");
             PlayerList temp = new PlayerList(Select());
             return temp;
 
@@ -51,13 +51,13 @@ namespace ViewModel
         //    return temp;
         //}
 
-        public Player SelectByID(int id)
+        public Player SelectById(int id)
         {
 
-            command.CommandText = ("SELECT * FROM Player_Table WHERE 'ID' = '@id'");
+            Command.CommandText = ("SELECT * FROM Player_Table WHERE 'ID' = '@id'");
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@Id", id));
+            Command.Parameters.Add(new OleDbParameter("@Id", id));
 
             PlayerList temp = new PlayerList(Select());
 
@@ -73,35 +73,33 @@ namespace ViewModel
             Player p = entity as Player;
             if (p != null)
             {
-                inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
+                Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
             }
         }
  
-
-
         public override void Delete(BaseEntity entity)
         {
             Player p = entity as Player;
-            PlayerCardDB PCdb = new PlayerCardDB();
-            PlayerGameDB PGdb = new PlayerGameDB();
+            PlayerCardDb pCdb = new PlayerCardDb();
+            PlayerGameDb pGdb = new PlayerGameDb();
 
-            ConnectionList PC = PCdb.SelectByPlayerID(p.Id);
-            ConnectionList PG = PGdb.SelectByPlayerID(p.Id);
+            ConnectionList pc = pCdb.SelectByPlayerId(p.Id);
+            ConnectionList pg = pGdb.SelectByPlayerId(p.Id);
 
 
             if (p != null)
             {
-                foreach(Connection c in PC)//delete all cards connections to this player using PlayerCardDB
+                foreach(Connection c in pc)//delete all cards connections to this player using PlayerCardDB
                 {
-                    updated.Add(new ChangeEntity(PCdb.CreateDeleteSql, c));
+                    Updated.Add(new ChangeEntity(pCdb.CreateDeleteSql, c));
                 }
 
-                foreach (Connection c in PG)//delete all games connections to this player using PlayerGameDB
+                foreach (Connection c in pg)//delete all games connections to this player using PlayerGameDB
                 {
-                    updated.Add(new ChangeEntity(PGdb.CreateDeleteSql, c));
+                    Updated.Add(new ChangeEntity(pGdb.CreateDeleteSql, c));
                 }
 
-                updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));//delete the player itself
+                Updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));//delete the player itself
             }
         }
 
@@ -111,7 +109,7 @@ namespace ViewModel
             Player player = entity as Player;
             if (player != null)
             {
-                updated.Add(new ChangeEntity(this.CreateUpdateSql, entity));
+                Updated.Add(new ChangeEntity(this.CreateUpdateSql, entity));
             }
         }
 
@@ -149,7 +147,7 @@ namespace ViewModel
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@score", player.Temp_score));
+            command.Parameters.Add(new OleDbParameter("@score", player.TempScore));
         }
     }
 }

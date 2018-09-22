@@ -8,14 +8,17 @@ namespace Model
     [DataContract]
     public class Player : User
     {
-        private Hand hand;
-        private int temp_score;
-        private int game_id;
+        private Hand _hand;
+        private int _tempScore;
+        private int _gameId;
 
-        public Hand Hand { get => hand; set => hand = value; }
+        
+        public Hand Hand { get => _hand; set => _hand = value; }
 
-        public int Temp_score { get => temp_score; set => temp_score = value; }
+        
+        public int TempScore { get => _tempScore; set => _tempScore = value; }
 
-        public int Game_id { get => game_id; set => game_id = value; }
+        
+        public int GameId { get => _gameId; set => _gameId = value; }
     }
 }

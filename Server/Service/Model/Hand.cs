@@ -8,8 +8,9 @@ namespace Model
     [DataContract]
     public class Hand : CardList
     {
-        private int min_length;
+        private int _minLength;
 
-        public int Min_length { get => min_length; set => min_length = value; }
+        
+        public int MinLength { get => _minLength; set => _minLength = value; }
     }
 }

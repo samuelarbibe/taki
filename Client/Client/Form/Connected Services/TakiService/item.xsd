@@ -3,28 +3,19 @@
   <xs:complexType name="Card">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Special" type="xs:boolean" />
-          <xs:element minOccurs="0" name="Value" type="xs:int" />
-        </xs:sequence>
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Card" nillable="true" type="tns:Card" />
   <xs:complexType name="BaseEntity">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-    </xs:sequence>
+    <xs:sequence />
   </xs:complexType>
   <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
   <xs:complexType name="Game">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Winner" type="xs:int" />
-        </xs:sequence>
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -47,8 +38,9 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="First_name" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Last_name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Level" type="xs:int" />
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Score" type="xs:int" />
           <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
@@ -57,4 +49,18 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="Message">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:complexType name="MessageList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageList" nillable="true" type="tns:MessageList" />
 </xs:schema>

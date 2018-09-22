@@ -10,9 +10,9 @@ using Model;
 
 namespace ViewModel
 {
-    public class UserDB : BaseDB
+    public class UserDb : BaseDb
     {
-        protected override BaseEntity newEntity()
+        protected override BaseEntity NewEntity()
         {
             return new User();
         }
@@ -22,30 +22,31 @@ namespace ViewModel
         {
 
             User user = entity as User;
-            user.First_name = reader["first_name"].ToString();
-            user.Last_name = reader["last_name"].ToString();
-            user.Id = (int)reader["ID"];
-            user.Score = (int)reader["score"];
+            user.FirstName = Reader["first_name"].ToString();
+            user.LastName = Reader["last_name"].ToString();
+            user.Id = (int) Reader["ID"];
+            user.Score = (int) Reader["score"];
+            user.Admin = (bool) Reader["admin"];
             return user;
 
         }
 
         public UserList SelectAll()
         {
-            command.CommandText = ("SELECT * FROM User_Table");
+            Command.CommandText = ("SELECT * FROM User_Table");
             UserList temp = new UserList(Select());
             return temp;
         }
         
 
-        public UserList SelectByName(string first_name, string last_name)
+        public UserList SelectByName(string firstName, string lastName)
         {
-            command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName");
+            Command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@fName", first_name));
-            command.Parameters.Add(new OleDbParameter("@lName", last_name));
+            Command.Parameters.Add(new OleDbParameter("@fName", firstName));
+            Command.Parameters.Add(new OleDbParameter("@lName", lastName));
 
 
             UserList temp = new UserList(Select());
@@ -55,12 +56,12 @@ namespace ViewModel
 
         public UserList SelectByUsername(string username, string password)
         {
-            command.CommandText = ("SELECT * FROM User_Table WHERE 'username'= @uName AND 'password' = @pWord");
+            Command.CommandText = ("SELECT * FROM User_Table WHERE username=@uName AND password=@pWord");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@uName", username));
-            command.Parameters.Add(new OleDbParameter("@pWord", password));
+            Command.Parameters.Add(new OleDbParameter("@uName", username));
+            Command.Parameters.Add(new OleDbParameter("@pWord", password));
 
 
             UserList temp = new UserList(Select());
@@ -68,13 +69,13 @@ namespace ViewModel
         }
 
 
-        public User SelectByID(int id)
+        public User SelectById(int id)
         {
 
-            command.CommandText = ("SELECT * FROM User_Table WHERE 'ID' = '@id'");
+            Command.CommandText = ("SELECT * FROM User_Table WHERE 'ID' = '@id'");
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@Id", id));
+            Command.Parameters.Add(new OleDbParameter("@Id", id));
 
             UserList temp = new UserList(Select());
 
@@ -85,27 +86,57 @@ namespace ViewModel
             return null;
         }
 
+        public User SelectByPassword(string password)
+        {
+
+            Command.CommandText = ("SELECT * FROM User_Table WHERE [password] = @Password");
+
+            //parameters
+            Command.Parameters.Add(new OleDbParameter("@Password", password));
+
+            UserList temp = new UserList(Select());
+
+            if (temp.Count() == 1)
+            {
+                return temp[0] as User;
+            }
+            return null;
+        }
+
+        //public override void Insert(BaseEntity entity)
+        //{
+        //    User p = entity as User;
+        //    if (p != null)
+        //    {
+        //        Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
+        //    }
+        //}
+
+
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
             User user = entity as User;
 
-            command.CommandText = ("INSERT INTO User_Table (ID) VALUES (@id)");
+            command.CommandText = ("INSERT INTO User_Table ( [username], [password], first_name, last_name) VALUES ( @username,  @password, @firstName, @lastName)");
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id", user.Id));
+            command.Parameters.Add(new OleDbParameter("@username", user.Username));
+            command.Parameters.Add(new OleDbParameter("@password", user.Password));
+            command.Parameters.Add(new OleDbParameter("@firstName", user.FirstName));
+            command.Parameters.Add(new OleDbParameter("@lastName", user.LastName));
         }
 
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
-            User student = entity as User;
+            User user = entity as User;
 
             command.CommandText = ("DELETE FROM User_Table WHERE ID = @id");
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id", student.Id));
+            command.Parameters.Add(new OleDbParameter("@id", user.Id));
         }
 
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)

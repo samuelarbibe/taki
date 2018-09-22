@@ -8,36 +8,36 @@ using Model;
 
 namespace ViewModel
 {
-    public class GameDB : BaseDB
+    public class GameDb : BaseDb
     {
 
-        private static GameList list;
+        private static GameList _list;
 
-        protected override BaseEntity newEntity()
+        protected override BaseEntity NewEntity()
         {
             return new Game();
         }
 
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
-            PlayerDB db = new PlayerDB();
-            Game Game = entity as Game;
+            PlayerDb db = new PlayerDb();
+            Game game = entity as Game;
 
-            Game.Id = (int)reader["ID"];
-            Game.Players[0] = db.SelectByID((int)reader["player_1_ID"]);
-            Game.Players[1] = db.SelectByID((int)reader["player_2_ID"]);
-            Game.Players[2] = db.SelectByID((int)reader["player_3_ID"]);
-            Game.Players[3] = db.SelectByID((int)reader["player_4_ID"]);
+            game.Id = (int)Reader["ID"];
+            game.Players[0] = db.SelectById((int)Reader["player_1_ID"]);
+            game.Players[1] = db.SelectById((int)Reader["player_2_ID"]);
+            game.Players[2] = db.SelectById((int)Reader["player_3_ID"]);
+            game.Players[3] = db.SelectById((int)Reader["player_4_ID"]);
 
-            Game.StartTime = DateTime.Now;
+            game.StartTime = DateTime.Now;
 
-            return Game;
+            return game;
         }
 
         public GameList SelectAll()
         {
 
-            command.CommandText = ("SELECT * FROM Game_Table");
+            Command.CommandText = ("SELECT * FROM Game_Table");
             GameList temp = new GameList(Select());
             return temp;
 
@@ -46,19 +46,19 @@ namespace ViewModel
          public override void Delete(BaseEntity entity)
         {
             Game game = entity as Game;
-            PlayerGameDB PGdb = new PlayerGameDB();//delete all connections realted to this game
+            PlayerGameDb pGdb = new PlayerGameDb();//delete all connections realted to this game
 
-            ConnectionList PG = PGdb.SelectByGameID(game.Id);
+            ConnectionList pg = pGdb.SelectByGameId(game.Id);
 
 
-            if (PG != null)
+            if (pg != null)
             {
-                foreach (Connection c in PG)//delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
+                foreach (Connection c in pg)//delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
                 {
-                    updated.Add(new ChangeEntity(PGdb.CreateDeleteSql, c));
+                    Updated.Add(new ChangeEntity(pGdb.CreateDeleteSql, c));
                 }
 
-                updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));//delete the player itself
+                Updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));//delete the player itself
             }
         }
 
@@ -69,7 +69,7 @@ namespace ViewModel
 
             command.CommandText = ("DELETE FROM Game_Table WHERE ID = @game_id");
 
-            PlayerGameDB player_game = new PlayerGameDB();
+            //PlayerGameDB playerGame = new PlayerGameDB();
 
             //parameters
 

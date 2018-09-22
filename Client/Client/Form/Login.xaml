@@ -33,5 +33,6 @@
         <Button Grid.Row="7" Grid.Column="1" Width="120" Height="15" Padding="-10"  HorizontalAlignment="right" VerticalAlignment="Bottom" Content="Register here." Background="{x:Null}" Click="RegisterButton_Click" BorderThickness="0" />
         <TextBlock Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Username"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Password"/>
+        <TextBlock x:Name="noUserError" Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="" Foreground="Red"/>
     </Grid>
 </Page>

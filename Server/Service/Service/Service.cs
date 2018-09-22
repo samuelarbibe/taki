@@ -12,14 +12,32 @@ namespace Service
 {
     public class Service : IService
     {
-        public Card buildDeck()
+        public Card BuildDeck()
         {
-            test t = new test();
+            Test t = new Test();
 
             return t.BlBuildDeck();
         }
 
-        public Game startGame()
+        public User Login(string username, string password)
+        {
+            Test t = new Test();
+            return t.Login(username, password);
+        }
+
+        public bool Register(string firstName, string lastName, string username, string password)
+        {
+            Test t = new Test();
+            return t.Register(firstName, lastName, username, password);
+        }
+
+        public bool PasswordAvailable(string password)
+        {
+            Test t =new Test();
+            return t.PasswordAvailable(password);
+        }
+
+        public Game StartGame()
         {
             return null;
         }
@@ -29,7 +47,7 @@ namespace Service
             return null;
         }
 
-        public MessegeList Action(Messege m)
+        public MessageList Action(Message m)
         {
             //send m to BL
             //return a new Massage to the Client, with orders what to do with the cards and players

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,15 +25,23 @@ namespace Form
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ServiceClient service;
+        public static ServiceClient Service;
         public static Frame BigFrame;
+
+        private static User currentUser; 
+
+        public static User CurrentUser {
+            get => currentUser;
+            set => currentUser = value;
+        }
 
         public MainWindow()
         {
             InitializeComponent();
-            service = new ServiceClient();
+            Service = new ServiceClient();
             BigFrame = MainFrame;
             BigFrame.Navigate(new LoginMenu());
+            DataContext = currentUser;
         }
     }
 }

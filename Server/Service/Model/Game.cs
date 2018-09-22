@@ -9,15 +9,17 @@ namespace Model
     public class Game : BaseEntity
     {
 
-        private PlayerList players;
-        private DateTime startTime;
-        private int winner;
+        private PlayerList _players;
+        private DateTime _startTime;
+        private int _winner;
 
+        
+        public DateTime StartTime { get { return _startTime; } set { _startTime = value; } }
 
-        public DateTime StartTime { get { return startTime; } set { startTime = value; } }
+        
+        public int Winner { get => _winner; set => _winner = value; }
 
-        public int Winner { get => winner; set => winner = value; }
-
-        public PlayerList Players { get => players; set => players = value; }
+        
+        public PlayerList Players { get => _players; set => _players = value; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ServiceModel;
+using Form.TakiService;
+
 
 namespace Form
 {
@@ -23,6 +27,11 @@ namespace Form
         public MainMenu()
         {
             InitializeComponent();
+        }
+
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new UserPage());
         }
     }
 }

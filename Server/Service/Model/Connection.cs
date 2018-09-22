@@ -10,14 +10,17 @@ namespace Model
     [DataContract]
     public class Connection : BaseEntity
     {
-        private int sideA;
-        private int sideB;
-        private string connection_type;
+        private int _sideA;
+        private int _sideB;
+        private string _connectionType;
 
-        public int SideA { get => sideA; set => sideA = value; }
+        
+        public int SideA { get => _sideA; set => _sideA = value; }
 
-        public int SideB { get => sideB; set => sideB = value; }
+        
+        public int SideB { get => _sideB; set => _sideB = value; }
 
-        public string Connection_type { get => connection_type; set => connection_type = value; }
+        
+        public string ConnectionType { get => _connectionType; set => _connectionType = value; }
     }
 }

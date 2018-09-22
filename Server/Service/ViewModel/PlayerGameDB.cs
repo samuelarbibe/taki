@@ -8,10 +8,10 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerGameDB : BaseDB
+    public class PlayerGameDb : BaseDb
     {   
 
-        protected override BaseEntity newEntity()
+        protected override BaseEntity NewEntity()
         {
             return new Connection();
         }
@@ -20,39 +20,39 @@ namespace ViewModel
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             Connection con = entity as Connection;
-            con.Id = (int)reader["ID"];
-            con.SideA = (int)reader["player_id"];
-            con.SideB = (int)reader["game_id"];
-            con.Connection_type = "player_game";
+            con.Id = (int)Reader["ID"];
+            con.SideA = (int)Reader["player_id"];
+            con.SideB = (int)Reader["game_id"];
+            con.ConnectionType = "player_game";
             return con;
         }
 
 
-        public ConnectionList SelectByGameID(int game_id)
+        public ConnectionList SelectByGameId(int gameId)
         {
-            command.CommandText = ("SELECT * FROM Player_Game_Table WHERE 'game_id'= @id");
+            Command.CommandText = ("SELECT * FROM Player_Game_Table WHERE 'game_id'= @id");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@id", game_id));
+            Command.Parameters.Add(new OleDbParameter("@id", gameId));
 
 
-            ConnectionList con_list = new ConnectionList(Select());
-            return con_list;
+            ConnectionList conList = new ConnectionList(Select());
+            return conList;
         }
 
 
-        public ConnectionList SelectByPlayerID(int player_id)
+        public ConnectionList SelectByPlayerId(int playerId)
         {
-            command.CommandText = ("SELECT * FROM Player_Game_Table WHERE 'player_id'= @id");
+            Command.CommandText = ("SELECT * FROM Player_Game_Table WHERE 'player_id'= @id");
 
 
             //parameters
-            command.Parameters.Add(new OleDbParameter("@id", player_id));
+            Command.Parameters.Add(new OleDbParameter("@id", playerId));
 
 
-            ConnectionList con_list = new ConnectionList(Select());
-            return con_list;
+            ConnectionList conList = new ConnectionList(Select());
+            return conList;
         }
 
 
