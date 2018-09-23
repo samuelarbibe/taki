@@ -8,13 +8,15 @@ namespace Model
     [DataContract]
     public class User : BaseEntity
     {
-        private string _firstName;
-        private string _lastName;
         private string _username;
         private string _password;
+        private string _firstName;
+        private string _lastName;
         private int _level;
         private int _score;
         private bool _admin;
+        private int _wins;
+        private int _losses;
 
         [DataMember]
         public string FirstName {get => _firstName; set => _firstName = value;  }
@@ -37,5 +39,10 @@ namespace Model
         [DataMember]
         public bool Admin { get => _admin; set => _admin = value; }
 
+        [DataMember]
+        public int Wins { get => _wins; set => _wins = value; }
+
+        [DataMember]
+        public int Losses { get => _losses; set => _losses = value; }
     }
 }

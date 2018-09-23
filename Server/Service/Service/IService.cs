@@ -33,6 +33,9 @@ namespace Service
 
         [OperationContract]
         bool PasswordAvailable(string password);
+
+        [OperationContract]
+        bool UsernameAvailable(string username);
     }
 
 }

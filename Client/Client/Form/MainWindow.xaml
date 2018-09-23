@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:Form"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Aharoni" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Frame x:Name="MainFrame" />
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

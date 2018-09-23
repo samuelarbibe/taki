@@ -62,6 +62,9 @@ namespace Form.TakiService {
     public partial class User : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AdminField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -71,6 +74,9 @@ namespace Form.TakiService {
         private int LevelField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LossesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -78,6 +84,22 @@ namespace Form.TakiService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UsernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WinsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Admin {
+            get {
+                return this.AdminField;
+            }
+            set {
+                if ((this.AdminField.Equals(value) != true)) {
+                    this.AdminField = value;
+                    this.RaisePropertyChanged("Admin");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string FirstName {
@@ -119,6 +141,19 @@ namespace Form.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Losses {
+            get {
+                return this.LossesField;
+            }
+            set {
+                if ((this.LossesField.Equals(value) != true)) {
+                    this.LossesField = value;
+                    this.RaisePropertyChanged("Losses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Password {
             get {
                 return this.PasswordField;
@@ -153,6 +188,19 @@ namespace Form.TakiService {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Wins {
+            get {
+                return this.WinsField;
+            }
+            set {
+                if ((this.WinsField.Equals(value) != true)) {
+                    this.WinsField = value;
+                    this.RaisePropertyChanged("Wins");
                 }
             }
         }
@@ -238,6 +286,12 @@ namespace Form.TakiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/PasswordAvailable", ReplyAction="http://tempuri.org/IService/PasswordAvailableResponse")]
         System.Threading.Tasks.Task<bool> PasswordAvailableAsync(string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
+        bool UsernameAvailable(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
+        System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -321,6 +375,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<bool> PasswordAvailableAsync(string password) {
             return base.Channel.PasswordAvailableAsync(password);
+        }
+        
+        public bool UsernameAvailable(string username) {
+            return base.Channel.UsernameAvailable(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username) {
+            return base.Channel.UsernameAvailableAsync(username);
         }
     }
 }

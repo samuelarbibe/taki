@@ -41,7 +41,7 @@ namespace Form
             Service = new ServiceClient();
             BigFrame = MainFrame;
             BigFrame.Navigate(new LoginMenu());
-            DataContext = currentUser;
+            this.DataContext = currentUser;
         }
     }
 }

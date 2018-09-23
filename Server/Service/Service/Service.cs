@@ -37,6 +37,12 @@ namespace Service
             return t.PasswordAvailable(password);
         }
 
+        public bool UsernameAvailable(string username)
+        {
+            Test t = new Test();
+            return t.UsernameAvailable(username);
+        }
+
         public Game StartGame()
         {
             return null;

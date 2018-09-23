@@ -22,11 +22,16 @@ namespace ViewModel
         {
 
             User user = entity as User;
+            user.Id = (int) Reader["ID"];
+            user.Username = Reader["username"].ToString();
+            user.Password = Reader["password"].ToString();
             user.FirstName = Reader["first_name"].ToString();
             user.LastName = Reader["last_name"].ToString();
-            user.Id = (int) Reader["ID"];
             user.Score = (int) Reader["score"];
-            user.Admin = (bool) Reader["admin"];
+            user.Level = (int)Reader["level"];
+            user.Admin = Reader["admin"] as bool? ?? false;
+            user.Wins = (int) Reader["wins"];
+            user.Losses = (int )Reader["losses"];
             return user;
 
         }
@@ -54,9 +59,9 @@ namespace ViewModel
         }
 
 
-        public UserList SelectByUsername(string username, string password)
+        public UserList SelectByUsernameAndPassword(string username, string password)
         {
-            Command.CommandText = ("SELECT * FROM User_Table WHERE username=@uName AND password=@pWord");
+            Command.CommandText = ("SELECT * FROM User_Table WHERE [username] = @uName AND [password] = @pWord");
 
 
             //parameters
@@ -103,14 +108,22 @@ namespace ViewModel
             return null;
         }
 
-        //public override void Insert(BaseEntity entity)
-        //{
-        //    User p = entity as User;
-        //    if (p != null)
-        //    {
-        //        Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
-        //    }
-        //}
+        public User SelectByUsername(string username)
+        {
+
+            Command.CommandText = ("SELECT * FROM User_Table WHERE [username] = @Username");
+
+            //parameters
+            Command.Parameters.Add(new OleDbParameter("@Username", username));
+
+            UserList temp = new UserList(Select());
+
+            if (temp.Count() == 1)
+            {
+                return temp[0] as User;
+            }
+            return null;
+        }
 
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
@@ -138,7 +151,7 @@ namespace ViewModel
 
             command.Parameters.Add(new OleDbParameter("@id", user.Id));
         }
-
+    
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
             throw new NotImplementedException();

@@ -30,7 +30,7 @@ namespace BL
         public User Login (string username, string password)
         {
             UserDb db = new UserDb();
-            UserList userList = db.SelectByUsername(username, password);
+            UserList userList = db.SelectByUsernameAndPassword(username, password);
             if (userList.Count > 0)
             {
                 return userList[0] as User;
@@ -61,6 +61,13 @@ namespace BL
             UserDb db = new UserDb();
             User user = db.SelectByPassword(password);
             return (user == null);//return true if there is no user with this password
+        }
+
+        public bool UsernameAvailable(string username)
+        {
+            UserDb db = new UserDb();
+            User user = db.SelectByUsername(username);
+            return (user == null);//return true if there is no user with this username
         }
     }
 }

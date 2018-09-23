@@ -38,12 +38,15 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
+          <xs:element minOccurs="0" name="Admin" type="xs:boolean" />
           <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Level" type="xs:int" />
+          <xs:element minOccurs="0" name="Losses" type="xs:int" />
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Score" type="xs:int" />
           <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Wins" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Form.TakiService;
 
 namespace Form
 {
@@ -20,9 +21,25 @@ namespace Form
     /// </summary>
     public partial class AdminUserPage : Page
     {
+
+        User cu = MainWindow.CurrentUser;
+
         public AdminUserPage()
         {
             InitializeComponent();
+            this.DataContext = cu;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
+            else
+            {
+                BackButton.Content = "cannot go back...";
+            }
         }
     }
 }
