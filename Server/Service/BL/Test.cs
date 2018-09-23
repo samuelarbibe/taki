@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 using Model;
 using ViewModel;
 
-namespace BL
+namespace BusinessLayer
 {
-    public class Test
+    public class BL
     {
         public Card BlBuildDeck()
         {
             CardDb db = new CardDb();
             CardList deck = db.SelectAll();
             return deck[0] as Card;
+        }
+
+        public Game BlStartGame(User user){
+            
+            return null;
         }
 
         //receives a Message from the service, calculates according to the algorithms
@@ -27,7 +32,7 @@ namespace BL
             return null;
         }
 
-        public User Login (string username, string password)
+        public User BlLogin (string username, string password)
         {
             UserDb db = new UserDb();
             UserList userList = db.SelectByUsername(username, password);
@@ -38,7 +43,7 @@ namespace BL
             return null;
         }
 
-        public bool Register(string firstName, string lastName, string username, string password)
+        public bool BlRegister(string firstName, string lastName, string username, string password)
         {
             UserDb db = new UserDb();
             User newUser = new User
@@ -48,7 +53,7 @@ namespace BL
 
             db.Insert(newUser);
 
-            if (db.SaveChanges() == 0)//check if user was inserted, and it exists
+            if (db.SaveChanges() == 0) // Check if user was inserted, and it exists
             {
                 return false;
             }
@@ -56,11 +61,11 @@ namespace BL
             return true;
         }
 
-        public bool PasswordAvailable(string password)
+        public bool BlPasswordAvailable(string password)
         {
             UserDb db = new UserDb();
             User user = db.SelectByPassword(password);
-            return (user == null);//return true if there is no user with this password
+            return (user == null); // return true if there is no user with this password
         }
     }
 }

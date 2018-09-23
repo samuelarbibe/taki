@@ -22,24 +22,25 @@ namespace Service
         public User Login(string username, string password)
         {
             Test t = new Test();
-            return t.Login(username, password);
+            return t.BlLogin(username, password);
         }
 
         public bool Register(string firstName, string lastName, string username, string password)
         {
             Test t = new Test();
-            return t.Register(firstName, lastName, username, password);
+            return t.BlRegister(firstName, lastName, username, password);
         }
 
         public bool PasswordAvailable(string password)
         {
             Test t =new Test();
-            return t.PasswordAvailable(password);
+            return t.BlPasswordAvailable(password);
         }
 
-        public Game StartGame()
+        public Game StartGame(User user)
         {
-            return null;
+            Test t = new Test();
+            return t.BlStartGame(user);
         }
 
         public PlayerList GetPlayerList()

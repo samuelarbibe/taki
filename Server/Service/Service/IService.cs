@@ -17,10 +17,10 @@ namespace Service
         Card BuildDeck();
 
         [OperationContract]
-        Game StartGame();
+        Game StartGame(User user);
 
         [OperationContract]
-         PlayerList GetPlayerList();
+        PlayerList GetPlayerList();
 
         [OperationContract]
         MessageList Action(Message m);
