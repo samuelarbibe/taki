@@ -48,3 +48,5 @@ C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\AdminUserPage.g.cs
 C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\UserPage.g.cs
 C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\AdminUserPage.baml
 C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\UserPage.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Menu.g.cs
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Menu.baml

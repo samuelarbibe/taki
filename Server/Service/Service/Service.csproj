@@ -49,9 +49,9 @@
     <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{84f7c897-0413-4d5a-b9f7-271355636d1f}</Project>
-      <Name>BL</Name>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{196845aa-9af0-4131-b1c0-0211ad069d40}</Project>
+      <Name>BusinessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{94ffefec-8790-4d75-a09b-33541fdd6114}</Project>

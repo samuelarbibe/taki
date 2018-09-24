@@ -28,6 +28,7 @@ namespace Form
         {
             InitializeComponent();
             this.DataContext = cu;
+            
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

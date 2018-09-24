@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ServiceModel;
+using Form.TakiService;
 
 namespace Form
 {
@@ -20,7 +22,7 @@ namespace Form
     /// </summary>
     public partial class GamePage : Page
     {
-        public GamePage()
+        public GamePage(Game game)
         {
             InitializeComponent();
         }

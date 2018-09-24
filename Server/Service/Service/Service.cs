@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using Model;
 using ViewModel;
-using BL;
+using BusinessLayer;
 
 namespace Service
 {
@@ -14,43 +14,39 @@ namespace Service
     {
         public Card BuildDeck()
         {
-            Test t = new Test();
+            BL bl = new BL();
 
-            return t.BlBuildDeck();
+            return bl.BlBuildDeck();
         }
 
         public User Login(string username, string password)
         {
-            Test t = new Test();
-            return t.BlLogin(username, password);
+            BL bl = new BL();
+            return bl.BlLogin(username, password);
         }
 
         public bool Register(string firstName, string lastName, string username, string password)
         {
-            Test t = new Test();
-            return t.BlRegister(firstName, lastName, username, password);
+            BL bl = new BL();
+            return bl.BlRegister(firstName, lastName, username, password);
         }
 
         public bool PasswordAvailable(string password)
         {
-            Test t =new Test();
-            return t.BlPasswordAvailable(password);
+            BL bl = new BL();
+            return bl.BlPasswordAvailable(password);
         }
 
-<<<<<<< HEAD
         public bool UsernameAvailable(string username)
         {
-            Test t = new Test();
-            return t.UsernameAvailable(username);
+            BL bl = new BL();
+            return bl.BlUsernameAvailable(username);
         }
 
-        public Game StartGame()
-=======
         public Game StartGame(User user)
->>>>>>> e79d0940a8ec04732c5902691eaebec0fe68f592
         {
-            Test t = new Test();
-            return t.BlStartGame(user);
+            BL bl = new BL();
+            return bl.BlStartGame(user);
         }
 
         public PlayerList GetPlayerList()

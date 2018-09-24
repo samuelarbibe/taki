@@ -24,14 +24,13 @@ namespace Form
     /// </summary>
     public partial class MainMenu : Page
     {
+        public static Frame MenuFrame;
+
         public MainMenu()
         {
             InitializeComponent();
-        }
-
-        private void UserButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.BigFrame.Navigate(new UserPage());
+            MenuFrame = MainMenuFrame;
+            MenuFrame.Navigate(new Menu());
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Form
 
         private void Admin_Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.BigFrame.Navigate(new AdminUserPage());
+            MainMenu.MenuFrame.Navigate(new AdminUserPage());
         }
     }
 }
