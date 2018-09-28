@@ -38,17 +38,28 @@ namespace Form
             string usernameValue = Username.Text;
             string passwordValue = Password.Text;
 
-            User currentUserCheck = MainWindow.Service.Login(usernameValue, passwordValue);
+            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes.Add(Username);
+            textBoxes.Add(Password);
 
-            if (currentUserCheck != null)
+            if (Check.nullCheck(textBoxes))
             {
-                noUserError.Text = "";
-                MainWindow.CurrentUser = currentUserCheck;
-                MainWindow.BigFrame.Navigate(new MainMenu());
+                User currentUserCheck = MainWindow.Service.Login(usernameValue, passwordValue);
+
+                if (currentUserCheck != null)
+                {
+                    noUserError.Text = "";
+                    MainWindow.CurrentUser = currentUserCheck;
+                    MainWindow.BigFrame.Navigate(new MainMenu());
+                }
+                else
+                {
+                    noUserError.Text = "Your Password or Username are incorrect. Try again";
+                }
             }
             else
             {
-                noUserError.Text = "Your Password or Username are incorrect. Try again";
+                noUserError.Text = "Please fill up all the fields!";
             }
         }
     }

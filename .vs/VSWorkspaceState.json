@@ -3,6 +3,9 @@
     "",
     "\\Client",
     "\\Client\\Client",
+    "\\Client\\Client\\Form",
+    "\\Client\\Client\\Form\\Properties",
+    "\\Client\\Client\\Form\\Resources",
     "\\Server",
     "\\Server\\Service"
   ],

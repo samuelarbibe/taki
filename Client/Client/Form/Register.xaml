@@ -7,10 +7,50 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Register">
+    <Page.Resources>
 
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                    x:Name="Bd"
+                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="16">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonBaseControlTemplate" TargetType="{x:Type ButtonBase}">
+            <Grid x:Name="grid">
+                <Border Background="{TemplateBinding Background}" 
+                        x:Name="Bd"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                </Border>
+            </Grid>
+        </ControlTemplate>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground"  Value="#3F3F3F"/>
+            <Setter Property="Background"  Value="#EEEEEE"/>
+            <Setter Property="Opacity"  Value="0.76"/>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -18,7 +58,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,20 +68,19 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Register" FontSize="35" FontWeight="DemiBold"  TextAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" FontFamily="Aharoni"/>
-        <TextBox x:Name="FirstName" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBox x:Name="LastName" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBox x:Name="Username" Grid.Row="6" TextWrapping="Wrap" MaxHeight="50" Grid.Column="1"/>
-        <TextBox x:Name="Password" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBox x:Name="ConfirmPassword" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="First Name"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Last Name"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Username"/>
-        <TextBlock Grid.Row="1" Grid.Column="3" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Password"/>
-        <TextBlock Grid.Row="3" Grid.Column="3" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="Confirm Password"/>
-        <TextBlock x:Name="InsertStatus" Grid.Row="7" Grid.Column="1" Width="150" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="Red"/>
-        <Button x:Name="RegisterButton" Content="Register" Grid.Column="3" Grid.Row="6" Background="#FF617CD9" Click="RegisterButton_Click"/>
-        <TextBlock x:Name="PasswordStatus" Grid.Column="4" Grid.Row="4" TextWrapping="Wrap" Text="" Foreground="Red"/>
-
+        <TextBlock Text="Register" FontSize="60" FontWeight="DemiBold" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFF4B88B" FontFamily="Arial Rounded MT Bold"/>
+        <TextBox x:Name="FirstName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBox x:Name="LastName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBox x:Name="Username" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Row="6" TextWrapping="Wrap" MaxHeight="50" Grid.Column="1"/>
+        <TextBox x:Name="Password" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
+        <TextBox x:Name="ConfirmPassword"  Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
+        <Label Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="First Name"/>
+        <Label Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Last Name"/>
+        <Label Grid.Row="5" Grid.Column="1" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Username"/>
+        <Label Grid.Row="1" Grid.Column="3" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Password"/>
+        <Label Grid.Row="3" Grid.Column="3" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Confirm Password"/>
+        <TextBlock x:Name="InsertStatus" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="Red"/>
+        <TextBlock x:Name="PasswordStatus" Grid.Column="3" Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="Red"/>
+        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="RegisterButton" Grid.Column="3" Grid.Row="6" Background="#FBDD62" Click="RegisterButton_Click" Width="50" Height="50" Grid.RowSpan="2"/>
     </Grid>
 </Page>

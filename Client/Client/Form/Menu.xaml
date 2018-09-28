@@ -7,21 +7,31 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Menu">
-
+    <Page.Resources>
+        <ControlTemplate x:Key="ButtonBaseControlTemplate" TargetType="{x:Type ButtonBase}">
+            <Grid x:Name="grid">
+                <Border Background="{TemplateBinding Background}" 
+                        x:Name="Bd"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                </Border>
+            </Grid>
+        </ControlTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="46*"/>
-            <RowDefinition Height="140*"/>
-            <RowDefinition Height="69*"/>
-            <RowDefinition Height="195*"/>
+            <RowDefinition Height="89"/>
+            <RowDefinition Height="106*"/>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="190*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Play Game" Grid.Column="1" Grid.Row="2"/>
-        <TextBlock TextAlignment="Center" FontSize="50" Text="MainMenu" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="UserButton" Content="Profile" Click="UserButton_Click"/>
+        <Button Template="{Binding ButtonBaseControlTemplate}" Content="Play Game" Grid.Column="1" Grid.Row="2"/>
+        <Menu HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="3" Background="#FF409092">
+            <Image Height="79" Width="189" Source="Resources/TAKI.png"/>
+        </Menu>
     </Grid>
 </Page>

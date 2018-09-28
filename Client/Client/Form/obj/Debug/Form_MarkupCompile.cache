@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\samue\Desktop\Taki\Client\Client\Form\App.xaml
-9-1566509554
+141624217709
 
-14385677342
+20-523969693
 15833945659
-AdminUserPage.xaml;GamePage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;Menu.xaml;Register.xaml;UserPage.xaml;
+AdminUserPage.xaml;GamePage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;Menu.xaml;Player1UC.xaml;Player2UC.xaml;Player3UC.xaml;Player4UC.xaml;Register.xaml;TableUC.xaml;UserPage.xaml;
 
-False
+True
 

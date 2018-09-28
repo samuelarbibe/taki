@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-TAKI",
+      "appliesTo": "Client/Client/Form/Resources/TAKI.png",
+      "type": "launch"
+    }
+  ]
+}

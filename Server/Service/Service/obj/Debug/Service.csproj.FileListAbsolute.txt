@@ -5,10 +5,8 @@ C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.csproj.Core
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Database.accdb
-C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\BL.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Model.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\ViewModel.dll
-C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\BL.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\Model.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\ViewModel.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Service\obj\Debug\Service.csproj.CopyComplete
@@ -28,3 +26,5 @@ D:\Users\User1\Github\Server\Service\Service\obj\Debug\Service.csproj.CopyComple
 D:\Users\User1\Github\Server\Service\Service\obj\Debug\Service.dll
 D:\Users\User1\Github\Server\Service\Service\obj\Debug\Service.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\ViewModel.dll.config
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\BusinessLayer.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Service\bin\Debug\BusinessLayer.pdb

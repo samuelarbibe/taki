@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,31 +36,47 @@ namespace Form
             string passwordValue = Password.Text; 
             string confirmPasswordValue = ConfirmPassword.Text;
 
-            if (passwordValue.Equals(confirmPasswordValue))//checks if password and confirm password are equal
-            {
-                if (MainWindow.Service.PasswordAvailable(passwordValue))//checks if this password is used or not
-                {
-                    PasswordStatus.Text = "";
+            List<TextBox> textBoxes = new List<TextBox>();
+            textBoxes.Add(FirstName);
+            textBoxes.Add(LastName);
+            textBoxes.Add(Username);
+            textBoxes.Add(Password);
+            textBoxes.Add(ConfirmPassword);
 
-                    if (MainWindow.Service.Register(firstNameValue, lastNameValue, usernameValue, passwordValue))//checks if registration succeeded
+            if (Check.nullCheck(textBoxes))
+            {
+                if (passwordValue.Equals(confirmPasswordValue)) //checks if password and confirm password are equal
+                {
+                    if (MainWindow.Service.PasswordAvailable(passwordValue)) //checks if this password is used or not
                     {
-                        InsertStatus.Text = "";
-                        MainWindow.BigFrame.Navigate(new LoginMenu());
+                        PasswordStatus.Text = "";
+
+                        if (MainWindow.Service.Register(firstNameValue, lastNameValue, usernameValue, passwordValue)
+                        ) //checks if registration succeeded
+                        {
+                            InsertStatus.Text = "";
+                            MainWindow.BigFrame.Navigate(new LoginMenu());
+                        }
+                        else
+                        {
+                            InsertStatus.Text = "There was an error. we couldn't register you.";
+                        }
                     }
                     else
                     {
-                        InsertStatus.Text = "There was an error. we couldn't register you.";
+                        PasswordStatus.Text = "password already in use.";
                     }
                 }
                 else
                 {
-                    PasswordStatus.Text = "password already in use.";
+                    PasswordStatus.Text = "passwords don't match";
                 }
             }
             else
             {
-                PasswordStatus.Text = "passwords don't match";            
+                InsertStatus.Text = "Please fill up all the fields!";
             }
         }
+
     }
 }

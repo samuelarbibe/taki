@@ -1,0 +1,13 @@
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\Database.accdb
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\Model.dll
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\ViewModel.dll
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\Model.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\ViewModel.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\bin\Debug\ViewModel.dll.config
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.pdb

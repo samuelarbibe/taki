@@ -20,8 +20,6 @@ C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Model.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\ViewModel.dll
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Model.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\ViewModel.pdb
-C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\BL.dll
-C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\BL.pdb
 D:\Users\User1\Github\Server\Service\Host\bin\Debug\Database.accdb
 D:\Users\User1\Github\Server\Service\Host\bin\Debug\Host.exe.config
 D:\Users\User1\Github\Server\Service\Host\bin\Debug\Host.exe
@@ -50,3 +48,5 @@ D:\Users\User1\Github\Server\Service\Host\obj\Debug\Host.exe
 D:\Users\User1\Github\Server\Service\Host\obj\Debug\Host.pdb
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\Database.accdb
 C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\ViewModel.dll.config
+C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\BusinessLayer.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Host\bin\Debug\BusinessLayer.pdb
