@@ -8,30 +8,89 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Menu">
     <Page.Resources>
-        <ControlTemplate x:Key="ButtonBaseControlTemplate" TargetType="{x:Type ButtonBase}">
-            <Grid x:Name="grid">
-                <Border Background="{TemplateBinding Background}" 
-                        x:Name="Bd"
-                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
-                </Border>
-            </Grid>
-        </ControlTemplate>
+        <Style TargetType="Button" x:Key="TabButtonLast">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground"  Value="#3F3F3F"/>
+            <Setter Property="Background"  Value="#EEEEEE"/>
+            <Setter Property="Opacity"  Value="0.76"/>
+
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground"  Value="#3F3F3F"/>
+            <Setter Property="Background"  Value="#EEEEEE"/>
+            <Setter Property="Opacity"  Value="0.76"/>
+        </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89"/>
-            <RowDefinition Height="106*"/>
-            <RowDefinition Height="67*"/>
-            <RowDefinition Height="190*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="135*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Button Template="{Binding ButtonBaseControlTemplate}" Content="Play Game" Grid.Column="1" Grid.Row="2"/>
-        <Menu HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="3" Background="#FF409092">
-            <Image Height="79" Width="189" Source="Resources/TAKI.png"/>
-        </Menu>
+        <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3"  Background="#FF409092" >
+            <Image Source="Resources/TAKI.png" Margin="20,10,10,10"/>
+            <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="UserButton_Click">
+                <StackPanel x:Name="UserInfoStackPanel" Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" x:Name="UsernameTextBlock" Text="" Padding="22" FontSize="20" FontFamily="Arial Rounded MT Bold" Foreground="White"/>
+                    <Ellipse Fill="#FF49A3A6" Panel.ZIndex="1" Width="60" Height="60" RenderTransformOrigin="0.5,0.5" Margin="0,0,-55,0">
+                        <Ellipse.BitmapEffect>
+                            <DropShadowBitmapEffect Color="#FF868686"
+                            ShadowDepth="0" Softness="0.535" Direction="0" Opacity="0.745" />
+                        </Ellipse.BitmapEffect>
+                    </Ellipse>
+                    <TextBlock Panel.ZIndex="2" FontSize="26" Foreground="White" TextAlignment="Center" FontFamily="Arial Rounded MT Bold" Text="25"  HorizontalAlignment="Stretch" Width="50" Height="50" Padding="0,10,0,0" />
+                    <ProgressBar HorizontalAlignment="Right" Margin="-20,20,20,20" Foreground="#FFBAED91" Background="#FF4C615B" Minimum="0" Maximum="5000" Value="2500" Width="220" Height="30" DockPanel.Dock="Right"/>
+                </StackPanel>
+            </Button>
+            
+        </DockPanel>
+        <Button Content="Multiplayer" Grid.Column="1" Grid.Row="2" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="Arial Rounded MT Bold">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="38"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Grid.Column="3" Grid.Row="3" Background="#FF7F7F7F" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+            <WrapPanel>
+                <Image Source="Resources/Settings.png"/>
+            </WrapPanel>
+        </Button>
     </Grid>
 </Page>

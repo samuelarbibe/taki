@@ -23,6 +23,7 @@ namespace Form
         public Menu()
         {
             InitializeComponent();
+            UsernameTextBlock.Text = MainWindow.CurrentUser.Username;
         }
 
         private void UserButton_Click(object sender, RoutedEventArgs e)

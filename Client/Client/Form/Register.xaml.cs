@@ -36,14 +36,14 @@ namespace Form
             string passwordValue = Password.Text; 
             string confirmPasswordValue = ConfirmPassword.Text;
 
-            List<TextBox> textBoxes = new List<TextBox>();
-            textBoxes.Add(FirstName);
-            textBoxes.Add(LastName);
-            textBoxes.Add(Username);
-            textBoxes.Add(Password);
-            textBoxes.Add(ConfirmPassword);
+            List<Control> inputList = new List<Control>();
+            inputList.Add(FirstName);
+            inputList.Add(LastName);
+            inputList.Add(Username);
+            inputList.Add(Password);
+            inputList.Add(ConfirmPassword);
 
-            if (Check.nullCheck(textBoxes))
+            if (Check.nullCheck(inputList))
             {
                 if (passwordValue.Equals(confirmPasswordValue)) //checks if password and confirm password are equal
                 {

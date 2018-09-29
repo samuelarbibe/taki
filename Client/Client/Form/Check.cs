@@ -10,19 +10,27 @@ namespace Form
 {
     public static class Check
     {
-        public static bool nullCheck(List<TextBox> textBoxList)
+        public static bool nullCheck(List<Control> inputList)
         {
-            bool textBoxNotEmpty = true;
-            foreach (var textBox in textBoxList)
+            bool inputNotEmpty = true;
+            foreach (var input in inputList)
             {
-                if (textBox.Text.Length == 0)
-                {
-                    textBox.Background = new SolidColorBrush(Color.FromArgb(224, 236, 101, 95));
-                    textBoxNotEmpty = false;
+                if(input is TextBox){
+                    if (((TextBox)input).Text.Length == 0)
+                    {
+                        input.Background = new SolidColorBrush(Color.FromArgb(224, 236, 101, 95));
+                        inputNotEmpty = false;
+                    }
+                }else if(input is PasswordBox){
+                    if (((PasswordBox)input).Password.Length == 0)
+                    {
+                        input.Background = new SolidColorBrush(Color.FromArgb(224, 236, 101, 95));
+                        inputNotEmpty = false;
+                    }
                 }
             }
 
-            return textBoxNotEmpty;
+            return inputNotEmpty;
         }
     }
 }

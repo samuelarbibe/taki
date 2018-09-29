@@ -60,3 +60,4 @@ C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Player2UC.baml
 C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Player3UC.baml
 C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\Player4UC.baml
 C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\TableUC.baml
+C:\Users\samue\Desktop\Taki\Client\Client\Form\obj\Debug\App.baml

@@ -36,9 +36,9 @@ namespace Form
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string usernameValue = Username.Text;
-            string passwordValue = Password.Text;
+            string passwordValue = Password.Password;
 
-            List<TextBox> textBoxes = new List<TextBox>();
+            List<Control> textBoxes = new List<Control>();
             textBoxes.Add(Username);
             textBoxes.Add(Password);
 
