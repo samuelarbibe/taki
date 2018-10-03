@@ -18,6 +18,11 @@ namespace Model
         private int _wins;
         private int _losses;
 
+        public User()
+        {
+            
+        }
+
         [DataMember]
         public string FirstName {get => _firstName; set => _firstName = value;  }
 

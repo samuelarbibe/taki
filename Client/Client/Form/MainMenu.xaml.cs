@@ -30,7 +30,14 @@ namespace Form
         {
             InitializeComponent();
             MenuFrame = MainMenuFrame;
-            MenuFrame.Navigate(new Menu());
+            MenuFrame.Navigate(new MenuPage());
+        }
+
+        public MainMenu(bool failed)
+        {
+            InitializeComponent();
+            MenuFrame = MainMenuFrame;
+            MenuFrame.Navigate(new MenuPage(failed));
         }
     }
 }

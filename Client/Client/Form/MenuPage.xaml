@@ -1,4 +1,4 @@
-﻿<Page x:Class="Form.Menu"
+﻿<Page x:Class="Form.MenuPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Form"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Menu">
+      Title="MenuPage" Foreground="Red">
     <Page.Resources>
         <Style TargetType="Button" x:Key="TabButtonLast">
             <Setter Property="Background" Value="White" />
@@ -49,9 +49,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="135*"/>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="143*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -73,16 +74,16 @@
                     <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Right" Margin="-20,20,20,20" Foreground="#FFBAED91" Background="#FF4C615B" Minimum="0" Maximum="1000" Width="220" Height="30" DockPanel.Dock="Right"/>
                 </StackPanel>
             </Button>
-            
+
         </DockPanel>
-        <Button Content="Multiplayer" Grid.Column="1" Grid.Row="2" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="Arial Rounded MT Bold">
+        <Button x:Name="MultiplayerButton" Content="Multiplayer" Grid.Column="1" Grid.Row="2" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="MultiplayerButton_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="38"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Grid.Column="3" Grid.Row="3" Background="#FF7F7F7F" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40">
+        <Button x:Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Grid.Column="2" Grid.Row="4" Background="#FF7F7F7F" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -92,5 +93,6 @@
                 <Image Source="Resources/Settings.png"/>
             </WrapPanel>
         </Button>
+        <TextBlock FontSize="15" x:Name="SearchFailed" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="Red"/>
     </Grid>
 </Page>

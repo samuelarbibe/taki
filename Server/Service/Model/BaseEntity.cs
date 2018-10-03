@@ -11,7 +11,7 @@ namespace Model
     {
         private int _id;
 
-        
+        [DataMember]
         public int Id { get => _id; set => _id = value; }
     }
 }

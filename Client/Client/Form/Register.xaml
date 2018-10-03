@@ -81,6 +81,24 @@
         <Label Grid.Row="3" Grid.Column="3" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Confirm Password"/>
         <TextBlock x:Name="InsertStatus" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="Red"/>
         <TextBlock x:Name="PasswordStatus" Grid.Column="3" Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="Red"/>
-        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="RegisterButton" Grid.Column="3" Grid.Row="6" Background="#FBDD62" Click="RegisterButton_Click" Width="50" Height="50" Grid.RowSpan="2"/>
+        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="RegisterButton" Grid.Column="3" Grid.Row="6" Click="RegisterButton_Click" Width="50" Height="50" Grid.RowSpan="2">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Back_Icon.png">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Button.Background>
+        </Button>
+        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="BackButton" Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="2" Width="40" Height="40" Margin="17" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Back_Icon.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

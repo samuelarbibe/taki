@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="BL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

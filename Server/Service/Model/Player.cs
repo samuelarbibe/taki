@@ -10,15 +10,28 @@ namespace Model
     {
         private Hand _hand;
         private int _tempScore;
-        private int _gameId;
 
-        
+        public Player() { }
+
+        public Player(User u)
+        {
+            this.Id = u.Id;
+            this.FirstName = u.FirstName;
+            this.LastName = u.LastName;
+            this.Username = u.Username;
+            this.Password = u.Password;
+            this.Level = u.Level;
+            this.Score = u.Score;
+            this.Admin = u.Admin;
+            this.Wins = u.Wins;
+            this.Losses = u.Losses;
+            _hand = null;
+            _tempScore = 0;
+        }
+
         public Hand Hand { get => _hand; set => _hand = value; }
 
-        
         public int TempScore { get => _tempScore; set => _tempScore = value; }
 
-        
-        public int GameId { get => _gameId; set => _gameId = value; }
     }
 }

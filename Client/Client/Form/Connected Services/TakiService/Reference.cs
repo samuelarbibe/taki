@@ -17,15 +17,18 @@ namespace Form.TakiService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntity", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Game))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.User))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Player))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Game))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Message))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.Card))]
     public partial class BaseEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -37,6 +40,19 @@ namespace Form.TakiService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -45,13 +61,6 @@ namespace Form.TakiService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-    [System.SerializableAttribute()]
-    public partial class Game : Form.TakiService.BaseEntity {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -215,6 +224,13 @@ namespace Form.TakiService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Game : Form.TakiService.BaseEntity {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     public partial class Message : Form.TakiService.BaseEntity {
@@ -241,6 +257,13 @@ namespace Form.TakiService {
     public class MessageList : System.Collections.Generic.List<Form.TakiService.Message> {
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="User")]
+    [System.SerializableAttribute()]
+    public class UserList : System.Collections.Generic.List<Form.TakiService.User> {
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TakiService.IService")]
     public interface IService {
@@ -252,10 +275,10 @@ namespace Form.TakiService {
         System.Threading.Tasks.Task<Form.TakiService.Card> BuildDeckAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
-        Form.TakiService.Game StartGame();
+        Form.TakiService.Game StartGame(Form.TakiService.User user, int PlayerCount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync();
+        System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int PlayerCount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerList", ReplyAction="http://tempuri.org/IService/GetPlayerListResponse")]
         Form.TakiService.PlayerList GetPlayerList();
@@ -292,6 +315,12 @@ namespace Form.TakiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
+        Form.TakiService.UserList GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -329,12 +358,12 @@ namespace Form.TakiService {
             return base.Channel.BuildDeckAsync();
         }
         
-        public Form.TakiService.Game StartGame() {
-            return base.Channel.StartGame();
+        public Form.TakiService.Game StartGame(Form.TakiService.User user, int PlayerCount) {
+            return base.Channel.StartGame(user, PlayerCount);
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync() {
-            return base.Channel.StartGameAsync();
+        public System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int PlayerCount) {
+            return base.Channel.StartGameAsync(user, PlayerCount);
         }
         
         public Form.TakiService.PlayerList GetPlayerList() {
@@ -383,6 +412,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username) {
             return base.Channel.UsernameAvailableAsync(username);
+        }
+        
+        public Form.TakiService.UserList GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
         }
     }
 }

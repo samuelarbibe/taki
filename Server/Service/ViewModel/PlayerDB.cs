@@ -23,7 +23,6 @@ namespace ViewModel
             //base.CreateModel(p);
             p.Hand = null;
             p.TempScore = 0;
-            p.GameId = 0;
             return p;
         }
 

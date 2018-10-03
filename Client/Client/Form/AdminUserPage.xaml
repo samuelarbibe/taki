@@ -30,16 +30,16 @@
         <ListView Name="DataGrid" Grid.Row="1"   Grid.RowSpan="7" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Username" Width="181" DisplayMemberBinding="{Binding Username}"/>
-                    <GridViewColumn Header="Password" Width="181" DisplayMemberBinding="{Binding Password}"/>
-                    <GridViewColumn Header="First Name" Width="181" DisplayMemberBinding="{Binding FirstName}"/>
-                    <GridViewColumn Header="Last Name" Width="181" DisplayMemberBinding="{Binding LastName}" />
-                    <GridViewColumn Header="Level" Width="181" DisplayMemberBinding="{Binding Level}" />
-                    <GridViewColumn Header="Score" Width="181" DisplayMemberBinding="{Binding Score}" />
-                    <GridViewColumn Header="Wins" Width="181" DisplayMemberBinding="{Binding Wins}" />
-                    <GridViewColumn Header="Losses" Width="181" DisplayMemberBinding="{Binding Losses}" />
-                    <GridViewColumn Header="Admin" Width="181" DisplayMemberBinding="{Binding Admin}" />
+                    <GridViewColumn Header="Id" Width="20" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Username" Width="80" DisplayMemberBinding="{Binding Username}"/>
+                    <GridViewColumn Header="Password" Width="80" DisplayMemberBinding="{Binding Password}"/>
+                    <GridViewColumn Header="First Name" Width="80" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Last Name" Width="80" DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn Header="Level" Width="40" DisplayMemberBinding="{Binding Level}" />
+                    <GridViewColumn Header="Score" Width="40" DisplayMemberBinding="{Binding Score}" />
+                    <GridViewColumn Header="Wins" Width="40" DisplayMemberBinding="{Binding Wins}" />
+                    <GridViewColumn Header="Losses" Width="40" DisplayMemberBinding="{Binding Losses}" />
+                    <GridViewColumn Header="Admin" Width="80" DisplayMemberBinding="{Binding Admin}" />
                 </GridView>
             </ListView.View>
         </ListView>

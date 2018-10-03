@@ -11,3 +11,16 @@ C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer
 C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
 C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\samue\Desktop\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\Database.accdb
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\Model.dll
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\ViewModel.dll
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\Model.pdb
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\ViewModel.pdb
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\bin\Debug\ViewModel.dll.config
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\User1\Source\Repos\Taki\Server\Service\BusinessLayer\obj\Debug\BusinessLayer.pdb

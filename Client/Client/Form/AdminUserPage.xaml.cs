@@ -21,14 +21,13 @@ namespace Form
     /// </summary>
     public partial class AdminUserPage : Page
     {
-
-        User cu = MainWindow.CurrentUser;
-
         public AdminUserPage()
         {
+            UserList cu = MainWindow.Service.GetAllUsers();
+
             InitializeComponent();
             this.DataContext = cu;
-            
+            DataGrid.ItemsSource = cu;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

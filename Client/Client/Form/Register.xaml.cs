@@ -78,5 +78,9 @@ namespace Form
             }
         }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new LoginMenu());
+        }
     }
 }

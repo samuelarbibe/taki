@@ -19,11 +19,12 @@ namespace Form
     /// <summary>
     /// Interaction logic for Menu.xaml
     /// </summary>
-    public partial class Menu : Page
+    public partial class MenuPage : Page
     {
         private User _cu = MainWindow.CurrentUser;
+        private int playerCount;
 
-        public Menu()
+        public MenuPage()
         {
             InitializeComponent();
             UsernameTextBlock.Text = MainWindow.CurrentUser.Username;
@@ -31,11 +32,37 @@ namespace Form
             ProgressBar.Value = _cu.Score % 1000;
             //ShowScore.Text = (_cu.Score % 1000) + "/1000";
             LevelTextBlock.Text = _cu.Level.ToString();
+            playerCount = 2;
         }
+
+        public MenuPage(bool failed)
+        {
+            InitializeComponent();
+            UsernameTextBlock.Text = MainWindow.CurrentUser.Username;
+
+            ProgressBar.Value = _cu.Score % 1000;
+            //ShowScore.Text = (_cu.Score % 1000) + "/1000";
+            LevelTextBlock.Text = _cu.Level.ToString();
+            playerCount = 2;
+            SearchFailed.Text = "Couldn't find a Game.... please try again";
+        }
+
+        private void MultiplayerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new LoadingPage(playerCount));
+        }
+
+
 
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            MainMenu.MenuFrame.Navigate(new UserPage());
+            throw new NotImplementedException();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+
         }
     }
 }

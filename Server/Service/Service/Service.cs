@@ -12,11 +12,19 @@ namespace Service
 {
     public class Service : IService
     {
+        
+
         public Card BuildDeck()
         {
             BL bl = new BL();
 
             return bl.BlBuildDeck();
+        }
+
+        public UserList GetAllUsers()
+        {
+            BL bl = new BL();
+            return bl.BlGetAllUsers();
         }
 
         public User Login(string username, string password)
@@ -43,10 +51,10 @@ namespace Service
             return bl.BlUsernameAvailable(username);
         }
 
-        public Game StartGame(User user)
+        public Game StartGame(User u, int playerCount)
         {
-            BL bl = new BL();
-            return bl.BlStartGame(user);
+            Player player = new Player(u);
+            return BL.BlStartGame(player, playerCount);
         }
 
         public PlayerList GetPlayerList()
@@ -60,5 +68,6 @@ namespace Service
             //return a new Massage to the Client, with orders what to do with the cards and players
             return null;
         }
+        
     }
 }

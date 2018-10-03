@@ -22,9 +22,12 @@ namespace Form
     /// </summary>
     public partial class GamePage : Page
     {
+        Game currentGame;
+
         public GamePage(Game game)
         {
             InitializeComponent();
+            currentGame = game;
         }
     }
 }
