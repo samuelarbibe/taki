@@ -20,14 +20,13 @@ namespace BusinessLayer
 
         public Game BlStartGame(User user)
         {
-
             return null;
         }
 
         //receives a Message from the service, calculates according to the algorithms
         //makes changes to the database 
-        //returns 
-        public Message Move(MessageList list)
+        //returns a messageList to all players  
+        public Message Action(MessageList list)
         {
             //return a message
             return null;

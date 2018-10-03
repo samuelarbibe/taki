@@ -69,8 +69,8 @@
                             ShadowDepth="0" Softness="0.535" Direction="0" Opacity="0.745" />
                         </Ellipse.BitmapEffect>
                     </Ellipse>
-                    <TextBlock Panel.ZIndex="2" FontSize="26" Foreground="White" TextAlignment="Center" FontFamily="Arial Rounded MT Bold" Text="25"  HorizontalAlignment="Stretch" Width="50" Height="50" Padding="0,10,0,0" />
-                    <ProgressBar HorizontalAlignment="Right" Margin="-20,20,20,20" Foreground="#FFBAED91" Background="#FF4C615B" Minimum="0" Maximum="5000" Value="2500" Width="220" Height="30" DockPanel.Dock="Right"/>
+                    <TextBlock x:Name="LevelTextBlock" Panel.ZIndex="2" FontSize="26" Foreground="White" TextAlignment="Center" FontFamily="Arial Rounded MT Bold" Text="25"  HorizontalAlignment="Stretch" Width="50" Height="50" Padding="0,10,0,0" />
+                    <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Right" Margin="-20,20,20,20" Foreground="#FFBAED91" Background="#FF4C615B" Minimum="0" Maximum="1000" Width="220" Height="30" DockPanel.Dock="Right"/>
                 </StackPanel>
             </Button>
             

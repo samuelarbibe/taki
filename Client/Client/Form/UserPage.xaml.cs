@@ -21,18 +21,18 @@ namespace Form
     /// </summary>
     public partial class UserPage : Page
     {
-        User cu = MainWindow.CurrentUser;
+        private User _cu = MainWindow.CurrentUser;
 
         public UserPage()
         {
             InitializeComponent();
             
-            this.DataContext = cu;
+            this.DataContext = _cu;
 
-            LevelProgressBar.Value = cu.Score % 1000;
-            ShowScore.Text = (cu.Score % 1000) + "/1000";
+            LevelProgressBar.Value = _cu.Score % 1000;
+            ShowScore.Text = (_cu.Score % 1000) + "/1000";
 
-            if (cu.Admin)
+            if (_cu.Admin)
             {
                 AdminButton.Visibility = Visibility;
             }
