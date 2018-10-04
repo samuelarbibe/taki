@@ -49,7 +49,6 @@
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionList.cs" />
-    <Compile Include="Deck.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameList.cs" />
     <Compile Include="Hand.cs" />

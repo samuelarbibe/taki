@@ -24,10 +24,11 @@ namespace ViewModel
             Game game = entity as Game;
 
             game.Id = (int)Reader["ID"];
-            game.Players[0] = db.SelectById((int)Reader["player_1_ID"]);
-            game.Players[1] = db.SelectById((int)Reader["player_2_ID"]);
-            game.Players[2] = db.SelectById((int)Reader["player_3_ID"]);
-            game.Players[3] = db.SelectById((int)Reader["player_4_ID"]);
+            game.Players[0] = db.SelectById((int)Reader["player_1_id"]);
+            game.Players[1] = db.SelectById((int)Reader["player_2_id"]);
+            game.Players[2] = db.SelectById((int)Reader["player_3_id"]);
+            game.Players[3] = db.SelectById((int)Reader["player_4_id"]);
+            game.Players[4] = db.SelectById((int)Reader["deck_id"]);
 
             game.StartTime = DateTime.Now;
 
