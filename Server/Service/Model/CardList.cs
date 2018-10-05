@@ -10,6 +10,7 @@ namespace Model
     [CollectionDataContract]
     public class CardList : List<Card>
     {
+        public static CardList Deck;
 
         public CardList() { }
 

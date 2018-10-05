@@ -11,5 +11,6 @@
     <Grid>
         <TextBlock x:Name="status" HorizontalAlignment="Center" FontSize="40" TextWrapping="Wrap" Text="Searching for a Game..." VerticalAlignment="Center"/>
         <Button x:Name="SearchButton" Content="Search Again" HorizontalAlignment="Center" Margin="0,200,0,0" Height="50" Width="150" VerticalAlignment="Center" Click="SearchButton_Click" />
+        <Button x:Name="CancelSearchButton" Content="Cancel search" HorizontalAlignment="Center" Margin="0,300,0,0" Height="50" Width="150" VerticalAlignment="Center" Click="CancelSearchButton_Click" />
     </Grid>
 </Page>

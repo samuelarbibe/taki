@@ -31,3 +31,14 @@ C:\Users\User1\Source\Repos\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.cs
 C:\Users\User1\Source\Repos\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete
 C:\Users\User1\Source\Repos\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.dll
 C:\Users\User1\Source\Repos\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\bin\Debug\Database.accdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\bin\Debug\ViewModel.dll.config
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\bin\Debug\ViewModel.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\bin\Debug\ViewModel.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\bin\Debug\Model.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\bin\Debug\Model.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csprojAssemblyReference.cache
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CoreCompileInputs.cache
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\obj\Debug\ViewModel.pdb

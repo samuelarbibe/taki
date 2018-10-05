@@ -103,6 +103,14 @@
       <Project>{94ffefec-8790-4d75-a09b-33541fdd6114}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{f3409a45-5bfd-4ad7-8a75-97938908fb41}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{90196be9-c704-475d-9cb0-f43789419f9f}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

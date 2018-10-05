@@ -9,6 +9,7 @@ namespace Model
     [CollectionDataContract]
     public class UserList : List<User>
     {
+
         public UserList() { }
 
         public UserList(IEnumerable<User> list) : base(list) { }

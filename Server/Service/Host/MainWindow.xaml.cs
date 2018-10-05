@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.ServiceModel;
 using Service;
 using Model;
+using ViewModel;
 
 namespace Host
 {
@@ -28,6 +29,10 @@ namespace Host
             InitializeComponent();
             ServiceHost service = new ServiceHost(typeof(Service.Service));
             service.Open();
+
+            CardDb db = new CardDb();
+
+            CardList.Deck = db.SelectAll();
         }
 
     }

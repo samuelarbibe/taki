@@ -21,51 +21,64 @@ namespace Form
     /// </summary>
     public partial class LoadingPage : Page
     {
-        Game g = null;
-        int playerCount;
-        int counter = 0;
+        private Game _game;
+        private readonly int _playerCount;
+        private int _counter;
+
         public LoadingPage(int playerCount)
         {
-
-            this.playerCount = playerCount;
+            _counter = 0;
+            _playerCount = playerCount;
 
             InitializeComponent();
 
-            g = MainWindow.Service.StartGame(MainWindow.CurrentUser, playerCount);
+            SearchGame();
+        }
+
+        private void SearchGame()
+        {
+            _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += findGame;
+            dispatcherTimer.Tick += FindGame;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
 
-            void findGame(object sender, EventArgs e)
+            void FindGame(object sender, EventArgs e)
             {
 
-                if (g == null )
+                if (_game == null)
                 {
-                    if (counter < 10)
+                    status.Text = "player is in queue...";
+
+                    if (_counter < 10)
                     {
-                        g = MainWindow.Service.StartGame(MainWindow.CurrentUser, playerCount);
-                        counter++;
+                        _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
+                        _counter++;
                     }
                     else
                     {
                         dispatcherTimer.Stop();
-                        MainWindow.BigFrame.Navigate(new MainMenu(true));
+                        status.Text = "no game could be found... please try again";
+                        status.Foreground = new SolidColorBrush(Colors.Red);
                     }
                 }
-                else if (g != null)
+                else // if game is found
                 {
-                    dispatcherTimer.Stop();
-                    MainWindow.BigFrame.Navigate(new GamePage(g));
+                    MainWindow.BigFrame.Navigate(new GamePage(_game));
+                    dispatcherTimer.Stop();// stop timer loop
                 }
             }
-
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            SearchGame();
+        }
 
+        private void CancelSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new MainMenu(true));
         }
     }
 }

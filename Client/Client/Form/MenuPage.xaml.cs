@@ -44,7 +44,7 @@ namespace Form
             //ShowScore.Text = (_cu.Score % 1000) + "/1000";
             LevelTextBlock.Text = _cu.Level.ToString();
             playerCount = 2;
-            SearchFailed.Text = "Couldn't find a Game.... please try again";
+            SearchFailed.Text = "Couldn't find a Game.... please try again another time";
         }
 
         private void MultiplayerButton_Click(object sender, RoutedEventArgs e)
@@ -52,17 +52,9 @@ namespace Form
             MainWindow.BigFrame.Navigate(new LoadingPage(playerCount));
         }
 
-
-
         private void UserButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-
+            MainMenu.MenuFrame.Navigate(new UserPage());
         }
     }
 }

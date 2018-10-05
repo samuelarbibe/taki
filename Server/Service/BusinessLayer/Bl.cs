@@ -89,19 +89,21 @@ namespace BusinessLayer
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public static Game BlStartGame(Player p, int playerCount)
         {
-            if (waitingList.Find(q => q.Id == p.Id) != null)// if the player is already in the waiting list, return null
+            if (waitingList.Find(q => q.Id == p.Id) == null)// if the player is already in the waiting list, return null
             {
                 if (waitingList.Count == (playerCount - 1))// if the player list is the size wanted including the requesting player, make a new game with the players in the waiting list and wipe the waiting list.
                 {
                     waitingList.Add(p);
+
                     Game g = new Game() {Players = waitingList, StartTime = DateTime.Now};
+
                     for (int i = 0; i < playerCount; i++)
                     {
-                        g.Players[i].Hand = Hand.ShuffledHand(); // giving every player a shuffled hand
+                        g.Players[i].Hand = new Hand(8);// giving every player a shuffled hand 
                     }
 
                     g.Players.Add(new Player());// adding the table as a player
-                    g.Players[playerCount + 1].Hand = Hand.ShuffledTableHand();// giving the table a 100 cards shuffled hand
+                    g.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
 
                     waitingList.Clear();
 
