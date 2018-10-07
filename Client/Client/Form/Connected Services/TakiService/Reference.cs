@@ -275,10 +275,10 @@ namespace Form.TakiService {
         System.Threading.Tasks.Task<Form.TakiService.Card> BuildDeckAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
-        Form.TakiService.Game StartGame(Form.TakiService.User user, int PlayerCount);
+        Form.TakiService.Game StartGame(Form.TakiService.User user, int playerCount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int PlayerCount);
+        System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int playerCount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerList", ReplyAction="http://tempuri.org/IService/GetPlayerListResponse")]
         Form.TakiService.PlayerList GetPlayerList();
@@ -358,12 +358,12 @@ namespace Form.TakiService {
             return base.Channel.BuildDeckAsync();
         }
         
-        public Form.TakiService.Game StartGame(Form.TakiService.User user, int PlayerCount) {
-            return base.Channel.StartGame(user, PlayerCount);
+        public Form.TakiService.Game StartGame(Form.TakiService.User user, int playerCount) {
+            return base.Channel.StartGame(user, playerCount);
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int PlayerCount) {
-            return base.Channel.StartGameAsync(user, PlayerCount);
+        public System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int playerCount) {
+            return base.Channel.StartGameAsync(user, playerCount);
         }
         
         public Form.TakiService.PlayerList GetPlayerList() {

@@ -62,5 +62,21 @@ namespace Form
                 noUserError.Text = "Please fill up all the fields!";
             }
         }
+
+        private void AdminFillButton_Click(object sender, RoutedEventArgs e)
+        {
+            Username.Text = "Samuelov1";
+            Password.Password = "123";
+
+            LoginButton_Click(null, null);
+        }
+
+        private void UserFillButton_Click(object sender, RoutedEventArgs e)
+        {
+            Username.Text = "fredg2";
+            Password.Password = "Israel123";
+
+            LoginButton_Click(null, null);
+        }
     }
 }

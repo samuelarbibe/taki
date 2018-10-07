@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using Model;
 using ViewModel;
 using BusinessLayer;
@@ -13,7 +14,6 @@ namespace Service
     public class Service : IService
     {
         
-
         public Card BuildDeck()
         {
             BL bl = new BL();
@@ -51,10 +51,10 @@ namespace Service
             return bl.BlUsernameAvailable(username);
         }
 
-        public Game StartGame(User u, int playerCount)
+        public async Task<Game> StartGameAsync(User u, int playerCount)
         {
             Player player = new Player(u);
-            return BL.BlStartGame(player, playerCount);
+            return await BL.BlStartGame(player, playerCount);
         }
 
         public PlayerList GetPlayerList()

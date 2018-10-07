@@ -35,16 +35,16 @@ namespace Form
             SearchGame();
         }
 
-        private void SearchGame()
+        private async void SearchGame()
         {
-            _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
+            _game = await MainWindow.Service.StartGameAsync(MainWindow.CurrentUser, _playerCount);
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += FindGame;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
 
-            void FindGame(object sender, EventArgs e)
+            async void FindGame(object sender, EventArgs e)
             {
 
                 if (_game == null)
@@ -53,7 +53,7 @@ namespace Form
 
                     if (_counter < 10)
                     {
-                        _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
+                        _game = await MainWindow.Service.StartGameAsync(MainWindow.CurrentUser, _playerCount);
                         _counter++;
                     }
                     else

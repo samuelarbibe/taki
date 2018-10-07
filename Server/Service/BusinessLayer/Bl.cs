@@ -87,7 +87,7 @@ namespace BusinessLayer
 
         // creates a new game and returns it
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
-        public static Game BlStartGame(Player p, int playerCount)
+        public static async Task<Game> BlStartGame(Player p, int playerCount)
         {
             if (waitingList.Find(q => q.Id == p.Id) == null)// if the player is already in the waiting list, return null
             {

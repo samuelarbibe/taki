@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using Model;
 using ViewModel;
 
@@ -16,8 +17,8 @@ namespace Service
         [OperationContract]
         Card BuildDeck();
 
-        [OperationContract]
-        Game StartGame(User user, int PlayerCount);
+        [OperationContract(AsyncPattern = true)]
+        Task<Game> StartGameAsync(User user, int playerCount);
 
         [OperationContract]
         PlayerList GetPlayerList();
