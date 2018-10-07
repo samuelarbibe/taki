@@ -28,6 +28,9 @@ namespace Form
         {
             InitializeComponent();
             currentGame = game;
+            this.DataContext = currentGame;
+            FirstPlayer.Text = currentGame.Players[0].Username;
+            SecondPlayer.Text = currentGame.Players[1].Username;
         }
     }
 }

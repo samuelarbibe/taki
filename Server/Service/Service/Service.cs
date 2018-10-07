@@ -51,10 +51,11 @@ namespace Service
             return bl.BlUsernameAvailable(username);
         }
 
-        public async Task<Game> StartGameAsync(User u, int playerCount)
+        public Game StartGame(User u, int playerCount)
         {
             Player player = new Player(u);
-            return await BL.BlStartGame(player, playerCount);
+            BL bl = new BL();
+            return bl.BlStartGame(player, playerCount);
         }
 
         public PlayerList GetPlayerList()

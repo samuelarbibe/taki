@@ -227,6 +227,54 @@ namespace Form.TakiService {
     [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     public partial class Game : Form.TakiService.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Form.TakiService.PlayerList PlayersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WinnerField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Form.TakiService.PlayerList Players {
+            get {
+                return this.PlayersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayersField, value) != true)) {
+                    this.PlayersField = value;
+                    this.RaisePropertyChanged("Players");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartTime {
+            get {
+                return this.StartTimeField;
+            }
+            set {
+                if ((this.StartTimeField.Equals(value) != true)) {
+                    this.StartTimeField = value;
+                    this.RaisePropertyChanged("StartTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Winner {
+            get {
+                return this.WinnerField;
+            }
+            set {
+                if ((this.WinnerField.Equals(value) != true)) {
+                    this.WinnerField = value;
+                    this.RaisePropertyChanged("Winner");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]

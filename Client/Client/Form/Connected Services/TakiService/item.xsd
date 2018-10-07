@@ -35,7 +35,11 @@
   <xs:complexType name="Game">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
-        <xs:sequence />
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Players" nillable="true" type="tns:PlayerList" />
+          <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Winner" type="xs:int" />
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

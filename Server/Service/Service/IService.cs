@@ -17,8 +17,8 @@ namespace Service
         [OperationContract]
         Card BuildDeck();
 
-        [OperationContract(AsyncPattern = true)]
-        Task<Game> StartGameAsync(User user, int playerCount);
+        [OperationContract]
+        Game StartGame(User user, int playerCount);
 
         [OperationContract]
         PlayerList GetPlayerList();

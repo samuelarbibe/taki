@@ -11,10 +11,11 @@ namespace BusinessLayer
 {
     public class BL
     {
-
         static PlayerList waitingList = new PlayerList();
 
         static GameList gameList = new GameList();
+
+        Game g;
 
         public Card BlBuildDeck()
         {
@@ -87,15 +88,22 @@ namespace BusinessLayer
 
         // creates a new game and returns it
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
-        public static async Task<Game> BlStartGame(Player p, int playerCount)
+        public Game BlStartGame(Player p, int playerCount)
         {
-            if (waitingList.Find(q => q.Id == p.Id) == null)// if the player is already in the waiting list, return null
+            foreach (Game g in gameList)
             {
-                if (waitingList.Count == (playerCount - 1))// if the player list is the size wanted including the requesting player, make a new game with the players in the waiting list and wipe the waiting list.
-                {
+                if (g.Players.Find(q => q.Id == p.Id) != null) {// if the player is in the game created, return it to him.
+                    return g;
+                }
+            }
+
+            if (waitingList.Find(q => q.Id == p.Id) == null)// if the player isnt in the waiting list add him.
+            {
                     waitingList.Add(p);
 
-                    Game g = new Game() {Players = waitingList, StartTime = DateTime.Now};
+                if (waitingList.Count == playerCount)// if the player list is the size wanted including the requesting player, 
+                {                                    //make a new game with the players in the waiting list and wipe the waiting list.
+                    g = new Game() { Players = waitingList, StartTime = DateTime.Now };
 
                     for (int i = 0; i < playerCount; i++)
                     {
@@ -105,17 +113,16 @@ namespace BusinessLayer
                     g.Players.Add(new Player());// adding the table as a player
                     g.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
 
+                    gameList.Add(g);
+
                     waitingList.Clear();
 
                     return g;
                 }
-                else
-                {
-                    waitingList.Add(p);
-                }
             }
             return null;
         }
+        
 
         public bool BlStartGameDatabase(Game g)
         {

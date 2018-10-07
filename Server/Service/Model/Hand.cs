@@ -20,12 +20,18 @@ namespace Model
             for (int i = 0; i < length; i++)
             {
                 temp = CardList.Deck[rand.Next(0, 65)];
-                while (this.Find(q => q.Value == temp.Value && q.Color == temp.Color) != null)// if the card is already in the hand, fetch for a different card
+                if (length < 65)//if hand is smaller than the deck length, make sure there are no doubles
                 {
-                    temp = CardList.Deck[rand.Next(0, 65)];
+                    while (this.Find(q => q.Value == temp.Value && q.Color == temp.Color) != null)// if the card is already in the hand, fetch for a different card
+                    {
+                        temp = CardList.Deck[rand.Next(0, 65)];
+                    }
+                }
+                else
+                {
+                    this.Add(temp);// if the hand's length is greater than the deck, just insert random cards
                 }
 
-                this.Add(temp);
             }
         }
     }
