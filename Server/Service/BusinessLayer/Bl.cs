@@ -15,7 +15,7 @@ namespace BusinessLayer
 
         static GameList gameList = new GameList();
 
-        Game g;
+        static Game g = null;
 
         public Card BlBuildDeck()
         {
@@ -90,34 +90,41 @@ namespace BusinessLayer
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public Game BlStartGame(Player p, int playerCount)
         {
-            foreach (Game g in gameList)
+
+            if (gameList.Count > 0)
             {
-                if (g.Players.Find(q => q.Id == p.Id) != null) {// if the player is in the game created, return it to him.
-                    return g;
+                if(waitingList.Count > 0 && p.Id == waitingList[playerCount].Id) // when the last player request gets here, delete g and waiting list, and return a copy of g
+                {
+                    Game temp = g;
+                    g = null;
+                    waitingList.Clear();
+                    return gameList[0];
                 }
+                return g;
             }
 
             if (waitingList.Find(q => q.Id == p.Id) == null)// if the player isnt in the waiting list add him.
             {
-                    waitingList.Add(p);
+                waitingList.Add(p);
 
                 if (waitingList.Count == playerCount)// if the player list is the size wanted including the requesting player, 
                 {                                    //make a new game with the players in the waiting list and wipe the waiting list.
-                    g = new Game() { Players = waitingList, StartTime = DateTime.Now };
 
-                    for (int i = 0; i < playerCount; i++)
-                    {
-                        g.Players[i].Hand = new Hand(8);// giving every player a shuffled hand 
+                    if (p.Id == waitingList[playerCount - 1].Id) // create a new game containing all the players on the last player's request
+                    { 
+                        g = new Game() { Players = waitingList, StartTime = DateTime.Now };
+
+                        for (int i = 0; i < playerCount; i++)
+                        {
+                            g.Players[i].Hand = new Hand(8);// giving every player a shuffled hand 
+                        }
+
+                        g.Players.Add(new Player(true));// adding the table as a player
+                        g.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
+
+
+                        gameList.Add((Game)g.Clone()); // add this game to the static game list
                     }
-
-                    g.Players.Add(new Player());// adding the table as a player
-                    g.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
-
-                    gameList.Add(g);
-
-                    waitingList.Clear();
-
-                    return g;
                 }
             }
             return null;

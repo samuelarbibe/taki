@@ -22,7 +22,7 @@ namespace Form
     public partial class LoadingPage : Page
     {
         private Game _game;
-        private readonly int _playerCount;
+        private int _playerCount;
         private int _counter;
 
         public LoadingPage(int playerCount)

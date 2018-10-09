@@ -6,7 +6,7 @@ using System.Text;
 namespace Model
 {
     [DataContract]
-    public class Game : BaseEntity
+    public class Game : BaseEntity, ICloneable
     {
 
         private PlayerList _players;
@@ -21,5 +21,10 @@ namespace Model
 
         [DataMember]
         public PlayerList Players { get => _players; set => _players = value; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

@@ -13,6 +13,11 @@ namespace Model
 
         public Player() { }
 
+        public Player(bool isTable)
+        {
+            this.Username = "table";
+        }
+
         public Player(User u)
         {
             this.Id = u.Id;

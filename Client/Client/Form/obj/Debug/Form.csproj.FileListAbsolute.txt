@@ -79,7 +79,6 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\UserPage.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\App.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form_MarkupCompile.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form_MarkupCompile.lref
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\bin\Debug\Form.exe.config
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\bin\Debug\Form.exe
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\bin\Debug\Form.pdb

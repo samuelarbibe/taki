@@ -32,7 +32,7 @@ namespace Form
             ProgressBar.Value = _cu.Score % 1000;
             //ShowScore.Text = (_cu.Score % 1000) + "/1000";
             LevelTextBlock.Text = _cu.Level.ToString();
-            playerCount = 2;
+            playerCount = 3;
         }
 
         public MenuPage(bool failed)
