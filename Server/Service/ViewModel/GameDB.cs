@@ -8,7 +8,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class GameDb : BaseDb
+    public class GameDb : BaseDB
     {
 
         private static GameList _list;

@@ -8,7 +8,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class CardDb : BaseDb
+    public class CardDb : BaseDB
     {
 
         private static CardList _list;

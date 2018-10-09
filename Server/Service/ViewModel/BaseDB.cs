@@ -10,8 +10,9 @@ using Model;
 
 namespace ViewModel
 {
-    public abstract class BaseDb
+    public abstract class BaseDB
     {
+
         //database
         protected string ConnectionString;
         protected OleDbConnection Connection;
@@ -72,11 +73,34 @@ namespace ViewModel
 
         /*---------------------------------------------------------------*/
 
-        public BaseDb()
+        public BaseDB()
         {
+
+            string s1 = "";
+
+            if (ConnectionString == null)
+            {
+                String[] arguments = Environment.GetCommandLineArgs();
+                string s;
+                if (arguments.Length == 1) // direct execution
+                { s = arguments[0]; }
+                else  // service execution
+                {
+                    s = arguments[1];
+                    s = s.Replace("/service:", "");  // remove /service: from the begining of the command line
+                }
+                string[] ss = s.Split('\\');   // פירוק המחרוזת למערך (ע"פ / שמפריד
+
+                int x = ss.Length - 4;  //הורדתי 3 תיקיות מהסוף
+                ss[x] = "ViewModel";   // ....שיניתי את התיקיה האחרונה ל
+                Array.Resize(ref ss, x + 1);  // תיקון של אורך המערך, לאורך העכשווי
+
+                s1 = String.Join("\\", ss);  // חיבור מחדש של המערך - עם / מפריד
+            }
+
+
             ConnectionString =
-            //@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\samue\Documents\GitHub\Taki\Server\Service\ViewModel\Database.accdb; Persist Security Info = True";
-            @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\User1\Source\Repos\Taki\Server\Service\ViewModel\Database.accdb; Persist Security Info = True";
+            @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + s1 + @"\Database.accdb; Persist Security Info = True";
 
             Connection = new OleDbConnection(ConnectionString);
             Command = new OleDbCommand();

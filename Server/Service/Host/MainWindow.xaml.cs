@@ -33,6 +33,7 @@ namespace Host
             CardDb db = new CardDb();
 
             CardList.Deck = db.SelectAll();
+
         }
 
     }

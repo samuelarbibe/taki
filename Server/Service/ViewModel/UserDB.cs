@@ -10,7 +10,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class UserDb : BaseDb
+    public class UserDb : BaseDB
     {
         protected override BaseEntity NewEntity()
         {
