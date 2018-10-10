@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,32 +12,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ServiceModel;
-using Form.TakiService;
-
 
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class SettingsPage : Page
     {
-        public static Frame MenuFrame;
 
-        public MainMenu()
+        public SettingsPage()
         {
             InitializeComponent();
-            MenuFrame = MainMenuFrame;
-            MenuFrame.Navigate(new MenuPage());
         }
 
-        public MainMenu(bool failed)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-            MenuFrame = MainMenuFrame;
-            MenuFrame.Navigate(new MenuPage(failed));
+            if (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.GoBack();
+            }
+            else
+            {
+                Back.Content = "cannot go back...";
+            }
         }
 
+        
     }
 }

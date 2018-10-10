@@ -11,7 +11,14 @@ namespace BusinessLayer
 {
     public class BL
     {
-        static PlayerList waitingList = new PlayerList();
+        static List<PlayerList> waitingList = new List<PlayerList>{ // creating a list of waiting lists
+            new PlayerList {},//waitingList[0] = players looking for 2 player games
+            new PlayerList {},//waitingList[1] = players looking for 3 player games
+            new PlayerList {},//waitingList[2] = players looking for 4 player games
+        };
+        
+        
+        
 
         static GameList gameList = new GameList();
 
@@ -24,6 +31,7 @@ namespace BusinessLayer
             return deck[0] as Card;
         }
 
+        
         //receives a Message from the service, calculates according to the algorithms
         //makes changes to the database 
         //returns a messageList to all players  
@@ -90,29 +98,28 @@ namespace BusinessLayer
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public Game BlStartGame(Player p, int playerCount)
         {
-
             if (gameList.Count > 0)
             {
-                if(waitingList.Count > 0 && p.Id == waitingList[playerCount].Id) // when the last player request gets here, delete g and waiting list, and return a copy of g
+                if(waitingList[playerCount - 2].Count > 0 && p.Id == waitingList[playerCount - 2][playerCount].Id) // when the last player request gets here, delete g and waiting list, and return a copy of g
                 {
                     Game temp = g;
                     g = null;
-                    waitingList.Clear();
+                    waitingList[playerCount - 2].Clear();
                     return gameList[0];
                 }
                 return g;
             }
 
-            if (waitingList.Find(q => q.Id == p.Id) == null)// if the player isnt in the waiting list add him.
+            if (waitingList[playerCount - 2].Find(q => q.Id == p.Id) == null)// if the player isnt in the waiting list add him.
             {
-                waitingList.Add(p);
+                waitingList[playerCount - 2].Add(p);
 
-                if (waitingList.Count == playerCount)// if the player list is the size wanted including the requesting player, 
+                if (waitingList[playerCount - 2].Count == playerCount)// if the player list is the size wanted including the requesting player, 
                 {                                    //make a new game with the players in the waiting list and wipe the waiting list.
 
-                    if (p.Id == waitingList[playerCount - 1].Id) // create a new game containing all the players on the last player's request
+                    if (p.Id == (((waitingList[playerCount - 2])))[playerCount - 1].Id) // create a new game containing all the players on the last player's request
                     { 
-                        g = new Game() { Players = waitingList, StartTime = DateTime.Now };
+                        g = new Game() { Players = waitingList[playerCount - 2], StartTime = DateTime.Now };
 
                         for (int i = 0; i < playerCount; i++)
                         {

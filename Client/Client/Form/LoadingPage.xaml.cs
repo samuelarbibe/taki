@@ -23,12 +23,14 @@ namespace Form
     {
         private Game _game;
         private int _playerCount;
+        private User _cu;
         private int _counter;
 
         public LoadingPage(int playerCount)
         {
             _counter = 0;
             _playerCount = playerCount;
+            _cu = MainWindow.CurrentUser;
 
             InitializeComponent();
 
