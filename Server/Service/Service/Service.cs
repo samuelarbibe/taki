@@ -16,45 +16,45 @@ namespace Service
         
         public Card BuildDeck()
         {
-            BL bl = new BL();
+            Bl bl = new Bl();
 
             return bl.BlBuildDeck();
         }
 
         public UserList GetAllUsers()
         {
-            BL bl = new BL();
+            Bl bl = new Bl();
             return bl.BlGetAllUsers();
         }
 
         public User Login(string username, string password)
         {
-            BL bl = new BL();
+            Bl bl = new Bl();
             return bl.BlLogin(username, password);
         }
 
         public bool Register(string firstName, string lastName, string username, string password)
         {
-            BL bl = new BL();
+            Bl bl = new Bl();
             return bl.BlRegister(firstName, lastName, username, password);
         }
 
         public bool PasswordAvailable(string password)
         {
-            BL bl = new BL();
+            Bl bl = new Bl();
             return bl.BlPasswordAvailable(password);
         }
 
         public bool UsernameAvailable(string username)
         {
-            BL bl = new BL();
+            Bl bl = new Bl();
             return bl.BlUsernameAvailable(username);
         }
 
         public Game StartGame(User u, int playerCount)
         {
             Player player = new Player(u);
-            BL bl = new BL();
+            Bl bl = new Bl();
             return bl.BlStartGame(player, playerCount);
         }
 

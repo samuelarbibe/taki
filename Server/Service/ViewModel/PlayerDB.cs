@@ -8,7 +8,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerDb : BaseDB
+    public class PlayerDb : BaseDb
     {
         protected override BaseEntity NewEntity()
         {

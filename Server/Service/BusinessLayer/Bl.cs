@@ -9,20 +9,19 @@ using ViewModel;
 
 namespace BusinessLayer
 {
-    public class BL
+    public class Bl
     {
-        static List<PlayerList> waitingList = new List<PlayerList>{ // creating a list of waiting lists
-            new PlayerList {},//waitingList[0] = players looking for 2 player games
-            new PlayerList {},//waitingList[1] = players looking for 3 player games
-            new PlayerList {},//waitingList[2] = players looking for 4 player games
+        static List<PlayerList> _waitingList = new List<PlayerList>
+        {
+            // creating a list of waiting lists
+            new PlayerList { }, //waitingList[0] = players looking for 2 player games
+            new PlayerList { }, //waitingList[1] = players looking for 3 player games
+            new PlayerList { }, //waitingList[2] = players looking for 4 player games
         };
-        
-        
-        
 
-        static GameList gameList = new GameList();
+        static GameList _gameList = new GameList();
 
-        static Game g = null;
+        static Game _game;
 
         public Card BlBuildDeck()
         {
@@ -31,7 +30,7 @@ namespace BusinessLayer
             return deck[0] as Card;
         }
 
-        
+
         //receives a Message from the service, calculates according to the algorithms
         //makes changes to the database 
         //returns a messageList to all players  
@@ -49,6 +48,7 @@ namespace BusinessLayer
             {
                 return userList[0] as User;
             }
+
             return null;
         }
 
@@ -84,7 +84,7 @@ namespace BusinessLayer
         {
             UserDb db = new UserDb();
             User user = db.SelectByUsername(username);
-            return (user == null);//return true if there is no user with this username
+            return (user == null); //return true if there is no user with this username
         }
 
         public UserList BlGetAllUsers()
@@ -97,50 +97,55 @@ namespace BusinessLayer
         // creates a new game and returns it
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public Game BlStartGame(Player p, int playerCount)
-        {
-            if (gameList.Count > 0)
+        {  
+            //if there is a game in gameList containing this player
+            Game temp = _gameList.Find(g => g.Players.Find(q => q.Id == p.Id) != null); 
+
+
+            // return the game to the player!
+            if (temp != null) return temp;
+
+
+            // if the list contains a table, clear it! its old!
+            if (_waitingList[playerCount - 2].Count > playerCount) _waitingList[playerCount - 2].Clear();
+
+
+            // if the player isn't in the waiting list add him.
+            if (_waitingList[playerCount - 2].Find(q => q.Id == p.Id) == null) _waitingList[playerCount - 2].Add(p);
+
+
+            // if the player list is the size wanted including the requesting player, 
+            if (_waitingList[playerCount - 2].Count == playerCount)
             {
-                if(waitingList[playerCount - 2].Count > 0 && p.Id == waitingList[playerCount - 2][playerCount].Id) // when the last player request gets here, delete g and waiting list, and return a copy of g
+                // create a new game containing all the players on the last player's request
+                if (p.Id == _waitingList[playerCount - 2][playerCount - 1].Id)
                 {
-                    Game temp = g;
-                    g = null;
-                    waitingList[playerCount - 2].Clear();
-                    return gameList[0];
-                }
-                return g;
-            }
+                    _game = new Game() {Players = _waitingList[playerCount - 2], StartTime = DateTime.Now};
 
-            if (waitingList[playerCount - 2].Find(q => q.Id == p.Id) == null)// if the player isnt in the waiting list add him.
-            {
-                waitingList[playerCount - 2].Add(p);
-
-                if (waitingList[playerCount - 2].Count == playerCount)// if the player list is the size wanted including the requesting player, 
-                {                                    //make a new game with the players in the waiting list and wipe the waiting list.
-
-                    if (p.Id == (((waitingList[playerCount - 2])))[playerCount - 1].Id) // create a new game containing all the players on the last player's request
-                    { 
-                        g = new Game() { Players = waitingList[playerCount - 2], StartTime = DateTime.Now };
-
-                        for (int i = 0; i < playerCount; i++)
-                        {
-                            g.Players[i].Hand = new Hand(8);// giving every player a shuffled hand 
-                        }
-
-                        g.Players.Add(new Player(true));// adding the table as a player
-                        g.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
-
-
-                        gameList.Add((Game)g.Clone()); // add this game to the static game list
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        _game.Players[i].Hand = new Hand(8); // giving every player a shuffled hand 
                     }
+
+                    _game.Players.Add(new Player(true)); // adding the table as a player
+                    _game.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
+
+
+                    _gameList.Add((Game) _game.Clone()); // add this game to the game list
+
+                    BlStartGameDatabase(_game); // add this game to the database!
+
+                    return _game;
                 }
             }
+
             return null;
         }
-        
 
+
+        // insert game into database, including connections in PlayerGameDB and PlayerCardDB
         public bool BlStartGameDatabase(Game g)
         {
-            // insert game into database, including connections in PlayerGameDB and PlayerCardDB
             return true;
         }
     }

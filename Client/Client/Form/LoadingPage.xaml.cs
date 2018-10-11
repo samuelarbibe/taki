@@ -43,7 +43,7 @@ namespace Form
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += FindGame;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0,0,0,0,200); //send request five times every second
             dispatcherTimer.Start();
 
             void FindGame(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace Form
                 {
                     status.Text = "player is in queue...";
 
-                    if (_counter < 10)
+                    if (_counter < 50)
                     {
                         _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
                         _counter++;

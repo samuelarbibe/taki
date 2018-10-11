@@ -22,45 +22,75 @@ namespace Form
     /// </summary>
     public partial class GamePage : Page
     {
-        Game currentGame;
-        User currentUser = MainWindow.CurrentUser;
-        Player currentPlayer;
-        Player table;
-        PlayerList playersList = new PlayerList();
+        Game _currentGame;
+        User _currentUser = MainWindow.CurrentUser;
+        Player _currentPlayer;
+        Player _table;
+        PlayerList _playersList = new PlayerList();
+        private int _playersCount;
+        private int _currentPlayerIndex;
 
         public GamePage(Game game)
         {
             InitializeComponent();
-            currentGame = game;
-            this.DataContext = currentGame;
+            _currentGame = game;
+            this.DataContext = _currentGame;
 
-            playersList.Add(currentGame.Players.Find(p => p.Id == currentUser.Id)); //  add the current player as the first player in the local player list
+            reorderPlayerList();
 
-            playersList.AddRange(currentGame.Players.FindAll(p => p.Id != currentUser.Id && p.Username != "table"));
+            BoxOne.Text = _currentPlayer.Username;
 
-            currentPlayer = playersList[0];
-
-            table = currentGame.Players.Find(p => p.Username == "table");
-
-            BoxFive.Text = "Table";
-
-            BoxOne.Text = currentPlayer.Username;
-
-            switch (currentGame.Players.Count)
+            switch (_currentGame.Players.Count)
             {
                 case 3:
-                    BoxThree.Text = playersList[1].Username;
+                    BoxThree.Text = _playersList[1].Username;
+                    BoxFive.Text = _playersList[2].Username;
                     break;
                 case 4:
-                    BoxTwo.Text = playersList[1].Username;
-                    BoxThree.Text = playersList[2].Username;
+                    BoxTwo.Text = _playersList[1].Username;
+                    BoxThree.Text = _playersList[2].Username;
+                    BoxFive.Text = _playersList[3].Username;
                     break;
                 case 5:
-                    BoxTwo.Text = playersList[1].Username;
-                    BoxThree.Text = playersList[2].Username;
-                    BoxFour.Text = playersList[3].Username;
+                    BoxTwo.Text = _playersList[1].Username;
+                    BoxThree.Text = _playersList[2].Username;
+                    BoxFour.Text = _playersList[3].Username;
+                    BoxFive.Text = _playersList[4].Username;
                     break;
             }
+
+        }
+
+
+        // this function re-arranges the player in a particular way, to make sure that:
+        // - list[First] is the current player
+        // - all the players after him are arranged in order
+        // - list[Last] is the table
+        public void reorderPlayerList()
+        {
+            _playersCount = _currentGame.Players.Count;
+
+            _currentPlayerIndex = _currentGame.Players.FindIndex(p => p.Id == _currentUser.Id);
+
+            for (int i = 0; i < _playersCount - 1; i++)
+            {
+                if (_currentPlayerIndex >= _playersCount - 1)
+                {
+                    _playersList.Add(_currentGame.Players[_currentPlayerIndex % (_playersCount - 1)]);
+                }
+                else
+                {
+                    _playersList.Add(_currentGame.Players[_currentPlayerIndex]);
+                }
+
+                _currentPlayerIndex++;
+            }
+
+            _playersList.Add(_currentGame.Players.Find(q => q.Username == "table"));
+
+            _currentPlayer = _playersList[0];
+
+            _table = _playersList[_playersCount - 1];
         }
     }
 }

@@ -10,7 +10,7 @@ using Model;
 
 namespace ViewModel
 {
-    public abstract class BaseDB
+    public abstract class BaseDb
     {
 
         //database
@@ -73,7 +73,7 @@ namespace ViewModel
 
         /*---------------------------------------------------------------*/
 
-        public BaseDB()
+        public BaseDb()
         {
 
             string s1 = "";
