@@ -36,6 +36,16 @@ namespace ViewModel
         }
 
 
+        //get the last <index> players inserted into the table
+        public Player GetLastPlayerID()
+        {
+
+            Command.CommandText = ("SELECT TOP 1 * FROM Player_Table ORDER BY ID DESC");
+            PlayerList temp = new PlayerList(Select());
+            return temp.Count > 0 ? temp[0] : new Player(0);
+        }
+
+
         //public UserList SelectByName(string FirstName, string LastName)
         //{
         //    command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName");
@@ -75,7 +85,19 @@ namespace ViewModel
                 Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
             }
         }
- 
+
+        public void InsertList(PlayerList entity)
+        {
+            PlayerList pl = entity;
+            foreach (var player in pl)
+            {
+                if (player != null)
+                {
+                    Inserted.Add(new ChangeEntity(this.CreateInsertSql, player));
+                }
+            }
+        }
+
         public override void Delete(BaseEntity entity)
         {
             Player p = entity as Player;
@@ -112,41 +134,45 @@ namespace ViewModel
             }
         }
 
-        //this function recieves a USER entity, and creats a new player for that user, therfore, it uses User.id
+
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
-            User user = entity as User;
+            command.Parameters.Clear();
 
-            command.CommandText = ("INSERT INTO Player_Table (user_id) VALUES (@id)");
+            Player p = entity as Player;
+
+            command.CommandText = ("INSERT INTO Player_Table (user_id, temp_score) VALUES ( @id,  0)");
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id", user.Id));
+            command.Parameters.Add(p.Id == null ? new OleDbParameter("@id", 0) : new OleDbParameter("@id", p.Id));
+            //command.Parameters.Add(new OleDbParameter("@temp_score", 0));
         }
 
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
-            User user = entity as User;
+            Player p = entity as Player;
 
-            command.CommandText = ("DELETE FROM User_Table WHERE user_id = @id");
+            command.CommandText = ("INSERT INTO User_Table WHERE ID = @id");
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id", user.Id));
+            command.Parameters.Add(new OleDbParameter("@id", p.Id));
         }
 
 
         //only used to update the score
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
-            Player player = entity as Player;
+            Player p = entity as Player;
 
-            command.CommandText = ("UPDATE Player_Table SET temp_score = @score");
+            command.CommandText = ("UPDATE Player_Table WHERE ID = @id SET temp_score = @score");
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@score", player.TempScore));
+            command.Parameters.Add(new OleDbParameter("@score", p.TempScore));
+            command.Parameters.Add(new OleDbParameter("@id", p.Id));
         }
     }
 }

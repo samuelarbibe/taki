@@ -126,8 +126,9 @@ namespace ViewModel
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
 
-                    command.CommandText = "SELECT @@identity "; //get last ID
-                    item.Entity.Id = (int)command.ExecuteScalar();
+                    command.CommandText = "SELECT @identity "; //get last ID
+                    int temp = (int)command.ExecuteScalar();
+                    item.Entity.Id = temp == null ? 1 : temp;
                 }
                 Inserted.Clear();
 

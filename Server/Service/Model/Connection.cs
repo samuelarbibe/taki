@@ -10,8 +10,8 @@ namespace Model
     [DataContract]
     public class Connection : BaseEntity
     {
-        private int _sideA;
-        private int _sideB;
+        private int _sideA; // player_id
+        private int _sideB; // game_id or card_id
         private string _connectionType;
 
         

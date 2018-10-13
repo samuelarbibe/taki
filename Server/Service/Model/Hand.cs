@@ -26,6 +26,7 @@ namespace Model
                     {
                         temp = CardList.Deck[rand.Next(0, 65)];
                     }
+                    this.Add(temp);
                 }
                 else
                 {

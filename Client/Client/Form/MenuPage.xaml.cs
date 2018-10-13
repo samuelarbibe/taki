@@ -22,13 +22,11 @@ namespace Form
     public partial class MenuPage : Page
     {
         private User _cu;
-        private int _playerCount;
 
         public MenuPage()
         {
             InitializeComponent();
             _cu = MainWindow.CurrentUser;
-            _playerCount = 2;
             UsernameTextBlock.Text = _cu.Username;
 
 
@@ -41,7 +39,6 @@ namespace Form
         {
             InitializeComponent();
             _cu = MainWindow.CurrentUser;
-            _playerCount = 2;
             UsernameTextBlock.Text = MainWindow.CurrentUser.Username;
 
             ProgressBar.Value = _cu.Score % 1000;
@@ -52,7 +49,23 @@ namespace Form
 
         private void MultiplayerButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.BigFrame.Navigate(new LoadingPage(_playerCount));
+            MultiplayerButton.Visibility = Visibility.Hidden;
+            WantedPlayersGrid.Visibility = Visibility.Visible;
+        }
+
+        private void Multiplayer2PlayersButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new LoadingPage(2));
+        }
+
+        private void Multiplayer3PlayersButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new LoadingPage(3));
+        }
+
+        private void Multiplayer4PlayersButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.BigFrame.Navigate(new LoadingPage(4));
         }
 
         private void UserButton_Click(object sender, RoutedEventArgs e)
@@ -63,11 +76,6 @@ namespace Form
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             MainMenu.MenuFrame.Navigate(new SettingsPage());
-        }
-
-        private void PlayerCountComboBox_DropDownClosed(object sender, EventArgs e)
-        {
-            _playerCount = Int32.Parse(PlayerCountComboBox.Text);
         }
     }
 }

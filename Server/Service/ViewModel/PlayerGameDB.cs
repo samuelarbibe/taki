@@ -27,6 +27,26 @@ namespace ViewModel
             return con;
         }
 
+        public override void Insert(BaseEntity entity)
+        {
+            Connection c = entity as Connection;
+            if (c != null)
+            {
+                Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
+            }
+        }
+
+        public void InsertList(ConnectionList entity)
+        {
+            ConnectionList cl = entity as ConnectionList;
+            foreach (Connection connection in cl)
+            {
+                if (connection != null)
+                {
+                    Inserted.Add(new ChangeEntity(this.CreateInsertSql, connection));
+                }
+            }
+        }
 
         public ConnectionList SelectByGameId(int gameId)
         {

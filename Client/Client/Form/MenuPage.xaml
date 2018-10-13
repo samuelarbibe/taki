@@ -52,14 +52,15 @@
             <RowDefinition Height="92*"/>
             <RowDefinition Height="92*"/>
             <RowDefinition Height="34*"/>
-            <RowDefinition Height="143*"/>
+            <RowDefinition Height="108*"/>
+            <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3"  Background="#FF409092" >
+        <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3"  Background="#FF409092" Grid.RowSpan="2" >
             <Image Source="Resources/TAKI.png" Margin="20,10,10,10"/>
             <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="UserButton_Click">
                 <StackPanel x:Name="UserInfoStackPanel" Orientation="Horizontal">
@@ -76,14 +77,14 @@
             </Button>
 
         </DockPanel>
-        <Button x:Name="MultiplayerButton" Content="Multiplayer" Grid.Column="1" Grid.Row="2" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="MultiplayerButton_Click">
+        <Button Visibility="Visible" x:Name="MultiplayerButton" Content="Multiplayer" Grid.Row="2" Grid.Column="1" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="MultiplayerButton_Click" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="38"/>
+                    <Setter Property="CornerRadius" Value="30"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="SettingsButton" HorizontalAlignment="Right" Click="SettingsButton_Click"  VerticalAlignment="Bottom" Margin="0,0,20,20" Grid.Column="2" Grid.Row="4" Background="#FF7F7F7F" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40">
+        <Button x:Name="SettingsButton" HorizontalAlignment="Right" Click="SettingsButton_Click"  VerticalAlignment="Bottom" Margin="0,0,20,19.6" Grid.Column="2" Grid.Row="4" Background="#FF7F7F7F" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40" Grid.RowSpan="2">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -93,11 +94,38 @@
                 <Image Source="Resources/Settings.png"/>
             </WrapPanel>
         </Button>
-        <TextBlock FontSize="15" x:Name="SearchFailed" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="Red"/>
-        <ComboBox Name="PlayerCountComboBox" DropDownClosed="PlayerCountComboBox_DropDownClosed" Grid.Row="3" FontSize="10" Grid.Column="1">
-            <ComboBoxItem IsSelected="True">2</ComboBoxItem>
-            <ComboBoxItem>3</ComboBoxItem>
-            <ComboBoxItem>4</ComboBoxItem>
-        </ComboBox>
+        <TextBlock FontSize="15" x:Name="SearchFailed" HorizontalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Foreground="white" Grid.Column="1" VerticalAlignment="Top"/>
+
+        <Grid x:Name="WantedPlayersGrid" Grid.Column="1" Grid.Row="2" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Multiplayer2PlayersButton" Grid.Column="0" Content="2" Background="#FFEC655F" FontSize="30" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="Multiplayer2PlayersButton_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="Multiplayer3PlayersButton" Grid.Column="2" Content="3" Grid.Row="2" Background="#FFEC655F" FontSize="30" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="Multiplayer3PlayersButton_Click" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button DockPanel.Dock="right" Grid.Column="4" x:Name="Multiplayer4PlayersButton" Content="4" Grid.Row="2" Background="#FFEC655F" FontSize="30" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="Multiplayer4PlayersButton_Click" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

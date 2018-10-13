@@ -13,6 +13,13 @@ namespace Model
         private DateTime _startTime;
         private int _winner;
 
+        public Game() { }
+
+        public Game(int id)
+        {
+            this.Id = 0;
+        }
+
         [DataMember]
         public DateTime StartTime { get { return _startTime; } set { _startTime = value; } }
 

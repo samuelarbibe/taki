@@ -107,7 +107,6 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\Form.exe.config
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\Form.exe
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\Form.pdb
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\AdminUserPage.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\GamePage.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\LoadingPage.g.cs

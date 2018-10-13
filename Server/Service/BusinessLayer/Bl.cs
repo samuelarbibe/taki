@@ -133,9 +133,14 @@ namespace BusinessLayer
 
                     _gameList.Add((Game) _game.Clone()); // add this game to the game list
 
-                    BlStartGameDatabase(_game); // add this game to the database!
-
-                    return _game;
+                    try
+                    {
+                        return _game; // return this game
+                    }
+                    finally
+                    {
+                        BlStartGameDatabase(_game); // add this game to the database!
+                    }
                 }
             }
 
@@ -144,9 +149,49 @@ namespace BusinessLayer
 
 
         // insert game into database, including connections in PlayerGameDB and PlayerCardDB
-        public bool BlStartGameDatabase(Game g)
+        public void BlStartGameDatabase(Game g)
         {
-            return true;
+            PlayerDb playerDb = new PlayerDb();
+            GameDb gameDb = new GameDb();
+            PlayerGameDb playerGameDb = new PlayerGameDb();
+            PlayerCardDb playerCardDb = new PlayerCardDb();
+
+            ConnectionList playerGameConnectionList = new ConnectionList();
+            ConnectionList playerCardConnectionList = new ConnectionList();
+            Connection temp = new Connection();
+
+            playerDb.InsertList(g.Players); // Insert players into database
+
+            gameDb.Insert(g); // Insert game into database
+
+
+            int lastGameId = gameDb.GetLastGame().Id;
+            int lastPlayerId = playerDb.GetLastPlayerID().Id;
+
+            foreach (Player p in g.Players)
+            {
+                temp.SideA = ++lastPlayerId; // increment the player id for each player
+                temp.SideB = (lastGameId + 1); // the game id will be the same when inserted
+                playerGameConnectionList.Add(temp);
+
+                foreach (Card c in p.Hand)
+                {
+                    temp.SideA = lastPlayerId;
+                    temp.SideB = c.Id;
+                    playerCardConnectionList.Add(temp);
+                }
+            }
+
+            playerGameDb.InsertList(playerGameConnectionList); // insert player - game connections
+
+            playerCardDb.InsertList(playerCardConnectionList); // insert player - card connections
+
+
+            // save the changes and insert the data into the database 
+            playerDb.SaveChanges();
+            gameDb.SaveChanges();
+            playerGameDb.SaveChanges();
+            playerCardDb.SaveChanges();
         }
     }
 }
