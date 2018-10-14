@@ -168,10 +168,12 @@ namespace BusinessLayer
             int lastGameId = gameDb.GetLastGame().Id;
             int lastPlayerId = playerDb.GetLastPlayerID().Id;
 
+            g.Id = ++lastGameId;
+
             foreach (Player p in g.Players)
             {
                 temp.SideA = ++lastPlayerId; // increment the player id for each player
-                temp.SideB = (lastGameId + 1); // the game id will be the same when inserted
+                temp.SideB = lastGameId; // the game id will be the same when inserted
                 playerGameConnectionList.Add(temp);
 
                 foreach (Card c in p.Hand)
@@ -188,10 +190,10 @@ namespace BusinessLayer
 
 
             // save the changes and insert the data into the database 
-            playerDb.SaveChanges();
+            //playerDb.SaveChanges();
             gameDb.SaveChanges();
-            playerGameDb.SaveChanges();
-            playerCardDb.SaveChanges();
+            //playerGameDb.SaveChanges();
+            //playerCardDb.SaveChanges();
         }
     }
 }

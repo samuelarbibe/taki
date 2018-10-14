@@ -11,12 +11,14 @@ namespace Model
 
         private PlayerList _players;
         private DateTime _startTime;
+        private TimeSpan _duration;
         private int _winner;
 
-        public Game() { }
+        public Game(){}
 
         public Game(int id)
         {
+            this._duration = new TimeSpan(0,0,0);
             this.Id = 0;
         }
 
@@ -28,6 +30,9 @@ namespace Model
 
         [DataMember]
         public PlayerList Players { get => _players; set => _players = value; }
+
+        [DataMember]
+        public TimeSpan Duration { get => _duration; set => _duration = value; }
 
         public object Clone()
         {

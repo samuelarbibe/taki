@@ -110,11 +110,12 @@ namespace ViewModel
 
         public int SaveChanges()
         {
+            OleDbCommand command = new OleDbCommand();
 
             int recordsAffected = 0;
+            int error_index = 0;
             try
             {
-                OleDbCommand command = new OleDbCommand();
                 command.Connection = Connection;
                 Connection.Open();
 
@@ -126,9 +127,11 @@ namespace ViewModel
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
 
-                    command.CommandText = "SELECT @identity "; //get last ID
+                    command.CommandText = "SELECT @@Identity "; //get last ID
                     int temp = (int)command.ExecuteScalar();
                     item.Entity.Id = temp == null ? 1 : temp;
+
+                    error_index++;
                 }
                 Inserted.Clear();
 
@@ -144,7 +147,7 @@ namespace ViewModel
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e.Message + "\nSQL:" + Command.CommandText);
+                System.Diagnostics.Debug.WriteLine("\n"+e.Message + "\nSQL:" + command.CommandText +"\n The Problem is with: "+Inserted[error_index].Entity.GetType() +"\n");
             }
             finally
             {
