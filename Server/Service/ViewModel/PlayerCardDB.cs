@@ -38,7 +38,7 @@ namespace ViewModel
 
         public void InsertList(ConnectionList entity)
         {
-            ConnectionList cl = entity as ConnectionList;
+            ConnectionList cl = entity;
             foreach (var connection in cl)
             {
                 if (connection != null)
@@ -85,7 +85,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
             command.Parameters.Add(new OleDbParameter("@card_id", con.SideB));
 
-            Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been created and inserted");
+            Console.WriteLine("connection between player [" + con.SideA + "] and card [" + con.SideB + "] has been created and inserted");
         }
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
@@ -99,7 +99,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
             command.Parameters.Add(new OleDbParameter("@card_id", con.SideB));
 
-            Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been deleted");
+            Console.WriteLine("connection between player [" + con.SideA + "] and card [" + con.SideB + "] has been deleted");
         }
 
 

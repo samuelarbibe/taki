@@ -35,8 +35,8 @@ namespace Model
             this.Admin = u.Admin;
             this.Wins = u.Wins;
             this.Losses = u.Losses;
-            _hand = null;
-            _tempScore = 0;
+            Hand = new Hand(8);
+            TempScore = 0;
         }
 
         public Hand Hand { get => _hand; set => _hand = value; }

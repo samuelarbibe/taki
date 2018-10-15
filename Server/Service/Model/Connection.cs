@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Model
 {
     [DataContract]
-    public class Connection : BaseEntity
+    public class Connection : BaseEntity, ICloneable
     {
         private int _sideA; // player_id
         private int _sideB; // game_id or card_id
@@ -22,5 +22,10 @@ namespace Model
 
         
         public string ConnectionType { get => _connectionType; set => _connectionType = value; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

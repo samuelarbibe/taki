@@ -130,7 +130,7 @@ namespace ViewModel
         {
             User user = entity as User;
 
-            command.CommandText = ("INSERT INTO User_Table ( [username], [password], first_name, last_name) VALUES ( @username,  @password, @firstName, @lastName)");
+            command.CommandText = ("INSERT INTO User_Table ( [username], [password], [first_name], [last_name]) VALUES (@username,  @password, @firstName, @lastName)");
 
             //parameters
 

@@ -99,7 +99,7 @@ namespace BusinessLayer
         public Game BlStartGame(Player p, int playerCount)
         {  
             //if there is a game in gameList containing this player
-            Game temp = _gameList.Find(g => g.Players.Find(q => q.Id == p.Id) != null); 
+            Game temp = _gameList.Find(g => g.GetPlayers().Find(q => q.Username == p.Username && q.Password == p.Password) != null); 
 
 
             // return the game to the player!
@@ -120,27 +120,16 @@ namespace BusinessLayer
                 // create a new game containing all the players on the last player's request
                 if (p.Id == _waitingList[playerCount - 2][playerCount - 1].Id)
                 {
-                    _game = new Game() {Players = _waitingList[playerCount - 2], StartTime = DateTime.Now};
+                    _game = new Game(_waitingList[playerCount - 2]); // create a new game with the players
 
-                    for (int i = 0; i < playerCount; i++)
-                    {
-                        _game.Players[i].Hand = new Hand(8); // giving every player a shuffled hand 
-                    }
+                    _game.GetPlayers().Add(new Player(true)); // adding the table as a player
+                    _game.GetPlayers()[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
 
-                    _game.Players.Add(new Player(true)); // adding the table as a player
-                    _game.Players[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
+                    _game = BlStartGameDatabase(_game); // add this game to the database!
 
+                    _gameList.Add((Game)_game.Clone()); // add this game to the game list
 
-                    _gameList.Add((Game) _game.Clone()); // add this game to the game list
-
-                    try
-                    {
-                        return _game; // return this game
-                    }
-                    finally
-                    {
-                        BlStartGameDatabase(_game); // add this game to the database!
-                    }
+                    return _game; // return this game
                 }
             }
 
@@ -149,7 +138,7 @@ namespace BusinessLayer
 
 
         // insert game into database, including connections in PlayerGameDB and PlayerCardDB
-        public void BlStartGameDatabase(Game g)
+        public Game BlStartGameDatabase(Game g)
         {
             PlayerDb playerDb = new PlayerDb();
             GameDb gameDb = new GameDb();
@@ -160,7 +149,7 @@ namespace BusinessLayer
             ConnectionList playerCardConnectionList = new ConnectionList();
             Connection temp = new Connection();
 
-            playerDb.InsertList(g.Players); // Insert players into database
+            playerDb.InsertList(g.GetPlayers()); // Insert players into database
 
             gameDb.Insert(g); // Insert game into database
 
@@ -170,17 +159,19 @@ namespace BusinessLayer
 
             g.Id = ++lastGameId;
 
-            foreach (Player p in g.Players)
+            foreach (Player p in g.GetPlayers())
             {
                 temp.SideA = ++lastPlayerId; // increment the player id for each player
                 temp.SideB = lastGameId; // the game id will be the same when inserted
-                playerGameConnectionList.Add(temp);
+                temp.ConnectionType = "player-game";
+                playerGameConnectionList.Add((Connection)temp.Clone());
 
                 foreach (Card c in p.Hand)
                 {
                     temp.SideA = lastPlayerId;
                     temp.SideB = c.Id;
-                    playerCardConnectionList.Add(temp);
+                    temp.ConnectionType = "player-card";
+                    playerCardConnectionList.Add((Connection)temp.Clone());
                 }
             }
 
@@ -194,6 +185,7 @@ namespace BusinessLayer
             gameDb.SaveChanges();
             //playerGameDb.SaveChanges();
             //playerCardDb.SaveChanges();
+            return g;
         }
     }
 }

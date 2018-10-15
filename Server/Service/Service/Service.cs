@@ -53,8 +53,8 @@ namespace Service
 
         public Game StartGame(User u, int playerCount)
         {
-            Player player = new Player(u);
             Bl bl = new Bl();
+            Player player = new Player(u);
             return bl.BlStartGame(player, playerCount);
         }
 

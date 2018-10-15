@@ -141,7 +141,7 @@ namespace ViewModel
 
             Player p = entity as Player;
 
-            command.CommandText = ("INSERT INTO Player_Table (user_id, temp_score) VALUES ( @id,  0)");
+            command.CommandText = ("INSERT INTO Player_Table (user_id, temp_score) VALUES (@id,  0)");
 
             //parameters
 

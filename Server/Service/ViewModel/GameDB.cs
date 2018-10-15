@@ -24,16 +24,27 @@ namespace ViewModel
             Game game = entity as Game;
 
             game.Id = (int)Reader["ID"];
-            game.Players[0] = db.SelectById((int)Reader["player_1_id"]);
-            game.Players[1] = db.SelectById((int)Reader["player_2_id"]);
-            game.Players[2] = db.SelectById((int)Reader["player_3_id"]);
-            game.Players[3] = db.SelectById((int)Reader["player_4_id"]);
-            game.Players[4] = db.SelectById((int)Reader["deck_id"]);
+            game.SetPlayer(db.SelectById((int)Reader["player_1_id"]), 0); 
+            game.SetPlayer(db.SelectById((int)Reader["player_2_id"]), 1);
+            game.SetPlayer(db.SelectById((int)Reader["player_3_id"]), 2);
+            game.SetPlayer(db.SelectById((int)Reader["player_4_id"]), 3);
+            game.SetPlayer(db.SelectById((int)Reader["table_id"]), 4);
 
             game.StartTime = DateTime.Now;
 
             return game;
         }
+
+
+        public override void Insert(BaseEntity entity)
+        {
+            Game p = entity as Game;
+            if (p != null)
+            {
+                Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
+            }
+        }
+
 
         public GameList SelectAll()
         {
@@ -53,7 +64,7 @@ namespace ViewModel
         //public Game SelectByPlayers(PlayerList p)
         //{
 
-        //    Command.CommandText = ("SELECT * Game_Table (date, duration, player_1_id, player_2_id, player_3_id, player_4_id, table_id, winner_id) VALUES ( @date, @duration, @p1, @p2, @p3, @p4, @table, @win)");
+        //    Command.CommandText = ("SELECT * Game_Table (date, EndTime, player_1_id, player_2_id, player_3_id, player_4_id, table_id, winner_id) VALUES ( @date, @EndTime, @p1, @p2, @p3, @p4, @table, @win)");
 
         //    switch (p.Count)
         //    {
@@ -125,44 +136,41 @@ namespace ViewModel
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
-            command.Parameters.Clear();
-
             Game g = entity as Game;
 
-            command.CommandText = ("INSERT INTO Game_Table ([date], [duration], [player_1_id], [player_2_id], [player_3_id], [player_4_id], [table_id], [winner_id]) VALUES (@date, @duration, @p1, @p2, @p3, @p4, @table, @win)");
+            command.CommandText = ("INSERT INTO Game_Table ([startDate], [endDate], [player_1_id], [player_2_id], [player_3_id], [player_4_id], [table_id], [winner_id]) VALUES ('"+ DateTime.Now.ToString("G") + "','"+DateTime.Now.ToString("G")+"', "+g.GetPlayers()[0].Id+ ", " + g.GetPlayers()[0].Id + ", 0,0, "+-g.Id+", 0)");
 
-            switch (g.Players.Count)
-            {
-                case 3:
-                    command.Parameters.Add(new OleDbParameter("@p1", g.Players[0].Id));
-                    command.Parameters.Add(new OleDbParameter("@p2", g.Players[1].Id));
-                    command.Parameters.Add(new OleDbParameter("@p3", Int32.Parse("0")));
-                    command.Parameters.Add(new OleDbParameter("@p4", Int32.Parse("0")));
-                    command.Parameters.Add(new OleDbParameter("@table", -g.Id));
-                    break;
+            //switch (g.Players.Count)
+            //{
+            //    case 3:
+            //        command.Parameters.AddWithValue("@p1", (int)g.Players[0].Id);
+            //        command.Parameters.AddWithValue("@p2", (int)g.Players[1].Id);
+            //        command.Parameters.AddWithValue("@p3", (int)Int32.Parse("0"));
+            //        command.Parameters.AddWithValue("@p4", (int)Int32.Parse("0"));
+                    
+            //        break;
 
-                case 4:
-                    command.Parameters.Add(new OleDbParameter("@p1", g.Players[0].Id));
-                    command.Parameters.Add(new OleDbParameter("@p2", g.Players[1].Id));
-                    command.Parameters.Add(new OleDbParameter("@p3", g.Players[2].Id));
-                    command.Parameters.Add(new OleDbParameter("@p4", Int32.Parse("0")));
-                    command.Parameters.Add(new OleDbParameter("@table", -g.Id));
-                    break;
+            //    case 4:
+            //        command.Parameters.AddWithValue("@p1", g.Players[0].Id);
+            //        command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+            //        command.Parameters.AddWithValue("@p3", g.Players[2].Id);
+            //        command.Parameters.AddWithValue("@p4", Int32.Parse("0"));
+            //        break;
 
-                case 5:
-                    command.Parameters.Add(new OleDbParameter("@p1", g.Players[0].Id));
-                    command.Parameters.Add(new OleDbParameter("@p2", g.Players[1].Id));
-                    command.Parameters.Add(new OleDbParameter("@p3", g.Players[2].Id));
-                    command.Parameters.Add(new OleDbParameter("@p4", g.Players[3].Id));
-                    command.Parameters.Add(new OleDbParameter("@table", -g.Id));
-                    break;
-            }
+            //    case 5:
+            //        command.Parameters.AddWithValue("@p1", g.Players[0].Id);
+            //        command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+            //        command.Parameters.AddWithValue("@p3", g.Players[2].Id);
+            //        command.Parameters.AddWithValue("@p4", g.Players[3].Id);
+            //        break;
+            //}
 
-            //parameters
+            ////parameters
 
-            command.Parameters.Add(new OleDbParameter("@date", g.StartTime.ToString("G")));
-            command.Parameters.Add(new OleDbParameter("@duration", g.StartTime.ToString("hh:mm:ss")));
-            command.Parameters.Add(new OleDbParameter("@win", Int32.Parse("0")));
+            //command.Parameters.AddWithValue("@table", (int)-g.Id);
+            //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
+            //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));
+            //command.Parameters.AddWithValue("@win", (int)Int32.Parse("0"));
         }
 
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
