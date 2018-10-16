@@ -14,6 +14,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
+  <xs:complexType name="Player">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:User">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TempScore" type="xs:int" />
+          <xs:element minOccurs="0" name="User_id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Player" nillable="true" type="tns:Player" />
   <xs:complexType name="User">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
@@ -36,6 +47,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
+          <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Players" nillable="true" type="tns:PlayerList" />
           <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Winner" type="xs:int" />
@@ -50,14 +62,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PlayerList" nillable="true" type="tns:PlayerList" />
-  <xs:complexType name="Player">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:User">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Player" nillable="true" type="tns:Player" />
   <xs:complexType name="Message">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">

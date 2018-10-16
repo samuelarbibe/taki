@@ -30,10 +30,6 @@ namespace Host
             ServiceHost service = new ServiceHost(typeof(Service.Service));
             service.Open();
 
-            CardDb db = new CardDb();
-
-            CardList.Deck = db.SelectAll();
-
         }
 
     }

@@ -39,7 +39,22 @@ namespace Form
 
         private void SearchGame()
         {
-            _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
+            Player p = new Player();
+
+            p.User_id = _cu.Id;
+            p.FirstName = _cu.FirstName;
+            p.LastName = _cu.LastName;
+            p.Username = _cu.Username;
+            p.Password = _cu.Password;
+            p.Level = _cu.Level;
+            p.Score = _cu.Score;
+            p.Admin = _cu.Admin;
+            p.Wins = _cu.Wins;
+            p.Losses = _cu.Losses;
+            p.TempScore = 0;
+
+
+            _game = MainWindow.Service.StartGame(p, _playerCount);
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += FindGame;
@@ -55,7 +70,7 @@ namespace Form
 
                     if (_counter < 50)
                     {
-                        _game = MainWindow.Service.StartGame(MainWindow.CurrentUser, _playerCount);
+                        _game = MainWindow.Service.StartGame(p, _playerCount);
                         _counter++;
                     }
                     else

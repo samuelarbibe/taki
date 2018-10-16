@@ -51,7 +51,6 @@
     <Compile Include="ConnectionList.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameList.cs" />
-    <Compile Include="Hand.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageList.cs" />
     <Compile Include="Player.cs" />

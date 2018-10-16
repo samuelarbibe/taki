@@ -8,7 +8,8 @@ namespace Model
     [DataContract]
     public class Player : User
     {
-        private Hand _hand;
+        private CardList _hand;
+        private int _user_id;
         private int _tempScore;
 
         public Player() { }
@@ -23,25 +24,13 @@ namespace Model
             this.Username = "table";
         }
 
-        public Player(User u)
-        {
-            this.Id = u.Id;
-            this.FirstName = u.FirstName;
-            this.LastName = u.LastName;
-            this.Username = u.Username;
-            this.Password = u.Password;
-            this.Level = u.Level;
-            this.Score = u.Score;
-            this.Admin = u.Admin;
-            this.Wins = u.Wins;
-            this.Losses = u.Losses;
-            Hand = new Hand(8);
-            TempScore = 0;
-        }
+        //[DataMember]
+        public CardList Hand { get => _hand; set => _hand = value; }
 
-        public Hand Hand { get => _hand; set => _hand = value; }
-
+        [DataMember]
         public int TempScore { get => _tempScore; set => _tempScore = value; }
 
+        [DataMember]
+        public int User_id { get => _user_id; set => _user_id = value; }
     }
 }

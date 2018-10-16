@@ -51,11 +51,10 @@ namespace Service
             return bl.BlUsernameAvailable(username);
         }
 
-        public Game StartGame(User u, int playerCount)
+        public Game StartGame(Player p, int playerCount)
         {
             Bl bl = new Bl();
-            Player player = new Player(u);
-            return bl.BlStartGame(player, playerCount);
+            return bl.BlStartGame(p, playerCount);
         }
 
         public PlayerList GetPlayerList()

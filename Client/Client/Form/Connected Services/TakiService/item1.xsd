@@ -16,7 +16,7 @@
   <xs:element name="StartGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q2:User" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="p" nillable="true" type="q2:Player" />
         <xs:element minOccurs="0" name="playerCount" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

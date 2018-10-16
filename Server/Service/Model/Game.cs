@@ -25,7 +25,12 @@ namespace Model
 
         public Game(PlayerList pl)
         {
-            this._players = pl;
+            this.Players = pl;
+        }
+
+        public PlayerList GetPlayers()
+        {
+            return _players;
         }
 
         [DataMember]
@@ -33,27 +38,12 @@ namespace Model
 
         [DataMember]
         public int Winner { get => _winner; set => _winner = value; }
-
-        //[DataMember]
-        //public PlayerList Players { get => _players; set => _players = value; }
-
-        public PlayerList GetPlayers() {
-            
-            return this._players;
-        }
-
-        public void SetPlayers(PlayerList p)
-        {
-            this._players = p;
-        }
-
-        public void SetPlayer(Player p, int index)
-        {
-            this._players[index] = p;
-        }
         
         [DataMember]
         public DateTime EndTime { get => _endTime; set => _endTime = value; }
+
+        [DataMember]
+        public PlayerList Players { get => _players; set => _players = value; }
 
         public object Clone()
         {

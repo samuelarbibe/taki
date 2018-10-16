@@ -18,7 +18,7 @@ namespace Service
         Card BuildDeck();
 
         [OperationContract]
-        Game StartGame(User user, int playerCount);
+        Game StartGame(Player p, int playerCount);
 
         [OperationContract]
         PlayerList GetPlayerList();
@@ -40,6 +40,7 @@ namespace Service
 
         [OperationContract]
         UserList GetAllUsers();
+
     }
 
 }

@@ -15,10 +15,8 @@ namespace ViewModel
             return new User();
         }
 
-
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
-
             Player p = entity as Player;
             //base.CreateModel(p);
             p.Hand = null;
@@ -37,9 +35,8 @@ namespace ViewModel
 
 
         //get the last <index> players inserted into the table
-        public Player GetLastPlayerID()
+        public Player GetLastPlayer()
         {
-
             Command.CommandText = ("SELECT TOP 1 * FROM Player_Table ORDER BY ID DESC");
             PlayerList temp = new PlayerList(Select());
             return temp.Count > 0 ? temp[0] : new Player(0);
@@ -145,8 +142,7 @@ namespace ViewModel
 
             //parameters
 
-            command.Parameters.Add(p.Id == null ? new OleDbParameter("@id", 0) : new OleDbParameter("@id", p.Id));
-            //command.Parameters.Add(new OleDbParameter("@temp_score", 0));
+            command.Parameters.Add(new OleDbParameter("@id", p.User_id));
         }
 
 

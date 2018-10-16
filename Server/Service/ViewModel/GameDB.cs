@@ -24,11 +24,11 @@ namespace ViewModel
             Game game = entity as Game;
 
             game.Id = (int)Reader["ID"];
-            game.SetPlayer(db.SelectById((int)Reader["player_1_id"]), 0); 
-            game.SetPlayer(db.SelectById((int)Reader["player_2_id"]), 1);
-            game.SetPlayer(db.SelectById((int)Reader["player_3_id"]), 2);
-            game.SetPlayer(db.SelectById((int)Reader["player_4_id"]), 3);
-            game.SetPlayer(db.SelectById((int)Reader["table_id"]), 4);
+            game.Players[0] = db.SelectById((int)Reader["player_1_id"]); 
+            game.Players[1] = db.SelectById((int)Reader["player_2_id"]);
+            game.Players[2] = db.SelectById((int)Reader["player_3_id"]);
+            game.Players[3] = db.SelectById((int)Reader["player_4_id"]);
+            game.Players[4] = db.SelectById((int)Reader["table_id"]);
 
             game.StartTime = DateTime.Now;
 
@@ -138,7 +138,7 @@ namespace ViewModel
         {
             Game g = entity as Game;
 
-            command.CommandText = ("INSERT INTO Game_Table ([startDate], [endDate], [player_1_id], [player_2_id], [player_3_id], [player_4_id], [table_id], [winner_id]) VALUES ('"+ DateTime.Now.ToString("G") + "','"+DateTime.Now.ToString("G")+"', "+g.GetPlayers()[0].Id+ ", " + g.GetPlayers()[0].Id + ", 0,0, "+-g.Id+", 0)");
+            command.CommandText = ("INSERT INTO Game_Table ([startDate], [endDate], [player_1_id], [player_2_id], [player_3_id], [player_4_id], [table_id], [winner_id]) VALUES ('"+ DateTime.Now.ToString("G") + "','"+DateTime.Now.ToString("G")+"', "+g.Players[0].Id+ ", " + g.Players[0].Id + ", 0,0, "+-g.Id+", 0)");
 
             //switch (g.Players.Count)
             //{

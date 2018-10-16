@@ -220,6 +220,38 @@ namespace Form.TakiService {
     [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     public partial class Player : Form.TakiService.User {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TempScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int User_idField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TempScore {
+            get {
+                return this.TempScoreField;
+            }
+            set {
+                if ((this.TempScoreField.Equals(value) != true)) {
+                    this.TempScoreField = value;
+                    this.RaisePropertyChanged("TempScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int User_id {
+            get {
+                return this.User_idField;
+            }
+            set {
+                if ((this.User_idField.Equals(value) != true)) {
+                    this.User_idField = value;
+                    this.RaisePropertyChanged("User_id");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -229,6 +261,9 @@ namespace Form.TakiService {
     public partial class Game : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Form.TakiService.PlayerList PlayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -236,6 +271,19 @@ namespace Form.TakiService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int WinnerField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndTime {
+            get {
+                return this.EndTimeField;
+            }
+            set {
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public Form.TakiService.PlayerList Players {
@@ -323,10 +371,10 @@ namespace Form.TakiService {
         System.Threading.Tasks.Task<Form.TakiService.Card> BuildDeckAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
-        Form.TakiService.Game StartGame(Form.TakiService.User user, int playerCount);
+        Form.TakiService.Game StartGame(Form.TakiService.Player p, int playerCount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int playerCount);
+        System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.Player p, int playerCount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerList", ReplyAction="http://tempuri.org/IService/GetPlayerListResponse")]
         Form.TakiService.PlayerList GetPlayerList();
@@ -406,12 +454,12 @@ namespace Form.TakiService {
             return base.Channel.BuildDeckAsync();
         }
         
-        public Form.TakiService.Game StartGame(Form.TakiService.User user, int playerCount) {
-            return base.Channel.StartGame(user, playerCount);
+        public Form.TakiService.Game StartGame(Form.TakiService.Player p, int playerCount) {
+            return base.Channel.StartGame(p, playerCount);
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.User user, int playerCount) {
-            return base.Channel.StartGameAsync(user, playerCount);
+        public System.Threading.Tasks.Task<Form.TakiService.Game> StartGameAsync(Form.TakiService.Player p, int playerCount) {
+            return base.Channel.StartGameAsync(p, playerCount);
         }
         
         public Form.TakiService.PlayerList GetPlayerList() {

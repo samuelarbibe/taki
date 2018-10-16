@@ -19,6 +19,10 @@ namespace BusinessLayer
             new PlayerList { }, //waitingList[2] = players looking for 4 player games
         };
 
+        static CardDb cdb = new CardDb();
+
+        static CardList deck = cdb.SelectAll();
+
         static GameList _gameList = new GameList();
 
         static Game _game;
@@ -99,8 +103,7 @@ namespace BusinessLayer
         public Game BlStartGame(Player p, int playerCount)
         {  
             //if there is a game in gameList containing this player
-            Game temp = _gameList.Find(g => g.GetPlayers().Find(q => q.Username == p.Username && q.Password == p.Password) != null); 
-
+            Game temp = _gameList.Find(g => g.Players.Find(q => q.User_id == p.User_id) != null); 
 
             // return the game to the player!
             if (temp != null) return temp;
@@ -111,19 +114,24 @@ namespace BusinessLayer
 
 
             // if the player isn't in the waiting list add him.
-            if (_waitingList[playerCount - 2].Find(q => q.Id == p.Id) == null) _waitingList[playerCount - 2].Add(p);
+            if (_waitingList[playerCount - 2].Find(q => q.User_id == p.User_id) == null) _waitingList[playerCount - 2].Add(p);
 
 
             // if the player list is the size wanted including the requesting player, 
             if (_waitingList[playerCount - 2].Count == playerCount)
             {
                 // create a new game containing all the players on the last player's request
-                if (p.Id == _waitingList[playerCount - 2][playerCount - 1].Id)
+                if (p.User_id == _waitingList[playerCount - 2][playerCount - 1].User_id)
                 {
                     _game = new Game(_waitingList[playerCount - 2]); // create a new game with the players
 
-                    _game.GetPlayers().Add(new Player(true)); // adding the table as a player
-                    _game.GetPlayers()[playerCount].Hand = new Hand(100); // giving the table 100 shuffled cards
+                    for(int i = 0; i < _game.Players.Count; i++)
+                    {
+                        _game.Players[i].Hand = BuildShuffledHand(8, deck);
+                    }
+
+                    _game.Players.Add(new Player(true)); // adding the table as a player
+                    _game.Players[playerCount].Hand = BuildShuffledHand(100, deck); // giving the table 100 shuffled cards
 
                     _game = BlStartGameDatabase(_game); // add this game to the database!
 
@@ -149,18 +157,20 @@ namespace BusinessLayer
             ConnectionList playerCardConnectionList = new ConnectionList();
             Connection temp = new Connection();
 
-            playerDb.InsertList(g.GetPlayers()); // Insert players into database
+            playerDb.InsertList(g.Players); // Insert players into database
 
             gameDb.Insert(g); // Insert game into database
 
+            playerDb.SaveChanges();
 
             int lastGameId = gameDb.GetLastGame().Id;
-            int lastPlayerId = playerDb.GetLastPlayerID().Id;
+            int lastPlayerId = playerDb.GetLastPlayer().Id - g.Players.Count;
 
             g.Id = ++lastGameId;
 
-            foreach (Player p in g.GetPlayers())
+            foreach (Player p in g.Players)
             {
+                if (p.Username == "table") p.User_id = -g.Id;
                 temp.SideA = ++lastPlayerId; // increment the player id for each player
                 temp.SideB = lastGameId; // the game id will be the same when inserted
                 temp.ConnectionType = "player-game";
@@ -186,6 +196,33 @@ namespace BusinessLayer
             //playerGameDb.SaveChanges();
             //playerCardDb.SaveChanges();
             return g;
+        }
+
+
+        public CardList BuildShuffledHand(int length, CardList deck)
+        {
+            CardList hand = new CardList();
+            Card temp;
+            Random rand = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                temp = deck[rand.Next(0, 65)];
+                if (length < 65)//if hand is smaller than the deck length, make sure there are no doubles
+                {
+                    while (hand.Find(q => q.Value == temp.Value && q.Color == temp.Color) != null)// if the card is already in the hand, fetch for a different card
+                    {
+                        temp = deck[rand.Next(0, 65)];
+                    }
+                    hand.Add(temp);
+                }
+                else
+                {
+                    hand.Add(temp);// if the hand's length is greater than the deck, just insert random cards
+                }
+            }
+
+            return hand;
         }
     }
 }
