@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data.OleDb;
+using System.Linq;
 using Model;
 
 namespace ViewModel
@@ -20,7 +15,6 @@ namespace ViewModel
 
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
-
             User user = entity as User;
             user.Id = (int) Reader["ID"];
             user.Username = Reader["username"].ToString();
@@ -28,25 +22,24 @@ namespace ViewModel
             user.FirstName = Reader["first_name"].ToString();
             user.LastName = Reader["last_name"].ToString();
             user.Score = (int) Reader["score"];
-            user.Level = (int)Reader["level"];
+            user.Level = (int) Reader["level"];
             user.Admin = Reader["admin"] as bool? ?? false;
             user.Wins = (int) Reader["wins"];
-            user.Losses = (int )Reader["losses"];
+            user.Losses = (int) Reader["losses"];
             return user;
-
         }
 
         public UserList SelectAll()
         {
-            Command.CommandText = ("SELECT * FROM User_Table");
+            Command.CommandText = "SELECT * FROM User_Table";
             UserList temp = new UserList(Select());
             return temp;
         }
-        
+
 
         public UserList SelectByName(string firstName, string lastName)
         {
-            Command.CommandText = ("SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName");
+            Command.CommandText = "SELECT * FROM User_Table WHERE 'first_name'= @fName AND 'last_name' = @lName";
 
 
             //parameters
@@ -61,7 +54,7 @@ namespace ViewModel
 
         public UserList SelectByUsernameAndPassword(string username, string password)
         {
-            Command.CommandText = ("SELECT * FROM User_Table WHERE [username] = @uName AND [password] = @pWord");
+            Command.CommandText = "SELECT * FROM User_Table WHERE [username] = @uName AND [password] = @pWord";
 
 
             //parameters
@@ -76,61 +69,70 @@ namespace ViewModel
 
         public User SelectById(int id)
         {
-
-            Command.CommandText = ("SELECT * FROM User_Table WHERE 'ID' = '@id'");
+            Command.CommandText = "SELECT * FROM User_Table WHERE 'ID' = '@id'";
 
             //parameters
             Command.Parameters.Add(new OleDbParameter("@Id", id));
 
             UserList temp = new UserList(Select());
 
-            if (temp.Count() == 1)
-            {
-                return temp[0] as User;
-            }
+            if (temp.Count() == 1) return temp[0];
             return null;
         }
 
         public User SelectByPassword(string password)
         {
-
-            Command.CommandText = ("SELECT * FROM User_Table WHERE [password] = @Password");
+            Command.CommandText = "SELECT * FROM User_Table WHERE [password] = @Password";
 
             //parameters
             Command.Parameters.Add(new OleDbParameter("@Password", password));
 
             UserList temp = new UserList(Select());
 
-            if (temp.Count() == 1)
-            {
-                return temp[0] as User;
-            }
+            if (temp.Count() == 1) return temp[0];
             return null;
         }
 
         public User SelectByUsername(string username)
         {
-
-            Command.CommandText = ("SELECT * FROM User_Table WHERE [username] = @Username");
+            Command.CommandText = "SELECT * FROM User_Table WHERE [username] = @Username";
 
             //parameters
             Command.Parameters.Add(new OleDbParameter("@Username", username));
 
             UserList temp = new UserList(Select());
 
-            if (temp.Count() == 1)
-            {
-                return temp[0] as User;
-            }
+            if (temp.Count() == 1) return temp[0];
             return null;
         }
 
+
+        public override void Insert(BaseEntity entity)
+        {
+            if (entity is User) Inserted.Add(new ChangeEntity(CreateInsertSql, entity));
+        }
+
+        public override void Delete(BaseEntity entity)
+        {
+            User u = entity as User;
+
+            PlayerDb playerDb = new PlayerDb();
+            playerDb.Delete(u as Player);
+
+            if (u != null) Inserted.Add(new ChangeEntity(CreateDeleteSql, entity));
+        }
+
+        public override void Update(BaseEntity entity)
+        {
+            if (entity is User) Inserted.Add(new ChangeEntity(CreateUpdateSql, entity));
+        }
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
             User user = entity as User;
 
-            command.CommandText = ("INSERT INTO User_Table ( [username], [password], [first_name], [last_name]) VALUES (@username,  @password, @firstName, @lastName)");
+            command.CommandText =
+                "INSERT INTO User_Table ( [username], [password], [first_name], [last_name]) VALUES (@username,  @password, @firstName, @lastName)";
 
             //parameters
 
@@ -145,17 +147,16 @@ namespace ViewModel
         {
             User user = entity as User;
 
-            command.CommandText = ("DELETE FROM User_Table WHERE ID = @id");
+            command.CommandText = "DELETE FROM User_Table WHERE ID = @id";
 
             //parameters
 
             command.Parameters.Add(new OleDbParameter("@id", user.Id));
         }
-    
+
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
             throw new NotImplementedException();
         }
     }
 }
-

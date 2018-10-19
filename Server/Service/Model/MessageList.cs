@@ -1,18 +1,22 @@
-﻿using System;
-using System.Runtime.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     [CollectionDataContract]
     public class MessageList : List<Message>
     {
-        public MessageList() { }
+        public MessageList()
+        {
+        }
 
-        public MessageList(IEnumerable<Message> list) : base(list) { }
+        public MessageList(IEnumerable<Message> list) : base(list)
+        {
+        }
 
-        public MessageList(IEnumerable<BaseEntity> list) : base(list.Cast<Message>().ToList()) { }
+        public MessageList(IEnumerable<BaseEntity> list) : base(list.Cast<Message>().ToList())
+        {
+        }
     }
 }

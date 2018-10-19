@@ -57,6 +57,12 @@ namespace Service
             return bl.BlStartGame(p, playerCount);
         }
 
+        public bool StopSearchingForGame(Player p)
+        {
+            Bl bl = new Bl();
+            return bl.BlStopSearchingForGame(p);
+        }
+
         public PlayerList GetPlayerList()
         {
             return null;

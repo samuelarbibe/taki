@@ -70,7 +70,7 @@ namespace Form
         {
             _playersCount = _currentGame.Players.Count;
 
-            _currentPlayerIndex = _currentGame.Players.FindIndex(p => p.User_id == _currentUser.Id);
+            _currentPlayerIndex = _currentGame.Players.FindIndex(p => p.UserId == _currentUser.Id);
 
             for (int i = 0; i < _playersCount - 1; i++)
             {

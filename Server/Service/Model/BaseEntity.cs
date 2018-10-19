@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-
-using System.Text;
+﻿using System.Runtime.Serialization;
 
 namespace Model
 {
@@ -12,6 +8,10 @@ namespace Model
         private int _id;
 
         [DataMember]
-        public int Id { get => _id; set => _id = value; }
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
     }
 }

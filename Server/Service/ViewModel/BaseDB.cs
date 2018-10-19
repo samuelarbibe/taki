@@ -1,40 +1,68 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
 using Model;
 
 namespace ViewModel
 {
     public abstract class BaseDb
     {
+        //update, insert, delete
+        protected static List<ChangeEntity> Inserted = new List<ChangeEntity>();
+        protected static List<ChangeEntity> Updated = new List<ChangeEntity>();
+        protected OleDbCommand Command;
+        protected OleDbConnection Connection;
 
         //database
         protected string ConnectionString;
-        protected OleDbConnection Connection;
-        protected OleDbCommand Command;
         protected OleDbDataReader Reader;
 
- 
+        /*---------------------------------------------------------------*/
+
+        public BaseDb()
+        {
+            string s1 = "";
+
+            if (ConnectionString == null)
+            {
+                string[] arguments = Environment.GetCommandLineArgs();
+                string s;
+                if (arguments.Length == 1)
+                {
+                    s = arguments[0];
+                }
+                else
+                {
+                    s = arguments[1];
+                    s = s.Replace("/service:", "");
+                }
+
+                string[] ss = s.Split('\\');
+
+                int x = ss.Length - 4;
+                ss[x] = "ViewModel";
+                Array.Resize(ref ss, x + 1);
+
+                s1 = string.Join("\\", ss);
+            }
+
+            ConnectionString =
+                @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + s1 +
+                @"\Database.accdb; Persist Security Info = True";
+
+            Connection = new OleDbConnection(ConnectionString);
+            Command = new OleDbCommand();
+        }
+
 
         //base entity
         protected abstract BaseEntity NewEntity();
 
 
-
         //base model
         protected abstract BaseEntity CreateModel(BaseEntity entity);
-
-
-
-        //update, insert, delete
-        protected static List<ChangeEntity> Inserted = new List<ChangeEntity>();
-        protected static List<ChangeEntity> Updated = new List<ChangeEntity>();
-
 
 
         public abstract void CreateInsertSql(BaseEntity entity, OleDbCommand command);
@@ -42,68 +70,25 @@ namespace ViewModel
         public abstract void CreateDeleteSql(BaseEntity entity, OleDbCommand command);
 
 
-
         public virtual void Insert(BaseEntity entity)
         {
-
-            BaseEntity reqEntity = this.NewEntity();
+            BaseEntity reqEntity = NewEntity();
             if (entity != null && entity.GetType() == reqEntity.GetType())
-            {
-                Inserted.Add(new ChangeEntity(this.CreateInsertSql, entity));
-            }
+                Inserted.Add(new ChangeEntity(CreateInsertSql, entity));
         }
 
         public virtual void Update(BaseEntity entity)
         {
-            BaseEntity reqEntity = this.NewEntity();
+            BaseEntity reqEntity = NewEntity();
             if (entity != null && entity.GetType() == reqEntity.GetType())
-            {
-                Updated.Add(new ChangeEntity(this.CreateUpdateSql, entity));
-            }
+                Updated.Add(new ChangeEntity(CreateUpdateSql, entity));
         }
 
         public virtual void Delete(BaseEntity entity)
         {
-            BaseEntity reqEntity = this.NewEntity();
+            BaseEntity reqEntity = NewEntity();
             if (entity != null && entity.GetType() == reqEntity.GetType())
-            {
-                Updated.Add(new ChangeEntity(this.CreateDeleteSql, entity));
-            }
-        }
-
-        /*---------------------------------------------------------------*/
-
-        public BaseDb()
-        {
-
-            string s1 = "";
-
-            if (ConnectionString == null)
-            {
-                String[] arguments = Environment.GetCommandLineArgs();
-                string s;
-                if (arguments.Length == 1) // direct execution
-                { s = arguments[0]; }
-                else  // service execution
-                {
-                    s = arguments[1];
-                    s = s.Replace("/service:", "");  // remove /service: from the begining of the command line
-                }
-                string[] ss = s.Split('\\');   // פירוק המחרוזת למערך (ע"פ / שמפריד
-
-                int x = ss.Length - 4;  //הורדתי 3 תיקיות מהסוף
-                ss[x] = "ViewModel";   // ....שיניתי את התיקיה האחרונה ל
-                Array.Resize(ref ss, x + 1);  // תיקון של אורך המערך, לאורך העכשווי
-
-                s1 = String.Join("\\", ss);  // חיבור מחדש של המערך - עם / מפריד
-            }
-
-
-            ConnectionString =
-            @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + s1 + @"\Database.accdb; Persist Security Info = True";
-
-            Connection = new OleDbConnection(ConnectionString);
-            Command = new OleDbCommand();
+                Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
         }
 
         /*---------------------------------------------------------------*/
@@ -113,7 +98,7 @@ namespace ViewModel
             OleDbCommand command = new OleDbCommand();
 
             int recordsAffected = 0;
-            int error_index = 0;
+            int errorIndex = 0;
             try
             {
                 command.Connection = Connection;
@@ -122,17 +107,20 @@ namespace ViewModel
                 //inserted
                 foreach (var item in Inserted)
                 {
-
                     command.Parameters.Clear();
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
 
-                    command.CommandText = "SELECT @@Identity "; //get last ID
-                    int temp = (int)command.ExecuteScalar();
-                    item.Entity.Id = temp == null ? 1 : temp;
+                    if (item.Entity.Id == 0)
+                    {
+                        command.CommandText = "SELECT @@Identity "; //get last ID on this session
+                        int temp = (int) command.ExecuteScalar();
+                        item.Entity.Id = temp == 0 ? 1 : temp;
+                    }
 
-                    error_index++;
+                    errorIndex++;
                 }
+
                 Inserted.Clear();
 
                 //updated, deleted
@@ -142,22 +130,21 @@ namespace ViewModel
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
                 }
-                Updated.Clear();
 
+                Updated.Clear();
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine("\n"+e.Message + "\nSQL:" + command.CommandText +"\n The Problem is with: "+Inserted[error_index].Entity.GetType() +"\n");
+                Debug.WriteLine("\n" + e.Message + "\nSQL:" + command.CommandText + "\n The Problem is with: " +
+                                Inserted[errorIndex].Entity.GetType() + "\n");
             }
             finally
             {
                 Reader?.Close();
 
-                if (Connection.State == ConnectionState.Open)
-                {
-                    Connection.Close();
-                }
+                if (Connection.State == ConnectionState.Open) Connection.Close();
             }
+
             return recordsAffected;
         }
 
@@ -187,11 +174,9 @@ namespace ViewModel
             {
                 Reader?.Close();
 
-                if (Connection.State == ConnectionState.Open)
-                {
-                    Connection.Close();
-                }
+                if (Connection.State == ConnectionState.Open) Connection.Close();
             }
+
             return list;
         }
     }

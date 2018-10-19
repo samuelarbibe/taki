@@ -225,7 +225,7 @@ namespace Form.TakiService {
         private int TempScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int User_idField;
+        private int UserIdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int TempScore {
@@ -241,14 +241,14 @@ namespace Form.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int User_id {
+        public int UserId {
             get {
-                return this.User_idField;
+                return this.UserIdField;
             }
             set {
-                if ((this.User_idField.Equals(value) != true)) {
-                    this.User_idField = value;
-                    this.RaisePropertyChanged("User_id");
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
                 }
             }
         }
@@ -412,6 +412,12 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
+        bool StopSearchingForGame(Form.TakiService.Player p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
+        System.Threading.Tasks.Task<bool> StopSearchingForGameAsync(Form.TakiService.Player p);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
         Form.TakiService.UserList GetAllUsers();
         
@@ -508,6 +514,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username) {
             return base.Channel.UsernameAvailableAsync(username);
+        }
+        
+        public bool StopSearchingForGame(Form.TakiService.Player p) {
+            return base.Channel.StopSearchingForGame(p);
+        }
+        
+        public System.Threading.Tasks.Task<bool> StopSearchingForGameAsync(Form.TakiService.Player p) {
+            return base.Channel.StopSearchingForGameAsync(p);
         }
         
         public Form.TakiService.UserList GetAllUsers() {

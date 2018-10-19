@@ -39,6 +39,9 @@ namespace Service
         bool UsernameAvailable(string username);
 
         [OperationContract]
+        bool StopSearchingForGame(Player p);
+
+        [OperationContract]
         UserList GetAllUsers();
 
     }

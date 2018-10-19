@@ -23,14 +23,18 @@ namespace Form
     {
         private Game _game;
         private int _playerCount;
+        private Player _p;
         private User _cu;
         private int _counter;
+        private bool _gameNotFound;
+
 
         public LoadingPage(int playerCount)
         {
             _counter = 0;
             _playerCount = playerCount;
             _cu = MainWindow.CurrentUser;
+            _gameNotFound = false;
 
             InitializeComponent();
 
@@ -39,22 +43,22 @@ namespace Form
 
         private void SearchGame()
         {
-            Player p = new Player();
+            _p = new Player();
 
-            p.User_id = _cu.Id;
-            p.FirstName = _cu.FirstName;
-            p.LastName = _cu.LastName;
-            p.Username = _cu.Username;
-            p.Password = _cu.Password;
-            p.Level = _cu.Level;
-            p.Score = _cu.Score;
-            p.Admin = _cu.Admin;
-            p.Wins = _cu.Wins;
-            p.Losses = _cu.Losses;
-            p.TempScore = 0;
+            _p.UserId = _cu.Id;
+            _p.FirstName = _cu.FirstName;
+            _p.LastName = _cu.LastName;
+            _p.Username = _cu.Username;
+            _p.Password = _cu.Password;
+            _p.Level = _cu.Level;
+            _p.Score = _cu.Score;
+            _p.Admin = _cu.Admin;
+            _p.Wins = _cu.Wins;
+            _p.Losses = _cu.Losses;
+            _p.TempScore = 0;
 
 
-            _game = MainWindow.Service.StartGame(p, _playerCount);
+            _game = MainWindow.Service.StartGame(_p, _playerCount);
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += FindGame;
@@ -70,7 +74,7 @@ namespace Form
 
                     if (_counter < 50)
                     {
-                        _game = MainWindow.Service.StartGame(p, _playerCount);
+                        _game = MainWindow.Service.StartGame(_p, _playerCount);
                         _counter++;
                     }
                     else
@@ -78,6 +82,8 @@ namespace Form
                         dispatcherTimer.Stop();
                         status.Text = "no game could be found... please try again";
                         status.Foreground = new SolidColorBrush(Colors.Red);
+                        _gameNotFound = true;
+                        MainWindow.Service.StopSearchingForGame(_p);
                     }
                 }
                 else // if game is found
@@ -88,14 +94,15 @@ namespace Form
             }
         }
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        private void SearchAgainButton_Click(object sender, RoutedEventArgs e)
         {
-            SearchGame();
+            MainWindow.BigFrame.Navigate(new LoadingPage(_playerCount));
         }
 
         private void CancelSearchButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.BigFrame.Navigate(new MainMenu(true));
+            MainWindow.Service.StopSearchingForGame(_p);
+            MainWindow.BigFrame.Navigate(_gameNotFound ? new MainMenu(true) : new MainMenu());
         }
     }
 }
