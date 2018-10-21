@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Model;
 using ViewModel;
 
@@ -199,11 +200,19 @@ namespace BusinessLayer
 
 
             // save the changes and insert the data into the database 
-            gameDb.SaveChanges();
+
+            Thread thread = new Thread(BlSaveChanges); // save the changes on a different thread!
+            thread.Start();
 
             return g;
         }
 
+
+        public void BlSaveChanges()
+        {
+            GameDb gameDb = new GameDb();
+            gameDb.SaveChanges();
+        }
 
         public CardList BuildShuffledHand(int length)
         {

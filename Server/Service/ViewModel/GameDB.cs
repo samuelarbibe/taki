@@ -25,8 +25,8 @@ namespace ViewModel
             game.Players.Add(db.SelectById((int) Reader["player_4_id"]));
             game.Players.Add(db.SelectById((int) Reader["table_id"]));
 
-            game.StartTime = DateTime.MaxValue;
-            game.EndTime = DateTime.MinValue;
+            game.StartTime = DateTime.Parse(Reader["start_date"].ToString());
+            game.EndTime = DateTime.Parse(Reader["end_date"].ToString());
 
             return game;
         }
@@ -44,6 +44,13 @@ namespace ViewModel
             Command.CommandText = "SELECT * FROM Game_Table WHERE ID = (SELECT MAX(ID) FROM Game_Table)";
             GameList temp = new GameList(Select());
             return temp.Count > 0 ? temp[0] : new Game(0);
+        }
+
+        public int GetLastGameID()
+        {
+            Command.CommandText = "SELECT MAX(ID) FROM Game_Table";
+            GameList temp = new GameList(Select());
+            return temp.Count > 0 ? temp[0].Id : new Game(0).Id;
         }
 
 
