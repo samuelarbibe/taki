@@ -1,5 +1,4 @@
-﻿using Form.TakiService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for Player1UC.xaml
+    /// Interaction logic for PlayerUC.xaml
     /// </summary>
-    public partial class Player1UC : UserControl
+    public partial class PlayerUC : UserControl
     {
-        public Player1UC()
+        public PlayerUC()
         {
             InitializeComponent();
         }

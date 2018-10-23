@@ -34,29 +34,32 @@ namespace Form
         {
             InitializeComponent();
             _currentGame = game;
-            this.DataContext = _currentGame;
 
             reorderPlayerList();
 
-            BoxOne.Text = _currentPlayer.Username;
+            this.DataContext = _playersList;
+
+            uc1 = new Player1UC();
+
+            //BoxOne.Text = _currentPlayer.Username;
 
             switch (_currentGame.Players.Count)
             {
                 case 3:
-                    BoxThree.Text = _playersList[1].Username;
-                    BoxFive.Text = _playersList[2].Username;
+                    uc3 = new Player3UC();
+                    uctable = new TableUC();
                     break;
-                case 4:
-                    BoxTwo.Text = _playersList[1].Username;
-                    BoxThree.Text = _playersList[2].Username;
-                    BoxFive.Text = _playersList[3].Username;
-                    break;
-                case 5:
-                    BoxTwo.Text = _playersList[1].Username;
-                    BoxThree.Text = _playersList[2].Username;
-                    BoxFour.Text = _playersList[3].Username;
-                    BoxFive.Text = _playersList[4].Username;
-                    break;
+                //case 4:
+                //    BoxTwo.Text = _playersList[1].Username;
+                //    BoxThree.Text = _playersList[2].Username;
+                //    BoxFive.Text = _playersList[3].Username;
+                //    break;
+                //case 5:
+                //    BoxTwo.Text = _playersList[1].Username;
+                //    BoxThree.Text = _playersList[2].Username;
+                //    BoxFour.Text = _playersList[3].Username;
+                //    BoxFive.Text = _playersList[4].Username;
+                //    break;
             }
 
         }

@@ -257,13 +257,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\TAKI.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Settings.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Back_Icon.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Cards\TAKI.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

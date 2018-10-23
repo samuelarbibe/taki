@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Form.TakiService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace Form
         public TableUC()
         {
             InitializeComponent();
+        }
+
+        public TableUC(Player table)
+        {
+            InitializeComponent();
+            DataContext = table;
         }
     }
 }

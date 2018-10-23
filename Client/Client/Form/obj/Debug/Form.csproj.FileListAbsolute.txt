@@ -70,9 +70,6 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\MainMenu.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\MainWindow.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\MenuPage.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player1UC.g.cs
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player2UC.g.cs
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player3UC.g.cs
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player4UC.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Register.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\TableUC.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\UserPage.g.cs
@@ -92,9 +89,6 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\MainMenu.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\MainWindow.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\MenuPage.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player1UC.baml
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player2UC.baml
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player3UC.baml
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player4UC.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Register.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\TableUC.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\UserPage.baml
@@ -147,9 +141,11 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.Ge
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.CoreCompileInputs.cache
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.exe
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.pdb
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\SettingsPage.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\SettingsPage.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\SettingsPage.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\SettingsPage.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player3UC.g.cs
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player3UC.baml
