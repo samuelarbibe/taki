@@ -61,7 +61,7 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3"  Background="#FF409092" Grid.RowSpan="2" >
-            <Image Source="Resources/Cards/TAKI.png" Margin="20,10,10,10"/>
+            <Image Source="Resources/TAKI.png" Margin="20,10,10,10"/>
             <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="UserButton_Click">
                 <StackPanel x:Name="UserInfoStackPanel" Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Left" x:Name="UsernameTextBlock" Text="" Padding="22" FontSize="20" FontFamily="Arial Rounded MT Bold" Foreground="White"/>

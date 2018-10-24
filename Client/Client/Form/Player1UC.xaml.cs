@@ -21,9 +21,23 @@ namespace Form
     /// </summary>
     public partial class Player1UC : UserControl
     {
-        public Player1UC()
+        private CardList _hand;
+        private Player _currentPlayer;
+
+        public Player1UC() {
+
+            InitializeComponent();
+        }
+
+        public Player1UC(Player currentPlayer)
         {
             InitializeComponent();
+            _currentPlayer = currentPlayer;
+            _hand = _currentPlayer.Hand;
+
+            DataContext = _currentPlayer;
+
+            //cardListItemControl.ItemsSource = _hand;
         }
     }
 }

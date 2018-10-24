@@ -21,6 +21,11 @@ namespace Service
             return bl.BlBuildDeck();
         }
 
+        public CardList GetCardList()
+        {
+            return null;
+        }
+
         public UserList GetAllUsers()
         {
             Bl bl = new Bl();

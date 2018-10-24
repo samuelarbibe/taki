@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="BackButton" Content="Back" Click="BackButton_Click"/>
 
-        <ListView Name="DataGrid" Grid.Row="1"   Grid.RowSpan="7" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="1">
+        <ListView x:Name="DataGrid" Grid.Row="1" Grid.RowSpan="7" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" Width="20" DisplayMemberBinding="{Binding Id}"/>

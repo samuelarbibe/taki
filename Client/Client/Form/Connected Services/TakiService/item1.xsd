@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model" />
+  <xs:element name="GetCardList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCardListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetCardListResult" nillable="true" type="q1:CardList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="BuildDeck">
     <xs:complexType>
       <xs:sequence />
@@ -9,14 +21,14 @@
   <xs:element name="BuildDeckResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="BuildDeckResult" nillable="true" type="q1:Card" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="BuildDeckResult" nillable="true" type="q2:Card" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="StartGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="p" nillable="true" type="q2:Player" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="p" nillable="true" type="q3:Player" />
         <xs:element minOccurs="0" name="playerCount" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -24,7 +36,7 @@
   <xs:element name="StartGameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="StartGameResult" nillable="true" type="q3:Game" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="StartGameResult" nillable="true" type="q4:Game" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -36,21 +48,21 @@
   <xs:element name="GetPlayerListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetPlayerListResult" nillable="true" type="q4:PlayerList" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetPlayerListResult" nillable="true" type="q5:PlayerList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Action">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="m" nillable="true" type="q5:Message" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="m" nillable="true" type="q6:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ActionResult" nillable="true" type="q6:MessageList" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ActionResult" nillable="true" type="q7:MessageList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -65,7 +77,7 @@
   <xs:element name="LoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="LoginResult" nillable="true" type="q7:User" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="LoginResult" nillable="true" type="q8:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -117,7 +129,7 @@
   <xs:element name="StopSearchingForGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="p" nillable="true" type="q8:Player" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="p" nillable="true" type="q9:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -136,7 +148,7 @@
   <xs:element name="GetAllUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q9:UserList" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q10:UserList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

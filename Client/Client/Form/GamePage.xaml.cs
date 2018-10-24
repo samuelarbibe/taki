@@ -37,9 +37,9 @@ namespace Form
 
             reorderPlayerList();
 
-            this.DataContext = _playersList;
+            DataContext = _playersList;
 
-            uc1 = new Player1UC();
+            uc1 = new Player1UC(_currentPlayer);
 
             //BoxOne.Text = _currentPlayer.Username;
 

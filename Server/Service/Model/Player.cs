@@ -18,7 +18,7 @@ namespace Model
             Id = 0;
         }
 
-        //[DataMember]
+        [DataMember]
         public CardList Hand
         {
             get => _hand;

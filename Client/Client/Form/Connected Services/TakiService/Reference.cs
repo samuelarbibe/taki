@@ -15,6 +15,84 @@ namespace Form.TakiService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="CardList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Card")]
+    [System.SerializableAttribute()]
+    public class CardList : System.Collections.Generic.List<Form.TakiService.Card> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Card", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Card : Form.TakiService.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ColorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SpecialField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ValueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Color {
+            get {
+                return this.ColorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ColorField, value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Image {
+            get {
+                return this.ImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageField, value) != true)) {
+                    this.ImageField = value;
+                    this.RaisePropertyChanged("Image");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Special {
+            get {
+                return this.SpecialField;
+            }
+            set {
+                if ((this.SpecialField.Equals(value) != true)) {
+                    this.SpecialField = value;
+                    this.RaisePropertyChanged("Special");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntity", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(Form.TakiService.User))]
@@ -222,10 +300,26 @@ namespace Form.TakiService {
     public partial class Player : Form.TakiService.User {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Form.TakiService.CardList HandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TempScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int UserIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Form.TakiService.CardList Hand {
+            get {
+                return this.HandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HandField, value) != true)) {
+                    this.HandField = value;
+                    this.RaisePropertyChanged("Hand");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int TempScore {
@@ -334,13 +428,6 @@ namespace Form.TakiService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Card", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-    [System.SerializableAttribute()]
-    public partial class Card : Form.TakiService.BaseEntity {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PlayerList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Player")]
     [System.SerializableAttribute()]
     public class PlayerList : System.Collections.Generic.List<Form.TakiService.Player> {
@@ -363,6 +450,12 @@ namespace Form.TakiService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TakiService.IService")]
     public interface IService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCardList", ReplyAction="http://tempuri.org/IService/GetCardListResponse")]
+        Form.TakiService.CardList GetCardList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetCardList", ReplyAction="http://tempuri.org/IService/GetCardListResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.CardList> GetCardListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuildDeck", ReplyAction="http://tempuri.org/IService/BuildDeckResponse")]
         Form.TakiService.Card BuildDeck();
@@ -450,6 +543,14 @@ namespace Form.TakiService {
         
         public ServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public Form.TakiService.CardList GetCardList() {
+            return base.Channel.GetCardList();
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.CardList> GetCardListAsync() {
+            return base.Channel.GetCardListAsync();
         }
         
         public Form.TakiService.Card BuildDeck() {
