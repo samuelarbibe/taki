@@ -21,15 +21,28 @@ namespace Form
     /// </summary>
     public partial class TableUC : UserControl
     {
+        private CardList _deck;
+        private Player _currentPlayer;
+        private CardList _stack;
+
         public TableUC()
         {
             InitializeComponent();
         }
 
-        public TableUC(Player table)
+        //public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+
+        public void SetCurrentPlayer(Player currentPlayer)
         {
-            InitializeComponent();
-            DataContext = table;
+            _currentPlayer = currentPlayer;
+
+            _deck = _currentPlayer.Hand;
+            _stack = new CardList();
+
+            _stack.Add(_deck.Last());
+            _deck.RemoveAt(_deck.Count - 1);
+
+            DataContext = _stack.LastOrDefault();
         }
     }
 }

@@ -7,19 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock x:Name="name" Text="{Binding Path=Username}"/>
-        
-        <ItemsControl x:Name="cardListItemControl" Margin="10" ItemsSource="{Binding Path=Hand}">
+
+        <TextBlock x:Name="Username" Text="{Binding Username}"/>
+
+        <ItemsControl x:Name="CardListItemControl" Margin="10" ItemsSource="{Binding Hand}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Image}" />
+                    <Image Source="{Binding Image}" Margin="-40,0,0,0" HorizontalAlignment="Right" DockPanel.Dock="Top"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate >
-                    <StackPanel Orientation="Horizontal" />
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="{x:Type ContentPresenter}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="99" />
+                            <!--<Setter Property="Height" Value="100"/>-->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
         </ItemsControl>
     </Grid>
 </UserControl>

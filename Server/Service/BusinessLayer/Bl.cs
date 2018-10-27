@@ -120,9 +120,9 @@ namespace BusinessLayer
                 // create a new game containing all the players on the last player's request
                 _game = new Game(_waitingList[playerCount - 2]); // create a new game with the players
 
-                for(int i = 0; i < _game.Players.Count; i++)
+                foreach (var t in _game.Players)
                 {
-                    _game.Players[i].Hand = BuildShuffledHand(8);
+                    t.Hand = BuildShuffledHand(8);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
@@ -216,6 +216,8 @@ namespace BusinessLayer
 
         public CardList BuildShuffledHand(int length)
         {
+            Thread.Sleep(50);
+
             CardList hand = new CardList();
             Card temp;
             Random rand = new Random();

@@ -1,0 +1,13 @@
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\Database.accdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\BusinessLayer.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\BusinessLayer.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\Model.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\ViewModel.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\Model.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\ViewModel.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\bin\Release\ViewModel.dll.config
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\obj\Release\BusinessLayer.csprojAssemblyReference.cache
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\obj\Release\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\obj\Release\BusinessLayer.csproj.CopyComplete
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\obj\Release\BusinessLayer.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\BusinessLayer\obj\Release\BusinessLayer.pdb

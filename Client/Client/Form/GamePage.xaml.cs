@@ -39,27 +39,30 @@ namespace Form
 
             DataContext = _playersList;
 
-            uc1 = new Player1UC(_currentPlayer);
+            uc1.SetCurrentPlayer(_currentPlayer);
 
             //BoxOne.Text = _currentPlayer.Username;
 
             switch (_currentGame.Players.Count)
             {
                 case 3:
-                    uc3 = new Player3UC();
-                    uctable = new TableUC();
+                    uc2.Visibility = Visibility.Hidden;
+                    uc3.SetCurrentPlayer(_playersList[1]);
+                    uc4.Visibility = Visibility.Hidden;
+                    uctable.SetCurrentPlayer(_table);
                     break;
-                //case 4:
-                //    BoxTwo.Text = _playersList[1].Username;
-                //    BoxThree.Text = _playersList[2].Username;
-                //    BoxFive.Text = _playersList[3].Username;
-                //    break;
-                //case 5:
-                //    BoxTwo.Text = _playersList[1].Username;
-                //    BoxThree.Text = _playersList[2].Username;
-                //    BoxFour.Text = _playersList[3].Username;
-                //    BoxFive.Text = _playersList[4].Username;
-                //    break;
+                case 4:
+                    uc2.SetCurrentPlayer(_playersList[1]);
+                    uc3.SetCurrentPlayer(_playersList[2]);
+                    uc4.Visibility = Visibility.Hidden;
+                    uctable.SetCurrentPlayer(_table);
+                    break;
+                case 5:
+                    uc2.SetCurrentPlayer(_playersList[1]);
+                    uc3.SetCurrentPlayer(_playersList[2]);
+                    uc4.SetCurrentPlayer(_playersList[3]);
+                    uctable.SetCurrentPlayer(_table);
+                    break;
             }
 
         }
@@ -69,7 +72,7 @@ namespace Form
         // - list[First] is the current player
         // - all the players after him are arranged in order
         // - list[Last] is the table
-        public void reorderPlayerList()
+        private void reorderPlayerList()
         {
             _playersCount = _currentGame.Players.Count;
 

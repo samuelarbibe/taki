@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Form.TakiService;
 
 namespace Form
 {
@@ -20,9 +21,21 @@ namespace Form
     /// </summary>
     public partial class Player2UC : UserControl
     {
+        private Player _currentPlayer;
+        private CardList _hand;
+
         public Player2UC()
         {
             InitializeComponent();
+        }
+
+        public void SetCurrentPlayer(Player currentPlayer)
+        {
+            _currentPlayer = currentPlayer;
+
+            _hand = currentPlayer.Hand;
+
+            DataContext = _currentPlayer;
         }
     }
 }

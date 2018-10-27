@@ -1,0 +1,15 @@
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\Database.accdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\Service.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\Service.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\BusinessLayer.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\Model.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\ViewModel.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\BusinessLayer.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\Model.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\ViewModel.pdb
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\bin\Release\ViewModel.dll.config
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\obj\Release\Service.csprojAssemblyReference.cache
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\obj\Release\Service.csproj.CoreCompileInputs.cache
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\obj\Release\Service.csproj.CopyComplete
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\obj\Release\Service.dll
+C:\Users\samue\Documents\GitHub\Taki\Server\Service\Service\obj\Release\Service.pdb

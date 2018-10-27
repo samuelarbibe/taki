@@ -29,15 +29,14 @@ namespace Form
             InitializeComponent();
         }
 
-        public Player1UC(Player currentPlayer)
+        public void SetCurrentPlayer(Player currentPlayer)
         {
-            InitializeComponent();
             _currentPlayer = currentPlayer;
-            _hand = _currentPlayer.Hand;
+
+            _hand = currentPlayer.Hand;
 
             DataContext = _currentPlayer;
-
-            //cardListItemControl.ItemsSource = _hand;
         }
+
     }
 }

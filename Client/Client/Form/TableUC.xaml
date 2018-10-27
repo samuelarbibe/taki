@@ -5,8 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Form"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="180" d:DesignWidth="430">
     <Grid>
-        <TextBlock Text="{Binding [2].Username}"/>
+        <!--<TextBlock x:Name="Username" Text="{Binding Username}"/>-->
+
+        <!--<Image x:Name="StackImage" Height="150" Source="{Binding Image}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+        <StackPanel x:Name="CardStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <WrapPanel>
+                <Image Height="100" x:Name="CardStackImage" Source="{Binding Image}"/>
+            </WrapPanel>
+        </StackPanel>
+
+        <Button x:Name="DeckButton" Margin="0,37,55.4,0" RenderTransformOrigin="0.5,0.5" BorderThickness="0" Height="80" VerticalAlignment="Top" HorizontalAlignment="Right" Width="70">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="20"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Cards/card0068.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </UserControl>

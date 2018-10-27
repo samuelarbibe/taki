@@ -154,3 +154,4 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player4UC.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player2UC.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player4UC.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\GeneratedInternalTypeHelper.g.cs
