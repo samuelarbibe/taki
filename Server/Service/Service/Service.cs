@@ -68,6 +68,12 @@ namespace Service
             return bl.BlStopSearchingForGame(p);
         }
 
+        public bool PlayerQuit(Player p)
+        {
+            Bl bl = new Bl();
+            return bl.BlPlayerQuit(p);
+        }
+
         public PlayerList GetPlayerList()
         {
             return null;

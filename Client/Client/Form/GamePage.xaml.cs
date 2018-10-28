@@ -98,5 +98,16 @@ namespace Form
 
             _table = _playersList[_playersCount - 1];
         }
+
+        private void ExitGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExitDialog dialog = new ExitDialog();
+
+            if(dialog.ShowDialog() == true)
+            {
+                Console.WriteLine("Player removed from the game in the gameList: "+MainWindow.Service.PlayerQuit(_currentPlayer).ToString());
+                MainWindow.BigFrame.Navigate(new MainMenu());
+            }
+        }
     }
 }

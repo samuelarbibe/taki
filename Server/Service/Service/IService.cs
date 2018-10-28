@@ -45,6 +45,9 @@ namespace Service
         bool StopSearchingForGame(Player p);
 
         [OperationContract]
+        bool PlayerQuit(Player p);
+
+        [OperationContract]
         UserList GetAllUsers();
 
     }

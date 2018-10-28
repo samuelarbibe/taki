@@ -511,6 +511,12 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
         System.Threading.Tasks.Task<bool> StopSearchingForGameAsync(Form.TakiService.Player p);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/PlayerQuit", ReplyAction="http://tempuri.org/IService/PlayerQuitResponse")]
+        bool PlayerQuit(Form.TakiService.Player p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/PlayerQuit", ReplyAction="http://tempuri.org/IService/PlayerQuitResponse")]
+        System.Threading.Tasks.Task<bool> PlayerQuitAsync(Form.TakiService.Player p);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
         Form.TakiService.UserList GetAllUsers();
         
@@ -623,6 +629,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<bool> StopSearchingForGameAsync(Form.TakiService.Player p) {
             return base.Channel.StopSearchingForGameAsync(p);
+        }
+        
+        public bool PlayerQuit(Form.TakiService.Player p) {
+            return base.Channel.PlayerQuit(p);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PlayerQuitAsync(Form.TakiService.Player p) {
+            return base.Channel.PlayerQuitAsync(p);
         }
         
         public Form.TakiService.UserList GetAllUsers() {

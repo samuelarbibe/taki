@@ -7,6 +7,8 @@ namespace ViewModel
 {
     public class CardDb : BaseDb
     {
+
+
         protected override BaseEntity NewEntity()
         {
             return new Card();

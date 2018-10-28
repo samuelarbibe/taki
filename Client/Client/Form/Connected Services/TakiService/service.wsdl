@@ -67,6 +67,12 @@
   <wsdl:message name="IService_StopSearchingForGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:StopSearchingForGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_PlayerQuit_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerQuit" />
+  </wsdl:message>
+  <wsdl:message name="IService_PlayerQuit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerQuitResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_GetAllUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUsers" />
   </wsdl:message>
@@ -113,6 +119,10 @@
     <wsdl:operation name="StopSearchingForGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/StopSearchingForGame" message="tns:IService_StopSearchingForGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/StopSearchingForGameResponse" message="tns:IService_StopSearchingForGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayerQuit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/PlayerQuit" message="tns:IService_PlayerQuit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/PlayerQuitResponse" message="tns:IService_PlayerQuit_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllUsers" message="tns:IService_GetAllUsers_InputMessage" />
@@ -204,6 +214,15 @@
     </wsdl:operation>
     <wsdl:operation name="StopSearchingForGame">
       <soap:operation soapAction="http://tempuri.org/IService/StopSearchingForGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlayerQuit">
+      <soap:operation soapAction="http://tempuri.org/IService/PlayerQuit" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

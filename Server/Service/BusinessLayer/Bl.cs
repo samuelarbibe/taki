@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Model;
 using ViewModel;
@@ -17,11 +18,14 @@ namespace BusinessLayer
             new PlayerList() //waitingList[2] = players looking for 4 player games
         };
 
+
         private static CardDb _cardDb = new CardDb();
           
         private static CardList _deck = _cardDb.SelectAll();
           
         private static GameList _gameList = new GameList();
+
+        private static Dictionary<Player, int> _standbyPlayers = new Dictionary<Player, int>();
           
         private static Game _game;
 
@@ -98,13 +102,18 @@ namespace BusinessLayer
         // creates a new game and returns it
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public Game BlStartGame(Player p, int playerCount)
-        {  
-            //if there is a game in gameList containing this player
-            Game temp = _gameList.Find(g => g.Players.Find(q => q.UserId == p.UserId) != null); 
+        {
+            //if there is a game in gameList containing this player and if game is active
+            Game temp = _gameList.Find(g => g.Players.Find(q => q.UserId == p.UserId) != null);
 
             // return the game to the player!
-            if (temp != null) return temp;
+            if (temp != null) {
+                if (_waitingList[playerCount - 2].Count > 0) _waitingList[playerCount - 2].Clear();
+                return temp;
+            }
 
+            // if the list is null, create a new one.
+            //if (_waitingList[playerCount - 2] == null) _waitingList[playerCount - 2] = new PlayerList();
 
             // if the list contains a table, clear it! its old!
             if (_waitingList[playerCount - 2].Count > playerCount) _waitingList[playerCount - 2].Clear();
@@ -131,7 +140,11 @@ namespace BusinessLayer
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
+                //_game.Active = true;
+
                 _gameList.Add((Game)_game.Clone()); // add this game to the game list
+
+                //_waitingList[playerCount - 2].Clear();
 
                 return _game; // return this game
             }
@@ -141,7 +154,7 @@ namespace BusinessLayer
 
         public bool BlStopSearchingForGame(Player remove)
         {
-            foreach (var w in _waitingList)
+            foreach (PlayerList w in _waitingList)
             {
                 w.Remove(w.Find(p => p.UserId == remove.UserId));
             }
@@ -149,6 +162,59 @@ namespace BusinessLayer
             return true;
         }
 
+
+        //public int BlUserInStandby(User u)
+        //{
+        //    return _standbyPlayers.ContainsKey()Find(p => p.UserId == u.Id);
+        //}
+
+        public bool BlPlayerQuit(Player remove)
+        {
+            foreach (Game g in _gameList)
+            {
+                Player temp = g.Players.Find(p => p.UserId == remove.UserId);
+                if (temp != null)
+                {
+                    //_standbyPlayers.Add(temp, g.Id);
+                    g.Players.Remove(temp);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //public bool BlPlayerQuit(Player remove)
+        //{
+        //    foreach (Game g in _gameList)
+        //    {
+        //        Player temp = g.Players.Find(p => p.UserId == remove.UserId);
+        //        if (temp != null && g.Active)
+        //        {
+        //            _standbyPlayers.Add(temp, g.Id);
+        //            g.Players.Remove(temp);
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        //public Player BlPlayerReturn(User returningPlayer)
+        //{
+        //    int gameId = BlUserInStandby(returningPlayer);
+
+        //    if (gameId == 0) return null;
+
+        //    //Player temp = g.Players.Find(p => p.Username == add.UserId.ToString());
+
+        //    _gameList[gameId].Players.Add()
+        //    player = temp;
+        //    //g.Active = true;
+
+        //    return player;
+
+
+        //    return null;
+        //}
 
         // insert game into database, including connections in PlayerGameDB and PlayerCardDB
         public Game BlStartGameDatabase(Game g)

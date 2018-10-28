@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\
 Form
 none
 false
 DEBUG;TRACE
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\App.xaml
-161188574026
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\App.xaml
+17-1610414712
 
-26-1535221993
+27101020624
 15833945659
-AdminUserPage.xaml;GamePage.xaml;LoadingPage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;MenuPage.xaml;Player1UC.xaml;Player2UC.xaml;Player3UC.xaml;Player4UC.xaml;Register.xaml;SettingsPage.xaml;TableUC.xaml;UserPage.xaml;
+AdminUserPage.xaml;ExitDialog.xaml;GamePage.xaml;LoadingPage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;MenuPage.xaml;Player1UC.xaml;Player2UC.xaml;Player3UC.xaml;Player4UC.xaml;Register.xaml;SettingsPage.xaml;TableUC.xaml;UserPage.xaml;
 
-True
+False
 
