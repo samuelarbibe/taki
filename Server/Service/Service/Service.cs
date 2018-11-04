@@ -13,7 +13,8 @@ namespace Service
 {
     public class Service : IService
     {
-        
+        public static MessageList PendingChanges = new MessageList(); // pending messages for each player 
+
         public Card BuildDeck()
         {
             Bl bl = new Bl();
@@ -79,12 +80,33 @@ namespace Service
             return null;
         }
 
-        public MessageList Action(Message m)
+        public void AddAction(Message m)
         {
-            //send m to BL
-            //return a new Massage to the Client, with orders what to do with the cards and players
-            return null;
+            PendingChanges.Add(m);
         }
-        
+
+        public void AddActions(MessageList ml)
+        {
+            PendingChanges.AddRange(ml);
+        }
+
+        public MessageList DoAction(int gameId, int playerId)
+        {
+            MessageList temp = new MessageList();
+
+            if (PendingChanges == null || PendingChanges.Count == 0) return null;
+            else  
+            {
+                foreach (Message m in PendingChanges)
+                {
+                    if (m.GameId == gameId && m.Reciever == playerId)
+                    {
+                        temp.Add(m);
+                        PendingChanges.Remove(m);
+                    }
+                }
+            } 
+            return temp;
+        }
     }
 }

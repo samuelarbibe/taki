@@ -25,7 +25,14 @@ namespace Model
 
         public Game(PlayerList pl)
         {
-            Players = pl;
+            PlayerList temp = new PlayerList();
+
+            foreach(Player p in pl)
+            {
+                temp.Add((Player)p.Clone());
+            }
+
+            Players = temp;
         }
 
 

@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
 using Form.TakiService;
+using System.ComponentModel;
+using System.Threading;
 
 namespace Form
 {
@@ -65,8 +67,36 @@ namespace Form
                     break;
             }
 
+            BackgroundWorker backgroundProgress = new BackgroundWorker();
+            backgroundProgress.DoWork += fetchChanges;
+
+            backgroundProgress.RunWorkerAsync(true);                             
         }
 
+        private void fetchChanges(object sender, DoWorkEventArgs e)
+        {
+            while (true) {
+                Thread.Sleep(500);
+
+                MessageList temp = MainWindow.Service.DoAction(_currentGame.Id, _currentPlayer.Id);
+
+                if (temp != null && temp.Count != 0)
+                {
+                    foreach (Message m in temp)
+                    {
+                        switch (m.Action)
+                        {
+                            case "add":
+                                _playersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
+                                break;
+                            case "remove":
+                                _playersList.Find(p => p.Id == m.Target).Hand.Remove(m.Card);
+                                break;
+                        }
+                    }
+                } 
+            }
+        }
 
         // this function re-arranges the player in a particular way, to make sure that:
         // - list[First] is the current player
@@ -99,6 +129,36 @@ namespace Form
             _table = _playersList[_playersCount - 1];
         }
 
+
+        private void AddAction(object sender, RoutedEventArgs e) // a demo action build, in this case, a card will be moved from the table to the player that pressed;
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (_playersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()// add the top card of the table to the current player
+                {
+                    Action = "add",
+                    Target = _currentPlayer.Id,
+                    Reciever = _playersList[i].Id,
+                    Card = _table.Hand.Last(),
+                    GameId = _currentGame.Id
+                });
+
+                temp.Add(new Message()// remove the top card from the table
+                {
+                    Action = "remove",
+                    Target = _table.Id,
+                    Reciever = _playersList[i].Id,
+                    Card = _table.Hand.Last(),
+                    GameId = _currentGame.Id
+                });
+            }
+            MainWindow.Service.AddActions(temp);
+
+        }
+
+
         private void ExitGameButton_Click(object sender, RoutedEventArgs e)
         {
             ExitDialog dialog = new ExitDialog();
@@ -109,5 +169,7 @@ namespace Form
                 MainWindow.BigFrame.Navigate(new MainMenu());
             }
         }
+
+
     }
 }

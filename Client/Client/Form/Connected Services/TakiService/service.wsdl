@@ -31,11 +31,23 @@
   <wsdl:message name="IService_GetPlayerList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayerListResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_Action_InputMessage">
-    <wsdl:part name="parameters" element="tns:Action" />
+  <wsdl:message name="IService_AddAction_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAction" />
   </wsdl:message>
-  <wsdl:message name="IService_Action_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ActionResponse" />
+  <wsdl:message name="IService_AddAction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddActions_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddActions" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddActions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddActionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DoAction_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoAction" />
+  </wsdl:message>
+  <wsdl:message name="IService_DoAction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoActionResponse" />
   </wsdl:message>
   <wsdl:message name="IService_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
@@ -96,9 +108,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetPlayerList" message="tns:IService_GetPlayerList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetPlayerListResponse" message="tns:IService_GetPlayerList_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Action">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/Action" message="tns:IService_Action_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/ActionResponse" message="tns:IService_Action_OutputMessage" />
+    <wsdl:operation name="AddAction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddAction" message="tns:IService_AddAction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddActionResponse" message="tns:IService_AddAction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddActions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddActions" message="tns:IService_AddActions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddActionsResponse" message="tns:IService_AddActions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DoAction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DoAction" message="tns:IService_DoAction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DoActionResponse" message="tns:IService_DoAction_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Login" message="tns:IService_Login_InputMessage" />
@@ -167,8 +187,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Action">
-      <soap:operation soapAction="http://tempuri.org/IService/Action" style="document" />
+    <wsdl:operation name="AddAction">
+      <soap:operation soapAction="http://tempuri.org/IService/AddAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActions">
+      <soap:operation soapAction="http://tempuri.org/IService/AddActions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoAction">
+      <soap:operation soapAction="http://tempuri.org/IService/DoAction" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

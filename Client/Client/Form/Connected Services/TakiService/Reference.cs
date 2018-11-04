@@ -424,6 +424,86 @@ namespace Form.TakiService {
     [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     public partial class Message : Form.TakiService.BaseEntity {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ActionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Form.TakiService.Card CardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GameIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RecieverField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TargetField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Action {
+            get {
+                return this.ActionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
+                    this.ActionField = value;
+                    this.RaisePropertyChanged("Action");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Form.TakiService.Card Card {
+            get {
+                return this.CardField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardField, value) != true)) {
+                    this.CardField = value;
+                    this.RaisePropertyChanged("Card");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GameId {
+            get {
+                return this.GameIdField;
+            }
+            set {
+                if ((this.GameIdField.Equals(value) != true)) {
+                    this.GameIdField = value;
+                    this.RaisePropertyChanged("GameId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Reciever {
+            get {
+                return this.RecieverField;
+            }
+            set {
+                if ((this.RecieverField.Equals(value) != true)) {
+                    this.RecieverField = value;
+                    this.RaisePropertyChanged("Reciever");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Target {
+            get {
+                return this.TargetField;
+            }
+            set {
+                if ((this.TargetField.Equals(value) != true)) {
+                    this.TargetField = value;
+                    this.RaisePropertyChanged("Target");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -475,11 +555,23 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayerList", ReplyAction="http://tempuri.org/IService/GetPlayerListResponse")]
         System.Threading.Tasks.Task<Form.TakiService.PlayerList> GetPlayerListAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Action", ReplyAction="http://tempuri.org/IService/ActionResponse")]
-        Form.TakiService.MessageList Action(Form.TakiService.Message m);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAction", ReplyAction="http://tempuri.org/IService/AddActionResponse")]
+        void AddAction(Form.TakiService.Message m);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Action", ReplyAction="http://tempuri.org/IService/ActionResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.MessageList> ActionAsync(Form.TakiService.Message m);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddAction", ReplyAction="http://tempuri.org/IService/AddActionResponse")]
+        System.Threading.Tasks.Task AddActionAsync(Form.TakiService.Message m);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddActions", ReplyAction="http://tempuri.org/IService/AddActionsResponse")]
+        void AddActions(Form.TakiService.MessageList ml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddActions", ReplyAction="http://tempuri.org/IService/AddActionsResponse")]
+        System.Threading.Tasks.Task AddActionsAsync(Form.TakiService.MessageList ml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DoAction", ReplyAction="http://tempuri.org/IService/DoActionResponse")]
+        Form.TakiService.MessageList DoAction(int gameId, int playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DoAction", ReplyAction="http://tempuri.org/IService/DoActionResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.MessageList> DoActionAsync(int gameId, int playerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Login", ReplyAction="http://tempuri.org/IService/LoginResponse")]
         Form.TakiService.User Login(string username, string password);
@@ -583,12 +675,28 @@ namespace Form.TakiService {
             return base.Channel.GetPlayerListAsync();
         }
         
-        public Form.TakiService.MessageList Action(Form.TakiService.Message m) {
-            return base.Channel.Action(m);
+        public void AddAction(Form.TakiService.Message m) {
+            base.Channel.AddAction(m);
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.MessageList> ActionAsync(Form.TakiService.Message m) {
-            return base.Channel.ActionAsync(m);
+        public System.Threading.Tasks.Task AddActionAsync(Form.TakiService.Message m) {
+            return base.Channel.AddActionAsync(m);
+        }
+        
+        public void AddActions(Form.TakiService.MessageList ml) {
+            base.Channel.AddActions(ml);
+        }
+        
+        public System.Threading.Tasks.Task AddActionsAsync(Form.TakiService.MessageList ml) {
+            return base.Channel.AddActionsAsync(ml);
+        }
+        
+        public Form.TakiService.MessageList DoAction(int gameId, int playerId) {
+            return base.Channel.DoAction(gameId, playerId);
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.MessageList> DoActionAsync(int gameId, int playerId) {
+            return base.Channel.DoActionAsync(gameId, playerId);
         }
         
         public Form.TakiService.User Login(string username, string password) {

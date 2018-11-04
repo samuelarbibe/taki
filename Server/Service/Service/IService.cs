@@ -14,6 +14,7 @@ namespace Service
     [ServiceContract]
     public interface IService
     {
+
         [OperationContract]
         CardList GetCardList();
 
@@ -27,7 +28,13 @@ namespace Service
         PlayerList GetPlayerList();
 
         [OperationContract]
-        MessageList Action(Message m);
+        void AddAction(Message m);
+
+        [OperationContract]
+        void AddActions(MessageList ml);
+
+        [OperationContract]
+        MessageList DoAction(int gameId, int playerId);
 
         [OperationContract]
         User Login(string username, string password);

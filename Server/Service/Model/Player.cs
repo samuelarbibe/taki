@@ -1,9 +1,10 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Model
 {
     [DataContract]
-    public class Player : User
+    public class Player : User, ICloneable
     {
         private CardList _hand;
         private int _tempScore;
@@ -37,6 +38,11 @@ namespace Model
         {
             get => _userId;
             set => _userId = value;
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }
