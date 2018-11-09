@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.ServiceModel;
 using Form.TakiService;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
 namespace Form
@@ -29,6 +30,8 @@ namespace Form
         Player _currentPlayer;
         Player _table;
         PlayerList _playersList = new PlayerList();
+        private MessageList _localMessageList;
+        private BackgroundWorker _backgroundProgress;
         private int _playersCount;
         private int _currentPlayerIndex;
 
@@ -37,7 +40,7 @@ namespace Form
             InitializeComponent();
             _currentGame = game;
 
-            reorderPlayerList();
+            ReorderPlayerList();
 
             DataContext = _playersList;
 
@@ -67,42 +70,63 @@ namespace Form
                     break;
             }
 
-            BackgroundWorker backgroundProgress = new BackgroundWorker();
-            backgroundProgress.DoWork += fetchChanges;
+            _backgroundProgress = new BackgroundWorker();
+            _backgroundProgress.DoWork += FetchChanges;
+            _backgroundProgress.RunWorkerCompleted += BackgroundProcess_RunWorkerCompleted;
 
-            backgroundProgress.RunWorkerAsync(true);                             
+            _backgroundProgress.RunWorkerAsync();                             
         }
 
-        private void fetchChanges(object sender, DoWorkEventArgs e)
+        private void FetchChanges(object sender, DoWorkEventArgs e)
         {
-            while (true) {
-                Thread.Sleep(500);
+            Thread.Sleep(600);
 
-                MessageList temp = MainWindow.Service.DoAction(_currentGame.Id, _currentPlayer.Id);
+            _localMessageList = MainWindow.Service.DoAction(_currentGame.Id, _currentPlayer.Id);
+        }
 
-                if (temp != null && temp.Count != 0)
+        private void BackgroundProcess_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Update UI
+            if (_localMessageList != null && _localMessageList.Count != 0)
+            {
+                foreach (Message m in _localMessageList)
                 {
-                    foreach (Message m in temp)
+                    switch (m.Action)
                     {
-                        switch (m.Action)
-                        {
-                            case "add":
-                                _playersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
-                                break;
-                            case "remove":
-                                _playersList.Find(p => p.Id == m.Target).Hand.Remove(m.Card);
-                                break;
-                        }
+                        case "add":
+                            _playersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
+
+                            break;
+                        case "remove":
+                            _playersList.Find(p => p.Id == m.Target).Hand.Remove(m.Card);
+                            break;
                     }
-                } 
+                }
+                //PrintCards();
             }
+            // Run again
+            _backgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
+        }
+
+        public void PrintCards()
+        {
+            string cards = null;
+            foreach (Player p in _playersList)
+            {
+                cards += "\n Player "+ p.Username +":";
+                foreach (Card c in p.Hand)
+                {
+                    cards += "\n value:" + c.Value + ", color:" + c.Color;
+                }
+            }
+            Console.Write(cards);
         }
 
         // this function re-arranges the player in a particular way, to make sure that:
         // - list[First] is the current player
         // - all the players after him are arranged in order
         // - list[Last] is the table
-        private void reorderPlayerList()
+        private void ReorderPlayerList()
         {
             _playersCount = _currentGame.Players.Count;
 

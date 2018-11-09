@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -13,7 +14,9 @@ namespace Service
 {
     public class Service : IService
     {
-        public static MessageList PendingChanges = new MessageList(); // pending messages for each player 
+        private static MessageList _pendingChanges = new MessageList(); // pending messages for each player 
+
+        public static MessageList PendingChanges { get => _pendingChanges; set => _pendingChanges = value; }
 
         public Card BuildDeck()
         {
@@ -97,7 +100,7 @@ namespace Service
             if (PendingChanges == null || PendingChanges.Count == 0) return null;
             else  
             {
-                foreach (Message m in PendingChanges)
+                foreach (Message m in PendingChanges.ToList())
                 {
                     if (m.GameId == gameId && m.Reciever == playerId)
                     {
