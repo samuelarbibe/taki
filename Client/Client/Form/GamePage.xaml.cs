@@ -16,6 +16,7 @@ using System.ServiceModel;
 using Form.TakiService;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Channels;
 using System.Threading;
 
 namespace Form
@@ -25,48 +26,53 @@ namespace Form
     /// </summary>
     public partial class GamePage : Page
     {
-        Game _currentGame;
-        User _currentUser = MainWindow.CurrentUser;
-        Player _currentPlayer;
-        Player _table;
-        PlayerList _playersList = new PlayerList();
+        private Game _currentGame;
+        private User _currentUser = MainWindow.CurrentUser;
+        private Player _currentPlayer;
+        private Player _table;
+        private PlayerList _playersList = new PlayerList();
         private MessageList _localMessageList;
         private BackgroundWorker _backgroundProgress;
         private int _playersCount;
         private int _currentPlayerIndex;
 
+        private PlayerList PlayersList { get => _playersList; set => _playersList = value; }
+        private Player Table { get => _table; set => _table = value; }
+        private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+        private User CurrentUser { get => _currentUser; set => _currentUser = value; }
+        private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
+
+
         public GamePage(Game game)
         {
             InitializeComponent();
-            _currentGame = game;
+            CurrentGame = game;
 
             ReorderPlayerList();
 
-            DataContext = _playersList;
+            DataContext = PlayersList;
 
-            uc1.SetCurrentPlayer(_currentPlayer);
+            uc1.SetCurrentPlayer(CurrentPlayer);
 
-            //BoxOne.Text = _currentPlayer.Username;
-
-            switch (_currentGame.Players.Count)
+            switch (CurrentGame.Players.Count)
             {
                 case 3:
                     uc2.Visibility = Visibility.Hidden;
-                    uc3.SetCurrentPlayer(_playersList[1]);
+                    uc3.SetCurrentPlayer(PlayersList[1]);
                     uc4.Visibility = Visibility.Hidden;
-                    uctable.SetCurrentPlayer(_table);
+                    uctable.SetCurrentPlayer(Table);
                     break;
                 case 4:
-                    uc2.SetCurrentPlayer(_playersList[1]);
-                    uc3.SetCurrentPlayer(_playersList[2]);
+                    uc2.SetCurrentPlayer(PlayersList[1]);
+                    uc3.SetCurrentPlayer(PlayersList[2]);
                     uc4.Visibility = Visibility.Hidden;
-                    uctable.SetCurrentPlayer(_table);
+                    uctable.SetCurrentPlayer(Table);
                     break;
                 case 5:
-                    uc2.SetCurrentPlayer(_playersList[1]);
-                    uc3.SetCurrentPlayer(_playersList[2]);
-                    uc4.SetCurrentPlayer(_playersList[3]);
-                    uctable.SetCurrentPlayer(_table);
+                    uc2.SetCurrentPlayer(PlayersList[1]);
+                    uc3.SetCurrentPlayer(PlayersList[2]);
+                    uc4.SetCurrentPlayer(PlayersList[3]);
+                    uctable.SetCurrentPlayer(Table);
                     break;
             }
 
@@ -74,19 +80,21 @@ namespace Form
             _backgroundProgress.DoWork += FetchChanges;
             _backgroundProgress.RunWorkerCompleted += BackgroundProcess_RunWorkerCompleted;
 
-            _backgroundProgress.RunWorkerAsync();                             
+            _backgroundProgress.RunWorkerAsync(); 
+            
+            PrintCards();
         }
 
         private void FetchChanges(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(600);
+            Thread.Sleep(500);
 
-            _localMessageList = MainWindow.Service.DoAction(_currentGame.Id, _currentPlayer.Id);
+            _localMessageList = MainWindow.Service.DoAction(CurrentGame.Id, CurrentPlayer.Id);
         }
 
         private void BackgroundProcess_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            // Update UI
+            // Update local variables
             if (_localMessageList != null && _localMessageList.Count != 0)
             {
                 foreach (Message m in _localMessageList)
@@ -94,26 +102,29 @@ namespace Form
                     switch (m.Action)
                     {
                         case "add":
-                            _playersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
+                            PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
 
                             break;
                         case "remove":
-                            _playersList.Find(p => p.Id == m.Target).Hand.Remove(m.Card);
+                            PlayersList.Find(p => p.Id == m.Target).Hand.Remove(m.Card);
                             break;
                     }
                 }
-                //PrintCards();
+                PrintCards();
+                
+                UpdateUI();
             }
+
             // Run again
             _backgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
         }
 
         public void PrintCards()
         {
-            string cards = null;
-            foreach (Player p in _playersList)
+            string cards = "\n \n --------------------------------------";
+            foreach (Player p in PlayersList)
             {
-                cards += "\n Player "+ p.Username +":";
+                cards += "\n \n Player "+ p.Username +":";
                 foreach (Card c in p.Hand)
                 {
                     cards += "\n value:" + c.Value + ", color:" + c.Color;
@@ -128,60 +139,30 @@ namespace Form
         // - list[Last] is the table
         private void ReorderPlayerList()
         {
-            _playersCount = _currentGame.Players.Count;
+            _playersCount = CurrentGame.Players.Count;
 
-            _currentPlayerIndex = _currentGame.Players.FindIndex(p => p.UserId == _currentUser.Id);
+            _currentPlayerIndex = CurrentGame.Players.FindIndex(p => p.UserId == CurrentUser.Id);
 
             for (int i = 0; i < _playersCount - 1; i++)
             {
                 if (_currentPlayerIndex >= _playersCount - 1)
                 {
-                    _playersList.Add(_currentGame.Players[_currentPlayerIndex % (_playersCount - 1)]);
+                    PlayersList.Add(CurrentGame.Players[_currentPlayerIndex % (_playersCount - 1)]);
                 }
                 else
                 {
-                    _playersList.Add(_currentGame.Players[_currentPlayerIndex]);
+                    PlayersList.Add(CurrentGame.Players[_currentPlayerIndex]);
                 }
 
                 _currentPlayerIndex++;
             }
 
-            _playersList.Add(_currentGame.Players.Find(q => q.Username == "table"));
+            PlayersList.Add(CurrentGame.Players.Find(q => q.Username == "table"));
 
-            _currentPlayer = _playersList[0];
+            CurrentPlayer = PlayersList[0];
 
-            _table = _playersList[_playersCount - 1];
+            Table = PlayersList[_playersCount - 1];
         }
-
-
-        private void AddAction(object sender, RoutedEventArgs e) // a demo action build, in this case, a card will be moved from the table to the player that pressed;
-        {
-            MessageList temp = new MessageList();
-
-            for (int i = 0; i < (_playersList.Count - 1); i++) //add for each player, not including the table
-            {
-                temp.Add(new Message()// add the top card of the table to the current player
-                {
-                    Action = "add",
-                    Target = _currentPlayer.Id,
-                    Reciever = _playersList[i].Id,
-                    Card = _table.Hand.Last(),
-                    GameId = _currentGame.Id
-                });
-
-                temp.Add(new Message()// remove the top card from the table
-                {
-                    Action = "remove",
-                    Target = _table.Id,
-                    Reciever = _playersList[i].Id,
-                    Card = _table.Hand.Last(),
-                    GameId = _currentGame.Id
-                });
-            }
-            MainWindow.Service.AddActions(temp);
-
-        }
-
 
         private void ExitGameButton_Click(object sender, RoutedEventArgs e)
         {
@@ -189,11 +170,67 @@ namespace Form
 
             if(dialog.ShowDialog() == true)
             {
-                Console.WriteLine("Player removed from the game in the gameList: "+MainWindow.Service.PlayerQuit(_currentPlayer).ToString());
+                Console.WriteLine("Player removed from the game in the gameList: "+MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
                 MainWindow.BigFrame.Navigate(new MainMenu());
             }
         }
 
+        private void UpdateUI()
+        {
+            uc1.UpdateUI(PlayersList[0]);
 
+            switch (CurrentGame.Players.Count)
+            {
+                case 3:
+                    uc2.Visibility = Visibility.Hidden;
+                    uc3.UpdateUI(PlayersList[1]);
+                    uc4.Visibility = Visibility.Hidden;
+                    uctable.UpdateUI(PlayersList[2]);
+                    break;
+                case 4:
+                    uc2.UpdateUI(PlayersList[1]);
+                    uc3.UpdateUI(PlayersList[2]);
+                    uc4.Visibility = Visibility.Hidden;
+                    uctable.UpdateUI(PlayersList[3]);
+                    break;
+                case 5:
+                    uc2.UpdateUI(PlayersList[1]);
+                    uc3.UpdateUI(PlayersList[2]);
+                    uc4.UpdateUI(PlayersList[3]);
+                    uctable.UpdateUI(PlayersList[4]);
+                    break;
+            }
+        }
+
+
+        public void TakeCardFromDeck(object sender, RoutedEventArgs e) // a demo action build, in this case, a card will be moved from the table to the player that pressed;
+        {
+            Player currentPlayer = PlayersList.First();
+            Player table = PlayersList.Last();
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()// add the top card of the table to the current player
+                {
+                    Action = "add",
+                    Target = currentPlayer.Id,
+                    Reciever = PlayersList[i].Id,
+                    Card = table.Hand.Last(),
+                    GameId = CurrentGame.Id
+                });
+
+                temp.Add(new Message()// remove the top card from the table
+                {
+                    Action = "remove",
+                    Target = table.Id,
+                    Reciever = PlayersList[i].Id,
+                    Card = table.Hand.Last(),
+                    GameId = CurrentGame.Id
+                });
+            }
+            MainWindow.Service.AddActions(temp);
+        }
+        
     }
 }

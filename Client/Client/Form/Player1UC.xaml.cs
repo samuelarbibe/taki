@@ -29,13 +29,21 @@ namespace Form
             InitializeComponent();
         }
 
+        public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+
+        public void UpdateUI(Player p)
+        {
+            CurrentPlayer = p;
+            DataContext = CurrentPlayer;
+        }
+
         public void SetCurrentPlayer(Player currentPlayer)
         {
-            _currentPlayer = currentPlayer;
+            CurrentPlayer = currentPlayer;
 
             _hand = currentPlayer.Hand;
 
-            DataContext = _currentPlayer;
+            DataContext = CurrentPlayer;
         }
 
     }

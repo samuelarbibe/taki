@@ -16,7 +16,7 @@
             </WrapPanel>
         </StackPanel>
 
-        <Button x:Name="DeckButton" Margin="0,37,55.4,0" RenderTransformOrigin="0.5,0.5" BorderThickness="0" Height="80" VerticalAlignment="Top" HorizontalAlignment="Right" Width="70">
+        <Button x:Name="DeckButton" Margin="0,37,55.4,0" RenderTransformOrigin="0.5,0.5" BorderThickness="0" Height="80" VerticalAlignment="Top" HorizontalAlignment="Right" Width="70" Click="DeckButton_OnClick">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

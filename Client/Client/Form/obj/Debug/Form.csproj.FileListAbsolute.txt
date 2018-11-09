@@ -145,7 +145,6 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\SettingsPage.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\SettingsPage.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\SettingsPage.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\SettingsPage.baml
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player3UC.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Player3UC.baml
@@ -159,3 +158,4 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\ExitDialog.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\ExitDialog.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\ExitDialog.baml
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache

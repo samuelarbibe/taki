@@ -24,25 +24,42 @@ namespace Form
         private CardList _deck;
         private Player _currentPlayer;
         private CardList _stack;
+        public event EventHandler StatusUpdated;
+
+        public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+
+        public void UpdateUI(Player p)
+        {
+            CurrentPlayer = p;
+            DataContext = _stack.LastOrDefault();
+        }
+
 
         public TableUC()
         {
             InitializeComponent();
         }
 
-        //public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
 
         public void SetCurrentPlayer(Player currentPlayer)
         {
-            _currentPlayer = currentPlayer;
+            CurrentPlayer = currentPlayer;
 
-            _deck = _currentPlayer.Hand;
+            _deck = CurrentPlayer.Hand;
             _stack = new CardList();
 
-            _stack.Add(_deck.Last());
-            _deck.RemoveAt(_deck.Count - 1);
+            _stack.Add(_deck.First());
+
+
+            _deck.RemoveAt(0);
 
             DataContext = _stack.LastOrDefault();
+        }
+        
+        private void DeckButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            //Null check makes sure the main page is attached to the event
+            StatusUpdated?.Invoke(this, new EventArgs());
         }
     }
 }
