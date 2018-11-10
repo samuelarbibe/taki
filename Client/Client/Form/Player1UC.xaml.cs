@@ -35,6 +35,7 @@ namespace Form
         {
             CurrentPlayer = p;
             DataContext = CurrentPlayer;
+            CardListItemControl.ItemsSource = CurrentPlayer.Hand;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)
@@ -44,6 +45,8 @@ namespace Form
             _hand = currentPlayer.Hand;
 
             DataContext = CurrentPlayer;
+
+            CardListItemControl.ItemsSource = CurrentPlayer.Hand;
         }
 
     }

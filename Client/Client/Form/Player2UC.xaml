@@ -9,7 +9,7 @@
     <Grid>
         <TextBlock x:Name="name" Text="{Binding Username}"/>
 
-        <ItemsControl x:Name="CardListItemControl" Margin="10" ItemsSource="{Binding Hand}">
+        <ItemsControl x:Name="CardListItemControl" Margin="10">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="Resources/Cards/card0068.png" Margin="-20,0,0,0" HorizontalAlignment="Right"/>
