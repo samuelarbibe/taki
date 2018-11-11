@@ -426,7 +426,7 @@ namespace Form.TakiService {
     public partial class Message : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ActionField;
+        private Form.TakiService.Message._action ActionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Form.TakiService.Card CardField;
@@ -441,12 +441,12 @@ namespace Form.TakiService {
         private int TargetField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Action {
+        public Form.TakiService.Message._action Action {
             get {
                 return this.ActionField;
             }
             set {
-                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
+                if ((this.ActionField.Equals(value) != true)) {
                     this.ActionField = value;
                     this.RaisePropertyChanged("Action");
                 }
@@ -503,6 +503,20 @@ namespace Form.TakiService {
                     this.RaisePropertyChanged("Target");
                 }
             }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="Message._action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+        public enum _action : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            add = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            remove = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            next_turn = 2,
         }
     }
     

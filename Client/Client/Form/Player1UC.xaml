@@ -10,7 +10,7 @@
 
         <TextBlock x:Name="Username" Text="{Binding Username}"/>
 
-        <ItemsControl x:Name="CardListItemControl" Margin="10" ItemsSource="{Binding Hand}">
+        <ItemsControl x:Name="CardListItemControl" Margin="10" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="{Binding Image}" Margin="-40,0,0,0" HorizontalAlignment="Right" DockPanel.Dock="Top"/>
@@ -26,7 +26,6 @@
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Panel.ZIndex" Value="99" />
-                            <!--<Setter Property="Height" Value="100"/>-->
                         </Trigger>
                     </Style.Triggers>
                 </Style>

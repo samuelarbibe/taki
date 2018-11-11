@@ -31,7 +31,9 @@ namespace Form
         public void UpdateUI(Player p)
         {
             CurrentPlayer = p;
+
             DataContext = _stack.LastOrDefault();
+
         }
 
 

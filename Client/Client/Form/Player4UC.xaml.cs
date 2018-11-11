@@ -35,6 +35,8 @@ namespace Form
         {
             CurrentPlayer = p;
             DataContext = CurrentPlayer;
+            CardListItemControl.ItemsSource = null;
+
             CardListItemControl.ItemsSource = CurrentPlayer.Hand;
 
         }

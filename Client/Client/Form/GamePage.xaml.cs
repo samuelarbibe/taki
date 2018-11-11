@@ -26,6 +26,7 @@ namespace Form
     /// </summary>
     public partial class GamePage : Page
     {
+        private bool _myTurn;
         private Game _currentGame;
         private User _currentUser = MainWindow.CurrentUser;
         private Player _currentPlayer;
@@ -41,12 +42,18 @@ namespace Form
         private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         private User CurrentUser { get => _currentUser; set => _currentUser = value; }
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
-
+        public bool MyTurn { get => _myTurn; set => _myTurn = value; }
 
         public GamePage(Game game)
         {
             InitializeComponent();
             CurrentGame = game;
+
+            MyTurn = false;
+
+            if (_currentUser.Id == CurrentGame.Players[0].UserId) MyTurn = true;// the first player in the game list starts
+
+            IsMyTurn(MyTurn);
 
             ReorderPlayerList();
 
@@ -82,12 +89,12 @@ namespace Form
 
             _backgroundProgress.RunWorkerAsync(); 
             
-            PrintCards();
+            //PrintCards();
         }
 
         private void FetchChanges(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(500);
+            Thread.Sleep(200);
 
             _localMessageList = MainWindow.Service.DoAction(CurrentGame.Id, CurrentPlayer.Id);
         }
@@ -101,16 +108,26 @@ namespace Form
                 {
                     switch (m.Action)
                     {
-                        case "add":
-                            PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
+                        case Message._action.add:
 
+                            PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
                             break;
-                        case "remove":
-                            PlayersList.Find(p => p.Id == m.Target).Hand.Remove(m.Card);
+
+                        case Message._action.remove:
+
+                            Player tempPlayer = PlayersList.Find(p => p.Id == m.Target); // the target player
+                            Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
+                            tempPlayer.Hand.Remove(tempCard); // remove the target card from the target player's hand
+                            break;
+
+                        case Message._action.next_turn:
+
+                            if (m.Target == _currentPlayer.Id) IsMyTurn(true);
+                            else IsMyTurn(false);
                             break;
                     }
                 }
-                PrintCards();
+                //PrintCards();
                 
                 UpdateUI();
             }
@@ -170,7 +187,7 @@ namespace Form
 
             if(dialog.ShowDialog() == true)
             {
-                Console.WriteLine("Player removed from the game in the gameList: "+MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
+                Console.WriteLine("Player removed from the game in the gameList: "+ MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
                 MainWindow.BigFrame.Navigate(new MainMenu());
             }
         }
@@ -213,7 +230,7 @@ namespace Form
             {
                 temp.Add(new Message()// add the top card of the table to the current player
                 {
-                    Action = "add",
+                    Action = Message._action.add,
                     Target = currentPlayer.Id,
                     Reciever = PlayersList[i].Id,
                     Card = table.Hand.Last(),
@@ -222,15 +239,50 @@ namespace Form
 
                 temp.Add(new Message()// remove the top card from the table
                 {
-                    Action = "remove",
+                    Action = Message._action.remove,
                     Target = table.Id,
                     Reciever = PlayersList[i].Id,
                     Card = table.Hand.Last(),
                     GameId = CurrentGame.Id
                 });
             }
+
             MainWindow.Service.AddActions(temp);
+
+            TurnFinished();
         }
         
+        public int GetNextPlayerId()
+        {
+            return PlayersList[1].Id;
+        }
+
+        public void IsMyTurn(bool MyTurn)
+        {
+            if (MyTurn) {
+                TakeCardFromDeck_Button.Visibility = Visibility.Visible;
+            }
+            else TakeCardFromDeck_Button.Visibility = Visibility.Hidden;
+        }
+
+
+        public void TurnFinished()
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.next_turn,
+                    Target = GetNextPlayerId(),
+                    Reciever = PlayersList[i].Id,
+                });
+            }
+
+            MainWindow.Service.AddActions(temp);
+
+            IsMyTurn(false);
+        }
     }
 }

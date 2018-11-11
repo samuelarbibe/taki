@@ -5,7 +5,11 @@ namespace Model
     [DataContract]
     public class Message : BaseEntity
     {
-        private string _action;
+        public enum _action {
+            add,
+            remove,
+            next_turn
+        }
         private int _reciever;
         private int _gameId;
         private Card _card;
@@ -19,11 +23,7 @@ namespace Model
         }
 
         [DataMember]
-        public string Action
-        {
-            get => _action;
-            set => _action = value;
-        }
+        public _action Action { get; set; }
 
         [DataMember]
         public Card Card

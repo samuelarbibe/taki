@@ -65,7 +65,7 @@
             </local:Player4UC.RenderTransform>
         </local:Player4UC>
         <local:TableUC x:Name="uctable" Grid.ColumnSpan="8" Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Margin="10"/>
-        <Button Grid.ColumnSpan="2" Content="Take Card" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.Row="8" VerticalAlignment="Top" Width="75" Click="TakeCardFromDeck"/>
+        <Button x:Name="TakeCardFromDeck_Button"  Grid.ColumnSpan="2" Content="Take Card" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.Row="8" VerticalAlignment="Top" Width="75" Click="TakeCardFromDeck"/>
 
     </Grid>
 </Page>
