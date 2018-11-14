@@ -93,6 +93,8 @@
         <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Content="Password" FontSize="16" VerticalAlignment="Bottom" Height="28.517" Width="87.204"/>
         <TextBlock x:Name="noUserError" Grid.Column="2" Grid.Row="5" Foreground="Red" HorizontalAlignment="Stretch" FontSize="12" TextWrapping="Wrap"/>
         <Button Content="Fill Admin" HorizontalAlignment="Left" Margin="64,15.6,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="AdminFillButton_Click"/>
-        <Button Content="Fill User" HorizontalAlignment="Left" Margin="64,10.4,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="UserFillButton_Click"/>
+        <Button Content="Fill User 1" HorizontalAlignment="Left" Margin="64,10.4,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User1FillButton_Click"/>
+        <Button Content="Fill User 2" HorizontalAlignment="Left" Margin="64,35,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User2FillButton_Click"/>
+        <Button Content="Fill User 3" HorizontalAlignment="Left" Margin="64,60,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User3FillButton_Click"/>
     </Grid>
 </Page>

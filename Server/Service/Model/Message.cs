@@ -8,7 +8,8 @@ namespace Model
         public enum _action {
             add,
             remove,
-            next_turn
+            next_turn,
+            player_quit
         }
         private int _reciever;
         private int _gameId;

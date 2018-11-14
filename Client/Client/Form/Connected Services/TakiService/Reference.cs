@@ -517,6 +517,9 @@ namespace Form.TakiService {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             next_turn = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            player_quit = 3,
         }
     }
     

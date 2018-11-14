@@ -51,5 +51,6 @@ namespace Form
             CardListItemControl.ItemsSource = CurrentPlayer.Hand;
 
         }
+
     }
 }

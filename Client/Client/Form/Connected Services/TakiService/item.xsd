@@ -93,6 +93,7 @@
       <xs:enumeration value="add" />
       <xs:enumeration value="remove" />
       <xs:enumeration value="next_turn" />
+      <xs:enumeration value="player_quit" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Message._action" nillable="true" type="tns:Message._action" />

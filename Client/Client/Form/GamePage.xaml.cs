@@ -34,6 +34,7 @@ namespace Form
         private PlayerList _playersList = new PlayerList();
         private MessageList _localMessageList;
         private BackgroundWorker _backgroundProgress;
+        private bool _active;
         private int _playersCount;
         private int _currentPlayerIndex;
 
@@ -43,6 +44,7 @@ namespace Form
         private User CurrentUser { get => _currentUser; set => _currentUser = value; }
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
         public bool MyTurn { get => _myTurn; set => _myTurn = value; }
+        public bool Active { get => _active; set => _active = value; }
 
         public GamePage(Game game)
         {
@@ -50,6 +52,7 @@ namespace Form
             CurrentGame = game;
 
             MyTurn = false;
+            Active = true;
 
             if (_currentUser.Id == CurrentGame.Players[0].UserId) MyTurn = true;// the first player in the game list starts
 
@@ -101,39 +104,53 @@ namespace Form
 
         private void BackgroundProcess_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            // Update local variables
-            if (_localMessageList != null && _localMessageList.Count != 0)
+            if (Active)
             {
-                foreach (Message m in _localMessageList)
+                // Update local variables
+                if (_localMessageList != null && _localMessageList.Count != 0)
                 {
-                    switch (m.Action)
+                    foreach (Message m in _localMessageList)
                     {
-                        case Message._action.add:
+                        switch (m.Action)
+                        {
+                            case Message._action.add:
 
-                            PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
-                            break;
+                                PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
+                                break;
 
-                        case Message._action.remove:
+                            case Message._action.remove:
 
-                            Player tempPlayer = PlayersList.Find(p => p.Id == m.Target); // the target player
-                            Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
-                            tempPlayer.Hand.Remove(tempCard); // remove the target card from the target player's hand
-                            break;
+                                Player tempPlayer = PlayersList.Find(p => p.Id == m.Target); // the target player
+                                Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
+                                tempPlayer.Hand.Remove(tempCard); // remove the target card from the target player's hand
+                                break;
 
-                        case Message._action.next_turn:
+                            case Message._action.next_turn:
 
-                            if (m.Target == _currentPlayer.Id) IsMyTurn(true);
-                            else IsMyTurn(false);
-                            break;
+                                if (m.Target == CurrentPlayer.Id) IsMyTurn(true);
+                                else IsMyTurn(false);
+                                break;
+
+                            case Message._action.player_quit:
+
+                                Player quitter = PlayersList.Find(p => p.Id == m.Target);
+                                PlayersList.Remove(quitter); // remove the quitting player from the local players list
+                                PlayerQuitDialog dialog = new PlayerQuitDialog(quitter.Username);
+                                dialog.ShowDialog();
+                                PlayersList.TrimExcess();
+                                CurrentGame.Players.TrimExcess();
+
+                                break;
+                        }
                     }
-                }
-                //PrintCards();
-                
-                UpdateUI();
-            }
+                    //PrintCards();
 
-            // Run again
-            _backgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
+                    UpdateUI();
+                }
+
+                // Run again
+                _backgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
+            }
         }
 
         public void PrintCards()
@@ -188,15 +205,17 @@ namespace Form
             if(dialog.ShowDialog() == true)
             {
                 Console.WriteLine("Player removed from the game in the gameList: "+ MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
+                PlayerQuit();
                 MainWindow.BigFrame.Navigate(new MainMenu());
             }
+
         }
 
         private void UpdateUI()
         {
             uc1.UpdateUI(PlayersList[0]);
 
-            switch (CurrentGame.Players.Count)
+            switch (PlayersList.Count)
             {
                 case 3:
                     uc2.Visibility = Visibility.Hidden;
@@ -249,12 +268,20 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            TurnFinished();
+            TurnFinished(); // give turn to next player
         }
+
+        //private int GetUserControlOfPlayer(int PlayerId)
+        //{
+        //    if (uc1.CurrentPlayer.Id == PlayerId) return 1;
+        //    if (uc2.CurrentPlayer.Id == PlayerId) return 2;
+        //    if (uc3.CurrentPlayer.Id == PlayerId) return 3;
+        //    return 4;
+        //}
         
         public int GetNextPlayerId()
         {
-            return PlayersList[1].Id;
+            return PlayersList[1].Id; // return the next player's Id
         }
 
         public void IsMyTurn(bool MyTurn)
@@ -274,15 +301,37 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.next_turn,
+                    Action = Message._action.next_turn, // give next turn to
                     Target = GetNextPlayerId(),
                     Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id
                 });
             }
 
             MainWindow.Service.AddActions(temp);
 
             IsMyTurn(false);
+        }
+
+        public void PlayerQuit()
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.player_quit,
+                    Target = CurrentPlayer.Id,
+                    Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id
+                });
+            }
+
+            MainWindow.Service.AddActions(temp);
+
+            if (MyTurn) TurnFinished();
+            Active = false;
         }
     }
 }

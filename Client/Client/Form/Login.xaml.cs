@@ -71,10 +71,26 @@ namespace Form
             LoginButton_Click(null, null);
         }
 
-        private void UserFillButton_Click(object sender, RoutedEventArgs e)
+        private void User1FillButton_Click(object sender, RoutedEventArgs e)
         {
             Username.Text = "fredg2";
             Password.Password = "Israel123";
+
+            LoginButton_Click(null, null);
+        }
+
+        private void User2FillButton_Click(object sender, RoutedEventArgs e)
+        {
+            Username.Text = "testtest";
+            Password.Password = "testtest";
+
+            LoginButton_Click(null, null);
+        }
+
+        private void User3FillButton_Click(object sender, RoutedEventArgs e)
+        {
+            Username.Text = "itai";
+            Password.Password = "menes";
 
             LoginButton_Click(null, null);
         }

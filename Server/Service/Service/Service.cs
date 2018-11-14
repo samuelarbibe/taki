@@ -69,24 +69,6 @@ namespace Service
             return g;
         }
 
-        //public void FirstTurn(Game g)
-        //{
-        //    static int counter = 0;
-        //    MessageList temp = new MessageList();
-
-        //    for (int i = 0; i < (g.Players.Count - 1); i++) //add for each player, not including the table
-        //    {
-        //        temp.Add(new Message()
-        //        {
-        //            Action = Message._action.next_turn,
-        //            Target = g.Players.First().Id,
-        //            Reciever = g.Players[i].Id,
-        //        });
-        //    }
-
-        //    AddActions(temp);
-        //}
-
         public bool StopSearchingForGame(Player p)
         {
             Bl bl = new Bl();
