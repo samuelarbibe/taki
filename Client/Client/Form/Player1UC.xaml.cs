@@ -42,6 +42,16 @@ namespace Form
             CardListItemControl.ItemsSource = CurrentPlayer.Hand;
         }
 
+        public void SetAsActive()
+        {
+            MyGrid.Background = new SolidColorBrush(Colors.LightGreen);
+        }
+
+        public void SetAsNonActive()
+        {
+            MyGrid.Background = new SolidColorBrush(Colors.Transparent);
+        }
+
         public void SetCurrentPlayer(Player currentPlayer)
         {
             CurrentPlayer = currentPlayer;

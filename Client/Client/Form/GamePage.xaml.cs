@@ -35,6 +35,7 @@ namespace Form
         private MessageList _localMessageList;
         private BackgroundWorker _backgroundProgress;
         private bool _active;
+        private int _turn;
         private int _playersCount;
         private int _currentPlayerIndex;
 
@@ -45,6 +46,7 @@ namespace Form
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
         public bool MyTurn { get => _myTurn; set => _myTurn = value; }
         public bool Active { get => _active; set => _active = value; }
+        public int Turn { get => _turn; set => _turn = value; }
 
         public GamePage(Game game)
         {
@@ -54,9 +56,17 @@ namespace Form
             MyTurn = false;
             Active = true;
 
-            if (_currentUser.Id == CurrentGame.Players[0].UserId) MyTurn = true;// the first player in the game list starts
+            if (_currentUser.Id == CurrentGame.Players[0].UserId){
+                InitialTurn();// broadcast that self is the first player in the game's players list
 
-            IsMyTurn(MyTurn);
+                uc1.SetAsActive();
+            }
+            else
+            {
+                IsMyTurn(false);
+            }
+
+            
 
             ReorderPlayerList();
 
@@ -127,8 +137,11 @@ namespace Form
 
                             case Message._action.next_turn:
 
-                                if (m.Target == CurrentPlayer.Id) IsMyTurn(true);
-                                else IsMyTurn(false);
+                                Turn = PlayersList.FindIndex(p => p.Id == m.Target);
+                                IsMyTurn(m.Target == CurrentPlayer.Id);
+
+                                DeclareTurn();
+
                                 break;
 
                             case Message._action.player_quit:
@@ -271,14 +284,14 @@ namespace Form
             TurnFinished(); // give turn to next player
         }
 
-        //private int GetUserControlOfPlayer(int PlayerId)
-        //{
-        //    if (uc1.CurrentPlayer.Id == PlayerId) return 1;
-        //    if (uc2.CurrentPlayer.Id == PlayerId) return 2;
-        //    if (uc3.CurrentPlayer.Id == PlayerId) return 3;
-        //    return 4;
-        //}
-        
+        private int GetUserControlOfPlayer(int playerIndex)
+        {
+            if (uc1.CurrentPlayer != null && uc1.CurrentPlayer.Id == PlayersList[playerIndex].Id) return 1;
+            if (uc2.CurrentPlayer != null && uc2.CurrentPlayer.Id == PlayersList[playerIndex].Id) return 2;
+            if (uc3.CurrentPlayer != null && uc3.CurrentPlayer.Id == PlayersList[playerIndex].Id) return 3;
+            return 4;
+        }
+
         public int GetNextPlayerId()
         {
             return PlayersList[1].Id; // return the next player's Id
@@ -290,6 +303,45 @@ namespace Form
                 TakeCardFromDeck_Button.Visibility = Visibility.Visible;
             }
             else TakeCardFromDeck_Button.Visibility = Visibility.Hidden;
+        }
+
+        private void DeclareTurn() // declare the player with the turn as active
+        {
+            switch (GetUserControlOfPlayer(Turn))
+            {
+                case 1:
+
+                    uc1.SetAsActive();
+                    uc2.SetAsNonActive();
+                    uc3.SetAsNonActive();
+                    uc4.SetAsNonActive();
+                    break;
+
+                case 2:
+
+                    uc1.SetAsNonActive();
+                    uc2.SetAsActive();
+                    uc3.SetAsNonActive();
+                    uc4.SetAsNonActive();
+                    break;
+
+                case 3:
+
+                    uc1.SetAsNonActive();
+                    uc2.SetAsNonActive();
+                    uc3.SetAsActive();
+                    uc4.SetAsNonActive();
+                    break;
+
+                case 4:
+
+                    uc1.SetAsNonActive();
+                    uc2.SetAsNonActive();
+                    uc3.SetAsNonActive();
+                    uc4.SetAsActive();
+                    break;
+
+            }
         }
 
 
@@ -311,6 +363,26 @@ namespace Form
             MainWindow.Service.AddActions(temp);
 
             IsMyTurn(false);
+        }
+
+        private void InitialTurn()
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.next_turn, // give next turn to self
+                    Target = CurrentPlayer.Id,
+                    Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id
+                });
+            }
+
+            MainWindow.Service.AddActions(temp);
+
+            IsMyTurn(true);
         }
 
         public void PlayerQuit()
