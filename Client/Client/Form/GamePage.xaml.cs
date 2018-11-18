@@ -48,6 +48,8 @@ namespace Form
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
 
+        
+
         public GamePage(Game game)
         {
             InitializeComponent();
@@ -66,7 +68,7 @@ namespace Form
                 IsMyTurn(false);
             }
 
-            
+            uctable.TakeCardFromDeckButtonClicked += new EventHandler(TakeCardFromDeck);
 
             ReorderPlayerList();
 
@@ -252,7 +254,7 @@ namespace Form
         }
 
 
-        public void TakeCardFromDeck(object sender, RoutedEventArgs e) // a demo action build, in this case, a card will be moved from the table to the player that pressed;
+        private void TakeCardFromDeck(object sender, EventArgs e) // a demo action build, in this case, a card will be moved from the table to the player that pressed;
         {
             Player currentPlayer = PlayersList.First();
             Player table = PlayersList.Last();
@@ -263,10 +265,10 @@ namespace Form
                 temp.Add(new Message()// add the top card of the table to the current player
                 {
                     Action = Message._action.add,
-                    Target = currentPlayer.Id,
-                    Reciever = PlayersList[i].Id,
-                    Card = table.Hand.Last(),
-                    GameId = CurrentGame.Id
+                    Target = currentPlayer.Id, // the person who's hand is modified
+                    Reciever = PlayersList[i].Id, // the peron who this message is for
+                    Card = table.Hand.Last(), // the card modified
+                    GameId = CurrentGame.Id // the game modified
                 });
 
                 temp.Add(new Message()// remove the top card from the table
@@ -300,9 +302,9 @@ namespace Form
         public void IsMyTurn(bool MyTurn)
         {
             if (MyTurn) {
-                TakeCardFromDeck_Button.Visibility = Visibility.Visible;
+                uctable.CanTakeCardFromDeck();
             }
-            else TakeCardFromDeck_Button.Visibility = Visibility.Hidden;
+            else uctable.CannotTakeCardFromDeck();
         }
 
         private void DeclareTurn() // declare the player with the turn as active

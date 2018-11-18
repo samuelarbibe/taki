@@ -273,6 +273,27 @@ namespace BusinessLayer
             return g;
         }
 
+        public void BlAddCard(Message m)
+        {
+            PlayerCardDb db = new PlayerCardDb();
+
+            Connection c = new Connection() {
+                ConnectionType = Model.Connection._connectionType.player_card,
+                SideA = m.Target,
+                SideB = m.Card.Id
+            };
+
+            db.Insert(c);
+        }
+
+        public void BlRemoveCard(Message m)
+        {
+            PlayerCardDb db = new PlayerCardDb();
+
+            db.GetConnectionByPlayerIdAndCardId(m.Target, m.Card);
+
+            db.Delete()
+        }
 
         public void BlSaveChanges()
         {

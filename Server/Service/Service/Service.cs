@@ -109,6 +109,20 @@ namespace Service
                     {
                         temp.Add(m);
                         PendingChanges.Remove(m);
+
+                        if (m.Reciever == m.Target)// make shure this happens once for each message
+                        {
+                            if (m.Action == Message._action.add)
+                            {
+                                Bl bl = new Bl();
+
+                            }
+
+                            else if (m.Action == Message._action.remove)
+                            {
+                                Bl bl = new Bl();
+                            }
+                        }
                     }
                 }
             } 
