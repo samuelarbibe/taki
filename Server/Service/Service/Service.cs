@@ -96,6 +96,12 @@ namespace Service
             PendingChanges.AddRange(ml);
         }
 
+        public void SaveChanges()
+        {
+            Bl bl = new Bl();
+            bl.SaveChnages();
+        }
+
         public MessageList DoAction(int gameId, int playerId)
         {
             MessageList temp = new MessageList();
@@ -115,12 +121,13 @@ namespace Service
                             if (m.Action == Message._action.add)
                             {
                                 Bl bl = new Bl();
-
+                                bl.BlAddCard(m);
                             }
 
                             else if (m.Action == Message._action.remove)
                             {
                                 Bl bl = new Bl();
+                                bl.BlRemoveCard(m);
                             }
                         }
                     }

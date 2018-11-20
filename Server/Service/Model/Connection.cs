@@ -8,7 +8,7 @@ namespace Model
     {
         public enum _connectionType {
             player_card,
-            game_card
+            player_game
         }
         private int _sideA; // player_id
         private int _sideB; // game_id or card_id

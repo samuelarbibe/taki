@@ -191,4 +191,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SaveChanges">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveChangesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

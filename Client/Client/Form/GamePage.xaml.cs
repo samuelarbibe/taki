@@ -34,6 +34,9 @@ namespace Form
         private PlayerList _playersList = new PlayerList();
         private MessageList _localMessageList;
         private BackgroundWorker _backgroundProgress;
+        private BackgroundWorker _saveChanges;
+        private List<Card> _deck;
+
         private bool _active;
         private int _turn;
         private int _playersCount;
@@ -47,30 +50,42 @@ namespace Form
         public bool MyTurn { get => _myTurn; set => _myTurn = value; }
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
-
-        
+        public List<Card> Deck { get => _deck; set => _deck = value; }
 
         public GamePage(Game game)
         {
             InitializeComponent();
+
+            MainWindow.CurrentGamePage = this;
+
             CurrentGame = game;
 
             MyTurn = false;
             Active = true;
 
+            //the first player is the one to request changes saving in the database every x seconds
             if (_currentUser.Id == CurrentGame.Players[0].UserId){
                 InitialTurn();// broadcast that self is the first player in the game's players list
 
                 uc1.SetAsActive();
+
+                _saveChanges = new BackgroundWorker();
+                _saveChanges.DoWork += SaveChanges;
+                _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
+
+                _saveChanges.RunWorkerAsync();
             }
             else
             {
                 IsMyTurn(false);
             }
 
+
             uctable.TakeCardFromDeckButtonClicked += new EventHandler(TakeCardFromDeck);
 
             ReorderPlayerList();
+
+            Deck = PlayersList[PlayersList.Count - 1].Hand.ToList();
 
             DataContext = PlayersList;
 
@@ -102,10 +117,25 @@ namespace Form
             _backgroundProgress.DoWork += FetchChanges;
             _backgroundProgress.RunWorkerCompleted += BackgroundProcess_RunWorkerCompleted;
 
-            _backgroundProgress.RunWorkerAsync(); 
+            _backgroundProgress.RunWorkerAsync();
             
             //PrintCards();
         }
+
+        //save the changes in the database every 2 seconds
+        private void SaveChanges(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(2000);
+
+            MainWindow.Service.SaveChanges();
+        }
+
+
+        private void SaveChanges_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {            
+            _saveChanges.RunWorkerAsync();
+        }
+
 
         private void FetchChanges(object sender, DoWorkEventArgs e)
         {
@@ -113,6 +143,7 @@ namespace Form
 
             _localMessageList = MainWindow.Service.DoAction(CurrentGame.Id, CurrentPlayer.Id);
         }
+
 
         private void BackgroundProcess_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -135,6 +166,7 @@ namespace Form
                                 Player tempPlayer = PlayersList.Find(p => p.Id == m.Target); // the target player
                                 Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
                                 tempPlayer.Hand.Remove(tempCard); // remove the target card from the target player's hand
+
                                 break;
 
                             case Message._action.next_turn:
@@ -150,10 +182,28 @@ namespace Form
 
                                 Player quitter = PlayersList.Find(p => p.Id == m.Target);
                                 PlayersList.Remove(quitter); // remove the quitting player from the local players list
-                                PlayerQuitDialog dialog = new PlayerQuitDialog(quitter.Username);
-                                dialog.ShowDialog();
+                                Thread t = new Thread(() => Announce(quitter.Username));
+                                t.Start();
+                               
                                 PlayersList.TrimExcess();
                                 CurrentGame.Players.TrimExcess();
+
+                                if (_currentUser.Id == CurrentGame.Players[0].UserId)
+                                {
+                                    InitialTurn();// broadcast that self is the first player in the game's players list
+
+                                    uc1.SetAsActive();
+
+                                    _saveChanges = new BackgroundWorker();
+                                    _saveChanges.DoWork += SaveChanges;
+                                    _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
+
+                                    _saveChanges.RunWorkerAsync();
+                                }
+                                else
+                                {
+                                    IsMyTurn(false);
+                                }
 
                                 break;
                         }
@@ -166,6 +216,12 @@ namespace Form
                 // Run again
                 _backgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
             }
+        }
+
+        private void Announce(string username)
+        {
+            PlayerQuitAnnounce.Text = "" + username + " left the game";
+            Thread.Sleep(3000);
         }
 
         public void PrintCards()
@@ -219,7 +275,6 @@ namespace Form
 
             if(dialog.ShowDialog() == true)
             {
-                Console.WriteLine("Player removed from the game in the gameList: "+ MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
                 PlayerQuit();
                 MainWindow.BigFrame.Navigate(new MainMenu());
             }
@@ -232,6 +287,13 @@ namespace Form
 
             switch (PlayersList.Count)
             {
+                case 2:
+                    uc2.Visibility = Visibility.Hidden;
+                    uc3.Visibility = Visibility.Hidden;
+                    uc4.Visibility = Visibility.Hidden;
+                    uctable.UpdateUI(PlayersList[3]);
+                    break;
+
                 case 3:
                     uc2.Visibility = Visibility.Hidden;
                     uc3.UpdateUI(PlayersList[1]);
@@ -254,11 +316,13 @@ namespace Form
         }
 
 
-        private void TakeCardFromDeck(object sender, EventArgs e) // a demo action build, in this case, a card will be moved from the table to the player that pressed;
+        private void TakeCardFromDeck(object sender, EventArgs e) 
         {
             Player currentPlayer = PlayersList.First();
+            Random rand = new Random();
             Player table = PlayersList.Last();
             MessageList temp = new MessageList();
+            Card takenCard = Deck[rand.Next(Deck.Count)]; // get a random card
 
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
             {
@@ -267,17 +331,8 @@ namespace Form
                     Action = Message._action.add,
                     Target = currentPlayer.Id, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
-                    Card = table.Hand.Last(), // the card modified
+                    Card = takenCard, // the card modified
                     GameId = CurrentGame.Id // the game modified
-                });
-
-                temp.Add(new Message()// remove the top card from the table
-                {
-                    Action = Message._action.remove,
-                    Target = table.Id,
-                    Reciever = PlayersList[i].Id,
-                    Card = table.Hand.Last(),
-                    GameId = CurrentGame.Id
                 });
             }
 
@@ -389,6 +444,8 @@ namespace Form
 
         public void PlayerQuit()
         {
+            Console.WriteLine("Player"+ CurrentPlayer.Username +" removed from the game in the gameList: " + MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
+
             MessageList temp = new MessageList();
 
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table

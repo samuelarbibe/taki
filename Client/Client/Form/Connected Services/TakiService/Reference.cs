@@ -631,6 +631,12 @@ namespace Form.TakiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
         System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SaveChanges", ReplyAction="http://tempuri.org/IService/SaveChangesResponse")]
+        void SaveChanges();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SaveChanges", ReplyAction="http://tempuri.org/IService/SaveChangesResponse")]
+        System.Threading.Tasks.Task SaveChangesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -770,6 +776,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
+        }
+        
+        public void SaveChanges() {
+            base.Channel.SaveChanges();
+        }
+        
+        public System.Threading.Tasks.Task SaveChangesAsync() {
+            return base.Channel.SaveChangesAsync();
         }
     }
 }

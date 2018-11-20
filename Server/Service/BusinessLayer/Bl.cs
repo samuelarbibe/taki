@@ -131,7 +131,7 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(8);
+                    t.Hand = BuildShuffledHand(6);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
@@ -244,14 +244,14 @@ namespace BusinessLayer
             {
                 temp.SideA = p.Id; // increment the player id for each player
                 temp.SideB = g.Id; // the game id will be the same when inserted
-                temp.ConnectionType = "player-game";
+                temp.ConnectionType = Connection._connectionType.player_game;
                 playerGameConnectionList.Add((Connection)temp.Clone());
 
                 foreach (Card c in p.Hand)
                 {
                     temp.SideA = p.Id;
                     temp.SideB = c.Id;
-                    temp.ConnectionType = "player-card";
+                    temp.ConnectionType = Connection._connectionType.player_card;
                     playerCardConnectionList.Add((Connection)temp.Clone());
                 }
             }
@@ -286,13 +286,19 @@ namespace BusinessLayer
             db.Insert(c);
         }
 
+        public void SaveChnages() {
+
+            PlayerCardDb sb = new PlayerCardDb();
+            sb.SaveChanges();
+        }
+
         public void BlRemoveCard(Message m)
         {
             PlayerCardDb db = new PlayerCardDb();
 
-            db.GetConnectionByPlayerIdAndCardId(m.Target, m.Card);
+            Connection temp = db.GetConnectionByPlayerIdAndCardId(m.Target, m.Card.Id);
 
-            db.Delete()
+            db.Delete(temp);
         }
 
         public void BlSaveChanges()

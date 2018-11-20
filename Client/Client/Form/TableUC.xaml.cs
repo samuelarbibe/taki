@@ -29,7 +29,7 @@ namespace Form
         
 
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
-
+        public CardList Deck { get => _deck; set => _deck = value; }
 
         public void UpdateUI(Player p)
         {
@@ -43,6 +43,7 @@ namespace Form
         public TableUC()
         {
             InitializeComponent();
+
         }
 
 
@@ -50,13 +51,7 @@ namespace Form
         {
             CurrentPlayer = currentPlayer;
 
-            _deck = CurrentPlayer.Hand;
-            _stack = new CardList();
-
-            _stack.Add(_deck.First());
-
-
-            _deck.RemoveAt(0);
+            _stack = CurrentPlayer.Hand;
 
             DataContext = _stack.LastOrDefault();
         }

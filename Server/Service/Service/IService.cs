@@ -57,6 +57,9 @@ namespace Service
         [OperationContract]
         UserList GetAllUsers();
 
+        [OperationContract]
+        void SaveChanges();
+
     }
 
 }

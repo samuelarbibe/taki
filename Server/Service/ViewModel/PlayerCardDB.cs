@@ -78,6 +78,8 @@ namespace ViewModel
         public override void Delete(BaseEntity entity)
         {
             if (entity is Connection u) Inserted.Add(new ChangeEntity(CreateDeleteSql, entity));
+
+            
         }
 
         public override void Update(BaseEntity entity)

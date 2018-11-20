@@ -27,6 +27,7 @@ namespace Form
     {
         public static ServiceClient Service;
         public static Frame BigFrame;
+        public static GamePage CurrentGamePage;
 
         private static User currentUser; 
 
@@ -42,6 +43,11 @@ namespace Form
             BigFrame = MainFrame;
             BigFrame.Navigate(new LoginMenu());
             this.DataContext = currentUser;
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (CurrentGamePage != null) CurrentGamePage.PlayerQuit();
         }
     }
 }
