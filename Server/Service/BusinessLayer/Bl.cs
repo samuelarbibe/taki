@@ -18,6 +18,7 @@ namespace BusinessLayer
             new PlayerList() //waitingList[2] = players looking for 4 player games
         };
 
+        private static UserList _loggedPlayers = new UserList();
 
         private static CardDb _cardDb = new CardDb();
           
@@ -48,13 +49,26 @@ namespace BusinessLayer
         public User BlLogin(string username, string password)
         {
             UserDb db = new UserDb();
-            UserList userList = db.SelectByUsernameAndPassword(username, password);
-            if (userList.Count > 0)
+            User user = (db.SelectByUsernameAndPassword(username, password))[0];
+            if (user != null && _loggedPlayers.Find(u => u.Id == user.Id) == null)
             {
-                return userList[0];
+                _loggedPlayers.Add(user);
+                return user;
             }
 
             return null;
+        }
+
+        public bool BlLogout(int userId)
+        {
+            User temp = _loggedPlayers.Find(u => u.Id == userId);
+            if (temp != null)
+            {
+                _loggedPlayers.Remove(temp);
+                return true;
+            }
+
+            return false;
         }
 
         public bool BlRegister(string firstName, string lastName, string username, string password)

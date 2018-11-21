@@ -43,6 +43,12 @@ namespace Service
             return bl.BlLogin(username, password);
         }
 
+        public bool Logout(int userId)
+        {
+            Bl bl = new Bl();
+            return bl.BlLogout(userId);
+        }
+
         public bool Register(string firstName, string lastName, string username, string password)
         {
             Bl bl = new Bl();

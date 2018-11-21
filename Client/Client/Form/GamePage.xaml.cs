@@ -26,6 +26,8 @@ namespace Form
     /// </summary>
     public partial class GamePage : Page
     {
+        static System.Windows.Threading.DispatcherTimer myTimer = new System.Windows.Threading.DispatcherTimer();
+
         private bool _myTurn;
         private Game _currentGame;
         private User _currentUser = MainWindow.CurrentUser;
@@ -71,6 +73,7 @@ namespace Form
 
                 _saveChanges = new BackgroundWorker();
                 _saveChanges.DoWork += SaveChanges;
+                _saveChanges.WorkerSupportsCancellation = true;
                 _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
 
                 _saveChanges.RunWorkerAsync();
@@ -113,13 +116,18 @@ namespace Form
                     break;
             }
 
+            SetBackgroundWorker();
+            
+            //PrintCards();
+        }
+
+        private void SetBackgroundWorker()
+        {
             _backgroundProgress = new BackgroundWorker();
             _backgroundProgress.DoWork += FetchChanges;
             _backgroundProgress.RunWorkerCompleted += BackgroundProcess_RunWorkerCompleted;
 
             _backgroundProgress.RunWorkerAsync();
-            
-            //PrintCards();
         }
 
         //save the changes in the database every 2 seconds
@@ -132,8 +140,8 @@ namespace Form
 
 
         private void SaveChanges_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {            
-            _saveChanges.RunWorkerAsync();
+        {
+            if (Active) _saveChanges.RunWorkerAsync();
         }
 
 
@@ -182,28 +190,33 @@ namespace Form
 
                                 Player quitter = PlayersList.Find(p => p.Id == m.Target);
                                 PlayersList.Remove(quitter); // remove the quitting player from the local players list
-                                Thread t = new Thread(() => Announce(quitter.Username));
-                                t.Start();
-                               
+
                                 PlayersList.TrimExcess();
                                 CurrentGame.Players.TrimExcess();
 
-                                if (_currentUser.Id == CurrentGame.Players[0].UserId)
+                                if (_currentUser.Id == PlayersList[0].UserId)
                                 {
                                     InitialTurn();// broadcast that self is the first player in the game's players list
 
-                                    uc1.SetAsActive();
+                                    //uc1.SetAsActive();
 
-                                    _saveChanges = new BackgroundWorker();
-                                    _saveChanges.DoWork += SaveChanges;
-                                    _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
+                                    //while (_saveChanges.IsBusy)
+                                    //{
+                                    //    _saveChanges.CancelAsync();
+                                    //}
+                                    //_saveChanges = new BackgroundWorker();
+                                    //_saveChanges.DoWork += SaveChanges;
+                                    //_saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
 
-                                    _saveChanges.RunWorkerAsync();
+                                    //_saveChanges.RunWorkerAsync();
+
                                 }
                                 else
                                 {
                                     IsMyTurn(false);
                                 }
+
+                                DeclareTurn();
 
                                 break;
                         }
@@ -218,10 +231,9 @@ namespace Form
             }
         }
 
-        private void Announce(string username)
+        private void Announce(Object myObject, EventArgs myEventArgs)
         {
-            PlayerQuitAnnounce.Text = "" + username + " left the game";
-            Thread.Sleep(3000);
+            PlayerQuitAnnounce.Text = "" + myObject.ToString() + " left the game";
         }
 
         public void PrintCards()
@@ -273,7 +285,9 @@ namespace Form
         {
             ExitDialog dialog = new ExitDialog();
 
-            if(dialog.ShowDialog() == true)
+            dialog.Owner = Application.Current.MainWindow;
+
+            if (dialog.ShowDialog() == true)
             {
                 PlayerQuit();
                 MainWindow.BigFrame.Navigate(new MainMenu());
@@ -291,7 +305,18 @@ namespace Form
                     uc2.Visibility = Visibility.Hidden;
                     uc3.Visibility = Visibility.Hidden;
                     uc4.Visibility = Visibility.Hidden;
-                    uctable.UpdateUI(PlayersList[3]);
+                    uctable.UpdateUI(PlayersList[1]);
+
+                    ForceQuit dialog = new ForceQuit();
+
+                    dialog.Owner = Application.Current.MainWindow;
+
+                    if (dialog.ShowDialog() == true)
+                    {
+                        PlayerQuit();
+                        MainWindow.BigFrame.Navigate(new MainMenu());
+                    }
+
                     break;
 
                 case 3:
@@ -439,7 +464,8 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            IsMyTurn(true);
+            MyTurn = true;
+            IsMyTurn(MyTurn);
         }
 
         public void PlayerQuit()

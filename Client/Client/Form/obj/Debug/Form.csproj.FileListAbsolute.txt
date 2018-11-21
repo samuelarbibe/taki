@@ -178,3 +178,5 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\bin\Debug\sv\Xceed.Wpf.Avalo
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csproj.CopyComplete
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\ForceQuit.g.cs
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\ForceQuit.baml

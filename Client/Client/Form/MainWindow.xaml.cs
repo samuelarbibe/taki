@@ -48,6 +48,8 @@ namespace Form
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             if (CurrentGamePage != null) CurrentGamePage.PlayerQuit();
+
+            if(CurrentUser != null) Service.Logout(CurrentUser.Id);
         }
     }
 }
