@@ -44,9 +44,9 @@ namespace Form
         private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         private User CurrentUser { get => _currentUser; set => _currentUser = value; }
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
-        public bool MyTurn { get => _myTurn; set => _myTurn = value; }
-        public bool Active { get => _active; set => _active = value; }
-        public int Turn { get => _turn; set => _turn = value; }
+        private bool MyTurn { get => _myTurn; set => _myTurn = value; }
+        private bool Active { get => _active; set => _active = value; }
+        private int Turn { get => _turn; set => _turn = value; }
 
         public GamePage(Game game)
         {

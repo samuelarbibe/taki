@@ -248,6 +248,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\Asap\Asap-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-Italic.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-MediumItalic.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-SemiBold.ttf" />
+    <Resource Include="Resources\Fonts\Asap\Asap-SemiBoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\Fredoka_One\FredokaOne-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Varela_Round\VarelaRound-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -351,6 +361,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\TAKI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Asap\OFL.txt" />
+    <Resource Include="Resources\Fonts\Fredoka_One\OFL.txt" />
+    <Resource Include="Resources\Fonts\Varela_Round\OFL.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

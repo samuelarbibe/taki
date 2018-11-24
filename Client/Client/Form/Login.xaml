@@ -12,7 +12,7 @@
         <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
             <Border Background="{TemplateBinding Background}" 
                     x:Name="Bd"
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="16">
+                    BorderThickness="1" BorderBrush="#FFD7D7D7" CornerRadius="24">
                 <ScrollViewer x:Name="PART_ContentHost"/>
             </Border>
         </ControlTemplate>
@@ -20,7 +20,7 @@
         <ControlTemplate x:Key="PasswordBoxControlTemplate" TargetType="{x:Type PasswordBox}">
             <Border Background="{TemplateBinding Background}" 
                     x:Name="Bd"
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="16">
+                    BorderThickness="1" BorderBrush="#FFD7D7D7" CornerRadius="24">
                 <ScrollViewer x:Name="PART_ContentHost"/>
             </Border>
         </ControlTemplate>
@@ -29,7 +29,7 @@
             <Grid x:Name="grid">
                 <Border Background="{TemplateBinding Background}" 
                     x:Name="Bd"
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="24">
                 </Border>
             </Grid>
         </ControlTemplate>
@@ -69,32 +69,29 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="107*"/>
+            <RowDefinition Height="131*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="13*"/>
             <RowDefinition Height="47*"/>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="39*"/>
+            <RowDefinition Height="35*"/>
 
-            <RowDefinition Height="120*"/>
+            <RowDefinition Height="121*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Login" FontSize="60" FontWeight="DemiBold" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="68.993" Width="163.27" Foreground="#FFF4B88B" FontFamily="Arial Rounded MT Bold"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}"  x:Name="Username" Grid.Column="1" Grid.Row="2" />
-        <PasswordBox Template="{StaticResource PasswordBoxControlTemplate}" x:Name="Password" Grid.Column="1" Grid.Row="4" />
-        <Button  Template="{StaticResource ButtonBaseControlTemplate}" x:Name="LoginButton" Grid.Column="1" Grid.Row="6" Background="#FBDD62" Click="LoginButton_Click" Width="50" Height="50"/>
-        <Label Grid.Row="5" FontSize="10" Grid.Column="1" Width="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Don't have a user created?" Margin="4,0,0,1.986" Height="21.573" />
-        <Button Grid.Row="5" Grid.Column="1" Width="120" Height="15" Padding="-10"  HorizontalAlignment="right" VerticalAlignment="Bottom" Content="Register here." Background="{x:Null}" Click="RegisterButton_Click" BorderThickness="0" />
-        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Content="Username" FontSize="16" VerticalAlignment="Bottom" Height="28.517" Width="90.177"/>
-        <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Content="Password" FontSize="16" VerticalAlignment="Bottom" Height="28.517" Width="87.204"/>
-        <TextBlock x:Name="noUserError" Grid.Column="2" Grid.Row="5" Foreground="Red" HorizontalAlignment="Stretch" FontSize="12" TextWrapping="Wrap"/>
-        <Button Content="Fill Admin" HorizontalAlignment="Left" Margin="64,15.6,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="AdminFillButton_Click"/>
-        <Button Content="Fill User 1" HorizontalAlignment="Left" Margin="64,10.4,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User1FillButton_Click"/>
-        <Button Content="Fill User 2" HorizontalAlignment="Left" Margin="64,35,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User2FillButton_Click"/>
-        <Button Content="Fill User 3" HorizontalAlignment="Left" Margin="64,60,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User3FillButton_Click"/>
+        <TextBlock Text="Login to The Game" FontSize="28" Grid.Row="0" HorizontalAlignment="Center" Height="32" Foreground="#FFE3E3E3" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Margin="266,0,266.698,0.66" FontWeight="Bold" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
+        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" BorderThickness="1" BorderBrush="Aqua"  x:Name="Username" Grid.Row="2" Grid.ColumnSpan="3" Margin="266,0.132,266.698,0.868" Background="{x:Null}" />
+        <PasswordBox Template="{StaticResource PasswordBoxControlTemplate}" x:Name="Password" Grid.Row="4" Grid.ColumnSpan="3" Margin="266,0.679,266.698,0.415" Background="{x:Null}" />
+        <Button  Template="{StaticResource ButtonBaseControlTemplate}" Content="Login" x:Name="LoginButton" Grid.Row="6" Background="#FFE3E3E3" Click="LoginButton_Click" Height="48" Foreground="#FFA43333" FontSize="20" VerticalAlignment="Top" Margin="266,0.245,266.698,0" Grid.ColumnSpan="3"/>
+        <Button Grid.Row="6" Grid.Column="1" Width="120" Height="15" Padding="-10"  HorizontalAlignment="right" VerticalAlignment="Bottom" Content="Register here." Background="{x:Null}" Click="RegisterButton_Click" BorderThickness="0" Margin="0,0,76.528,10.113" Foreground="#FFC2C0C0" FontSize="12" FontFamily="/Form;component/Resources/Fonts/Varela_Round/#Varela Round" />
+        <TextBlock x:Name="noUserError" Grid.Row="6" Foreground="Red" HorizontalAlignment="Stretch" FontSize="12" TextWrapping="Wrap" Margin="10.472,10.302,118.698,102.113" Grid.Column="2"/>
+        <Button Content="Fill Admin" HorizontalAlignment="Left" Margin="64,13.585,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="AdminFillButton_Click" Height="18"/>
+        <Button Content="Fill User 1" HorizontalAlignment="Left" Margin="64,10.245,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User1FillButton_Click" Height="18"/>
+        <Button Content="Fill User 2" HorizontalAlignment="Left" Margin="64,35.245,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User2FillButton_Click" Height="18"/>
+        <Button Content="Fill User 3" HorizontalAlignment="Left" Margin="64,60.245,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User3FillButton_Click" Height="18"/>
     </Grid>
 </Page>
