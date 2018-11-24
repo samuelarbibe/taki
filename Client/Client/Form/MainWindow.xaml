@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Form"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#49A3A6">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -18,22 +18,7 @@
             <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
         </Style>
     </Window.Resources>
-    <Window.Background>
-        <RadialGradientBrush>
-            <GradientStop Color="#FF2F8D8A" Offset="1"/>
-            <GradientStop Color="#FF66DCD8" Offset="0.115"/>
-        </RadialGradientBrush>
-    </Window.Background>
     <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" RenderTransformOrigin="0.097,0.424">
-            <Frame.Background>
-                <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
-                    <GradientStop Color="#FF3575CE" Offset="1"/>
-                    <GradientStop Color="#FF6DACCB"/>
-                    <GradientStop Color="#FF59A2D6" Offset="0.538"/>
-                    <GradientStop Color="#FF66AAD9" Offset="0.074"/>
-                </LinearGradientBrush>
-            </Frame.Background>
-        </Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

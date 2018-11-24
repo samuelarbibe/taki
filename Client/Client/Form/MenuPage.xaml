@@ -77,7 +77,7 @@
             </Button>
 
         </DockPanel>
-        <Button Visibility="Visible" x:Name="MultiplayerButton" Content="Multiplayer" Grid.Row="2" Grid.Column="1" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="/Form;component/Resources/Fonts/Fredoka_One/#Fredoka One" Click="MultiplayerButton_Click" >
+        <Button Visibility="Visible" x:Name="MultiplayerButton" Content="Multiplayer" Grid.Row="2" Grid.Column="1" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="MultiplayerButton_Click" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="30"/>
