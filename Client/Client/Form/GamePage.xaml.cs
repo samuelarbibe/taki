@@ -49,10 +49,16 @@ namespace Form
         private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         private User CurrentUser { get => _currentUser; set => _currentUser = value; }
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
+<<<<<<< HEAD
         public bool MyTurn { get => _myTurn; set => _myTurn = value; }
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
         public List<Card> Deck { get => _deck; set => _deck = value; }
+=======
+        private bool MyTurn { get => _myTurn; set => _myTurn = value; }
+        private bool Active { get => _active; set => _active = value; }
+        private int Turn { get => _turn; set => _turn = value; }
+>>>>>>> parent of d2be274... Revert "c"
 
         public GamePage(Game game)
         {

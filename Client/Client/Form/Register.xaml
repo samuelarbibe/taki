@@ -68,7 +68,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Register" FontSize="60" FontWeight="DemiBold" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFF4B88B" FontFamily="Arial Rounded MT Bold"/>
+        <TextBlock Text="Register" FontSize="60" FontWeight="DemiBold" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFF4B88B" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"/>
         <TextBox x:Name="FirstName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
         <TextBox x:Name="LastName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
         <TextBox x:Name="Username" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Row="6" TextWrapping="Wrap" MaxHeight="50" Grid.Column="1"/>
