@@ -18,7 +18,7 @@ namespace ViewModel
             con.Id = (int) Reader["ID"];
             con.SideA = (int) Reader["player_id"];
             con.SideB = (int) Reader["card_id"];
-            con.ConnectionType = "player-card";
+            con.ConnectionType = Model.Connection._connectionType.player_card;
             return con;
         }
 
@@ -48,6 +48,20 @@ namespace ViewModel
             return conList;
         }
 
+        public Connection GetConnectionByPlayerIdAndCardId(int playerId, int cardId)
+        {
+            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE 'player_id'= @playerId, 'card_id' = @cardId";
+            
+            // parameters
+            Command.Parameters.Add(new OleDbParameter("@playerId", playerId));
+            Command.Parameters.Add(new OleDbParameter("@cardId", cardId));
+
+
+
+            ConnectionList conList = new ConnectionList(Select());
+            return conList[0];
+        }
+
         public void InsertList(ConnectionList entity)
         {
             ConnectionList cl = entity;
@@ -64,6 +78,8 @@ namespace ViewModel
         public override void Delete(BaseEntity entity)
         {
             if (entity is Connection u) Inserted.Add(new ChangeEntity(CreateDeleteSql, entity));
+
+            
         }
 
         public override void Update(BaseEntity entity)
