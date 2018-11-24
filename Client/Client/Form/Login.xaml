@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Form"
+      xmlns:utilities="clr-namespace:Form.Utilities"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Login">
@@ -36,36 +37,28 @@
 
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="/Form;component/Resources/Fonts/Asap/#Asap"/>
         </Style>
-        <Style TargetType="Label">
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
-        </Style>
+
         <Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontFamily" Value="/Form;component/Resources/Fonts/Asap/#Asap"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground"  Value="#3F3F3F"/>
-            <Setter Property="Background"  Value="#EEEEEE"/>
-            <Setter Property="Opacity"  Value="0.76"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Padding" Value="15,7,0,0"/>
+            <Setter Property="Foreground"  Value="White"/>
+            <Setter Property="Opacity" Value="0.6"/>
         </Style>
         <Style TargetType="PasswordBox">
-            <Setter Property="FontFamily" Value="Ariel"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground"  Value="#3F3F3F"/>
-            <Setter Property="Background"  Value="#EEEEEE"/>
-            <Setter Property="Opacity"  Value="0.76"/>
+            <Setter Property="FontFamily" Value="/Form;component/Resources/Fonts/Asap/#Asap"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Padding" Value="15,7,0,0"/>
+            <Setter Property="Foreground"  Value="white"/>
+            <Setter Property="Opacity"  Value="0.6"/>
         </Style>
+
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -84,11 +77,33 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Login to The Game" FontSize="28" Grid.Row="0" HorizontalAlignment="Center" Height="32" Foreground="#FFE3E3E3" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Margin="266,0,266.698,0.66" FontWeight="Bold" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
-        <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" BorderThickness="1" BorderBrush="Aqua"  x:Name="Username" Grid.Row="2" Grid.ColumnSpan="3" Margin="266,0.132,266.698,0.868" Background="{x:Null}" />
-        <PasswordBox Template="{StaticResource PasswordBoxControlTemplate}" x:Name="Password" Grid.Row="4" Grid.ColumnSpan="3" Margin="266,0.679,266.698,0.415" Background="{x:Null}" />
-        <Button  Template="{StaticResource ButtonBaseControlTemplate}" Content="Login" x:Name="LoginButton" Grid.Row="6" Background="#FFE3E3E3" Click="LoginButton_Click" Height="48" Foreground="#FFA43333" FontSize="20" VerticalAlignment="Top" Margin="266,0.245,266.698,0" Grid.ColumnSpan="3"/>
-        <Button Grid.Row="6" Grid.Column="1" Width="120" Height="15" Padding="-10"  HorizontalAlignment="right" VerticalAlignment="Bottom" Content="Register here." Background="{x:Null}" Click="RegisterButton_Click" BorderThickness="0" Margin="0,0,76.528,10.113" Foreground="#FFC2C0C0" FontSize="12" FontFamily="/Form;component/Resources/Fonts/Varela_Round/#Varela Round" />
-        <TextBlock x:Name="noUserError" Grid.Row="6" Foreground="Red" HorizontalAlignment="Stretch" FontSize="12" TextWrapping="Wrap" Margin="10.472,10.302,118.698,102.113" Grid.Column="2"/>
+
+
+        <AdornerDecorator Grid.Row="2" Grid.Column="1">
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="Username" Background="{x:Null}" Padding="15,-2,0,0">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="17" VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">Username</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator>
+
+        <AdornerDecorator Grid.Row="4" Grid.Column="1">
+            <PasswordBox Template="{StaticResource PasswordBoxControlTemplate}" x:Name="Password" Background="{x:Null}" Padding="15,-2,0,0">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="17"  VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">Password</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </PasswordBox>
+        </AdornerDecorator>
+
+
+        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="LoginButton" Grid.Row="6" Background="#FFE3E3E3" Height="50" Click="LoginButton_Click" Grid.Column="1" VerticalAlignment="Top"/>
+
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="6" HorizontalAlignment="Center" Foreground="#FF4D99D0" Height="30" Text="Login" Grid.Column="1" VerticalAlignment="Top" TextAlignment="Center" Margin="0,10,0,0" FontSize="25" />
+
+        <Button Grid.Row="6" Grid.Column="1" Width="120" Height="15" Padding="-10" VerticalAlignment="Bottom" Content="Register Here" Background="{x:Null}" Click="RegisterButton_Click" BorderThickness="0"  Foreground="#FFC2C0C0" FontSize="12" FontFamily="/Form;component/Resources/Fonts/Varela_Round/#Varela Round" Margin="0,0,0,10" />
+
+        <TextBlock x:Name="noUserError" Grid.Row="5" Foreground="#FFC25252" HorizontalAlignment="Stretch" FontSize="12" TextWrapping="Wrap" Grid.Column="2"/>
+
         <Button Content="Fill Admin" HorizontalAlignment="Left" Margin="64,13.585,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="AdminFillButton_Click" Height="18"/>
         <Button Content="Fill User 1" HorizontalAlignment="Left" Margin="64,10.245,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User1FillButton_Click" Height="18"/>
         <Button Content="Fill User 2" HorizontalAlignment="Left" Margin="64,35.245,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="User2FillButton_Click" Height="18"/>

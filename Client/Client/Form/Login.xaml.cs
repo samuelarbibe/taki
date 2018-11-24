@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
 using Form.TakiService;
+using Form.Utilities;
 
 namespace Form
 {

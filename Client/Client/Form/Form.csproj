@@ -78,7 +78,7 @@
     <Compile Include="AdminUserPage.xaml.cs">
       <DependentUpon>AdminUserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Check.cs" />
+    <Compile Include="Utilities\Check.cs" />
     <Compile Include="Connected Services\TakiService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +129,8 @@
     <Compile Include="UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\WatermarkAdorner.cs" />
+    <Compile Include="Utilities\WatermarkService.cs" />
     <Page Include="AdminUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

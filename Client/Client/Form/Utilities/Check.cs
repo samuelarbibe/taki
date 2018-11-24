@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Form
+namespace Form.Utilities
 {
     public static class Check
     {

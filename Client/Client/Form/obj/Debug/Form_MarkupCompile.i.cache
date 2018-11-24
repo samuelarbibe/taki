@@ -9,21 +9,12 @@ Form
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\App.xaml
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\App.xaml
 181458145541
 
-28129902551
-21-1026881805
+30-680448801
+21-800326377
 AdminUserPage.xaml;ExitDialog.xaml;ForceQuit.xaml;GamePage.xaml;LoadingPage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;MenuPage.xaml;Player1UC.xaml;Player2UC.xaml;Player3UC.xaml;Player4UC.xaml;Register.xaml;SettingsPage.xaml;TableUC.xaml;UserPage.xaml;
-=======
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\App.xaml
-181027841097
-
-28364306909
-15833945659
-AdminUserPage.xaml;PlayerQuitDialog.xaml;ExitDialog.xaml;GamePage.xaml;LoadingPage.xaml;Login.xaml;LoginMenu.xaml;MainMenu.xaml;MainWindow.xaml;MenuPage.xaml;Player1UC.xaml;Player2UC.xaml;Player3UC.xaml;Player4UC.xaml;Register.xaml;SettingsPage.xaml;TableUC.xaml;UserPage.xaml;
->>>>>>> parent of d2be274... Revert "c"
 
 False
 

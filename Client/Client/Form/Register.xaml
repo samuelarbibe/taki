@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Form"
+      xmlns:utilities="clr-namespace:Form.Utilities"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Register">
@@ -12,7 +13,7 @@
         <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
             <Border Background="{TemplateBinding Background}" 
                     x:Name="Bd"
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="16">
+                    BorderThickness="1" BorderBrush="#FFD7D7D7" CornerRadius="24">
                 <ScrollViewer x:Name="PART_ContentHost"/>
             </Border>
         </ControlTemplate>
@@ -36,66 +37,90 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontFamily" Value="Arial Rounded MT Bold"/>
         </Style>
+
         <Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontFamily" Value="/Form;component/Resources/Fonts/Asap/#Asap"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground"  Value="#3F3F3F"/>
-            <Setter Property="Background"  Value="#EEEEEE"/>
-            <Setter Property="Opacity"  Value="0.76"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Padding" Value="16,2,0,0"/>
+            <Setter Property="Foreground"  Value="White"/>
+            <Setter Property="Opacity" Value="0.6"/>
         </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="53*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="282.4"/>
-            <ColumnDefinition Width="47.2"/>
-            <ColumnDefinition Width="282.4"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Register" FontSize="60" FontWeight="DemiBold" Grid.ColumnSpan="1" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFF4B88B" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"/>
-        <TextBox x:Name="FirstName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBox x:Name="LastName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBox x:Name="Username" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Row="6" TextWrapping="Wrap" MaxHeight="50" Grid.Column="1"/>
-        <TextBox x:Name="Password" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50"/>
-        <TextBox x:Name="ConfirmPassword"  Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50"/>
-        <Label Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="First Name"/>
-        <Label Grid.Row="3" Grid.Column="1" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Last Name"/>
-        <Label Grid.Row="5" Grid.Column="1" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Username"/>
-        <Label Grid.Row="1" Grid.Column="3" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Password"/>
-        <Label Grid.Row="3" Grid.Column="3" Width="150" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Content="Confirm Password"/>
-        <TextBlock x:Name="InsertStatus" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="Red"/>
-        <TextBlock x:Name="PasswordStatus" Grid.Column="3" Grid.Row="5" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="Red"/>
-        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="RegisterButton" Grid.Column="3" Grid.Row="6" Click="RegisterButton_Click" Width="50" Height="50" Grid.RowSpan="2">
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/Back_Icon.png">
-                    <ImageBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                            <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ImageBrush.RelativeTransform>
-                </ImageBrush>
-            </Button.Background>
-        </Button>
-        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="BackButton" Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="2" Width="40" Height="40" Margin="17" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <TextBlock Text="Create a new account" FontSize="28" Grid.Row="0" Foreground="#FFE3E3E3" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Bottom"/>
+        
+        <AdornerDecorator Grid.Row="2" Grid.Column="1">
+            <TextBox x:Name="FirstName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50" Background="{x:Null}" Grid.Column="1">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="17" VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">First Name</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator>
+
+        <AdornerDecorator Grid.Row="4" Grid.Column="1">         
+            <TextBox x:Name="LastName" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50" Background="{x:Null}" Grid.Column="1">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="17" VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">Last Name</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator>
+
+        <AdornerDecorator Grid.Row="6" Grid.Column="1">
+            <TextBox x:Name="Username" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Row="6" TextWrapping="Wrap" MaxHeight="50" Background="{x:Null}" Grid.Column="1">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="17" VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">Username</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator>
+
+        <AdornerDecorator Grid.Row="2" Grid.Column="3"> 
+            <TextBox x:Name="Password" Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" MaxHeight="50" Background="{x:Null}">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="17" VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">Password</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator> 
+
+
+        <AdornerDecorator Grid.Row="4" Grid.Column="3">
+            <TextBox x:Name="ConfirmPassword"  Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" MaxHeight="50" Background="{x:Null}">
+                <utilities:WatermarkService.Watermark>
+                    <TextBlock FontSize="16" VerticalAlignment="Center" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White">Confirm Password</TextBlock>
+                </utilities:WatermarkService.Watermark>
+            </TextBox>
+        </AdornerDecorator>
+
+        <TextBlock x:Name="InsertStatus" Grid.Row="7" HorizontalAlignment="Left" Foreground="Red" Grid.Column="1" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="PasswordStatus" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="Red" Margin="0.151,52.396,0,52.151" Grid.RowSpan="3" Width="0"/>
+        
+        
+        <Button  Template="{StaticResource ButtonBaseControlTemplate}" Content="Register" x:Name="RegisterButton" Grid.Row="6" Background="#FFE3E3E3" Click="RegisterButton_Click" Foreground="#FFA43333" FontSize="20" Grid.Column="3"/>
+
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="6" HorizontalAlignment="Center" Foreground="#FF4D99D0" Height="30" Text="Register" Grid.Column="3" VerticalAlignment="Top" TextAlignment="Center" Margin="0,10,0,0" FontSize="25" />
+
+
+        <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="BackButton" Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="2" Width="40" Height="40" Margin="17,17,0,0" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Back_Icon.png"/>
             </Button.Background>
