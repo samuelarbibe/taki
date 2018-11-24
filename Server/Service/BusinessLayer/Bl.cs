@@ -18,7 +18,6 @@ namespace BusinessLayer
             new PlayerList() //waitingList[2] = players looking for 4 player games
         };
 
-        private static UserList _loggedPlayers = new UserList();
 
         private static CardDb _cardDb = new CardDb();
           
@@ -49,26 +48,13 @@ namespace BusinessLayer
         public User BlLogin(string username, string password)
         {
             UserDb db = new UserDb();
-            User user = (db.SelectByUsernameAndPassword(username, password))[0];
-            if (user != null && _loggedPlayers.Find(u => u.Id == user.Id) == null)
+            UserList userList = db.SelectByUsernameAndPassword(username, password);
+            if (userList.Count > 0)
             {
-                _loggedPlayers.Add(user);
-                return user;
+                return userList[0];
             }
 
             return null;
-        }
-
-        public bool BlLogout(int userId)
-        {
-            User temp = _loggedPlayers.Find(u => u.Id == userId);
-            if (temp != null)
-            {
-                _loggedPlayers.Remove(temp);
-                return true;
-            }
-
-            return false;
         }
 
         public bool BlRegister(string firstName, string lastName, string username, string password)
@@ -145,7 +131,7 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(6);
+                    t.Hand = BuildShuffledHand(8);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
@@ -258,14 +244,14 @@ namespace BusinessLayer
             {
                 temp.SideA = p.Id; // increment the player id for each player
                 temp.SideB = g.Id; // the game id will be the same when inserted
-                temp.ConnectionType = Connection._connectionType.player_game;
+                temp.ConnectionType = "player-game";
                 playerGameConnectionList.Add((Connection)temp.Clone());
 
                 foreach (Card c in p.Hand)
                 {
                     temp.SideA = p.Id;
                     temp.SideB = c.Id;
-                    temp.ConnectionType = Connection._connectionType.player_card;
+                    temp.ConnectionType = "player-card";
                     playerCardConnectionList.Add((Connection)temp.Clone());
                 }
             }
@@ -287,33 +273,6 @@ namespace BusinessLayer
             return g;
         }
 
-        public void BlAddCard(Message m)
-        {
-            PlayerCardDb db = new PlayerCardDb();
-
-            Connection c = new Connection() {
-                ConnectionType = Model.Connection._connectionType.player_card,
-                SideA = m.Target,
-                SideB = m.Card.Id
-            };
-
-            db.Insert(c);
-        }
-
-        public void SaveChnages() {
-
-            PlayerCardDb sb = new PlayerCardDb();
-            sb.SaveChanges();
-        }
-
-        public void BlRemoveCard(Message m)
-        {
-            PlayerCardDb db = new PlayerCardDb();
-
-            Connection temp = db.GetConnectionByPlayerIdAndCardId(m.Target, m.Card.Id);
-
-            db.Delete(temp);
-        }
 
         public void BlSaveChanges()
         {

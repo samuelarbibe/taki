@@ -57,8 +57,6 @@ namespace Form
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.CurrentUser = null;
-            MainWindow.Service.Logout(_cu.Id);
-            MainWindow.CurrentUser = null;
             MainWindow.BigFrame.Navigate(new LoginMenu());
         }
 

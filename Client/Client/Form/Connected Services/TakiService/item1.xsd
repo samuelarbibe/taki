@@ -106,20 +106,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Logout">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LogoutResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="LogoutResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Register">
     <xs:complexType>
       <xs:sequence>
@@ -203,16 +189,6 @@
       <xs:sequence>
         <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q12:UserList" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SaveChanges">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SaveChangesResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

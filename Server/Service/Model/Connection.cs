@@ -6,10 +6,7 @@ namespace Model
     [DataContract]
     public class Connection : BaseEntity, ICloneable
     {
-        public enum _connectionType {
-            player_card,
-            player_game
-        }
+        private string _connectionType;
         private int _sideA; // player_id
         private int _sideB; // game_id or card_id
 
@@ -28,7 +25,11 @@ namespace Model
         }
 
 
-        public _connectionType ConnectionType { get; set; }
+        public string ConnectionType
+        {
+            get => _connectionType;
+            set => _connectionType = value;
+        }
 
         public object Clone()
         {

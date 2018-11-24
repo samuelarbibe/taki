@@ -55,12 +55,6 @@
   <wsdl:message name="IService_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_Logout_InputMessage">
-    <wsdl:part name="parameters" element="tns:Logout" />
-  </wsdl:message>
-  <wsdl:message name="IService_Logout_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LogoutResponse" />
-  </wsdl:message>
   <wsdl:message name="IService_Register_InputMessage">
     <wsdl:part name="parameters" element="tns:Register" />
   </wsdl:message>
@@ -97,12 +91,6 @@
   <wsdl:message name="IService_GetAllUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_SaveChanges_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveChanges" />
-  </wsdl:message>
-  <wsdl:message name="IService_SaveChanges_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveChangesResponse" />
-  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetCardList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetCardList" message="tns:IService_GetCardList_InputMessage" />
@@ -136,10 +124,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Login" message="tns:IService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/LoginResponse" message="tns:IService_Login_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Logout">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/Logout" message="tns:IService_Logout_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/LogoutResponse" message="tns:IService_Logout_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Register" message="tns:IService_Register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/RegisterResponse" message="tns:IService_Register_OutputMessage" />
@@ -163,10 +147,6 @@
     <wsdl:operation name="GetAllUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllUsers" message="tns:IService_GetAllUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllUsersResponse" message="tns:IService_GetAllUsers_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SaveChanges">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/SaveChanges" message="tns:IService_SaveChanges_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SaveChangesResponse" message="tns:IService_SaveChanges_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -243,15 +223,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Logout">
-      <soap:operation soapAction="http://tempuri.org/IService/Logout" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Register">
       <soap:operation soapAction="http://tempuri.org/IService/Register" style="document" />
       <wsdl:input>
@@ -299,15 +270,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllUsers">
       <soap:operation soapAction="http://tempuri.org/IService/GetAllUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveChanges">
-      <soap:operation soapAction="http://tempuri.org/IService/SaveChanges" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

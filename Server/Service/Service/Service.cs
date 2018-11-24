@@ -43,12 +43,6 @@ namespace Service
             return bl.BlLogin(username, password);
         }
 
-        public bool Logout(int userId)
-        {
-            Bl bl = new Bl();
-            return bl.BlLogout(userId);
-        }
-
         public bool Register(string firstName, string lastName, string username, string password)
         {
             Bl bl = new Bl();
@@ -102,12 +96,6 @@ namespace Service
             PendingChanges.AddRange(ml);
         }
 
-        public void SaveChanges()
-        {
-            Bl bl = new Bl();
-            bl.SaveChnages();
-        }
-
         public MessageList DoAction(int gameId, int playerId)
         {
             MessageList temp = new MessageList();
@@ -121,21 +109,6 @@ namespace Service
                     {
                         temp.Add(m);
                         PendingChanges.Remove(m);
-
-                        if (m.Reciever == m.Target)// make shure this happens once for each message
-                        {
-                            if (m.Action == Message._action.add)
-                            {
-                                Bl bl = new Bl();
-                                bl.BlAddCard(m);
-                            }
-
-                            else if (m.Action == Message._action.remove)
-                            {
-                                Bl bl = new Bl();
-                                bl.BlRemoveCard(m);
-                            }
-                        }
                     }
                 }
             } 
