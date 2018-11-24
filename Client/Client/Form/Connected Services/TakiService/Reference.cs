@@ -596,6 +596,12 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Login", ReplyAction="http://tempuri.org/IService/LoginResponse")]
         System.Threading.Tasks.Task<Form.TakiService.User> LoginAsync(string username, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Logout", ReplyAction="http://tempuri.org/IService/LogoutResponse")]
+        bool Logout(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Logout", ReplyAction="http://tempuri.org/IService/LogoutResponse")]
+        System.Threading.Tasks.Task<bool> LogoutAsync(int userId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
         bool Register(string firstName, string lastName, string username, string password);
         
@@ -631,6 +637,12 @@ namespace Form.TakiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUsers", ReplyAction="http://tempuri.org/IService/GetAllUsersResponse")]
         System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SaveChanges", ReplyAction="http://tempuri.org/IService/SaveChangesResponse")]
+        void SaveChanges();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SaveChanges", ReplyAction="http://tempuri.org/IService/SaveChangesResponse")]
+        System.Threading.Tasks.Task SaveChangesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -724,6 +736,14 @@ namespace Form.TakiService {
             return base.Channel.LoginAsync(username, password);
         }
         
+        public bool Logout(int userId) {
+            return base.Channel.Logout(userId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LogoutAsync(int userId) {
+            return base.Channel.LogoutAsync(userId);
+        }
+        
         public bool Register(string firstName, string lastName, string username, string password) {
             return base.Channel.Register(firstName, lastName, username, password);
         }
@@ -770,6 +790,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
+        }
+        
+        public void SaveChanges() {
+            base.Channel.SaveChanges();
+        }
+        
+        public System.Threading.Tasks.Task SaveChangesAsync() {
+            return base.Channel.SaveChangesAsync();
         }
     }
 }

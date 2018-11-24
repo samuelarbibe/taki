@@ -15,24 +15,19 @@ using System.Windows.Shapes;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for ExitDialog.xaml
+    /// Interaction logic for ForceQuit.xaml
     /// </summary>
-    public partial class PlayerQuitDialog : Window
+    public partial class ForceQuit : Window
     {
-        public PlayerQuitDialog()
+        public ForceQuit()
         {
             InitializeComponent();
         }
 
-        public PlayerQuitDialog(string Username)
-        {
-            InitializeComponent();
-            ResponseTextBox.Text = "Player " + Username + " has Quitted.";
-        }
-
-        private void OkButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void QuitButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             DialogResult = true;
         }
+
     }
 }

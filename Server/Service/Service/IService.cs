@@ -40,6 +40,9 @@ namespace Service
         User Login(string username, string password);
 
         [OperationContract]
+        bool Logout(int userId);
+
+        [OperationContract]
         bool Register(string firstName, string lastName, string username, string password);
 
         [OperationContract]
@@ -56,6 +59,9 @@ namespace Service
 
         [OperationContract]
         UserList GetAllUsers();
+
+        [OperationContract]
+        void SaveChanges();
 
     }
 

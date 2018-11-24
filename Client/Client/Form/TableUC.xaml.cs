@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,9 +25,11 @@ namespace Form
         private CardList _deck;
         private Player _currentPlayer;
         private CardList _stack;
-        public event EventHandler StatusUpdated;
+        public event EventHandler TakeCardFromDeckButtonClicked;
+        
 
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+        public CardList Deck { get => _deck; set => _deck = value; }
 
         public void UpdateUI(Player p)
         {
@@ -40,6 +43,7 @@ namespace Form
         public TableUC()
         {
             InitializeComponent();
+
         }
 
 
@@ -47,21 +51,26 @@ namespace Form
         {
             CurrentPlayer = currentPlayer;
 
-            _deck = CurrentPlayer.Hand;
-            _stack = new CardList();
-
-            _stack.Add(_deck.First());
-
-
-            _deck.RemoveAt(0);
+            _stack = CurrentPlayer.Hand;
 
             DataContext = _stack.LastOrDefault();
         }
         
-        private void DeckButton_OnClick(object sender, RoutedEventArgs e)
+        public void DeckButton_OnClick(object sender, EventArgs e)
         {
             //Null check makes sure the main page is attached to the event
-            StatusUpdated?.Invoke(this, new EventArgs());
+            if (this.TakeCardFromDeckButtonClicked != null)
+                this.TakeCardFromDeckButtonClicked(this, EventArgs.Empty);
+        }
+
+        public void CanTakeCardFromDeck()
+        {
+            DeckButton.IsHitTestVisible = true;
+        }
+
+        public void CannotTakeCardFromDeck()
+        {
+            DeckButton.IsHitTestVisible = false;
         }
     }
 }

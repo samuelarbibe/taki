@@ -13,7 +13,7 @@ namespace ViewModel
         protected static List<ChangeEntity> Inserted = new List<ChangeEntity>();
         protected static List<ChangeEntity> Updated = new List<ChangeEntity>();
         protected OleDbCommand Command;
-        protected OleDbConnection Connection;
+        protected OleDbConnection con;
 
         //database
         protected string ConnectionString;
@@ -52,7 +52,7 @@ namespace ViewModel
                 @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + s1 +
                 @"\Database.accdb; Persist Security Info = True";
 
-            Connection = new OleDbConnection(ConnectionString);
+            con = new OleDbConnection(ConnectionString);
             Command = new OleDbCommand();
         }
 
@@ -101,8 +101,8 @@ namespace ViewModel
             int errorIndex = 0;
             try
             {
-                command.Connection = Connection;
-                Connection.Open();
+                command.Connection = con;
+                con.Open();
 
                 //inserted
                 foreach (var item in Inserted)
@@ -142,7 +142,7 @@ namespace ViewModel
             {
                 Reader?.Close();
 
-                if (Connection.State == ConnectionState.Open) Connection.Close();
+                if (con.State == ConnectionState.Open) con.Close();
             }
 
             return recordsAffected;
@@ -156,8 +156,8 @@ namespace ViewModel
 
             try
             {
-                Command.Connection = Connection;
-                Connection.Open();
+                Command.Connection = con;
+                con.Open();
                 Reader = Command.ExecuteReader();
 
                 while (Reader.Read())
@@ -174,7 +174,7 @@ namespace ViewModel
             {
                 Reader?.Close();
 
-                if (Connection.State == ConnectionState.Open) Connection.Close();
+                if (con.State == ConnectionState.Open) con.Close();
             }
 
             return list;
