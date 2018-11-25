@@ -122,7 +122,7 @@
 
         <Button Template="{StaticResource ButtonBaseControlTemplate}" x:Name="BackButton" Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="2" Width="40" Height="40" Margin="17,17,0,0" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Back_Icon.png"/>
+                <ImageBrush ImageSource="Resources/Images/Back_Icon.png"/>
             </Button.Background>
         </Button>
     </Grid>

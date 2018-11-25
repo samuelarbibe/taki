@@ -84,10 +84,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ExitDialog.xaml.cs">
+    <Compile Include="Dialogs\ExitDialog.xaml.cs">
       <DependentUpon>ExitDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ForceQuit.xaml.cs">
+    <Compile Include="Dialogs\ForceQuit.xaml.cs">
       <DependentUpon>ForceQuit.xaml</DependentUpon>
     </Compile>
     <Compile Include="GamePage.xaml.cs">
@@ -105,16 +105,16 @@
     <Compile Include="MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Player1UC.xaml.cs">
+    <Compile Include="UserControls\Player1UC.xaml.cs">
       <DependentUpon>Player1UC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Player2UC.xaml.cs">
+    <Compile Include="UserControls\Player2UC.xaml.cs">
       <DependentUpon>Player2UC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Player3UC.xaml.cs">
+    <Compile Include="UserControls\Player3UC.xaml.cs">
       <DependentUpon>Player3UC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Player4UC.xaml.cs">
+    <Compile Include="UserControls\Player4UC.xaml.cs">
       <DependentUpon>Player4UC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Register.xaml.cs">
@@ -123,7 +123,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TableUC.xaml.cs">
+    <Compile Include="UserControls\TableUC.xaml.cs">
       <DependentUpon>TableUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserPage.xaml.cs">
@@ -135,11 +135,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExitDialog.xaml">
+    <Page Include="Dialogs\ExitDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ForceQuit.xaml">
+    <Page Include="Dialogs\ForceQuit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,19 +182,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Player1UC.xaml">
+    <Page Include="UserControls\Player1UC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Player2UC.xaml">
+    <Page Include="UserControls\Player2UC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Player3UC.xaml">
+    <Page Include="UserControls\Player3UC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Player4UC.xaml">
+    <Page Include="UserControls\Player4UC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,7 +206,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TableUC.xaml">
+    <Page Include="UserControls\TableUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,10 +305,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Settings.png" />
+    <Resource Include="Resources\Images\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Back_Icon.png" />
+    <Resource Include="Resources\Images\Back_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Cards\card0001.png" />
@@ -381,12 +381,15 @@
     <Resource Include="Resources\Cards\card0068.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\TAKI.png" />
+    <Resource Include="Resources\Images\TAKI.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Fonts\Asap\OFL.txt" />
     <Resource Include="Resources\Fonts\Fredoka_One\OFL.txt" />
     <Resource Include="Resources\Fonts\Varela_Round\OFL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Logout_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

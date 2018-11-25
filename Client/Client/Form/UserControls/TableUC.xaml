@@ -7,9 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="180" d:DesignWidth="430">
     <Grid>
-        <!--<TextBlock x:Name="Username" Text="{Binding Username}"/>-->
-
-        <!--<Image x:Name="StackImage" Height="150" Source="{Binding Image}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
         <StackPanel x:Name="CardStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
             <WrapPanel>
                 <Image Height="100" x:Name="CardStackImage" Source="{Binding Image}"/>
@@ -23,7 +20,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Cards/card0068.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="../Resources/Cards/card0068.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 

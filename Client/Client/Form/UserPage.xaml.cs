@@ -48,10 +48,6 @@ namespace Form
             {
                 this.NavigationService.GoBack();
             }
-            else
-            {
-                Back.Content = "cannot go back...";
-            }
         }
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)

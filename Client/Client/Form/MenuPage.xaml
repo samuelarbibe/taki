@@ -49,11 +49,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89"/>
-            <RowDefinition Height="92*"/>
-            <RowDefinition Height="92*"/>
-            <RowDefinition Height="34*"/>
-            <RowDefinition Height="108*"/>
-            <RowDefinition Height="35*"/>
+            <RowDefinition Height="87*"/>
+            <RowDefinition Height="95"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="103*"/>
+            <RowDefinition Height="33*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -61,10 +61,10 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" >
-            <Image Source="Resources/TAKI.png" Margin="20,10,10,10"/>
+            <Image Source="Resources/Images/TAKI.png" Margin="20,10,10,10"/>
             <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="UserButton_Click">
                 <StackPanel x:Name="UserInfoStackPanel" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Left" x:Name="UsernameTextBlock" Text="" Padding="22" FontSize="20" FontFamily="Arial Rounded MT Bold" Foreground="White"/>
+                    <TextBlock HorizontalAlignment="Left" x:Name="UsernameTextBlock" Text="" Padding="22" FontSize="20" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap Medium" Foreground="White"/>
                     <Ellipse Fill="#FF49A3A6" Panel.ZIndex="1" Width="60" Height="60" RenderTransformOrigin="0.5,0.5" Margin="0,0,-55,0">
                         <Ellipse.BitmapEffect>
                             <DropShadowBitmapEffect Color="#FF868686"
@@ -77,21 +77,21 @@
             </Button>
 
         </DockPanel>
-        <Button Visibility="Visible" x:Name="MultiplayerButton" Content="Multiplayer" Grid.Row="2" Grid.Column="1" Background="#FFEC655F" FontSize="42" Foreground="White" FontFamily="/Form;component/Resources/Fonts/Fredoka_One/#Fredoka One" Click="MultiplayerButton_Click" >
+        <Button Visibility="Visible" x:Name="MultiplayerButton" Content="Multiplayer" Grid.Row="2" Grid.Column="1" Background="White" FontSize="42" Foreground="#FF4D99D0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Heavy" Click="MultiplayerButton_Click" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="30"/>
+                    <Setter Property="CornerRadius" Value="35"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="SettingsButton" HorizontalAlignment="Right" Click="SettingsButton_Click"  VerticalAlignment="Bottom" Margin="0,0,20,19.6" Grid.Column="2" Grid.Row="4" Background="#FF7F7F7F" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40" Grid.RowSpan="2">
+        <Button x:Name="SettingsButton" HorizontalAlignment="Right" Click="SettingsButton_Click"  VerticalAlignment="Bottom" Margin="0,0,20,19.6" Grid.Column="2" Grid.Row="4" Background="{x:Null}" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40" Grid.RowSpan="2" BorderThickness="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="20"/>
                 </Style>
             </Button.Resources>
             <WrapPanel>
-                <Image Source="Resources/Settings.png"/>
+                <Image Source="Resources/Images/Settings.png"/>
             </WrapPanel>
         </Button>
         <TextBlock FontSize="15" x:Name="SearchFailed" HorizontalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Foreground="white" Grid.Column="1" VerticalAlignment="Top"/>
@@ -105,21 +105,21 @@
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Multiplayer2PlayersButton" Grid.Column="0" Content="2" Background="#FFEC655F" FontSize="30" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="Multiplayer2PlayersButton_Click">
+            <Button x:Name="Multiplayer2PlayersButton" Grid.Column="0" Content="2" Background="White" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer2PlayersButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="Multiplayer3PlayersButton" Grid.Column="2" Content="3" Grid.Row="2" Background="#FFEC655F" FontSize="30" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="Multiplayer3PlayersButton_Click" >
+            <Button x:Name="Multiplayer3PlayersButton" Grid.Column="2" Content="3" Grid.Row="2" Background="White" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer3PlayersButton_Click" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button DockPanel.Dock="right" Grid.Column="4" x:Name="Multiplayer4PlayersButton" Content="4" Grid.Row="2" Background="#FFEC655F" FontSize="30" Foreground="White" FontFamily="Arial Rounded MT Bold" Click="Multiplayer4PlayersButton_Click" >
+            <Button DockPanel.Dock="right" Grid.Column="4" x:Name="Multiplayer4PlayersButton" Content="4" Grid.Row="2" Background="White" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer4PlayersButton_Click" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>

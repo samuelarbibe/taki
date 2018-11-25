@@ -43,6 +43,7 @@ namespace Form
         private int _turn;
         private int _playersCount;
         private int _currentPlayerIndex;
+        private bool _clockWiseRotation;
 
         private PlayerList PlayersList { get => _playersList; set => _playersList = value; }
         private Player Table { get => _table; set => _table = value; }
@@ -54,6 +55,7 @@ namespace Form
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
         public List<Card> Deck { get => _deck; set => _deck = value; }
+        public bool ClockWiseRotation { get => _clockWiseRotation; set => _clockWiseRotation = value; }
 
         public GamePage(Game game)
         {
@@ -63,6 +65,7 @@ namespace Form
 
             CurrentGame = game;
 
+            ClockWiseRotation = true;
             MyTurn = false;
             Active = true;
 
@@ -72,12 +75,7 @@ namespace Form
 
                 uc1.SetAsActive();
 
-                _saveChanges = new BackgroundWorker();
-                _saveChanges.DoWork += SaveChanges;
-                _saveChanges.WorkerSupportsCancellation = true;
-                _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
-
-                _saveChanges.RunWorkerAsync();
+                SetSaveChnages();
             }
             else
             {
@@ -131,10 +129,20 @@ namespace Form
             _backgroundProgress.RunWorkerAsync();
         }
 
+        private void SetSaveChnages()
+        {
+            _saveChanges = new BackgroundWorker();
+            _saveChanges.DoWork += SaveChanges;
+            _saveChanges.WorkerSupportsCancellation = true;
+            _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
+
+            _saveChanges.RunWorkerAsync();
+        }
+
         //save the changes in the database every 2 seconds
         private void SaveChanges(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
 
             MainWindow.Service.SaveChanges();
         }
@@ -197,20 +205,12 @@ namespace Form
 
                                 if (_currentUser.Id == PlayersList[0].UserId)
                                 {
-                                    InitialTurn();// broadcast that self is the first player in the game's players list
+                                    InitialTurn(); // broadcast that self is the first player in the game's players list
 
-                                    //uc1.SetAsActive();
+                                    uc1.SetAsActive();
 
-                                    //while (_saveChanges.IsBusy)
-                                    //{
-                                    //    _saveChanges.CancelAsync();
-                                    //}
-                                    //_saveChanges = new BackgroundWorker();
-                                    //_saveChanges.DoWork += SaveChanges;
-                                    //_saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
-
-                                    //_saveChanges.RunWorkerAsync();
-
+                                    // pass the save changes functionality to the target player.
+                                    SetSaveChnages();
                                 }
                                 else
                                 {
@@ -284,9 +284,10 @@ namespace Form
 
         private void ExitGameButton_Click(object sender, RoutedEventArgs e)
         {
-            ExitDialog dialog = new ExitDialog();
-
-            dialog.Owner = Application.Current.MainWindow;
+            ExitDialog dialog = new ExitDialog
+            {
+                Owner = Application.Current.MainWindow
+            };
 
             if (dialog.ShowDialog() == true)
             {
@@ -308,9 +309,10 @@ namespace Form
                     uc4.Visibility = Visibility.Hidden;
                     uctable.UpdateUI(PlayersList[1]);
 
-                    ForceQuit dialog = new ForceQuit();
-
-                    dialog.Owner = Application.Current.MainWindow;
+                    ForceQuit dialog = new ForceQuit
+                    {
+                        Owner = Application.Current.MainWindow
+                    };
 
                     if (dialog.ShowDialog() == true)
                     {
@@ -377,7 +379,11 @@ namespace Form
 
         public int GetNextPlayerId()
         {
-            return PlayersList[1].Id; // return the next player's Id
+            if (ClockWiseRotation)
+            {
+                return PlayersList[1].Id; // return the next player's Id
+            }
+            return PlayersList[PlayersList.Count - 2].Id; // return the previous player's Id
         }
 
         public void IsMyTurn(bool MyTurn)
@@ -485,6 +491,11 @@ namespace Form
                     GameId = CurrentGame.Id
                 });
             }
+
+            //while (_saveChanges.IsBusy) // stop the running background worker
+            //{
+            //    _saveChanges.CancelAsync();
+            //}
 
             MainWindow.Service.AddActions(temp);
 
