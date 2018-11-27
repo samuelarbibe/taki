@@ -49,10 +49,10 @@ namespace BusinessLayer
         public User BlLogin(string username, string password)
         {
             UserDb db = new UserDb();
-            User user = (db.SelectByUsernameAndPassword(username, password))[0];
-            if (user != null && _loggedPlayers.Find(u => u.Id == user.Id) == null)
+            UserList userList = db.SelectByUsernameAndPassword(username, password);
+            if (userList != null && userList.Count > 0 && _loggedPlayers.Find(u => u.Id == userList[0].Id) == null)
             {
-                _loggedPlayers.Add(user);
+                _loggedPlayers.Add(userList[0]);
                 return user;
             }
 
