@@ -6,32 +6,89 @@
              xmlns:local="clr-namespace:Form"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid x:Name="MyGrid">
 
+        
+        
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
 
         <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}"  FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White"/>
 
-        <ItemsControl x:Name="CardListItemControl" Margin="0,20,0,0" >
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Image Source="{Binding Image}" Margin="-40,0,0,0" HorizontalAlignment="Right" DockPanel.Dock="Top"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
+        <ListView BorderThickness="0" x:Name="HandView" Background="Transparent" HorizontalAlignment="Stretch">
+            <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Center"/>
+                    <StackPanel Margin="-40,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" IsItemsHost="True" VerticalAlignment="Top"/>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemContainerStyle>
-                <Style TargetType="{x:Type ContentPresenter}">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Panel.ZIndex" Value="99" />
-                        </Trigger>
-                    </Style.Triggers>
+            </ListView.ItemsPanel>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                   <Image Source="{Binding Image}" Height="135" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <StackPanel>
+                                    <Canvas Width="40" Height="135">
+                                        <Rectangle x:Name="Highlight"  Width="100" Height="5" Canvas.Top="155"/>
+                                        <ContentPresenter x:Name="CardPresenter">
+                                            <ContentPresenter.RenderTransform>
+                                                <TransformGroup>
+                                                    <TranslateTransform x:Name="TranslateTransformHighlight"/>
+                                                    <RotateTransform x:Name="RotateTransformHighlight" CenterY="100"/>
+                                                    <TranslateTransform x:Name="TranslateTransformSelect"/>
+                                                </TransformGroup>
+                                            </ContentPresenter.RenderTransform>
+                                        </ContentPresenter>
+                                    </Canvas>
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True" >
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="TranslateTransformHighlight" Duration="0:0:0.200" To="-10" Storyboard.TargetProperty="Y" />
+                                                    <DoubleAnimation Storyboard.TargetName="RotateTransformHighlight" Duration="0:0:0.200" To="-5" Storyboard.TargetProperty="Angle" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="TranslateTransformHighlight" Duration="0:0:0.200" To="0" Storyboard.TargetProperty="Y" />
+                                                    <DoubleAnimation Storyboard.TargetName="RotateTransformHighlight" Duration="0:0:0.200" To="0" Storyboard.TargetProperty="Angle" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Highlight" Property="Fill" Value="Yellow"/>
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="TranslateTransformSelect" Duration="0:0:0.200" To="-15" Storyboard.TargetProperty="Y" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="TranslateTransformSelect" Duration="0:0:0.200" To="0" Storyboard.TargetProperty="Y" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
-            </ItemsControl.ItemContainerStyle>
-        </ItemsControl>
+            </ListView.ItemContainerStyle>
+        </ListView>
     </Grid>
 </UserControl>

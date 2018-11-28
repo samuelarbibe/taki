@@ -23,6 +23,7 @@ namespace Form
     {
         private CardList _hand;
         private Player _currentPlayer;
+        private bool _active;
 
         public Player1UC() {
 
@@ -30,6 +31,8 @@ namespace Form
         }
 
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+        public bool Active { get => _active; set => _active = value; }
+        public CardList Hand { get => _hand; set => _hand = value; }
 
         public void UpdateUI(Player p)
         {
@@ -37,9 +40,9 @@ namespace Form
 
             DataContext = CurrentPlayer;
 
-            CardListItemControl.ItemsSource = null;
+            HandView.ItemsSource = null;
 
-            CardListItemControl.ItemsSource = CurrentPlayer.Hand;
+            HandView.ItemsSource = CurrentPlayer.Hand;
         }
 
         public void SetAsActive()
@@ -56,11 +59,11 @@ namespace Form
         {
             CurrentPlayer = currentPlayer;
 
-            _hand = currentPlayer.Hand;
+            Hand = currentPlayer.Hand;
 
             DataContext = CurrentPlayer;
 
-            CardListItemControl.ItemsSource = CurrentPlayer.Hand;
+            HandView.ItemsSource = CurrentPlayer.Hand;
         }
 
     }

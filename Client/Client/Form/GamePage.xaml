@@ -42,7 +42,7 @@
             </Button.Background>
         </Button>
 
-        <local:Player1UC x:Name="uc1" Grid.ColumnSpan="10" Grid.RowSpan="3" Grid.Column="2" Grid.Row="6" Margin="42,0,43,0"/>
+        <local:Player1UC x:Name="uc1" Grid.ColumnSpan="10" Grid.RowSpan="4" Grid.Column="2" Grid.Row="5" Margin="42,23,43,0"/>
         <local:Player2UC x:Name="uc2" Grid.Column="9" Grid.RowSpan="4" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.Row="2" Margin="1,48,-134,0">
             <local:Player2UC.RenderTransform>
                 <TransformGroup>
