@@ -44,12 +44,12 @@ namespace Form
 
         public void SetAsActive()
         {
-            MyGrid.Background = new SolidColorBrush(Colors.LightGreen);
+            BackgroundActive.Fill = new SolidColorBrush(Color.FromArgb(90, 0, 250, 0));
         }
 
         public void SetAsNonActive()
         {
-            MyGrid.Background = new SolidColorBrush(Colors.Transparent);
+            BackgroundActive.Fill = null;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)
@@ -62,8 +62,6 @@ namespace Form
 
             CardListItemControl.ItemsSource = CurrentPlayer.Hand;
         }
-
-
 
     }
 }

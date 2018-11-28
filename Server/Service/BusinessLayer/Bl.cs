@@ -19,16 +19,17 @@ namespace BusinessLayer
         };
 
         private static UserList _loggedPlayers = new UserList();
-
-        private static CardDb _cardDb = new CardDb();
-          
-        private static CardList _deck = _cardDb.SelectAll();
-          
+        private static CardDb _cardDb = new CardDb();          
+        private static CardList _deck = CardDb.SelectAll();       
         private static GameList _gameList = new GameList();
-
-        private static Dictionary<Player, int> _standbyPlayers = new Dictionary<Player, int>();
-          
+        private static Dictionary<Player, int> _standbyPlayers = new Dictionary<Player, int>();         
         private static Game _game;
+
+        public static UserList LoggedPlayers { get => _loggedPlayers; set => _loggedPlayers = value; }
+        public static CardDb CardDb { get => _cardDb; set => _cardDb = value; }
+        public static CardList Deck { get => _deck; set => _deck = value; }
+        public static GameList GameList { get => _gameList; set => _gameList = value; }
+        public static Dictionary<Player, int> StandbyPlayers { get => _standbyPlayers; set => _standbyPlayers = value; }
 
         public Card BlBuildDeck()
         {
@@ -49,11 +50,11 @@ namespace BusinessLayer
         public User BlLogin(string username, string password)
         {
             UserDb db = new UserDb();
-            User user = (db.SelectByUsernameAndPassword(username, password))[0];
-            if (user != null && _loggedPlayers.Find(u => u.Id == user.Id) == null)
+            UserList userList = db.SelectByUsernameAndPassword(username, password);
+            if (userList != null && userList.Count > 0 && LoggedPlayers.Find(u => u.Id == userList[0].Id) == null)
             {
-                _loggedPlayers.Add(user);
-                return user;
+                LoggedPlayers.Add(userList[0]);
+                return userList[0];
             }
 
             return null;
@@ -61,10 +62,10 @@ namespace BusinessLayer
 
         public bool BlLogout(int userId)
         {
-            User temp = _loggedPlayers.Find(u => u.Id == userId);
+            User temp = LoggedPlayers.Find(u => u.Id == userId);
             if (temp != null)
             {
-                _loggedPlayers.Remove(temp);
+                LoggedPlayers.Remove(temp);
                 return true;
             }
 
@@ -118,7 +119,7 @@ namespace BusinessLayer
         public Game BlStartGame(Player p, int playerCount)
         {
             //if there is a game in gameList containing this player and if game is active
-            Game temp = _gameList.Find(g => g.Players.Find(q => q.UserId == p.UserId) != null);
+            Game temp = GameList.Find(g => g.Players.Find(q => q.UserId == p.UserId) != null);
 
             // return the game to the player!
             if (temp != null) {
@@ -156,7 +157,7 @@ namespace BusinessLayer
 
                 //_game.Active = true;
 
-                _gameList.Add((Game)_game.Clone()); // add this game to the game list
+                GameList.Add((Game)_game.Clone()); // add this game to the game list
 
                 //_waitingList[playerCount - 2].Clear();
 
@@ -184,7 +185,7 @@ namespace BusinessLayer
 
         public bool BlPlayerQuit(Player remove)
         {
-            foreach (Game g in _gameList)
+            foreach (Game g in GameList)
             {
                 Player temp = g.Players.Find(p => p.UserId == remove.UserId);
                 if (temp != null)
@@ -331,12 +332,12 @@ namespace BusinessLayer
 
             for (int i = 0; i < length; i++)
             {
-                temp = _deck[rand.Next(0, 64)];
+                temp = Deck[rand.Next(0, 64)];
                 if (length < 65)//if hand is smaller than the deck length, make sure there are no doubles
                 {
                     while (hand.Find(q => q.Value == temp.Value && q.Color == temp.Color) != null)// if the card is already in the hand, fetch for a different card
                     {
-                        temp = _deck[rand.Next(0, 65)];
+                        temp = Deck[rand.Next(0, 65)];
                     }
                     hand.Add(temp);
                 }

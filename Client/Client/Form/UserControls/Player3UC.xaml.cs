@@ -43,7 +43,7 @@ namespace Form
 
         public void SetAsActive()
         {
-            MyGrid.Background = new SolidColorBrush(Color.FromArgb(30, 0, 250, 0));
+            MyGrid.Background = new SolidColorBrush(Color.FromArgb(60, 0, 250, 0));
         }
 
         public void SetAsNonActive()

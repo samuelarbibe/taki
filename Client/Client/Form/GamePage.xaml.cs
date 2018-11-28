@@ -45,17 +45,22 @@ namespace Form
         private int _currentPlayerIndex;
         private bool _clockWiseRotation;
 
-        private PlayerList PlayersList { get => _playersList; set => _playersList = value; }
-        private Player Table { get => _table; set => _table = value; }
-        private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
-        private User CurrentUser { get => _currentUser; set => _currentUser = value; }
-        private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
-
         public bool MyTurn { get => _myTurn; set => _myTurn = value; }
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
         public List<Card> Deck { get => _deck; set => _deck = value; }
         public bool ClockWiseRotation { get => _clockWiseRotation; set => _clockWiseRotation = value; }
+        public MessageList LocalMessageList { get => _localMessageList; set => _localMessageList = value; }
+        public BackgroundWorker BackgroundProgress { get => _backgroundProgress; set => _backgroundProgress = value; }
+        public BackgroundWorker SaveChanges1 { get => _saveChanges; set => _saveChanges = value; }
+        public int PlayersCount { get => _playersCount; set => _playersCount = value; }
+        public int CurrentPlayerIndex { get => _currentPlayerIndex; set => _currentPlayerIndex = value; }
+
+        private PlayerList PlayersList { get => _playersList; set => _playersList = value; }
+        private Player Table { get => _table; set => _table = value; }
+        private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+        private User CurrentUser { get => _currentUser; set => _currentUser = value; }
+        private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
 
         public GamePage(Game game)
         {
@@ -71,17 +76,11 @@ namespace Form
 
             //the first player is the one to request changes saving in the database every x seconds
             if (_currentUser.Id == CurrentGame.Players[0].UserId){
-                InitialTurn();// broadcast that self is the first player in the game's players list
 
-                uc1.SetAsActive();
+                InitialTurn();// broadcast that self is the first player in the game's players list
 
                 SetSaveChnages();
             }
-            else
-            {
-                IsMyTurn(false);
-            }
-
 
             uctable.TakeCardFromDeckButtonClicked += new EventHandler(TakeCardFromDeck);
 
@@ -122,21 +121,21 @@ namespace Form
 
         private void SetBackgroundWorker()
         {
-            _backgroundProgress = new BackgroundWorker();
-            _backgroundProgress.DoWork += FetchChanges;
-            _backgroundProgress.RunWorkerCompleted += BackgroundProcess_RunWorkerCompleted;
+            BackgroundProgress = new BackgroundWorker();
+            BackgroundProgress.DoWork += FetchChanges;
+            BackgroundProgress.RunWorkerCompleted += BackgroundProcess_RunWorkerCompleted;
 
-            _backgroundProgress.RunWorkerAsync();
+            BackgroundProgress.RunWorkerAsync();
         }
 
         private void SetSaveChnages()
         {
-            _saveChanges = new BackgroundWorker();
-            _saveChanges.DoWork += SaveChanges;
-            _saveChanges.WorkerSupportsCancellation = true;
-            _saveChanges.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
+            SaveChanges1 = new BackgroundWorker();
+            SaveChanges1.DoWork += SaveChanges;
+            SaveChanges1.WorkerSupportsCancellation = true;
+            SaveChanges1.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
 
-            _saveChanges.RunWorkerAsync();
+            SaveChanges1.RunWorkerAsync();
         }
 
         //save the changes in the database every 2 seconds
@@ -150,7 +149,7 @@ namespace Form
 
         private void SaveChanges_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (Active) _saveChanges.RunWorkerAsync();
+            if (Active) SaveChanges1.RunWorkerAsync();
         }
 
 
@@ -158,7 +157,7 @@ namespace Form
         {
             Thread.Sleep(200);
 
-            _localMessageList = MainWindow.Service.DoAction(CurrentGame.Id, CurrentPlayer.Id);
+            LocalMessageList = MainWindow.Service.DoAction(CurrentGame.Id, CurrentPlayer.Id);
         }
 
 
@@ -167,9 +166,9 @@ namespace Form
             if (Active)
             {
                 // Update local variables
-                if (_localMessageList != null && _localMessageList.Count != 0)
+                if (LocalMessageList != null && LocalMessageList.Count != 0)
                 {
-                    foreach (Message m in _localMessageList)
+                    foreach (Message m in LocalMessageList)
                     {
                         switch (m.Action)
                         {
@@ -197,6 +196,8 @@ namespace Form
 
                             case Message._action.player_quit:
 
+                                int prevChangesSaverId = PlayersList[0].UserId;
+
                                 Player quitter = PlayersList.Find(p => p.Id == m.Target);
                                 PlayersList.Remove(quitter); // remove the quitting player from the local players list
 
@@ -209,8 +210,12 @@ namespace Form
 
                                     uc1.SetAsActive();
 
-                                    // pass the save changes functionality to the target player.
-                                    SetSaveChnages();
+                                    // if the player isn't already the player in charge of saving changes
+                                    if (_currentUser.Id != prevChangesSaverId)
+                                    {
+                                        // pass the save changes functionality to the target player.
+                                        SetSaveChnages();
+                                    }
                                 }
                                 else
                                 {
@@ -228,13 +233,8 @@ namespace Form
                 }
 
                 // Run again
-                _backgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
+                BackgroundProgress.RunWorkerAsync();   // This will make the BgWorker run again, and never runs before it is completed.
             }
-        }
-
-        private void Announce(Object myObject, EventArgs myEventArgs)
-        {
-            PlayerQuitAnnounce.Text = "" + myObject.ToString() + " left the game";
         }
 
         public void PrintCards()
@@ -257,29 +257,29 @@ namespace Form
         // - list[Last] is the table
         private void ReorderPlayerList()
         {
-            _playersCount = CurrentGame.Players.Count;
+            PlayersCount = CurrentGame.Players.Count;
 
-            _currentPlayerIndex = CurrentGame.Players.FindIndex(p => p.UserId == CurrentUser.Id);
+            CurrentPlayerIndex = CurrentGame.Players.FindIndex(p => p.UserId == CurrentUser.Id);
 
-            for (int i = 0; i < _playersCount - 1; i++)
+            for (int i = 0; i < PlayersCount - 1; i++)
             {
-                if (_currentPlayerIndex >= _playersCount - 1)
+                if (CurrentPlayerIndex >= PlayersCount - 1)
                 {
-                    PlayersList.Add(CurrentGame.Players[_currentPlayerIndex % (_playersCount - 1)]);
+                    PlayersList.Add(CurrentGame.Players[CurrentPlayerIndex % (PlayersCount - 1)]);
                 }
                 else
                 {
-                    PlayersList.Add(CurrentGame.Players[_currentPlayerIndex]);
+                    PlayersList.Add(CurrentGame.Players[CurrentPlayerIndex]);
                 }
 
-                _currentPlayerIndex++;
+                CurrentPlayerIndex++;
             }
 
             PlayersList.Add(CurrentGame.Players.Find(q => q.Username == "table"));
 
             CurrentPlayer = PlayersList[0];
 
-            Table = PlayersList[_playersCount - 1];
+            Table = PlayersList[PlayersCount - 1];
         }
 
         private void ExitGameButton_Click(object sender, RoutedEventArgs e)
@@ -381,13 +381,15 @@ namespace Form
         {
             if (ClockWiseRotation)
             {
-                return PlayersList[1].Id; // return the next player's Id
+                return PlayersList[PlayersList.Count - 2].Id;// return the next player's Id
             }
-            return PlayersList[PlayersList.Count - 2].Id; // return the previous player's Id
+            return PlayersList[1].Id;// return the previous player's Id
         }
 
-        public void IsMyTurn(bool MyTurn)
+        public void IsMyTurn(bool value)
         {
+            MyTurn = value;
+
             if (MyTurn) {
                 uctable.CanTakeCardFromDeck();
             }
@@ -456,6 +458,8 @@ namespace Form
 
         private void InitialTurn()
         {
+            uc1.SetAsActive();
+
             MessageList temp = new MessageList();
 
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
@@ -471,8 +475,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            MyTurn = true;
-            IsMyTurn(MyTurn);
+            IsMyTurn(true);
         }
 
         public void PlayerQuit()
@@ -491,11 +494,6 @@ namespace Form
                     GameId = CurrentGame.Id
                 });
             }
-
-            //while (_saveChanges.IsBusy) // stop the running background worker
-            //{
-            //    _saveChanges.CancelAsync();
-            //}
 
             MainWindow.Service.AddActions(temp);
 

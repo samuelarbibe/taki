@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:Form"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="MyGrid">
+    <Grid>
+        <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
+
         <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
@@ -18,7 +20,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
 
-        <ItemsControl x:Name="CardListItemControl" Margin="0,40,20,40">
+        <ItemsControl x:Name="CardListItemControl" Margin="0,20,20,30">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="../Resources/Cards/card0068.png" Margin="-20,0,0,0" HorizontalAlignment="Right"/>

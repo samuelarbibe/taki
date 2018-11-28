@@ -43,12 +43,12 @@ namespace Form
 
         public void SetAsActive()
         {
-            MyGrid.Background = new SolidColorBrush(Color.FromArgb(30, 0, 250, 0));
+            BackgroundActive.Fill = new SolidColorBrush(Color.FromArgb(60, 0, 250, 0));
         }
 
         public void SetAsNonActive()
         {
-            MyGrid.Background = null;
+            BackgroundActive.Fill = null;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)

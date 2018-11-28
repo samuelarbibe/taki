@@ -38,12 +38,12 @@
 
         <Button x:Name="ExitGameButton" Click="ExitGameButton_Click">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Back_Icon.png"/>
+                <ImageBrush ImageSource="Resources/Images/Back_Icon.png"/>
             </Button.Background>
         </Button>
 
-        <local:Player1UC x:Name="uc1" Grid.ColumnSpan="10" Grid.RowSpan="3" Grid.Column="2" Grid.Row="6" Margin="39,0,30,0"/>
-        <local:Player2UC x:Name="uc2" Grid.Column="9" Grid.RowSpan="5" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.Row="2" Margin="37,49,-97,49">
+        <local:Player1UC x:Name="uc1" Grid.ColumnSpan="10" Grid.RowSpan="3" Grid.Column="2" Grid.Row="6" Margin="42,0,43,0"/>
+        <local:Player2UC x:Name="uc2" Grid.Column="9" Grid.RowSpan="4" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.Row="2" Margin="1,48,-134,0">
             <local:Player2UC.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -53,7 +53,7 @@
                 </TransformGroup>
             </local:Player2UC.RenderTransform>
         </local:Player2UC>
-        <local:Player3UC x:Name="uc3" Grid.Column="3" Grid.RowSpan="3" Grid.ColumnSpan="8" Margin="30,0,27,29" RenderTransformOrigin="0.5,0.5">
+        <local:Player3UC x:Name="uc3" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="10" Margin="46,0,45,27" RenderTransformOrigin="0.5,0.5">
             <local:Player3UC.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -63,7 +63,7 @@
                 </TransformGroup>
             </local:Player3UC.RenderTransform>
         </local:Player3UC>
-        <local:Player4UC x:Name="uc4" Grid.Row="3" Grid.RowSpan="3" Grid.ColumnSpan="5" RenderTransformOrigin="0.5,0.5" Margin="-102,12,29,0">
+        <local:Player4UC x:Name="uc4" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="5" RenderTransformOrigin="0.5,0.5" Margin="-108,18,15,36">
             <local:Player4UC.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -74,7 +74,5 @@
             </local:Player4UC.RenderTransform>
         </local:Player4UC>
         <local:TableUC x:Name="uctable" Grid.ColumnSpan="8" Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Margin="10"/>
-        <TextBlock x:Name="PlayerQuitAnnounce" Grid.Column="1" HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="116"/>
-        <!--<Button x:Name="TakeCardFromDeck_Button"  Grid.ColumnSpan="2" Content="Take Card" HorizontalAlignment="Left" Margin="29,10,0,0" Grid.Row="8" VerticalAlignment="Top" Width="75" Click="TakeCardFromDeck"/>-->
     </Grid>
 </Page>
