@@ -6,11 +6,9 @@
              xmlns:local="clr-namespace:Form"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <Grid x:Name="MyGrid">
 
-        
-        
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
 
         <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}"  FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White"/>

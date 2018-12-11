@@ -26,7 +26,9 @@ namespace Form
         private Player _currentPlayer;
         private CardList _stack;
         public event EventHandler TakeCardFromDeckButtonClicked;
-        
+        public event EventHandler PassCardToStackButtonClicked;
+
+
 
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         public CardList Deck { get => _deck; set => _deck = value; }
@@ -66,11 +68,20 @@ namespace Form
         public void CanTakeCardFromDeck()
         {
             DeckButton.IsHitTestVisible = true;
+            PassCardButton.IsHitTestVisible = true;
         }
 
         public void CannotTakeCardFromDeck()
         {
             DeckButton.IsHitTestVisible = false;
+            PassCardButton.IsHitTestVisible = false;
+        }
+
+
+        private void PassCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.PassCardToStackButtonClicked != null)
+                this.PassCardToStackButtonClicked(this, EventArgs.Empty);
         }
     }
 }

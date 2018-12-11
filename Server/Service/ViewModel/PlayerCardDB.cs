@@ -50,7 +50,7 @@ namespace ViewModel
 
         public Connection GetConnectionByPlayerIdAndCardId(int playerId, int cardId)
         {
-            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE 'player_id'= @playerId, 'card_id' = @cardId";
+            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [player_id]= @playerId AND [card_id] = @cardId";
             
             // parameters
             Command.Parameters.Add(new OleDbParameter("@playerId", playerId));

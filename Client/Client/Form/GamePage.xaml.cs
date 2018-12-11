@@ -84,6 +84,8 @@ namespace Form
 
             uctable.TakeCardFromDeckButtonClicked += new EventHandler(TakeCardFromDeck);
 
+            uctable.PassCardToStackButtonClicked += new EventHandler(PassCardToDeck);
+
             ReorderPlayerList();
 
             Deck = PlayersList[PlayersList.Count - 1].Hand.ToList();
@@ -340,6 +342,44 @@ namespace Form
                     uc4.UpdateUI(PlayersList[3]);
                     uctable.UpdateUI(PlayersList[4]);
                     break;
+            }
+        }
+
+        private void PassCardToDeck(object sender, EventArgs e)
+        {
+            Player currentPlayer = PlayersList.First();
+            Random rand = new Random();
+            Player table = PlayersList.Last();
+            MessageList temp = new MessageList();
+            Card givenCard = uc1.SelectedCard(); // get a random card
+
+            if (givenCard != null)
+            {
+
+                for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+                {
+                    temp.Add(new Message()// add the top card of the table to the current player
+                    {
+                        Action = Message._action.add,
+                        Target = table.Id, // the person who's hand is modified
+                        Reciever = PlayersList[i].Id, // the peron who this message is for
+                        Card = givenCard, // the card modified
+                        GameId = CurrentGame.Id // the game modified
+                    });
+
+                    temp.Add(new Message()// add the top card of the table to the current player
+                    {
+                        Action = Message._action.remove,
+                        Target = currentPlayer.Id, // the person who's hand is modified
+                        Reciever = PlayersList[i].Id, // the peron who this message is for
+                        Card = givenCard, // the card modified
+                        GameId = CurrentGame.Id // the game modified
+                    });
+                }
+
+                MainWindow.Service.AddActions(temp);
+
+                TurnFinished(); // give turn to next player
             }
         }
 

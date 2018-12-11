@@ -34,6 +34,18 @@ namespace Form
         public bool Active { get => _active; set => _active = value; }
         public CardList Hand { get => _hand; set => _hand = value; }
 
+        public Card SelectedCard()
+        {
+            try
+            {
+                return (Card)HandView.SelectedItems[0];
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public void UpdateUI(Player p)
         {
             CurrentPlayer = p;
@@ -57,6 +69,7 @@ namespace Form
 
         public void SetCurrentPlayer(Player currentPlayer)
         {
+
             CurrentPlayer = currentPlayer;
 
             Hand = currentPlayer.Hand;
