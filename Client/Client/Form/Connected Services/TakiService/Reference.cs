@@ -27,7 +27,7 @@ namespace Form.TakiService {
     public partial class Card : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Form.TakiService.Card.Color COLORField;
+        private string ColorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImageField;
@@ -36,17 +36,17 @@ namespace Form.TakiService {
         private bool SpecialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Form.TakiService.Card.Value VALUEField;
+        private int ValueField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Form.TakiService.Card.Color COLOR {
+        public string Color {
             get {
-                return this.COLORField;
+                return this.ColorField;
             }
             set {
-                if ((this.COLORField.Equals(value) != true)) {
-                    this.COLORField = value;
-                    this.RaisePropertyChanged("COLOR");
+                if ((object.ReferenceEquals(this.ColorField, value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
                 }
             }
         }
@@ -78,101 +78,16 @@ namespace Form.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Form.TakiService.Card.Value VALUE {
+        public int Value {
             get {
-                return this.VALUEField;
+                return this.ValueField;
             }
             set {
-                if ((this.VALUEField.Equals(value) != true)) {
-                    this.VALUEField = value;
-                    this.RaisePropertyChanged("VALUE");
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
                 }
             }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.Color", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Color : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Green = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Blue = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Red = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Yellow = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Multi = 4,
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.Value", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Value : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Zero = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            One = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            PlusTwo = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Three = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Four = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Five = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Six = 6,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Seven = 7,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Eight = 8,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Nine = 9,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Stop = 10,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Plus = 11,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchDirection = 12,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Taki = 13,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColor = 14,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchHand = 15,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            PlusThree = 16,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            TakiAll = 17,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColorAll = 18,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchHandAll = 19,
         }
     }
     
@@ -511,7 +426,7 @@ namespace Form.TakiService {
     public partial class Message : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Form.TakiService.Message.Action ACTIONField;
+        private Form.TakiService.Message._action ActionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Form.TakiService.Card CardField;
@@ -526,14 +441,14 @@ namespace Form.TakiService {
         private int TargetField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Form.TakiService.Message.Action ACTION {
+        public Form.TakiService.Message._action Action {
             get {
-                return this.ACTIONField;
+                return this.ActionField;
             }
             set {
-                if ((this.ACTIONField.Equals(value) != true)) {
-                    this.ACTIONField = value;
-                    this.RaisePropertyChanged("ACTION");
+                if ((this.ActionField.Equals(value) != true)) {
+                    this.ActionField = value;
+                    this.RaisePropertyChanged("Action");
                 }
             }
         }
@@ -591,29 +506,20 @@ namespace Form.TakiService {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Message.Action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Action : int {
+        [System.Runtime.Serialization.DataContractAttribute(Name="Message._action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+        public enum _action : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Add = 0,
+            add = 0,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Remove = 1,
+            remove = 1,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            NextTurn = 2,
+            next_turn = 2,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            PlayerQuit = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            TakeTwo = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Stop = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchDirection = 6,
+            player_quit = 3,
         }
     }
     

@@ -5,14 +5,11 @@ namespace Model
     [DataContract]
     public class Message : BaseEntity
     {
-        public enum Action {
-            Add,
-            Remove,
-            NextTurn,
-            PlayerQuit,
-            TakeTwo,
-            Stop,
-            SwitchDirection,
+        public enum _action {
+            add,
+            remove,
+            next_turn,
+            player_quit
         }
         private int _reciever;
         private int _gameId;
@@ -27,7 +24,7 @@ namespace Model
         }
 
         [DataMember]
-        public Action ACTION { get; set; }
+        public _action Action { get; set; }
 
         [DataMember]
         public Card Card

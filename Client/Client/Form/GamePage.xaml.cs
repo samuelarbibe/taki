@@ -172,14 +172,14 @@ namespace Form
                 {
                     foreach (Message m in LocalMessageList)
                     {
-                        switch (m.ACTION)
+                        switch (m.Action)
                         {
-                            case Message.Action.Add:
+                            case Message._action.add:
 
                                 PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
                                 break;
 
-                            case Message.Action.Remove:
+                            case Message._action.remove:
 
                                 Player tempPlayer = PlayersList.Find(p => p.Id == m.Target); // the target player
                                 Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
@@ -187,7 +187,7 @@ namespace Form
 
                                 break;
 
-                            case Message.Action.NextTurn:
+                            case Message._action.next_turn:
 
                                 Turn = PlayersList.FindIndex(p => p.Id == m.Target);
                                 IsMyTurn(m.Target == CurrentPlayer.Id);
@@ -196,9 +196,9 @@ namespace Form
 
                                 break;
 
-                            case Message.Action.PlayerQuit:
+                            case Message._action.player_quit:
 
-                                int prevChangeSaverId = PlayersList[0].UserId;
+                                int prevChangesSaverId = PlayersList[0].UserId;
 
                                 Player quitter = PlayersList.Find(p => p.Id == m.Target);
                                 PlayersList.Remove(quitter); // remove the quitting player from the local players list
@@ -213,7 +213,7 @@ namespace Form
                                     uc1.SetAsActive();
 
                                     // if the player isn't already the player in charge of saving changes
-                                    if (_currentUser.Id != prevChangeSaverId)
+                                    if (_currentUser.Id != prevChangesSaverId)
                                     {
                                         // pass the save changes functionality to the target player.
                                         SetSaveChnages();
@@ -239,19 +239,19 @@ namespace Form
             }
         }
 
-        //public void PrintCards()
-        //{
-        //    string cards = "\n \n --------------------------------------";
-        //    foreach (Player p in PlayersList)
-        //    {
-        //        cards += "\n \n Player "+ p.Username +":";
-        //        foreach (Card c in p.Hand)
-        //        {
-        //            cards += "\n value:" + c.Value + ", color:" + c.Color;
-        //        }
-        //    }
-        //    Console.Write(cards);
-        //}
+        public void PrintCards()
+        {
+            string cards = "\n \n --------------------------------------";
+            foreach (Player p in PlayersList)
+            {
+                cards += "\n \n Player "+ p.Username +":";
+                foreach (Card c in p.Hand)
+                {
+                    cards += "\n value:" + c.Value + ", color:" + c.Color;
+                }
+            }
+            Console.Write(cards);
+        }
 
         // this function re-arranges the player in a particular way, to make sure that:
         // - list[First] is the current player
@@ -353,14 +353,14 @@ namespace Form
             MessageList temp = new MessageList();
             Card givenCard = uc1.SelectedCard(); // get a random card
 
-            if (givenCard != null && Utilities.Algorithm.SimpleCheck(givenCard, table.Hand[table.Hand.Count-1]))
+            if (givenCard != null)
             {
 
                 for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
-                        ACTION= Message.Action.Add,
+                        Action = Message._action.add,
                         Target = table.Id, // the person who's hand is modified
                         Reciever = PlayersList[i].Id, // the peron who this message is for
                         Card = givenCard, // the card modified
@@ -369,7 +369,7 @@ namespace Form
 
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
-                        ACTION= Message.Action.Remove,
+                        Action = Message._action.remove,
                         Target = currentPlayer.Id, // the person who's hand is modified
                         Reciever = PlayersList[i].Id, // the peron who this message is for
                         Card = givenCard, // the card modified
@@ -396,7 +396,7 @@ namespace Form
             {
                 temp.Add(new Message()// add the top card of the table to the current player
                 {
-                    ACTION= Message.Action.Add,
+                    Action = Message._action.add,
                     Target = currentPlayer.Id, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
                     Card = takenCard, // the card modified
@@ -484,7 +484,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    ACTION = Message.Action.NextTurn, // give next turn to
+                    Action = Message._action.next_turn, // give next turn to
                     Target = GetNextPlayerId(),
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -506,7 +506,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    ACTION= Message.Action.NextTurn, // give next turn to self
+                    Action = Message._action.next_turn, // give next turn to self
                     Target = CurrentPlayer.Id,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -528,7 +528,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    ACTION= Message.Action.PlayerQuit,
+                    Action = Message._action.player_quit,
                     Target = CurrentPlayer.Id,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -540,7 +540,5 @@ namespace Form
             if (MyTurn) TurnFinished();
             Active = false;
         }
-
-
     }
 }

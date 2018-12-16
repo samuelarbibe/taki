@@ -259,14 +259,14 @@ namespace BusinessLayer
             {
                 temp.SideA = p.Id; // increment the player id for each player
                 temp.SideB = g.Id; // the game id will be the same when inserted
-                temp.CONTYPE = Connection.ConnectionType.PlayerGame;
+                temp.ConnectionType = Connection._connectionType.player_game;
                 playerGameConnectionList.Add((Connection)temp.Clone());
 
                 foreach (Card c in p.Hand)
                 {
                     temp.SideA = p.Id;
                     temp.SideB = c.Id;
-                    temp.CONTYPE = Connection.ConnectionType.PlayerGame;
+                    temp.ConnectionType = Connection._connectionType.player_card;
                     playerCardConnectionList.Add((Connection)temp.Clone());
                 }
             }
@@ -293,7 +293,7 @@ namespace BusinessLayer
             PlayerCardDb db = new PlayerCardDb();
 
             Connection c = new Connection() {
-                CONTYPE = Model.Connection.ConnectionType.PlayerCard,
+                ConnectionType = Model.Connection._connectionType.player_card,
                 SideA = m.Target,
                 SideB = m.Card.Id
             };
@@ -335,7 +335,7 @@ namespace BusinessLayer
                 temp = Deck[rand.Next(0, 64)];
                 if (length < 65)//if hand is smaller than the deck length, make sure there are no doubles
                 {
-                    while (hand.Find(q => q.VALUE == temp.VALUE && q.COLOR == temp.COLOR) != null)// if the card is already in the hand, fetch for a different card
+                    while (hand.Find(q => q.Value == temp.Value && q.Color == temp.Color) != null)// if the card is already in the hand, fetch for a different card
                     {
                         temp = Deck[rand.Next(0, 65)];
                     }

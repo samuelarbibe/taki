@@ -78,7 +78,6 @@
     <Compile Include="AdminUserPage.xaml.cs">
       <DependentUpon>AdminUserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\Algorithm.cs" />
     <Compile Include="Utilities\Check.cs" />
     <Compile Include="Connected Services\TakiService\Reference.cs">
       <AutoGen>True</AutoGen>
