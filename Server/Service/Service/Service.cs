@@ -124,13 +124,13 @@ namespace Service
 
                         if (m.Reciever == m.Target)// make shure this happens once for each message
                         {
-                            if (m.Action == Message._action.add)
+                            if (m.ACTION == Message.Action.Add)
                             {
                                 Bl bl = new Bl();
                                 bl.BlAddCard(m);
                             }
 
-                            else if (m.Action == Message._action.remove)
+                            else if (m.ACTION == Message.Action.Remove)
                             {
                                 Bl bl = new Bl();
                                 bl.BlRemoveCard(m);

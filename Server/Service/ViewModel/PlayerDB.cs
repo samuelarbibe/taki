@@ -39,7 +39,7 @@ namespace ViewModel
             return temp.Count > 0 ? temp[0] : new Player(0);
         }
 
-        public int GetLastPlayerID()
+        public int GetLastPlayerId()
         {
             Command.CommandText = "SELECT MAX(ID) FROM Player_Table";
             GameList temp = new GameList(Select());

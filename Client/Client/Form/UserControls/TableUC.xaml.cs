@@ -77,7 +77,6 @@ namespace Form
             PassCardButton.IsHitTestVisible = false;
         }
 
-
         private void PassCardButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.PassCardToStackButtonClicked != null)

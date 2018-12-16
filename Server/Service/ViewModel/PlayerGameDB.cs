@@ -18,7 +18,7 @@ namespace ViewModel
             con.Id = (int) Reader["ID"];
             con.SideA = (int) Reader["player_id"];
             con.SideB = (int) Reader["game_id"];
-            con.ConnectionType = Model.Connection._connectionType.player_game;
+            con.CONTYPE = Model.Connection.ConnectionType.PlayerGame;
             return con;
         }
 

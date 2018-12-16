@@ -5,37 +5,53 @@ namespace Model
     [DataContract]
     public class Card : BaseEntity
     {
-        private string _color;
         private string _image;
         private bool _special;
-        private int _value;
 
-        [DataMember]
-        public string Color
+        public enum Color
         {
-            get => _color;
-            set => _color = value;
+            Green,
+            Blue,
+            Red,
+            Yellow,
+            Multi
         }
 
-        [DataMember]
-        public int Value
+        public enum Value
         {
-            get => _value;
-            set => _value = value;
+            Zero,
+            One,
+            PlusTwo,
+            Three,
+            Four,
+            Five,
+            Six,
+            Seven,
+            Eight,
+            Nine,
+            Stop,
+            Plus,
+            SwitchDirection,
+            Taki,
+            SwitchColor,
+            SwitchHand,
+            PlusThree,
+            TakiAll,
+            SwitchColorAll,
+            SwitchHandAll
         }
 
-        [DataMember]
-        public bool Special
-        {
-            get => _special;
-            set => _special = value;
-        }
 
         [DataMember]
-        public string Image
-        {
-            get => _image;
-            set => _image = value;
-        }
+        public Color COLOR { get; set; }
+
+        [DataMember]
+        public Value VALUE { get; set; }
+
+        [DataMember]
+        public string Image { get => _image; set => _image = value; }
+
+        [DataMember]
+        public bool Special { get => _special; set => _special = value; }
     }
 }
