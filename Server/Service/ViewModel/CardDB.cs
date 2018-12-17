@@ -18,8 +18,8 @@ namespace ViewModel
         {
             Card card = entity as Card;
 
-            card.Color = Reader["color"].ToString();
-            card.Value = (int) Reader["value"];
+            card.COLOR = (Card.Color)Enum.Parse(typeof(Card.Color), Reader["color"].ToString());
+            card.VALUE = (Card.Value)(int)Reader["value"];
             card.Special = (bool) Reader["special"];
             card.Image = Reader["source"].ToString();
             card.Id = (int) Reader["ID"];

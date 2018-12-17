@@ -10,10 +10,10 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="COLOR" type="tns:Card.Color" />
           <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Special" type="xs:boolean" />
-          <xs:element minOccurs="0" name="Value" type="xs:int" />
+          <xs:element minOccurs="0" name="VALUE" type="tns:Card.Value" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -25,6 +25,41 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
+  <xs:simpleType name="Card.Color">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="green" />
+      <xs:enumeration value="blue" />
+      <xs:enumeration value="red" />
+      <xs:enumeration value="yellow" />
+      <xs:enumeration value="multi" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Card.Color" nillable="true" type="tns:Card.Color" />
+  <xs:simpleType name="Card.Value">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Zero" />
+      <xs:enumeration value="One" />
+      <xs:enumeration value="PlusTwo" />
+      <xs:enumeration value="Three" />
+      <xs:enumeration value="Four" />
+      <xs:enumeration value="Five" />
+      <xs:enumeration value="Six" />
+      <xs:enumeration value="Seven" />
+      <xs:enumeration value="Eight" />
+      <xs:enumeration value="Nine" />
+      <xs:enumeration value="Stop" />
+      <xs:enumeration value="Plus" />
+      <xs:enumeration value="SwitchDirection" />
+      <xs:enumeration value="Taki" />
+      <xs:enumeration value="SwitchColor" />
+      <xs:enumeration value="SwitchHand" />
+      <xs:enumeration value="PlusThree" />
+      <xs:enumeration value="TakiAll" />
+      <xs:enumeration value="SwitchColorAll" />
+      <xs:enumeration value="SwitchHandAll" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Card.Value" nillable="true" type="tns:Card.Value" />
   <xs:complexType name="Player">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:User">

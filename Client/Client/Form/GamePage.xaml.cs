@@ -247,7 +247,7 @@ namespace Form
                 cards += "\n \n Player "+ p.Username +":";
                 foreach (Card c in p.Hand)
                 {
-                    cards += "\n value:" + c.Value + ", color:" + c.Color;
+                    cards += "\n value:" + c.VALUE + ", color:" + c.COLOR;
                 }
             }
             Console.Write(cards);
@@ -353,9 +353,8 @@ namespace Form
             MessageList temp = new MessageList();
             Card givenCard = uc1.SelectedCard(); // get a random card
 
-            if (givenCard != null)
+            if (givenCard != null && CheckPlay(givenCard, table.Hand[table.Hand.Count - 1]))
             {
-
                 for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
@@ -378,6 +377,8 @@ namespace Form
                 }
 
                 MainWindow.Service.AddActions(temp);
+
+                //switch(givenCard.Value)
 
                 TurnFinished(); // give turn to next player
             }
@@ -539,6 +540,23 @@ namespace Form
 
             if (MyTurn) TurnFinished();
             Active = false;
+        }
+
+
+        public bool CheckPlay(Card given, Card table)
+        {
+            if(given.COLOR != Card.Color.multi) // not MultiColor
+            {
+                if(given.VALUE <= Card.Value.Nine) // normal card
+                {
+                    if (given.VALUE == table.VALUE || given.COLOR == table.COLOR) return true;
+                    return false;
+                }
+
+                if (given.COLOR == table.COLOR) return true;
+                return false;
+            }
+            return true;
         }
     }
 }

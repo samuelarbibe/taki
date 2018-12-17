@@ -335,7 +335,7 @@ namespace BusinessLayer
                 temp = Deck[rand.Next(0, 64)];
                 if (length < 65)//if hand is smaller than the deck length, make sure there are no doubles
                 {
-                    while (hand.Find(q => q.Value == temp.Value && q.Color == temp.Color) != null)// if the card is already in the hand, fetch for a different card
+                    while (hand.Find(q => q.VALUE == temp.VALUE && q.COLOR == temp.COLOR) != null)// if the card is already in the hand, fetch for a different card
                     {
                         temp = Deck[rand.Next(0, 65)];
                     }
