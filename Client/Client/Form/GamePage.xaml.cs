@@ -378,9 +378,9 @@ namespace Form
 
                 MainWindow.Service.AddActions(temp);
 
-                //switch(givenCard.Value)
+                Switch(givenCard.VALUE);
 
-                TurnFinished(); // give turn to next player
+                //TurnFinished(Card.Value.Nine); // give turn to next player
             }
         }
 
@@ -407,7 +407,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            TurnFinished(); // give turn to next player
+            TurnFinished(Card.Value.Nine); // give turn to next player
         }
 
         private int GetUserControlOfPlayer(int playerIndex)
@@ -418,14 +418,6 @@ namespace Form
             return 4;
         }
 
-        public int GetNextPlayerId()
-        {
-            if (ClockWiseRotation)
-            {
-                return PlayersList[PlayersList.Count - 2].Id;// return the next player's Id
-            }
-            return PlayersList[1].Id;// return the previous player's Id
-        }
 
         public void IsMyTurn(bool value)
         {
@@ -477,7 +469,7 @@ namespace Form
         }
 
 
-        public void TurnFinished()
+        public void TurnFinished(Card.Value value)
         {
             MessageList temp = new MessageList();
 
@@ -486,7 +478,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.next_turn, // give next turn to
-                    Target = GetNextPlayerId(),
+                    Target = GetNextPlayerId(value),
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });
@@ -536,27 +528,75 @@ namespace Form
                 });
             }
 
+
             MainWindow.Service.AddActions(temp);
 
-            if (MyTurn) TurnFinished();
+            if (MyTurn) TurnFinished(Card.Value.Nine);
             Active = false;
         }
 
 
         public bool CheckPlay(Card given, Card table)
         {
-            if(given.COLOR != Card.Color.multi) // not MultiColor
-            {
-                if(given.VALUE <= Card.Value.Nine) // normal card
-                {
-                    if (given.VALUE == table.VALUE || given.COLOR == table.COLOR) return true;
-                    return false;
-                }
+            // not multi-color
+            if (given.COLOR == Card.Color.multi) return true;
 
-                if (given.COLOR == table.COLOR) return true;
-                return false;
+            if (given.COLOR == table.COLOR || given.VALUE == table.VALUE) return true;
+
+            return false;
+
+        }
+
+        public void Switch(Card.Value value)
+        {
+            // normal cards
+            if (value <= Card.Value.Nine) TurnFinished(value);
+
+            // multi-color and uni-color special cards
+            // unmatching uni-color special cards don't pass the CheckPlay check so they don't get here
+            else if (value > Card.Value.Nine || value == 0)
+            {
+                if (value == Card.Value.SwitchDirection)
+                {
+                    ClockWiseRotation = false;
+                    TurnFinished(Card.Value.Nine); // send a default card as refrence for switch-case
+                }
+                else if (value == Card.Value.SwitchHand || value ==  Card.Value.SwitchHandAll)
+                {
+                    TurnFinished(Card.Value.SwitchHand);
+                }
+                else
+                {
+                    TurnFinished(value); // GetNextPlayerId will handle this 
+                }
             }
-            return true;
+        }
+
+
+        public int GetNextPlayerId(Card.Value value)
+        {
+            // special card switch - case
+            switch (value)
+            {
+
+                case Card.Value.Stop:
+                    if (PlayersList.Count > 3)
+                    {
+                        if(ClockWiseRotation) return PlayersList[PlayersList.Count - 3].Id;
+                        return PlayersList[2].Id;
+                    }
+                    return CurrentPlayer.Id;
+
+                case Card.Value.Plus:
+                case Card.Value.Taki:
+                case Card.Value.TakiAll:
+                    return CurrentPlayer.Id;
+
+            }
+
+            if(ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
+            else return PlayersList[1].Id;
+
         }
     }
 }

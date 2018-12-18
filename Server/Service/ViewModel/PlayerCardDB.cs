@@ -50,7 +50,7 @@ namespace ViewModel
 
         public Connection GetConnectionByPlayerIdAndCardId(int playerId, int cardId)
         {
-            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [player_id]= @playerId AND [card_id] = @cardId";
+            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [player_id] = @playerId AND [card_id] = @cardId";
             
             // parameters
             Command.Parameters.Add(new OleDbParameter("@playerId", playerId));
@@ -107,12 +107,11 @@ namespace ViewModel
         {
             Connection con = entity as Connection;
 
-            command.CommandText = "DELETE FROM Player_Card_Table WHERE player_id = @player_id AND card_id = @card_id";
+            command.CommandText = "DELETE FROM Player_Card_Table WHERE [ID] = @id ";
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
-            command.Parameters.Add(new OleDbParameter("@card_id", con.SideB));
+            command.Parameters.Add(new OleDbParameter("@id", con.Id));
 
             Console.WriteLine("connection between player [" + con.SideA + "] and card [" + con.SideB +
                               "] has been deleted");
