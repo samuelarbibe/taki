@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel x:Name="CardStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
             <WrapPanel>
-                <Button x:Name="PassCardButton" Height="100" Width="70" Click="PassCardButton_Click">
+                <Button BorderThickness="0" x:Name="PassCardButton" Height="100" Width="70" Click="PassCardButton_Click">
                     <Button.Background>
                         <ImageBrush  x:Name="CardStackImage" ImageSource="{Binding Image}"/>
                     </Button.Background>

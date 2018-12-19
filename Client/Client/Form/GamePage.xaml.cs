@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Channels;
 using System.Threading;
 
+
 namespace Form
 {
     /// <summary>
@@ -29,6 +30,7 @@ namespace Form
         static System.Windows.Threading.DispatcherTimer myTimer = new System.Windows.Threading.DispatcherTimer();
 
         private bool _myTurn;
+        private Card _openTaki;
         private Game _currentGame;
         private User _currentUser = MainWindow.CurrentUser;
         private Player _currentPlayer;
@@ -61,6 +63,7 @@ namespace Form
         private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         private User CurrentUser { get => _currentUser; set => _currentUser = value; }
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
+        public Card OpenTaki { get => _openTaki; set => _openTaki = value; }
 
         public GamePage(Game game)
         {
@@ -71,6 +74,7 @@ namespace Form
             CurrentGame = game;
 
             ClockWiseRotation = true;
+            OpenTaki = null;
             MyTurn = false;
             Active = true;
 
@@ -193,6 +197,13 @@ namespace Form
                                 IsMyTurn(m.Target == CurrentPlayer.Id);
 
                                 DeclareTurn();
+
+                                break;
+
+                            case Message._action.switch_rotation:
+
+                                if (ClockWiseRotation) ClockWiseRotation = false;
+                                else ClockWiseRotation = true;
 
                                 break;
 
@@ -353,6 +364,8 @@ namespace Form
             MessageList temp = new MessageList();
             Card givenCard = uc1.SelectedCard(); // get a random card
 
+            if (givenCard.VALUE == Card.Value.Taki) OpenTaki = givenCard;
+
             if (givenCard != null && CheckPlay(givenCard, table.Hand[table.Hand.Count - 1]))
             {
                 for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
@@ -380,7 +393,6 @@ namespace Form
 
                 Switch(givenCard.VALUE);
 
-                //TurnFinished(Card.Value.Nine); // give turn to next player
             }
         }
 
@@ -538,6 +550,12 @@ namespace Form
 
         public bool CheckPlay(Card given, Card table)
         {
+            if (table.VALUE == Card.Value.TakiAll)
+            {
+                OpenTaki = new Card() { VALUE = Card.Value.Taki, COLOR = given.COLOR }; // replace the multi-color taki with the correct colored taki
+                return true;
+            }
+
             // not multi-color
             if (given.COLOR == Card.Color.multi) return true;
 
@@ -556,13 +574,30 @@ namespace Form
             // unmatching uni-color special cards don't pass the CheckPlay check so they don't get here
             else if (value > Card.Value.Nine || value == 0)
             {
-                if (value == Card.Value.SwitchDirection)
+
+                if (OpenTaki != null)
                 {
-                    ClockWiseRotation = false;
-                    TurnFinished(Card.Value.Nine); // send a default card as refrence for switch-case
+                    if (uc1.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count == 1) // if one playing options is left in open taki
+                    {
+                        OpenTaki = null;
+                    }
+
+                    TurnFinished(value);
+                }
+                else if (value == Card.Value.SwitchDirection)
+                {
+                    ChangeRotationMessage();
+
+                    TurnFinished(value); // send a default card as refrence for switch-case
                 }
                 else if (value == Card.Value.SwitchHand || value ==  Card.Value.SwitchHandAll)
                 {
+                    //CardList temp1 = PlayersList[0].Hand; // get the current players' Hand
+                    //CardList temp2 = PlayersList[GetNextPlayerId(Card.Value.Nine)].Hand; // get the next players' Hand
+
+                    //PlayersList[0].Hand = temp2;
+                    //PlayersList[GetNextPlayerId(Card.Value.Nine)].Hand = temp1;
+
                     TurnFinished(Card.Value.SwitchHand);
                 }
                 else
@@ -572,6 +607,24 @@ namespace Form
             }
         }
 
+        private void ChangeRotationMessage()
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.switch_rotation,
+                    Target = CurrentPlayer.Id,
+                    Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id
+                });
+            }
+
+
+            MainWindow.Service.AddActions(temp);
+        }
 
         public int GetNextPlayerId(Card.Value value)
         {
@@ -583,7 +636,7 @@ namespace Form
                     if (PlayersList.Count > 3)
                     {
                         if(ClockWiseRotation) return PlayersList[PlayersList.Count - 3].Id;
-                        return PlayersList[2].Id;
+                        else return PlayersList[2].Id;
                     }
                     return CurrentPlayer.Id;
 
@@ -591,6 +644,10 @@ namespace Form
                 case Card.Value.Taki:
                 case Card.Value.TakiAll:
                     return CurrentPlayer.Id;
+
+                case Card.Value.SwitchDirection:
+                    if (!ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
+                    else return PlayersList[1].Id;
 
             }
 

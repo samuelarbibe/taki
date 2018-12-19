@@ -9,7 +9,8 @@ namespace Model
             add,
             remove,
             next_turn,
-            player_quit
+            player_quit,
+            switch_rotation
         }
         private int _reciever;
         private int _gameId;

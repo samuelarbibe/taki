@@ -605,6 +605,9 @@ namespace Form.TakiService {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             player_quit = 3,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            switch_rotation = 4,
         }
     }
     
