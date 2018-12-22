@@ -14,13 +14,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
-using Form.TakiService;
 
 
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Inter_action logic for MainMenu.xaml
     /// </summary>
     public partial class MainMenu : Page
     {

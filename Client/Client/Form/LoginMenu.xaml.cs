@@ -13,12 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
-using Form.TakiService;
 
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for LoginMenu.xaml
+    /// Inter_action logic for LoginMenu.xaml
     /// </summary>
     public partial class LoginMenu : Page
     {

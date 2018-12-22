@@ -167,7 +167,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\ru\Xceed.Wpf.A
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.CopyComplete
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\UserControls\Player1UC.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\UserControls\Player2UC.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\UserControls\Player3UC.g.cs
@@ -197,3 +196,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\P
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\Player3UC.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\Player4UC.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\TableUC.baml
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.g.cs
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.baml
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache

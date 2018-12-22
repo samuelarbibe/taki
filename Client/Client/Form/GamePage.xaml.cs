@@ -13,17 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ServiceModel;
-using Form.TakiService;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Channels;
 using System.Threading;
+using Form.TakiService;
+using Form.Dialogs;
+using Form.UserControls;
 
 
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for GamePage.xaml
+    /// Inter_action logic for GamePage.xaml
     /// </summary>
     public partial class GamePage : Page
     {
@@ -86,9 +88,11 @@ namespace Form
                 SetSaveChnages();
             }
 
-            uctable.TakeCardFromDeckButtonClicked += new EventHandler(TakeCardFromDeck);
+            uctable.TakeCardFromDeckButtonClicked += TakeCardFromDeck;
 
-            uctable.PassCardToStackButtonClicked += new EventHandler(PassCardToDeck);
+            uctable.PassCardToStackButtonClicked += PassCardToDeck;
+
+
 
             ReorderPlayerList();
 
@@ -240,7 +244,6 @@ namespace Form
                                 break;
                         }
                     }
-                    //PrintCards();
 
                     UpdateUI();
                 }
@@ -322,7 +325,7 @@ namespace Form
                     uc4.Visibility = Visibility.Hidden;
                     uctable.UpdateUI(PlayersList[1]);
 
-                    ForceQuit dialog = new ForceQuit
+                    Dialogs.ForceQuit dialog = new Dialogs.ForceQuit
                     {
                         Owner = Application.Current.MainWindow
                     };
@@ -359,10 +362,9 @@ namespace Form
         private void PassCardToDeck(object sender, EventArgs e)
         {
             Player currentPlayer = PlayersList.First();
-            Random rand = new Random();
             Player table = PlayersList.Last();
             MessageList temp = new MessageList();
-            Card givenCard = uc1.SelectedCard(); // get a random card
+            Card givenCard = uc1.SelectedCard();
 
             if (givenCard.VALUE == Card.Value.Taki) OpenTaki = givenCard;
 
@@ -571,24 +573,36 @@ namespace Form
             if (value <= Card.Value.Nine) TurnFinished(value);
 
             // multi-color and uni-color special cards
-            // unmatching uni-color special cards don't pass the CheckPlay check so they don't get here
+            // un-matching uni-color special cards don't pass the CheckPlay check so they don't get here
             else if (value > Card.Value.Nine || value == 0)
             {
-
                 if (OpenTaki != null)
                 {
-                    if (uc1.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count == 1) // if one playing options is left in open taki
+                    if (CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count == 1) // if one playing options is left in open taki
                     {
                         OpenTaki = null;
                     }
 
                     TurnFinished(value);
                 }
+                else if (value == Card.Value.SwitchColor || value == Card.Value.SwitchColorAll)
+                {
+                    SwitchColor dialog = new SwitchColor
+                    {
+                        Owner = Application.Current.MainWindow
+                    };
+
+                    dialog.ShowDialog();
+
+                    SwitchColorMessage(dialog.SelectedColor);
+
+                    TurnFinished(Card.Value.SwitchColor);
+                }
                 else if (value == Card.Value.SwitchDirection)
                 {
                     ChangeRotationMessage();
 
-                    TurnFinished(value); // send a default card as refrence for switch-case
+                    TurnFinished(value); // send a default card as reference for switch-case
                 }
                 else if (value == Card.Value.SwitchHand || value ==  Card.Value.SwitchHandAll)
                 {
@@ -605,6 +619,26 @@ namespace Form
                     TurnFinished(value); // GetNextPlayerId will handle this 
                 }
             }
+        }
+
+        private void SwitchColorMessage(Card selectedColorCard)
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.add,
+                    Target = Table.Id,
+                    Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id,
+                    Card = selectedColorCard
+                });
+            }
+
+
+            MainWindow.Service.AddActions(temp);
         }
 
         private void ChangeRotationMessage()
@@ -636,7 +670,7 @@ namespace Form
                     if (PlayersList.Count > 3)
                     {
                         if(ClockWiseRotation) return PlayersList[PlayersList.Count - 3].Id;
-                        else return PlayersList[2].Id;
+                        return PlayersList[2].Id;
                     }
                     return CurrentPlayer.Id;
 
@@ -646,13 +680,15 @@ namespace Form
                     return CurrentPlayer.Id;
 
                 case Card.Value.SwitchDirection:
+                {
                     if (!ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
-                    else return PlayersList[1].Id;
+                    return PlayersList[1].Id;
+                }
 
             }
 
             if(ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
-            else return PlayersList[1].Id;
+            return PlayersList[1].Id;
 
         }
     }

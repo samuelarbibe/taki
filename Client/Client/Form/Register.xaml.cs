@@ -18,7 +18,7 @@ using Form.Utilities;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for Register.xaml
+    /// Inter_action logic for Register.xaml
     /// </summary>
     public partial class Register : Page
     {

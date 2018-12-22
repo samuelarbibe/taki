@@ -19,7 +19,7 @@ using Form.Utilities;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Inter_action logic for Login.xaml
     /// </summary>
     public partial class Login : Page
     {

@@ -1,5 +1,4 @@
-﻿using Form.TakiService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,11 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Form.TakiService;
 
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for LoadingPage.xaml
+    /// Inter_action logic for LoadingPage.xaml
     /// </summary>
     public partial class LoadingPage : Page
     {

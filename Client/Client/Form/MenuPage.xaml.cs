@@ -17,7 +17,7 @@ using Form.TakiService;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Inter_action logic for Menu.xaml
     /// </summary>
     public partial class MenuPage : Page
     {

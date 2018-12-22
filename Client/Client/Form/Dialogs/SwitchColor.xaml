@@ -1,0 +1,17 @@
+﻿<Window x:Class="Form.Dialogs.SwitchColor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Form.Dialogs"
+        mc:Ignorable="d"
+        Title="SwitchColor" Background="White" Height="200" Width="400">
+    <Grid>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="RedButton" Margin="10" Content="Red" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="100" Background="Red" Click="RedButton_OnClick"/>
+            <Button x:Name="YellowButton" Margin="10" Content="Yellow" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="100" Background="#FFEEFF00" Click="YellowButton_OnClick"/>
+            <Button x:Name="GreenButton" Margin="10" Content="Green" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="100" Background="#FF00AD24" Click="GreenButton_OnClick"/>
+            <Button x:Name="BlueButton" Margin="10" Content="Blue" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="100" Background="#FF0068FF" Click="BlueButton_OnClick"/>
+        </WrapPanel>
+    </Grid>
+</Window>

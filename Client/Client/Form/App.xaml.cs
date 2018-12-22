@@ -9,7 +9,7 @@ using System.Windows;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Inter_action logic for App.xaml
     /// </summary>
     public partial class App : Application
     {

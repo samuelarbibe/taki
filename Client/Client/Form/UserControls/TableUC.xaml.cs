@@ -1,24 +1,13 @@
-﻿using Form.TakiService;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Form.TakiService;
 
-namespace Form
+namespace Form.UserControls
 {
     /// <summary>
-    /// Interaction logic for TableUC.xaml
+    /// Inter_action logic for TableUC.xaml
     /// </summary>
     public partial class TableUC : UserControl
     {
@@ -32,20 +21,19 @@ namespace Form
 
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         public CardList Deck { get => _deck; set => _deck = value; }
+        public CardList Stack { get => _stack; set => _stack = value; }
 
         public void UpdateUI(Player p)
         {
             CurrentPlayer = p;
 
-            DataContext = _stack.LastOrDefault();
-
+            DataContext = Stack.LastOrDefault();
         }
 
 
         public TableUC()
         {
             InitializeComponent();
-
         }
 
 
@@ -53,16 +41,15 @@ namespace Form
         {
             CurrentPlayer = currentPlayer;
 
-            _stack = CurrentPlayer.Hand;
+            Stack = CurrentPlayer.Hand;
 
-            DataContext = _stack.LastOrDefault();
+            DataContext = Stack.LastOrDefault();
         }
         
         public void DeckButton_OnClick(object sender, EventArgs e)
         {
             //Null check makes sure the main page is attached to the event
-            if (this.TakeCardFromDeckButtonClicked != null)
-                this.TakeCardFromDeckButtonClicked(this, EventArgs.Empty);
+            TakeCardFromDeckButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         public void CanTakeCardFromDeck()
@@ -80,8 +67,7 @@ namespace Form
 
         private void PassCardButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.PassCardToStackButtonClicked != null)
-                this.PassCardToStackButtonClicked(this, EventArgs.Empty);
+            this.PassCardToStackButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

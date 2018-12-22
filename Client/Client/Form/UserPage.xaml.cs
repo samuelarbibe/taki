@@ -17,7 +17,7 @@ using Form.TakiService;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for UserPage.xaml
+    /// Inter_action logic for UserPage.xaml
     /// </summary>
     public partial class UserPage : Page
     {

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for SettingsPage.xaml
+    /// Inter_action logic for SettingsPage.xaml
     /// </summary>
     public partial class SettingsPage : Page
     {

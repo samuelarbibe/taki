@@ -17,11 +17,10 @@ using System.ServiceModel;
 using Form.TakiService;
 
 
-
 namespace Form
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Inter_action logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
