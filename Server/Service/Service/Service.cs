@@ -19,7 +19,7 @@ namespace Service
 
         public static MessageList PendingChanges { get => _pendingChanges; set => _pendingChanges = value; }
 
-        public Card BuildDeck()
+        public CardList BuildDeck()
         {
             Bl bl = new Bl();
 
@@ -124,16 +124,23 @@ namespace Service
 
                         if (m.Reciever == m.Target)// make shure this happens once for each message
                         {
-                            if (m.Action == Message._action.add)
+                            switch (m.Action)
                             {
-                                Bl bl = new Bl();
-                                bl.BlAddCard(m);
-                            }
+                                case Message._action.add:
+                                    Bl bl = new Bl();
+                                    bl.BlAddCard(m);
+                                    break;
 
-                            else if (m.Action == Message._action.remove)
-                            {
-                                Bl bl = new Bl();
-                                bl.BlRemoveCard(m);
+                                case Message._action.remove:
+                                    bl = new Bl();
+                                    bl.BlRemoveCard(m);
+                                    break;
+
+                                case Message._action.switch_hand:
+                                    bl = new Bl();
+                                    bl.BlSwitchHands(m);
+                                    break;
+
                             }
                         }
                     }

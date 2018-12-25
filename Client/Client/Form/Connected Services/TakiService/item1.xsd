@@ -21,7 +21,7 @@
   <xs:element name="BuildDeckResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="BuildDeckResult" nillable="true" type="q2:Card" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="BuildDeckResult" nillable="true" type="q2:CardList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

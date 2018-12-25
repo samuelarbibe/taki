@@ -240,9 +240,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\TakiService\Form.TakiService.Card.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\TakiService\Form.TakiService.CardList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -17,8 +17,6 @@ namespace Form.UserControls
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
 
-
-
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         public CardList Deck { get => _deck; set => _deck = value; }
         public CardList Stack { get => _stack; set => _stack = value; }
@@ -37,6 +35,18 @@ namespace Form.UserControls
         }
 
 
+        public Card GetCardFromStack() {
+
+            if (Deck.Count == 0)
+            {
+                Deck = MainWindow.Service.BuildDeck();
+            }
+
+            Card temp = Deck.Last();
+            Deck.Remove(temp);
+            return temp;
+        }
+
         public void SetCurrentPlayer(Player currentPlayer)
         {
             CurrentPlayer = currentPlayer;
@@ -44,6 +54,8 @@ namespace Form.UserControls
             Stack = CurrentPlayer.Hand;
 
             DataContext = Stack.LastOrDefault();
+
+            Deck = MainWindow.Service.BuildDeck();
         }
         
         public void DeckButton_OnClick(object sender, EventArgs e)

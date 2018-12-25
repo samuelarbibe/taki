@@ -195,6 +195,15 @@ namespace Form
 
                                 break;
 
+                            case Message._action.switch_hand:
+
+                                CardList l1 = PlayersList.Find(p => p.Id == m.Target).Hand;
+
+                                PlayersList.Find(p => p.Id == m.Target).Hand = PlayersList.Find(p => p.Id == m.Card.Id).Hand;
+                                PlayersList.Find(p => p.Id == m.Card.Id).Hand = l1;
+
+                                break;
+
                             case Message._action.next_turn:
 
                                 Turn = PlayersList.FindIndex(p => p.Id == m.Target);
@@ -403,9 +412,8 @@ namespace Form
         {
             Player currentPlayer = PlayersList.First();
             Random rand = new Random();
-            Player table = PlayersList.Last();
             MessageList temp = new MessageList();
-            Card takenCard = Deck[rand.Next(Deck.Count)]; // get a random card
+            Card takenCard = uctable.GetCardFromStack(); // get a random card
 
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
             {
@@ -606,11 +614,7 @@ namespace Form
                 }
                 else if (value == Card.Value.SwitchHand || value ==  Card.Value.SwitchHandAll)
                 {
-                    //CardList temp1 = PlayersList[0].Hand; // get the current players' Hand
-                    //CardList temp2 = PlayersList[GetNextPlayerId(Card.Value.Nine)].Hand; // get the next players' Hand
-
-                    //PlayersList[0].Hand = temp2;
-                    //PlayersList[GetNextPlayerId(Card.Value.Nine)].Hand = temp1;
+                    SwitchHandsMessage(CurrentPlayer.Id, GetNextPlayerId(Card.Value.Nine));
 
                     TurnFinished(Card.Value.SwitchHand);
                 }
@@ -619,6 +623,26 @@ namespace Form
                     TurnFinished(value); // GetNextPlayerId will handle this 
                 }
             }
+        }
+
+        private void SwitchHandsMessage(int currentPlayerId, int playerId)
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.switch_hand,
+                    Target = currentPlayerId,
+                    Card = new Card() {Id = playerId}, // pass the other Player's ID through the card field.
+                    Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id
+                });
+            }
+
+
+            MainWindow.Service.AddActions(temp);
         }
 
         private void SwitchColorMessage(Card selectedColorCard)
@@ -659,6 +683,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
         }
+        
 
         public int GetNextPlayerId(Card.Value value)
         {

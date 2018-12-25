@@ -31,11 +31,9 @@ namespace BusinessLayer
         public static GameList GameList { get => _gameList; set => _gameList = value; }
         public static Dictionary<Player, int> StandbyPlayers { get => _standbyPlayers; set => _standbyPlayers = value; }
 
-        public Card BlBuildDeck()
+        public CardList BlBuildDeck()
         {
-            CardDb db = new CardDb();
-            CardList deck = db.SelectAll();
-            return deck[0];
+            return BuildShuffledHand(67);
         }
 
         //receives a Message from the service, calculates according to the algorithms
@@ -151,7 +149,7 @@ namespace BusinessLayer
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
 
-                _game.Players[playerCount].Hand = BuildShuffledHand(100); // giving the table 100 shuffled cards
+                _game.Players[playerCount].Hand = BuildShuffledHand(1); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
@@ -301,6 +299,13 @@ namespace BusinessLayer
             db.Insert(c);
         }
 
+        public void BlSwitchHands(Message m)
+        {
+            PlayerCardDb db = new PlayerCardDb();
+
+            db.SwitchConnectionsByPlayersId(m.Target, m.Card.Id);
+        }
+
         public void SaveChnages() {
 
             PlayerCardDb sb = new PlayerCardDb();
@@ -332,12 +337,12 @@ namespace BusinessLayer
 
             for (int i = 0; i < length; i++)
             {
-                temp = Deck[rand.Next(0, 64)];
-                if (length < 65)//if hand is smaller than the deck length, make sure there are no doubles
+                temp = Deck[rand.Next(0, 66)];
+                if (length < 67)//if hand is smaller than the deck length, make sure there are no doubles
                 {
                     while (hand.Find(q => q.VALUE == temp.VALUE && q.COLOR == temp.COLOR) != null)// if the card is already in the hand, fetch for a different card
                     {
-                        temp = Deck[rand.Next(0, 65)];
+                        temp = Deck[rand.Next(0, 66)];
                     }
                     hand.Add(temp);
                 }

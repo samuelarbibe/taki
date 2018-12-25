@@ -199,3 +199,5 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\T
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.g.cs
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.baml

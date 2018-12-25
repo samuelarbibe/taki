@@ -62,6 +62,36 @@ namespace ViewModel
             return conList[0];
         }
 
+        public ConnectionList GetConnectionsByPlayerId(int playerId)
+        {
+            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [player_id] = @playerId";
+
+            // parameters
+            Command.Parameters.Add(new OleDbParameter("@playerId", playerId));
+
+            ConnectionList conList = new ConnectionList(Select());
+            return conList;
+        }
+
+        public void SwitchConnectionsByPlayersId(int right, int left)
+        {
+            ConnectionList hand1 = GetConnectionsByPlayerId(right);
+            ConnectionList hand2 = GetConnectionsByPlayerId(left);
+
+            foreach(Connection c in hand1)
+            {
+                c.SideA = left; // switch the owner of the cards to the other player
+                Update(c); // update
+            }
+
+            foreach(Connection c in hand2)
+            {
+                c.SideA = right;// switch the owner of the cards to the other player
+                Update(c); // update
+            }
+
+        }
+
         public void InsertList(ConnectionList entity)
         {
             ConnectionList cl = entity;
@@ -126,12 +156,12 @@ namespace ViewModel
         {
             Connection con = entity as Connection;
 
-            command.CommandText = "UPDATE Player_Card_Table SET card_id = @card_id";
+            command.CommandText = "UPDATE Player_Card_Table SET [player_id] = @player_id WHERE [ID] = @id";
 
             //parameters
 
             command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
-            command.Parameters.Add(new OleDbParameter("@card_id", con.SideB));
+            command.Parameters.Add(new OleDbParameter("@id", con.Id));
 
             Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been updated");
         }

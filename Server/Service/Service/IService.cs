@@ -19,7 +19,7 @@ namespace Service
         CardList GetCardList();
 
         [OperationContract]
-        Card BuildDeck();
+        CardList BuildDeck();
 
         [OperationContract]
         Game StartGame(Player p, int playerCount);

@@ -608,6 +608,9 @@ namespace Form.TakiService {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             switch_rotation = 4,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            switch_hand = 5,
         }
     }
     
@@ -643,10 +646,10 @@ namespace Form.TakiService {
         System.Threading.Tasks.Task<Form.TakiService.CardList> GetCardListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuildDeck", ReplyAction="http://tempuri.org/IService/BuildDeckResponse")]
-        Form.TakiService.Card BuildDeck();
+        Form.TakiService.CardList BuildDeck();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuildDeck", ReplyAction="http://tempuri.org/IService/BuildDeckResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.Card> BuildDeckAsync();
+        System.Threading.Tasks.Task<Form.TakiService.CardList> BuildDeckAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StartGame", ReplyAction="http://tempuri.org/IService/StartGameResponse")]
         Form.TakiService.Game StartGame(Form.TakiService.Player p, int playerCount);
@@ -768,11 +771,11 @@ namespace Form.TakiService {
             return base.Channel.GetCardListAsync();
         }
         
-        public Form.TakiService.Card BuildDeck() {
+        public Form.TakiService.CardList BuildDeck() {
             return base.Channel.BuildDeck();
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.Card> BuildDeckAsync() {
+        public System.Threading.Tasks.Task<Form.TakiService.CardList> BuildDeckAsync() {
             return base.Channel.BuildDeckAsync();
         }
         
