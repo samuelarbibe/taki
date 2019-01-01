@@ -1,25 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ServiceModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Channels;
 using System.Threading;
 using Form.TakiService;
 using Form.Dialogs;
-using Form.UserControls;
 
 
 namespace Form
@@ -27,9 +14,8 @@ namespace Form
     /// <summary>
     /// Inter_action logic for GamePage.xaml
     /// </summary>
-    public partial class GamePage : Page
+    public partial class GamePage
     {
-        static System.Windows.Threading.DispatcherTimer myTimer = new System.Windows.Threading.DispatcherTimer();
 
         private bool _myTurn;
         private int _plusValue;
@@ -77,27 +63,30 @@ namespace Form
 
             CurrentGame = game;
 
+            SetBackgroundWorker();
+
+            int firstPlayerUserId = CurrentGame.Players[0].UserId;
+
             ClockWiseRotation = true;
+            uc1.SetAsNonActive();
             OpenTaki = null;
             MyTurn = false;
             Active = true;
             PlusValue = 0;
 
+            ReorderPlayerList();
+
             //the first player is the one to request changes saving in the database every x seconds
-            if (_currentUser.Id == CurrentGame.Players[0].UserId){
+            if (_currentUser.Id == firstPlayerUserId){
 
                 InitialTurn();// broadcast that self is the first player in the game's players list
 
-                SetSaveChnages();
+                SetSaveChanges();
             }
 
             uctable.TakeCardFromDeckButtonClicked += TakeCardFromDeck;
 
             uctable.PassCardToStackButtonClicked += PassCardToDeck;
-
-
-
-            ReorderPlayerList();
 
             Deck = PlayersList[PlayersList.Count - 1].Hand.ToList();
 
@@ -127,9 +116,6 @@ namespace Form
                     break;
             }
 
-            SetBackgroundWorker();
-            
-            //PrintCards();
         }
 
         private void SetBackgroundWorker()
@@ -141,7 +127,7 @@ namespace Form
             BackgroundProgress.RunWorkerAsync();
         }
 
-        private void SetSaveChnages()
+        private void SetSaveChanges()
         {
             SaveChanges1 = new BackgroundWorker();
             SaveChanges1.DoWork += SaveChanges;
@@ -257,7 +243,7 @@ namespace Form
                                     if (_currentUser.Id != prevChangesSaverId)
                                     {
                                         // pass the save changes functionality to the target player.
-                                        SetSaveChnages();
+                                        SetSaveChanges();
                                     }
                                 }
                                 else
@@ -458,15 +444,13 @@ namespace Form
         {
             Player currentPlayer = PlayersList.First();
             MessageList temp = new MessageList();
-            Card takenCard;
+            
 
             for (int i = 0; i < num; i++)
             {
-                takenCard = uctable.GetCardFromStack(); // get a random card
+                Card takenCard = uctable.GetCardFromStack(); // get a random card
 
-                Thread.Sleep(50);
-
-                for (int j = 0; j < (PlayersList.Count - 1); j++) //add for each player, not including the table
+                for (int j = 0; j < PlayersList.Count - 1; j++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
@@ -587,7 +571,7 @@ namespace Form
 
         public void PlayerQuit()
         {
-            Console.WriteLine("Player"+ CurrentPlayer.Username +" removed from the game in the gameList: " + MainWindow.Service.PlayerQuit(CurrentPlayer).ToString());
+            Console.WriteLine("Player"+ CurrentPlayer.Username +" removed from the game in the gameList: " + MainWindow.Service.PlayerQuit(CurrentPlayer));
 
             MessageList temp = new MessageList();
 
@@ -610,7 +594,7 @@ namespace Form
         }
 
 
-        public bool CheckPlay(Card given, Card table)
+        private bool CheckPlay(Card given, Card table)
         {
             if (table.VALUE == Card.Value.TakiAll)
             {
@@ -632,7 +616,7 @@ namespace Form
 
         }
 
-        public void Switch(Card.Value value)
+        private void Switch(Card.Value value)
         {
             // normal cards
             if (value <= Card.Value.Nine && value != Card.Value.Zero && value != Card.Value.PlusTwo) TurnFinished(value);
@@ -767,7 +751,7 @@ namespace Form
         }
         
 
-        public int GetNextPlayerId(Card.Value value)
+        private int GetNextPlayerId(Card.Value value)
         {
             // special card switch - case
             switch (value)
