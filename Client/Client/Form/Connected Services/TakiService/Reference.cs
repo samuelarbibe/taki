@@ -611,6 +611,9 @@ namespace Form.TakiService {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             switch_hand = 5,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            plus_two = 6,
         }
     }
     

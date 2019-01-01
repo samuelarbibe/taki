@@ -11,7 +11,8 @@ namespace Model
             next_turn,
             player_quit,
             switch_rotation,
-            switch_hand
+            switch_hand,
+            plus_two
         }
         private int _reciever;
         private int _gameId;

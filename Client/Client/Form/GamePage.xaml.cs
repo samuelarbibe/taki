@@ -32,6 +32,7 @@ namespace Form
         static System.Windows.Threading.DispatcherTimer myTimer = new System.Windows.Threading.DispatcherTimer();
 
         private bool _myTurn;
+        private int _plusValue;
         private Card _openTaki;
         private Game _currentGame;
         private User _currentUser = MainWindow.CurrentUser;
@@ -66,6 +67,7 @@ namespace Form
         private User CurrentUser { get => _currentUser; set => _currentUser = value; }
         private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
         public Card OpenTaki { get => _openTaki; set => _openTaki = value; }
+        public int PlusValue { get => _plusValue; set => _plusValue = value; }
 
         public GamePage(Game game)
         {
@@ -79,6 +81,7 @@ namespace Form
             OpenTaki = null;
             MyTurn = false;
             Active = true;
+            PlusValue = 0;
 
             //the first player is the one to request changes saving in the database every x seconds
             if (_currentUser.Id == CurrentGame.Players[0].UserId){
@@ -201,6 +204,20 @@ namespace Form
 
                                 PlayersList.Find(p => p.Id == m.Target).Hand = PlayersList.Find(p => p.Id == m.Card.Id).Hand;
                                 PlayersList.Find(p => p.Id == m.Card.Id).Hand = l1;
+
+                                break;
+
+                            case Message._action.plus_two:
+
+                                PlusValue = m.Card.Id;
+
+                                if(CurrentPlayer.Id == m.Target)
+                                {
+                                    if (CurrentPlayer.Hand.Find(c => c.VALUE == Card.Value.PlusTwo) == null)
+                                    {
+                                        TakeMultipleCardsFromDeck(PlusValue);
+                                    }
+                                }   
 
                                 break;
 
@@ -410,8 +427,13 @@ namespace Form
 
         private void TakeCardFromDeck(object sender, EventArgs e) 
         {
+            if(PlusValue != 0)
+            {
+                TakeMultipleCardsFromDeck(PlusValue);
+                PlusTwoMessage(0);
+            }
+
             Player currentPlayer = PlayersList.First();
-            Random rand = new Random();
             MessageList temp = new MessageList();
             Card takenCard = uctable.GetCardFromStack(); // get a random card
 
@@ -429,6 +451,36 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
+            TurnFinished(Card.Value.Nine); // give turn to next player
+        }
+
+        private void TakeMultipleCardsFromDeck(int num)
+        {
+            Player currentPlayer = PlayersList.First();
+            MessageList temp = new MessageList();
+            Card takenCard;
+
+            for (int i = 0; i < num; i++)
+            {
+                takenCard = uctable.GetCardFromStack(); // get a random card
+
+                Thread.Sleep(50);
+
+                for (int j = 0; j < (PlayersList.Count - 1); j++) //add for each player, not including the table
+                {
+                    temp.Add(new Message()// add the top card of the table to the current player
+                    {
+                        Action = Message._action.add,
+                        Target = currentPlayer.Id, // the person who's hand is modified
+                        Reciever = PlayersList[i].Id, // the peron who this message is for
+                        Card = takenCard, // the card modified
+                        GameId = CurrentGame.Id // the game modified
+                    });
+                }
+
+            }
+
+            MainWindow.Service.AddActions(temp);
             TurnFinished(Card.Value.Nine); // give turn to next player
         }
 
@@ -566,6 +618,11 @@ namespace Form
                 return true;
             }
 
+            if(PlusValue != 0)
+            {
+                if (given.VALUE == table.VALUE) return true;
+            }
+
             // not multi-color
             if (given.COLOR == Card.Color.multi) return true;
 
@@ -578,11 +635,11 @@ namespace Form
         public void Switch(Card.Value value)
         {
             // normal cards
-            if (value <= Card.Value.Nine) TurnFinished(value);
+            if (value <= Card.Value.Nine && value != Card.Value.Zero && value != Card.Value.PlusTwo) TurnFinished(value);
 
             // multi-color and uni-color special cards
             // un-matching uni-color special cards don't pass the CheckPlay check so they don't get here
-            else if (value > Card.Value.Nine || value == 0)
+            else
             {
                 if (OpenTaki != null)
                 {
@@ -605,6 +662,12 @@ namespace Form
                     SwitchColorMessage(dialog.SelectedColor);
 
                     TurnFinished(Card.Value.SwitchColor);
+                }
+                else if (value == Card.Value.PlusTwo)
+                {
+                    PlusTwoMessage(PlusValue + 2);
+
+                    TurnFinished(Card.Value.PlusTwo);
                 }
                 else if (value == Card.Value.SwitchDirection)
                 {
@@ -661,6 +724,25 @@ namespace Form
                 });
             }
 
+
+            MainWindow.Service.AddActions(temp);
+        }
+
+        private void PlusTwoMessage(int num)
+        {
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            {
+                temp.Add(new Message()
+                {
+                    Action = Message._action.plus_two,
+                    Target = GetNextPlayerId(Card.Value.Nine), // get the next player
+                    Reciever = PlayersList[i].Id,
+                    GameId = CurrentGame.Id,
+                    Card = new Card() { Id = num }// the card's id represents the PlusValue Build-up
+                });
+            }
 
             MainWindow.Service.AddActions(temp);
         }
