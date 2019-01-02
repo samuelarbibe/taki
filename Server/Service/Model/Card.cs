@@ -36,8 +36,6 @@ namespace Model
             SwitchDirection,
             Taki,
             SwitchColor,
-            SwitchHand,
-            PlusThree,
             TakiAll,
             SwitchColorAll,
             SwitchHandAll

@@ -33,7 +33,7 @@ namespace BusinessLayer
 
         public CardList BlBuildDeck()
         {
-            return BuildShuffledHand(67);
+            return BuildShuffledHand(67, false);
         }
 
         //receives a Message from the service, calculates according to the algorithms
@@ -144,12 +144,12 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(6);
+                    t.Hand = BuildShuffledHand(6,false);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
 
-                _game.Players[playerCount].Hand = BuildShuffledHand(1); // giving the table 100 shuffled cards
+                _game.Players[playerCount].Hand = BuildShuffledHand(1, true); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
@@ -327,7 +327,7 @@ namespace BusinessLayer
             gameDb.SaveChanges();
         }
 
-        public CardList BuildShuffledHand(int length)
+        public CardList BuildShuffledHand(int length, bool noSpecial)
         {
             Thread.Sleep(50);
 
@@ -337,12 +337,22 @@ namespace BusinessLayer
 
             for (int i = 0; i < length; i++)
             {
-                temp = Deck[rand.Next(0, 66)];
-                if (length < 67)//if hand is smaller than the deck length, make sure there are no doubles
+                temp = Deck[rand.Next(0, 59)];
+                if (length < 60)//if hand is smaller than the deck length, make sure there are no doubles
                 {
-                    while (hand.Find(q => q.VALUE == temp.VALUE && q.COLOR == temp.COLOR) != null)// if the card is already in the hand, fetch for a different card
+                    if (!noSpecial)
                     {
-                        temp = Deck[rand.Next(0, 66)];
+                        while (hand.Find(q => q.VALUE == temp.VALUE && q.COLOR == temp.COLOR) != null)// if the card is already in the hand, fetch for a different card
+                        {
+                            temp = Deck[rand.Next(0, 59)];
+                        }
+                    }
+                    else
+                    {
+                        while (temp.Special)
+                        {
+                            temp = Deck[rand.Next(0, 59)];
+                        }
                     }
                     hand.Add(temp);
                 }

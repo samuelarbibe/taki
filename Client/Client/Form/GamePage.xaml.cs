@@ -197,7 +197,7 @@ namespace Form
 
                                 PlusValue = m.Card.Id;
 
-                                if(CurrentPlayer.Id == m.Target)
+                                if(CurrentPlayer.Id == m.Target && PlusValue != 0)
                                 {
                                     if (CurrentPlayer.Hand.Find(c => c.VALUE == Card.Value.PlusTwo) == null)
                                     {
@@ -378,7 +378,15 @@ namespace Form
             MessageList temp = new MessageList();
             Card givenCard = uc1.SelectedCard();
 
-            if (givenCard.VALUE == Card.Value.Taki) OpenTaki = givenCard;
+
+            if(givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
+            {
+                if(givenCard.VALUE == Card.Value.TakiAll)
+                {
+                    givenCard = new Card() { VALUE = Card.Value.Taki, COLOR = table.Hand[table.Hand.Count - 1].COLOR }; // replace the multi-color taki with the correct colored taki
+                }
+                OpenTaki = givenCard;
+            }
 
             if (givenCard != null && CheckPlay(givenCard, table.Hand[table.Hand.Count - 1]))
             {
@@ -406,51 +414,45 @@ namespace Form
                 MainWindow.Service.AddActions(temp);
 
                 Switch(givenCard.VALUE);
-
             }
         }
 
-
-        private void TakeCardFromDeck(object sender, EventArgs e) 
+        private void RemoveCardFromDeck()
         {
-            if(PlusValue != 0)
-            {
-                TakeMultipleCardsFromDeck(PlusValue);
-                PlusTwoMessage(0);
-            }
-
-            Player currentPlayer = PlayersList.First();
+            Player table = PlayersList.Last();
             MessageList temp = new MessageList();
-            Card takenCard = uctable.GetCardFromStack(); // get a random card
+            Card givenCard = table.Hand[table.Hand.Count - 1];
 
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
             {
+
                 temp.Add(new Message()// add the top card of the table to the current player
                 {
-                    Action = Message._action.add,
-                    Target = currentPlayer.Id, // the person who's hand is modified
+                    Action = Message._action.remove,
+                    Target = table.Id, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
-                    Card = takenCard, // the card modified
+                    Card = givenCard, // the card modified
                     GameId = CurrentGame.Id // the game modified
                 });
             }
 
             MainWindow.Service.AddActions(temp);
-
-            TurnFinished(Card.Value.Nine); // give turn to next player
         }
 
-        private void TakeMultipleCardsFromDeck(int num)
-        {
-            Player currentPlayer = PlayersList.First();
-            MessageList temp = new MessageList();
-            
 
-            for (int i = 0; i < num; i++)
+        private void TakeCardFromDeck(object sender, EventArgs e) 
+        {
+            if (PlusValue != 0)
             {
+                TakeMultipleCardsFromDeck(PlusValue);
+            }
+            else
+            {
+                Player currentPlayer = PlayersList.First();
+                MessageList temp = new MessageList();
                 Card takenCard = uctable.GetCardFromStack(); // get a random card
 
-                for (int j = 0; j < PlayersList.Count - 1; j++) //add for each player, not including the table
+                for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
@@ -462,9 +464,36 @@ namespace Form
                     });
                 }
 
+                MainWindow.Service.AddActions(temp);
+
+                TurnFinished(Card.Value.Nine); // give turn to next player
+            }
+        }
+
+        private void TakeMultipleCardsFromDeck(int num)
+        {
+            Player currentPlayer = PlayersList.First();
+            MessageList temp = new MessageList();
+
+            for (int i = 0; i < num; i++)
+            {
+                for (int j = 0; j < PlayersList.Count - 1; j++) //add for each player, not including the table
+                {
+                    temp.Add(new Message()// add the top card of the table to the current player
+                    {
+                        Action = Message._action.add,
+                        Target = currentPlayer.Id, // the person who's hand is modified
+                        Reciever = PlayersList[j].Id, // the peron who this message is for
+                        Card = uctable.GetCardFromStack(), // the card modified
+                        GameId = CurrentGame.Id // the game modified
+                    });
+                }
             }
 
             MainWindow.Service.AddActions(temp);
+
+            PlusTwoMessage(0);
+
             TurnFinished(Card.Value.Nine); // give turn to next player
         }
 
@@ -596,11 +625,6 @@ namespace Form
 
         private bool CheckPlay(Card given, Card table)
         {
-            if (table.VALUE == Card.Value.TakiAll)
-            {
-                OpenTaki = new Card() { VALUE = Card.Value.Taki, COLOR = given.COLOR }; // replace the multi-color taki with the correct colored taki
-                return true;
-            }
 
             if(PlusValue != 0)
             {
@@ -619,23 +643,21 @@ namespace Form
         private void Switch(Card.Value value)
         {
             // normal cards
-            if (value <= Card.Value.Nine && value != Card.Value.Zero && value != Card.Value.PlusTwo) TurnFinished(value);
-
-            // multi-color and uni-color special cards
-            // un-matching uni-color special cards don't pass the CheckPlay check so they don't get here
-            else
+            if (OpenTaki != null)
             {
-                if (OpenTaki != null)
+                if (CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count == 1) // if one playing options is left in open taki
                 {
-                    if (CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count == 1) // if one playing options is left in open taki
-                    {
-                        OpenTaki = null;
-                    }
-
-                    TurnFinished(value);
+                    OpenTaki = null;
                 }
-                else if (value == Card.Value.SwitchColor || value == Card.Value.SwitchColorAll)
-                {
+
+                TurnFinished(value);
+            }
+
+            switch (value)
+            {
+                case Card.Value.SwitchColor:
+                case Card.Value.SwitchColorAll:
+
                     SwitchColor dialog = new SwitchColor
                     {
                         Owner = Application.Current.MainWindow
@@ -645,31 +667,30 @@ namespace Form
 
                     SwitchColorMessage(dialog.SelectedColor);
 
-                    TurnFinished(Card.Value.SwitchColor);
-                }
-                else if (value == Card.Value.PlusTwo)
-                {
+                    break;
+
+                case Card.Value.PlusTwo:
+
                     PlusTwoMessage(PlusValue + 2);
 
-                    TurnFinished(Card.Value.PlusTwo);
-                }
-                else if (value == Card.Value.SwitchDirection)
-                {
+                    break;
+
+                case Card.Value.SwitchDirection:
+
                     ChangeRotationMessage();
 
-                    TurnFinished(value); // send a default card as reference for switch-case
-                }
-                else if (value == Card.Value.SwitchHand || value ==  Card.Value.SwitchHandAll)
-                {
+                    break;
+
+                case Card.Value.SwitchHandAll:
+
                     SwitchHandsMessage(CurrentPlayer.Id, GetNextPlayerId(Card.Value.Nine));
 
-                    TurnFinished(Card.Value.SwitchHand);
-                }
-                else
-                {
-                    TurnFinished(value); // GetNextPlayerId will handle this 
-                }
+                    RemoveCardFromDeck();
+
+                    break;
             }
+
+            TurnFinished(value); // GetNextPlayerId will handle this 
         }
 
         private void SwitchHandsMessage(int currentPlayerId, int playerId)
@@ -756,7 +777,6 @@ namespace Form
             // special card switch - case
             switch (value)
             {
-
                 case Card.Value.Stop:
                     if (PlayersList.Count > 3)
                     {

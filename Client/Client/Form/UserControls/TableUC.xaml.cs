@@ -45,7 +45,6 @@ namespace Form.UserControls
 
             Card temp = Deck.Last();
             Deck.Remove(temp);
-            Thread.Sleep(50);
 
             return temp;
         }
