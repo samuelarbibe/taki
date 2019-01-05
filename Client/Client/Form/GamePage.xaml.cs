@@ -421,7 +421,6 @@ namespace Form
         {
             Player table = PlayersList.Last();
             MessageList temp = new MessageList();
-            Card givenCard = table.Hand[table.Hand.Count - 1];
 
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
             {
@@ -431,7 +430,7 @@ namespace Form
                     Action = Message._action.remove,
                     Target = table.Id, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
-                    Card = givenCard, // the card modified
+                    Card = new Card() { Id = 67},
                     GameId = CurrentGame.Id // the game modified
                 });
             }
@@ -642,55 +641,66 @@ namespace Form
 
         private void Switch(Card.Value value)
         {
-            // normal cards
             if (OpenTaki != null)
             {
-                if (CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count == 1) // if one playing options is left in open taki
+                int colorCount = CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count;
+
+                if (colorCount == 0)
                 {
                     OpenTaki = null;
+                    TurnFinished(Card.Value.Nine);
+                }
+                else
+                {
+                    if (colorCount == 1) // if one playing options is left in open taki
+                    {
+                        OpenTaki = null;
+                    }
+
+                    TurnFinished(Card.Value.Plus);
+                }
+            }
+            else
+            {
+                switch (value)
+                {
+                    case Card.Value.SwitchColor:
+                    case Card.Value.SwitchColorAll:
+
+                        SwitchColor dialog = new SwitchColor
+                        {
+                            Owner = Application.Current.MainWindow
+                        };
+
+                        dialog.ShowDialog();
+
+                        SwitchColorMessage(dialog.SelectedColor);
+
+                        break;
+
+                    case Card.Value.PlusTwo:
+
+                        PlusTwoMessage(PlusValue + 2);
+
+                        break;
+
+                    case Card.Value.SwitchDirection:
+
+                        ChangeRotationMessage();
+
+                        break;
+
+                    case Card.Value.SwitchHandAll:
+
+                        SwitchHandsMessage(CurrentPlayer.Id, GetNextPlayerId(Card.Value.Nine));
+
+                        RemoveCardFromDeck();
+
+                        break;
                 }
 
-                TurnFinished(value);
+                TurnFinished(value); // GetNextPlayerId will handle this 
             }
-
-            switch (value)
-            {
-                case Card.Value.SwitchColor:
-                case Card.Value.SwitchColorAll:
-
-                    SwitchColor dialog = new SwitchColor
-                    {
-                        Owner = Application.Current.MainWindow
-                    };
-
-                    dialog.ShowDialog();
-
-                    SwitchColorMessage(dialog.SelectedColor);
-
-                    break;
-
-                case Card.Value.PlusTwo:
-
-                    PlusTwoMessage(PlusValue + 2);
-
-                    break;
-
-                case Card.Value.SwitchDirection:
-
-                    ChangeRotationMessage();
-
-                    break;
-
-                case Card.Value.SwitchHandAll:
-
-                    SwitchHandsMessage(CurrentPlayer.Id, GetNextPlayerId(Card.Value.Nine));
-
-                    RemoveCardFromDeck();
-
-                    break;
-            }
-
-            TurnFinished(value); // GetNextPlayerId will handle this 
         }
 
         private void SwitchHandsMessage(int currentPlayerId, int playerId)

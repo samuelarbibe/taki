@@ -163,7 +163,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
             command.Parameters.Add(new OleDbParameter("@id", con.Id));
 
-            Console.WriteLine("connection between player" + con.SideA + " and card" + con.SideB + " has been updated");
+            Console.WriteLine("connection between player [" + con.SideA + "] and card [" + con.SideB + "] has been updated");
         }
     }
 }
