@@ -52,8 +52,6 @@
       <xs:enumeration value="SwitchDirection" />
       <xs:enumeration value="Taki" />
       <xs:enumeration value="SwitchColor" />
-      <xs:enumeration value="SwitchHand" />
-      <xs:enumeration value="PlusThree" />
       <xs:enumeration value="TakiAll" />
       <xs:enumeration value="SwitchColorAll" />
       <xs:enumeration value="SwitchHandAll" />
@@ -132,6 +130,8 @@
       <xs:enumeration value="switch_rotation" />
       <xs:enumeration value="switch_hand" />
       <xs:enumeration value="plus_two" />
+      <xs:enumeration value="win" />
+      <xs:enumeration value="loss" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Message._action" nillable="true" type="tns:Message._action" />

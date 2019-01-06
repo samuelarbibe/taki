@@ -69,7 +69,7 @@ namespace ViewModel
 
         public User SelectById(int id)
         {
-            Command.CommandText = "SELECT * FROM User_Table WHERE 'ID' = '@id'";
+            Command.CommandText = "SELECT * FROM User_Table WHERE [ID] = @Id";
 
             //parameters
             Command.Parameters.Add(new OleDbParameter("@Id", id));
@@ -156,7 +156,24 @@ namespace ViewModel
 
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
-            throw new NotImplementedException();
+            User user = entity as User;
+
+            command.CommandText =
+                "UPDATE User_Table SET [username] = @username, [password] = @password, [first_name] = @firstName, [last_name] = @lastName, [score] = @score ,[level] = @level, [wins] = @wins, [losses] = @losses WHERE [ID] = @id";
+
+            //parameters
+
+            command.Parameters.Add(new OleDbParameter("@id", user.Id));
+            command.Parameters.Add(new OleDbParameter("@username", user.Username));
+            command.Parameters.Add(new OleDbParameter("@password", user.Password));
+            command.Parameters.Add(new OleDbParameter("@firstName", user.FirstName));
+            command.Parameters.Add(new OleDbParameter("@lastName", user.LastName));
+            command.Parameters.Add(new OleDbParameter("@score", user.Score));
+            command.Parameters.Add(new OleDbParameter("@level", user.Level));
+            command.Parameters.Add(new OleDbParameter("@wins", user.Wins));
+            command.Parameters.Add(new OleDbParameter("@losses", user.Losses));
+
+            Console.WriteLine("player [" + user.Id + "] has been updated");
         }
     }
 }

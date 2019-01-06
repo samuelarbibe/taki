@@ -78,6 +78,9 @@
     <Compile Include="AdminUserPage.xaml.cs">
       <DependentUpon>AdminUserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\PlayerWin.xaml.cs">
+      <DependentUpon>PlayerWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SwitchColor.xaml.cs">
       <DependentUpon>SwitchColor.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\ForceQuit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PlayerWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -36,7 +36,17 @@ namespace Form
         private int _currentPlayerIndex;
         private bool _clockWiseRotation;
 
-        public bool MyTurn { get => _myTurn; set => _myTurn = value; }
+        public bool MyTurn { get => _myTurn;
+            set {
+                _myTurn = value;
+
+                if (MyTurn)
+                {
+                    uctable.CanTakeCardFromDeck();
+                }
+                else uctable.CannotTakeCardFromDeck();
+                }
+        }
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
         public List<Card> Deck { get => _deck; set => _deck = value; }
@@ -184,6 +194,40 @@ namespace Form
 
                                 break;
 
+                            case Message._action.win:
+
+                                Player WinningPlayer = PlayersList.Find(p => p.Id == m.Target); // the winning player
+
+                                if (CurrentPlayer.Id == m.Target)
+                                {
+                                    PlayerWin();
+                                    PlayerQuit();
+                                    MainWindow.BigFrame.Navigate(new MainMenu());
+                                }
+                                else 
+                                {
+                                    PlayerWin pw = new PlayerWin(WinningPlayer.Username);
+                                    pw.ShowDialog();
+
+                                    if (PlayersList.Count == 3)
+                                    {
+                                        PlayerLoss();
+
+                                        MainWindow.Service.AddAction(new Message()
+                                        {
+                                            Action = Message._action.loss,
+                                            Target = CurrentPlayer.Id,
+                                            Reciever = CurrentPlayer.Id,
+                                            GameId = CurrentGame.Id
+                                        });
+                                    }
+
+                                }
+                                MainWindow.Service.SaveChanges();
+
+
+                                break;
+
                             case Message._action.switch_hand:
 
                                 CardList l1 = PlayersList.Find(p => p.Id == m.Target).Hand;
@@ -210,7 +254,9 @@ namespace Form
                             case Message._action.next_turn:
 
                                 Turn = PlayersList.FindIndex(p => p.Id == m.Target);
-                                IsMyTurn(m.Target == CurrentPlayer.Id);
+                                MyTurn =(m.Target == CurrentPlayer.Id);
+
+                                Win();
 
                                 DeclareTurn();
 
@@ -233,14 +279,14 @@ namespace Form
                                 PlayersList.TrimExcess();
                                 CurrentGame.Players.TrimExcess();
 
-                                if (_currentUser.Id == PlayersList[0].UserId)
+                                if (CurrentUser.Id == PlayersList[0].UserId)
                                 {
                                     InitialTurn(); // broadcast that self is the first player in the game's players list
 
                                     uc1.SetAsActive();
 
                                     // if the player isn't already the player in charge of saving changes
-                                    if (_currentUser.Id != prevChangesSaverId)
+                                    if (CurrentUser.Id != prevChangesSaverId)
                                     {
                                         // pass the save changes functionality to the target player.
                                         SetSaveChanges();
@@ -248,7 +294,7 @@ namespace Form
                                 }
                                 else
                                 {
-                                    IsMyTurn(false);
+                                    MyTurn = false;
                                 }
 
                                 DeclareTurn();
@@ -430,7 +476,7 @@ namespace Form
                     Action = Message._action.remove,
                     Target = table.Id, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
-                    Card = new Card() { Id = 67},
+                    Card = new Card() { Id = 67 },
                     GameId = CurrentGame.Id // the game modified
                 });
             }
@@ -504,17 +550,6 @@ namespace Form
             return 4;
         }
 
-
-        public void IsMyTurn(bool value)
-        {
-            MyTurn = value;
-
-            if (MyTurn) {
-                uctable.CanTakeCardFromDeck();
-            }
-            else uctable.CannotTakeCardFromDeck();
-        }
-
         private void DeclareTurn() // declare the player with the turn as active
         {
             switch (GetUserControlOfPlayer(Turn))
@@ -572,7 +607,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            IsMyTurn(false);
+            MyTurn = false;
         }
 
         private void InitialTurn()
@@ -594,7 +629,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            IsMyTurn(true);
+            MyTurn = true;
         }
 
         public void PlayerQuit()
@@ -613,7 +648,6 @@ namespace Form
                     GameId = CurrentGame.Id
                 });
             }
-
 
             MainWindow.Service.AddActions(temp);
 
@@ -701,6 +735,7 @@ namespace Form
 
                 TurnFinished(value); // GetNextPlayerId will handle this 
             }
+            
         }
 
         private void SwitchHandsMessage(int currentPlayerId, int playerId)
@@ -811,6 +846,38 @@ namespace Form
             if(ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
             return PlayersList[1].Id;
 
+        }
+
+        private void Win()
+        {
+            if(CurrentPlayer.Hand.Count == 0)
+            {
+                MessageList temp = new MessageList();
+
+                for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+                {
+                    temp.Add(new Message()
+                    {
+                        Action = Message._action.win,
+                        Target = CurrentPlayer.Id,
+                        Reciever = PlayersList[i].Id,
+                        GameId = CurrentGame.Id
+                    });
+                }
+                MainWindow.Service.AddActions(temp);
+            }
+        }
+
+        private void PlayerWin()
+        {
+            CurrentUser.Score += 1000;
+            CurrentUser.Wins += 1;
+        }
+
+        private void PlayerLoss()
+        {
+            CurrentUser.Score += 200;
+            CurrentUser.Losses += 1;
         }
     }
 }

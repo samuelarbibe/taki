@@ -140,7 +140,14 @@ namespace Service
                                     bl = new Bl();
                                     bl.BlSwitchHands(m);
                                     break;
-
+                                case Message._action.win:
+                                    bl = new Bl();
+                                    bl.BlWin(m);
+                                    break;
+                                case Message._action.loss:
+                                    bl = new Bl();
+                                    bl.BlLoss(m);
+                                    break;
                             }
                         }
                     }

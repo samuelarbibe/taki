@@ -144,7 +144,7 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(6,false);
+                    t.Hand = BuildShuffledHand(1,false);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
@@ -297,6 +297,32 @@ namespace BusinessLayer
             };
 
             db.Insert(c);
+        }
+
+        public void BlWin(Message m)
+        {
+            PlayerDb playerDb = new PlayerDb();
+            Player p = playerDb.SelectById(m.Target);
+            UserDb userDb = new UserDb();
+            User u = userDb.SelectById(p.UserId);
+
+            u.Score += 1000;
+            u.Wins += 1;
+
+            userDb.Update(u);
+        }
+
+        public void BlLoss(Message m)
+        {
+            PlayerDb playerDb = new PlayerDb();
+            Player p = playerDb.SelectById(m.Target);
+            UserDb userDb = new UserDb();
+            User u = userDb.SelectById(p.UserId);
+
+            u.Score += 200;
+            u.Losses += 1;
+
+            userDb.Update(u);
         }
 
         public void BlSwitchHands(Message m)

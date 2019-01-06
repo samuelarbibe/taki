@@ -160,19 +160,13 @@ namespace Form.TakiService {
             SwitchColor = 14,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchHand = 15,
+            TakiAll = 15,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            PlusThree = 16,
+            SwitchColorAll = 16,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            TakiAll = 17,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColorAll = 18,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchHandAll = 19,
+            SwitchHandAll = 17,
         }
     }
     
@@ -614,6 +608,12 @@ namespace Form.TakiService {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             plus_two = 6,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            win = 7,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            loss = 8,
         }
     }
     

@@ -12,7 +12,9 @@ namespace Model
             player_quit,
             switch_rotation,
             switch_hand,
-            plus_two
+            plus_two,
+            win,
+            loss
         }
         private int _reciever;
         private int _gameId;
