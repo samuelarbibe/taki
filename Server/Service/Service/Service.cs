@@ -71,7 +71,7 @@ namespace Service
         {
             Bl bl = new Bl();
             Game g = bl.BlStartGame(p, playerCount);
-            //if(g != null)FirstTurn(g);            
+
             return g;
         }
 
@@ -113,7 +113,7 @@ namespace Service
             MessageList temp = new MessageList();
 
             if (PendingChanges == null || PendingChanges.Count == 0) return null;
-            else  
+            else
             {
                 foreach (Message m in PendingChanges.ToList())
                 {
@@ -122,7 +122,7 @@ namespace Service
                         temp.Add(m);
                         PendingChanges.Remove(m);
 
-                        if (m.Reciever == m.Target)// make shure this happens once for each message
+                        if (m.Reciever == m.Target) // make sure this happens once for each message
                         {
                             switch (m.Action)
                             {
@@ -140,10 +140,12 @@ namespace Service
                                     bl = new Bl();
                                     bl.BlSwitchHands(m);
                                     break;
+
                                 case Message._action.win:
                                     bl = new Bl();
                                     bl.BlWin(m);
                                     break;
+
                                 case Message._action.loss:
                                     bl = new Bl();
                                     bl.BlLoss(m);
@@ -152,7 +154,7 @@ namespace Service
                         }
                     }
                 }
-            } 
+            }
             return temp;
         }
 

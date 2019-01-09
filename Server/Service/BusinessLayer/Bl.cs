@@ -310,6 +310,7 @@ namespace BusinessLayer
             u.Wins += 1;
 
             userDb.Update(u);
+            userDb.SaveChanges();
         }
 
         public void BlLoss(Message m)
@@ -319,10 +320,20 @@ namespace BusinessLayer
             UserDb userDb = new UserDb();
             User u = userDb.SelectById(p.UserId);
 
+            GameDb gameDb = new GameDb();
+            Game g = gameDb.GetGameByID(m.GameId);
+
+            g.EndTime = DateTime.Now;
+
+            g.Winner = m.Target;
+
             u.Score += 200;
             u.Losses += 1;
 
             userDb.Update(u);
+            gameDb.Update(g);
+
+            userDb.SaveChanges();
         }
 
         public void BlSwitchHands(Message m)

@@ -36,8 +36,11 @@ namespace Form
         private int _currentPlayerIndex;
         private bool _clockWiseRotation;
 
-        public bool MyTurn { get => _myTurn;
-            set {
+        public bool MyTurn
+        {
+            get => _myTurn;
+            set
+            {
                 _myTurn = value;
 
                 if (MyTurn)
@@ -45,7 +48,7 @@ namespace Form
                     uctable.CanTakeCardFromDeck();
                 }
                 else uctable.CannotTakeCardFromDeck();
-                }
+            }
         }
         public bool Active { get => _active; set => _active = value; }
         public int Turn { get => _turn; set => _turn = value; }
@@ -87,7 +90,8 @@ namespace Form
             ReorderPlayerList();
 
             //the first player is the one to request changes saving in the database every x seconds
-            if (_currentUser.Id == firstPlayerUserId){
+            if (_currentUser.Id == firstPlayerUserId)
+            {
 
                 InitialTurn();// broadcast that self is the first player in the game's players list
 
@@ -125,7 +129,6 @@ namespace Form
                     uctable.SetCurrentPlayer(Table);
                     break;
             }
-
         }
 
         private void SetBackgroundWorker()
@@ -152,6 +155,7 @@ namespace Form
         {
             Thread.Sleep(500);
 
+            MainWindow.Service.DoAction(CurrentGame.Id, Table.Id);
             MainWindow.Service.SaveChanges();
         }
 
@@ -204,7 +208,7 @@ namespace Form
                                     PlayerQuit();
                                     MainWindow.BigFrame.Navigate(new MainMenu());
                                 }
-                                else 
+                                else
                                 {
                                     PlayerWin pw = new PlayerWin(WinningPlayer.Username);
                                     pw.ShowDialog();
@@ -223,8 +227,6 @@ namespace Form
                                     }
 
                                 }
-                                MainWindow.Service.SaveChanges();
-
 
                                 break;
 
@@ -241,20 +243,20 @@ namespace Form
 
                                 PlusValue = m.Card.Id;
 
-                                if(CurrentPlayer.Id == m.Target && PlusValue != 0)
+                                if (CurrentPlayer.Id == m.Target && PlusValue != 0)
                                 {
                                     if (CurrentPlayer.Hand.Find(c => c.VALUE == Card.Value.PlusTwo) == null)
                                     {
                                         TakeMultipleCardsFromDeck(PlusValue);
                                     }
-                                }   
+                                }
 
                                 break;
 
                             case Message._action.next_turn:
 
                                 Turn = PlayersList.FindIndex(p => p.Id == m.Target);
-                                MyTurn =(m.Target == CurrentPlayer.Id);
+                                MyTurn = (m.Target == CurrentPlayer.Id);
 
                                 Win();
 
@@ -316,7 +318,7 @@ namespace Form
             string cards = "\n \n --------------------------------------";
             foreach (Player p in PlayersList)
             {
-                cards += "\n \n Player "+ p.Username +":";
+                cards += "\n \n Player " + p.Username + ":";
                 foreach (Card c in p.Hand)
                 {
                     cards += "\n value:" + c.VALUE + ", color:" + c.COLOR;
@@ -424,19 +426,25 @@ namespace Form
             MessageList temp = new MessageList();
             Card givenCard = uc1.SelectedCard();
 
-
-            if(givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
+            if (givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
             {
-                if(givenCard.VALUE == Card.Value.TakiAll)
+                if (givenCard.VALUE == Card.Value.TakiAll)
                 {
-                    givenCard = new Card() { VALUE = Card.Value.Taki, COLOR = table.Hand[table.Hand.Count - 1].COLOR }; // replace the multi-color taki with the correct colored taki
+                    givenCard = new Card()
+                    {
+                        Id = 65,
+                        COLOR = Card.Color.multi,
+                        Image = "../Resources/Cards/card0065.png",
+                        Special = true,
+                        VALUE = Card.Value.TakiAll
+                    }; // replace the multi-color taki with the correct colored taki
                 }
                 OpenTaki = givenCard;
             }
 
             if (givenCard != null && CheckPlay(givenCard, table.Hand[table.Hand.Count - 1]))
             {
-                for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+                for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
@@ -468,7 +476,7 @@ namespace Form
             Player table = PlayersList.Last();
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count ; i++) //add for each player, not including the table
             {
 
                 temp.Add(new Message()// add the top card of the table to the current player
@@ -485,7 +493,7 @@ namespace Form
         }
 
 
-        private void TakeCardFromDeck(object sender, EventArgs e) 
+        private void TakeCardFromDeck(object sender, EventArgs e)
         {
             if (PlusValue != 0)
             {
@@ -497,7 +505,7 @@ namespace Form
                 MessageList temp = new MessageList();
                 Card takenCard = uctable.GetCardFromStack(); // get a random card
 
-                for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+                for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
@@ -522,7 +530,7 @@ namespace Form
 
             for (int i = 0; i < num; i++)
             {
-                for (int j = 0; j < PlayersList.Count - 1; j++) //add for each player, not including the table
+                for (int j = 0; j < PlayersList.Count; j++) //add for each player, not including the table
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
@@ -594,7 +602,7 @@ namespace Form
         {
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
@@ -616,7 +624,7 @@ namespace Form
 
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
@@ -634,11 +642,11 @@ namespace Form
 
         public void PlayerQuit()
         {
-            Console.WriteLine("Player"+ CurrentPlayer.Username +" removed from the game in the gameList: " + MainWindow.Service.PlayerQuit(CurrentPlayer));
+            Console.WriteLine("Player" + CurrentPlayer.Username + " removed from the game in the gameList: " + MainWindow.Service.PlayerQuit(CurrentPlayer));
 
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
@@ -658,8 +666,7 @@ namespace Form
 
         private bool CheckPlay(Card given, Card table)
         {
-
-            if(PlusValue != 0)
+            if (PlusValue != 0)
             {
                 if (given.VALUE == table.VALUE) return true;
             }
@@ -677,7 +684,7 @@ namespace Form
         {
             if (OpenTaki != null)
             {
-                int colorCount = CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count;
+                int colorCount = CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count - 1;
 
                 if (colorCount == 0)
                 {
@@ -726,7 +733,7 @@ namespace Form
 
                     case Card.Value.SwitchHandAll:
 
-                        SwitchHandsMessage(CurrentPlayer.Id, GetNextPlayerId(Card.Value.Nine));
+                        SwitchHandsMessage(GetNextPlayerId(Card.Value.Nine));
 
                         RemoveCardFromDeck();
 
@@ -735,10 +742,10 @@ namespace Form
 
                 TurnFinished(value); // GetNextPlayerId will handle this 
             }
-            
+
         }
 
-        private void SwitchHandsMessage(int currentPlayerId, int playerId)
+        private void SwitchHandsMessage( int playerId)
         {
             MessageList temp = new MessageList();
 
@@ -747,8 +754,8 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.switch_hand,
-                    Target = currentPlayerId,
-                    Card = new Card() {Id = playerId}, // pass the other Player's ID through the card field.
+                    Target = CurrentPlayer.Id,
+                    Card = new Card() { Id = playerId }, // pass the other Player's ID through the card field.
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });
@@ -762,7 +769,7 @@ namespace Form
         {
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
@@ -782,7 +789,7 @@ namespace Form
         {
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
@@ -801,7 +808,7 @@ namespace Form
         {
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
@@ -815,7 +822,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
         }
-        
+
 
         private int GetNextPlayerId(Card.Value value)
         {
@@ -825,7 +832,7 @@ namespace Form
                 case Card.Value.Stop:
                     if (PlayersList.Count > 3)
                     {
-                        if(ClockWiseRotation) return PlayersList[PlayersList.Count - 3].Id;
+                        if (ClockWiseRotation) return PlayersList[PlayersList.Count - 3].Id;
                         return PlayersList[2].Id;
                     }
                     return CurrentPlayer.Id;
@@ -836,25 +843,25 @@ namespace Form
                     return CurrentPlayer.Id;
 
                 case Card.Value.SwitchDirection:
-                {
-                    if (!ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
-                    return PlayersList[1].Id;
-                }
+                    {
+                        if (!ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
+                        return PlayersList[1].Id;
+                    }
 
             }
 
-            if(ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
+            if (ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
             return PlayersList[1].Id;
 
         }
 
         private void Win()
         {
-            if(CurrentPlayer.Hand.Count == 0)
+            if (CurrentPlayer.Hand.Count == 0)
             {
                 MessageList temp = new MessageList();
 
-                for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+                for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
                 {
                     temp.Add(new Message()
                     {
@@ -870,8 +877,9 @@ namespace Form
 
         private void PlayerWin()
         {
-            CurrentUser.Score += 1000;
+            CurrentUser.Score += 500;
             CurrentUser.Wins += 1;
+            CurrentUser.Level = (CurrentUser.Score - CurrentUser.Score % 1000) / 1000;
         }
 
         private void PlayerLoss()

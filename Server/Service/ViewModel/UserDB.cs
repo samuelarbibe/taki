@@ -119,12 +119,12 @@ namespace ViewModel
             PlayerDb playerDb = new PlayerDb();
             playerDb.Delete(u as Player);
 
-            if (u != null) Inserted.Add(new ChangeEntity(CreateDeleteSql, entity));
+            if (u != null) Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
         }
 
         public override void Update(BaseEntity entity)
         {
-            if (entity is User) Inserted.Add(new ChangeEntity(CreateUpdateSql, entity));
+            if (entity is User) Updated.Add(new ChangeEntity(CreateUpdateSql, entity));
         }
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
@@ -163,7 +163,6 @@ namespace ViewModel
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id", user.Id));
             command.Parameters.Add(new OleDbParameter("@username", user.Username));
             command.Parameters.Add(new OleDbParameter("@password", user.Password));
             command.Parameters.Add(new OleDbParameter("@firstName", user.FirstName));
@@ -172,6 +171,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@level", user.Level));
             command.Parameters.Add(new OleDbParameter("@wins", user.Wins));
             command.Parameters.Add(new OleDbParameter("@losses", user.Losses));
+            command.Parameters.Add(new OleDbParameter("@id", user.Id));
 
             Console.WriteLine("player [" + user.Id + "] has been updated");
         }

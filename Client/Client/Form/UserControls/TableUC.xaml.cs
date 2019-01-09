@@ -80,7 +80,7 @@ namespace Form.UserControls
 
 
         private void PassCardButton_Click(object sender, RoutedEventArgs e)
-        {
+        {   
             this.PassCardToStackButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
