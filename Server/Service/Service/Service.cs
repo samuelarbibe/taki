@@ -75,6 +75,12 @@ namespace Service
             return g;
         }
 
+        public int GetPlayersFound(int playerCount)
+        {
+            Bl bl = new Bl();
+            return bl.BlGetPlayersFound(playerCount);
+        }
+
         public bool StopSearchingForGame(Player p)
         {
             Bl bl = new Bl();

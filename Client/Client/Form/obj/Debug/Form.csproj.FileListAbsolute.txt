@@ -203,3 +203,5 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColo
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.baml
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.g.cs
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.baml

@@ -428,17 +428,6 @@ namespace Form
 
             if (givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
             {
-                if (givenCard.VALUE == Card.Value.TakiAll)
-                {
-                    givenCard = new Card()
-                    {
-                        Id = 65,
-                        COLOR = Card.Color.multi,
-                        Image = "../Resources/Cards/card0065.png",
-                        Special = true,
-                        VALUE = Card.Value.TakiAll
-                    }; // replace the multi-color taki with the correct colored taki
-                }
                 OpenTaki = givenCard;
             }
 
@@ -467,7 +456,7 @@ namespace Form
 
                 MainWindow.Service.AddActions(temp);
 
-                Switch(givenCard.VALUE);
+                Switch(givenCard);
             }
         }
 
@@ -672,19 +661,68 @@ namespace Form
             }
 
             // not multi-color
-            if (given.COLOR == Card.Color.multi) return true;
-
-            if (given.COLOR == table.COLOR || given.VALUE == table.VALUE) return true;
+            if (given.COLOR == Card.Color.multi || table.VALUE == Card.Value.TakiAll || given.COLOR == table.COLOR || given.VALUE == table.VALUE) return true;
 
             return false;
-
         }
 
-        private void Switch(Card.Value value)
+        private void Switch(Card givenCard)
         {
             if (OpenTaki != null)
             {
-                int colorCount = CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR).Count - 1;
+                int colorCount = CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR || c.VALUE == Table.Hand[Table.Hand.Count-1].VALUE).Count - 1;
+
+                if (givenCard.VALUE == Card.Value.TakiAll)
+                {
+                    colorCount = 2;
+                }
+
+                if (OpenTaki.VALUE == Card.Value.TakiAll && givenCard.VALUE != Card.Value.TakiAll)
+                {
+                    switch (givenCard.COLOR)
+                    {
+                        case Card.Color.blue:
+                            OpenTaki = new Card()
+                            {
+                                Id = 61,
+                                COLOR = Card.Color.blue,
+                                Image = "../Resources/Cards/card0061.png",
+                                Special = true,
+                                VALUE = Card.Value.Taki
+                            };
+                            break;
+                        case Card.Color.green:
+                            OpenTaki = new Card()
+                            {
+                                Id = 13,
+                                COLOR = Card.Color.green,
+                                Image = "../Resources/Cards/card0013.png",
+                                Special = true,
+                                VALUE = Card.Value.Taki
+                            };
+                            break;
+                        case Card.Color.red:
+                            OpenTaki = new Card()
+                            {
+                                Id = 29,
+                                COLOR = Card.Color.red,
+                                Image = "../Resources/Cards/card0029.png",
+                                Special = true,
+                                VALUE = Card.Value.Taki
+                            };
+                            break;
+                        case Card.Color.yellow:
+                            OpenTaki = new Card()
+                            {
+                                Id = 45,
+                                COLOR = Card.Color.yellow,
+                                Image = "../Resources/Cards/card0045.png",
+                                Special = true,
+                                VALUE = Card.Value.Taki
+                            };
+                            break;
+                    }
+                }
 
                 if (colorCount == 0)
                 {
@@ -703,7 +741,7 @@ namespace Form
             }
             else
             {
-                switch (value)
+                switch (givenCard.VALUE)
                 {
                     case Card.Value.SwitchColor:
                     case Card.Value.SwitchColorAll:
@@ -733,29 +771,29 @@ namespace Form
 
                     case Card.Value.SwitchHandAll:
 
-                        SwitchHandsMessage(GetNextPlayerId(Card.Value.Nine));
+                        SwitchHandsMessage();
 
                         RemoveCardFromDeck();
 
                         break;
                 }
 
-                TurnFinished(value); // GetNextPlayerId will handle this 
+                TurnFinished(givenCard.VALUE); // GetNextPlayerId will handle this 
             }
 
         }
 
-        private void SwitchHandsMessage( int playerId)
+        private void SwitchHandsMessage()
         {
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
+            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {
                     Action = Message._action.switch_hand,
                     Target = CurrentPlayer.Id,
-                    Card = new Card() { Id = playerId }, // pass the other Player's ID through the card field.
+                    Card = new Card() { Id = GetNextPlayerId(Card.Value.Nine) }, // pass the other Player's ID through the card field.
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });

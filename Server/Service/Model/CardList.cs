@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
 namespace Model
@@ -20,5 +22,24 @@ namespace Model
         public CardList(IEnumerable<BaseEntity> list) : base(list.Cast<Card>().ToList())
         {
         }
+
+
+       
+        public void Shuffle()
+        {
+            Random rng = new Random();
+
+            int n = this.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Card value = this[k];
+                this[k] = this[n];
+                this[n] = value;
+            }
+        }
     }
 }
+
+

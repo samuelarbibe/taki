@@ -33,7 +33,9 @@ namespace BusinessLayer
 
         public CardList BlBuildDeck()
         {
-            return BuildShuffledHand(67, false);
+            CardList cardList = CardDb.SelectAll();
+            cardList.Shuffle();
+            return cardList;
         }
 
         //receives a Message from the service, calculates according to the algorithms
@@ -54,7 +56,6 @@ namespace BusinessLayer
                 LoggedPlayers.Add(userList[0]);
                 return userList[0];
             }
-
             return null;
         }
 
@@ -144,12 +145,12 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(1,false);
+                    t.Hand = BuildShuffledHand(6,false);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
 
-                _game.Players[playerCount].Hand = BuildShuffledHand(1, true); // giving the table 100 shuffled cards
+                _game.Players[playerCount].Hand = BuildShuffledHand(6, true); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
@@ -163,6 +164,11 @@ namespace BusinessLayer
             }
 
             return null;
+        }
+
+        public int BlGetPlayersFound(int playerCount)
+        {
+            return _waitingList[playerCount - 2].Count;
         }
 
         public bool BlStopSearchingForGame(Player remove)
@@ -379,7 +385,7 @@ namespace BusinessLayer
                 {
                     if (!noSpecial)
                     {
-                        while (hand.Find(q => q.VALUE == temp.VALUE && q.COLOR == temp.COLOR) != null)// if the card is already in the hand, fetch for a different card
+                        while (hand.Find(q => q.Id == temp.Id) != null)// if the card is already in the hand, fetch for a different card
                         {
                             temp = Deck[rand.Next(0, 59)];
                         }

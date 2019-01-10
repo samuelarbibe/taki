@@ -720,6 +720,12 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
         System.Threading.Tasks.Task<bool> StopSearchingForGameAsync(Form.TakiService.Player p);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayersFound", ReplyAction="http://tempuri.org/IService/GetPlayersFoundResponse")]
+        int GetPlayersFound(int playerCount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetPlayersFound", ReplyAction="http://tempuri.org/IService/GetPlayersFoundResponse")]
+        System.Threading.Tasks.Task<int> GetPlayersFoundAsync(int playerCount);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/PlayerQuit", ReplyAction="http://tempuri.org/IService/PlayerQuitResponse")]
         bool PlayerQuit(Form.TakiService.Player p);
         
@@ -868,6 +874,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<bool> StopSearchingForGameAsync(Form.TakiService.Player p) {
             return base.Channel.StopSearchingForGameAsync(p);
+        }
+        
+        public int GetPlayersFound(int playerCount) {
+            return base.Channel.GetPlayersFound(playerCount);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetPlayersFoundAsync(int playerCount) {
+            return base.Channel.GetPlayersFoundAsync(playerCount);
         }
         
         public bool PlayerQuit(Form.TakiService.Player p) {

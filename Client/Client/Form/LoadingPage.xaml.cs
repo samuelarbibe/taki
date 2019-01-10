@@ -76,17 +76,19 @@ namespace Form
                 if (_game == null)
                 {
                     status.Text = "player is in queue...";
+                    PlayersFound.Text = "Players Found: 0/" + _playerCount;
+
 
                     if (_counter < 20)
                     {
                         _game = MainWindow.Service.StartGame(_p, _playerCount);
                         _counter++;
+                        PlayersFound.Text = "Players Found: "+ MainWindow.Service.GetPlayersFound(_playerCount) + "/" + _playerCount;
                     }
                     else
                     {
                         dispatcherTimer.Stop();
                         status.Text = "no game could be found... please try again";
-                        status.Foreground = new SolidColorBrush(Colors.Red);
                         _gameNotFound = true;
                     }
                 }

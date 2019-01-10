@@ -55,6 +55,9 @@ namespace Service
         bool StopSearchingForGame(Player p);
 
         [OperationContract]
+        int GetPlayersFound(int playerCount);
+
+        [OperationContract]
         bool PlayerQuit(Player p);
 
         [OperationContract]

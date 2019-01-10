@@ -9,8 +9,36 @@
       Title="LoadingPage">
 
     <Grid>
-        <TextBlock x:Name="status" HorizontalAlignment="Center" FontSize="40" TextWrapping="Wrap" Text="Searching for a Game..." VerticalAlignment="Center"/>
-        <Button x:Name="SearchAgainButton" Content="Search Again" HorizontalAlignment="Center" Margin="0,200,0,0" Height="50" Width="150" VerticalAlignment="Center" Click="SearchAgainButton_Click" />
-        <Button x:Name="CancelSearchButton" Content="Cancel search" HorizontalAlignment="Center" Margin="0,300,0,0" Height="50" Width="150" VerticalAlignment="Center" Click="CancelSearchButton_Click" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="182*"/>
+            <ColumnDefinition Width="207*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="152*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="34*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="status" FontSize="25" TextWrapping="Wrap" Text="Searching for a Game..." FontFamily="/Form;component/Resources/Fonts/Fredoka_One/#Fredoka One" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFF2F2F2" VerticalAlignment="Bottom" Height="32" Margin="4.309,0,0.455,0.818" Grid.Column="2"/>
+        <Button Visibility="Hidden"  x:Name="SearchAgainButton" Content="Search Again" Click="SearchAgainButton_Click" Grid.Row="5" Background="{x:Null}" BorderBrush="White" Foreground="DarkGray" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontSize="16" Grid.ColumnSpan="2" Margin="4.309,0.436,59.055,0.291" Grid.Column="2" />
+        <Button x:Name="CancelSearchButton" Content="Cancel search" Click="CancelSearchButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,15,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontSize="16" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="53" >
+            <Button.Effect>
+                <DropShadowEffect Color="#FF4A4A4A" Opacity="0.6"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFF5555" Offset="0.458"/>
+                    <GradientStop Color="#FFFF3737" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBlock x:Name="PlayersFound" FontSize="22" TextWrapping="Wrap" Text="Players Found: 5/5" FontFamily="/Form;component/Resources/Fonts/Fredoka_One/#Fredoka One" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFF2F2F2" Grid.Row="1" VerticalAlignment="Bottom" Height="33" Margin="4.309,0,0.455,0.709" Grid.Column="2"/>
     </Grid>
 </Page>

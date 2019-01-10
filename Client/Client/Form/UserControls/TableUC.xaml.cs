@@ -15,6 +15,7 @@ namespace Form.UserControls
         private CardList _deck;
         private Player _currentPlayer;
         private CardList _stack;
+        private Random rand = new Random();
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
 
@@ -36,14 +37,13 @@ namespace Form.UserControls
         }
 
 
-        public Card GetCardFromStack() {
-
+        public Card GetCardFromStack() {           
             if (Deck.Count == 0)
             {
                 Deck = MainWindow.Service.BuildDeck();
             }
 
-            Card temp = Deck.Last();
+            Card temp = Deck[rand.Next(0,Deck.Count-1)];
             Deck.Remove(temp);
 
             return temp;
@@ -58,6 +58,7 @@ namespace Form.UserControls
             DataContext = Stack.LastOrDefault();
 
             Deck = MainWindow.Service.BuildDeck();
+
         }
         
         public void DeckButton_OnClick(object sender, EventArgs e)
