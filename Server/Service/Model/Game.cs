@@ -10,7 +10,7 @@ namespace Model
 
         private PlayerList _players;
         private DateTime _startTime;
-        private int _winner;
+        private int _losser;
 
         public Game()
         {
@@ -44,10 +44,10 @@ namespace Model
         }
 
         [DataMember]
-        public int Winner
+        public int Losser
         {
-            get => _winner;
-            set => _winner = value;
+            get => _losser;
+            set => _losser = value;
         }
 
         [DataMember]

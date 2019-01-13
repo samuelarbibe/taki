@@ -426,60 +426,66 @@ namespace Form
             MessageList temp = new MessageList();
             Card givenCard = uc1.SelectedCard();
 
-            if (givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
+            if (givenCard != null)
             {
-                OpenTaki = givenCard;
-            }
-
-            if (givenCard != null && CheckPlay(givenCard, table.Hand[table.Hand.Count - 1]))
-            {
-                for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
+                if (givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
                 {
-                    temp.Add(new Message()// add the top card of the table to the current player
-                    {
-                        Action = Message._action.add,
-                        Target = table.Id, // the person who's hand is modified
-                        Reciever = PlayersList[i].Id, // the peron who this message is for
-                        Card = givenCard, // the card modified
-                        GameId = CurrentGame.Id // the game modified
-                    });
-
-                    temp.Add(new Message()// add the top card of the table to the current player
-                    {
-                        Action = Message._action.remove,
-                        Target = currentPlayer.Id, // the person who's hand is modified
-                        Reciever = PlayersList[i].Id, // the peron who this message is for
-                        Card = givenCard, // the card modified
-                        GameId = CurrentGame.Id // the game modified
-                    });
+                    OpenTaki = givenCard;
                 }
 
-                MainWindow.Service.AddActions(temp);
-
-                Switch(givenCard);
-            }
-        }
-
-        private void RemoveCardFromDeck()
-        {
-            Player table = PlayersList.Last();
-            MessageList temp = new MessageList();
-
-            for (int i = 0; i < PlayersList.Count ; i++) //add for each player, not including the table
-            {
-
-                temp.Add(new Message()// add the top card of the table to the current player
+                if (CheckPlay(givenCard, table.Hand[table.Hand.Count - 1]))
                 {
-                    Action = Message._action.remove,
-                    Target = table.Id, // the person who's hand is modified
-                    Reciever = PlayersList[i].Id, // the peron who this message is for
-                    Card = new Card() { Id = 67 },
-                    GameId = CurrentGame.Id // the game modified
-                });
-            }
+                    for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
+                    {
+                        if (givenCard.VALUE != Card.Value.SwitchHandAll) // don't add switchHands card to table
+                        {
+                            temp.Add(new Message() // add the top card of the table to the current player
+                            {
+                                Action = Message._action.add,
+                                Target = table.Id, // the person who's hand is modified
+                                Reciever = PlayersList[i].Id, // the peron who this message is for
+                                Card = givenCard, // the card modified
+                                GameId = CurrentGame.Id // the game modified
+                            });
+                        }
+                        
+                        temp.Add(new Message() // add the top card of the table to the current player
+                        {
+                            Action = Message._action.remove,
+                            Target = currentPlayer.Id, // the person who's hand is modified
+                            Reciever = PlayersList[i].Id, // the peron who this message is for
+                            Card = givenCard, // the card modified
+                            GameId = CurrentGame.Id // the game modified
+                        });
+                    }
 
-            MainWindow.Service.AddActions(temp);
+                    MainWindow.Service.AddActions(temp);
+
+                    Switch(givenCard);
+                }
+            }
         }
+
+        //private void RemoveCardFromDeck()
+        //{
+        //    Player table = PlayersList.Last();
+        //    MessageList temp = new MessageList();
+
+        //    for (int i = 0; i < PlayersList.Count ; i++) //add for each player, not including the table
+        //    {
+
+        //        temp.Add(new Message()// add the top card of the table to the current player
+        //        {
+        //            Action = Message._action.remove,
+        //            Target = table.Id, // the person who's hand is modified
+        //            Reciever = PlayersList[i].Id, // the peron who this message is for
+        //            Card = new Card() { Id = 67 },
+        //            GameId = CurrentGame.Id // the game modified
+        //        });
+        //    }
+
+        //    MainWindow.Service.AddActions(temp);
+        //}
 
 
         private void TakeCardFromDeck(object sender, EventArgs e)
@@ -773,8 +779,6 @@ namespace Form
 
                         SwitchHandsMessage();
 
-                        RemoveCardFromDeck();
-
                         break;
                 }
 
@@ -787,7 +791,8 @@ namespace Form
         {
             MessageList temp = new MessageList();
 
-            for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
+            Thread.Sleep(100);
+            for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
                 {

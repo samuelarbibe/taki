@@ -19,14 +19,14 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*"/>
-            <RowDefinition Height="42*"/>
-            <RowDefinition Height="152*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="146*"/>
             <RowDefinition Height="57*"/>
             <RowDefinition Height="39*"/>
             <RowDefinition Height="57*"/>
             <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="status" FontSize="25" TextWrapping="Wrap" Text="Searching for a Game..." FontFamily="/Form;component/Resources/Fonts/Fredoka_One/#Fredoka One" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFF2F2F2" VerticalAlignment="Bottom" Height="32" Margin="4.309,0,0.455,0.818" Grid.Column="2"/>
+        <TextBlock x:Name="status" FontSize="30" TextWrapping="Wrap" Text="Searching for a Game..." FontFamily="/Form;component/Resources/Fonts/Asap/#Asap SemiBold" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFF2F2F2" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"/>
         <Button Visibility="Hidden"  x:Name="SearchAgainButton" Content="Search Again" Click="SearchAgainButton_Click" Grid.Row="5" Background="{x:Null}" BorderBrush="White" Foreground="DarkGray" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontSize="16" Grid.ColumnSpan="2" Margin="4.309,0.436,59.055,0.291" Grid.Column="2" />
         <Button x:Name="CancelSearchButton" Content="Cancel search" Click="CancelSearchButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,15,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontSize="16" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="53" >
             <Button.Effect>
@@ -39,6 +39,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <TextBlock x:Name="PlayersFound" FontSize="22" TextWrapping="Wrap" Text="Players Found: 5/5" FontFamily="/Form;component/Resources/Fonts/Fredoka_One/#Fredoka One" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFF2F2F2" Grid.Row="1" VerticalAlignment="Bottom" Height="33" Margin="4.309,0,0.455,0.709" Grid.Column="2"/>
+        <TextBlock x:Name="PlayersFound" FontSize="22" TextWrapping="Wrap" Text="Players Found: 5/5" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap SemiBold" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFF2F2F2" Grid.Row="1" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

@@ -145,12 +145,12 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(6,false);
+                    t.Hand = BuildShuffledHand(1,false);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
 
-                _game.Players[playerCount].Hand = BuildShuffledHand(6, true); // giving the table 100 shuffled cards
+                _game.Players[playerCount].Hand = BuildShuffledHand(1, true); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
@@ -158,7 +158,7 @@ namespace BusinessLayer
 
                 GameList.Add((Game)_game.Clone()); // add this game to the game list
 
-                //_waitingList[playerCount - 2].Clear();
+                _game.StartTime = DateTime.Now; // start the game
 
                 return _game; // return this game
             }
@@ -327,11 +327,11 @@ namespace BusinessLayer
             User u = userDb.SelectById(p.UserId);
 
             GameDb gameDb = new GameDb();
-            Game g = gameDb.GetGameByID(m.GameId);
+            Game g = gameDb.GetGameById(m.GameId);
 
             g.EndTime = DateTime.Now;
 
-            g.Winner = m.Target;
+            g.Losser = m.Target;
 
             u.Score += 200;
             u.Losses += 1;

@@ -135,8 +135,7 @@ namespace ViewModel
             }
             catch (Exception e)
             {
-                Debug.WriteLine("\n" + e.Message + "\nSQL:" + command.CommandText + "\n The Problem is with: " +
-                                Inserted[errorIndex].Entity.GetType() + "\n");
+                Debug.WriteLine("\n" + e.Message + "\nSQL:" + command.CommandText);
             }
             finally
             {

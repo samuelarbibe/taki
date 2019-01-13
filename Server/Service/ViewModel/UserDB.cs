@@ -26,6 +26,7 @@ namespace ViewModel
             user.Admin = Reader["admin"] as bool? ?? false;
             user.Wins = (int) Reader["wins"];
             user.Losses = (int) Reader["losses"];
+
             return user;
         }
 
@@ -173,7 +174,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@losses", user.Losses));
             command.Parameters.Add(new OleDbParameter("@id", user.Id));
 
-            Console.WriteLine("player [" + user.Id + "] has been updated");
+            Console.WriteLine("player [" + user.Id + "] UPDATED");
         }
     }
 }

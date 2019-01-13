@@ -91,7 +91,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@game_id", con.SideB));
 
             Console.WriteLine("connection between player [" + con.SideA + "] and game [" + con.SideB +
-                              "] has been created and inserted");
+                              "] INSERTED");
         }
 
 
@@ -106,7 +106,7 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
             command.Parameters.Add(new OleDbParameter("@game_id", con.SideB));
 
-            Console.WriteLine("connection between player" + con.SideA + " and game" + con.SideB + " has been deleted");
+            Console.WriteLine("connection between player" + con.SideA + " and game" + con.SideB + " DELETED");
         }
 
         //BaseDB abstract implementation.
