@@ -20,20 +20,17 @@ namespace ViewModel
 
             game.Id = (int) Reader["ID"];
 
-            PlayerList pl = new PlayerList();
 
-            pl.Add((Player)db.SelectById((int) Reader["player_1_id"]));
-            pl.Add((Player)db.SelectById((int) Reader["player_2_id"]));
-            pl.Add((Player)db.SelectById((int) Reader["player_3_id"]));
-            pl.Add((Player)db.SelectById((int) Reader["player_4_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_1_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_2_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_3_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_4_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int) Reader["table_id"]));
 
-            pl.RemoveAll(p => p == null); // remove all nulls
-
-            game.Players = pl;
-            game.Players.Add((Player)db.SelectById((int)Reader["table_id"]));
-
-            game.StartTime = DateTime.Parse(Reader["start_date"].ToString());
-            game.EndTime = DateTime.Parse(Reader["end_date"].ToString());
+            //game.StartTime = DateTime.Parse(Reader["start_date"].ToString());
+            //game.EndTime = DateTime.Parse(Reader["end_date"].ToString());
+            game.StartTime = (DateTime)Reader["start_date"];
+            game.EndTime = (DateTime)Reader["end_date"];
 
             return game;
         }
@@ -44,7 +41,6 @@ namespace ViewModel
             GameList temp = new GameList(Select());
             return temp;
         }
-
 
         public Game GetLastGame()
         {
@@ -159,37 +155,10 @@ namespace ViewModel
         {
             Game g = entity as Game;
 
-            command.CommandText = "UPDATE Game_Table SET [start_date] = '" + g.StartTime.ToString("G") + "', [end_date] = '" + g.EndTime.ToString("G") + "', [player_1_id] = @p1, [player_2_id] = @p2, [player_3_id] = @p3, [player_4_id] = @p4, [table_id] = @table, [losser_id] = @loss WHERE [ID] = " + g.Id + "";
-
-
-            switch (g.Players.Count)
-            {
-                case 3:
-                    command.Parameters.AddWithValue("@p1", g.Players[0].Id);
-                    command.Parameters.AddWithValue("@p2", g.Players[1].Id);
-                    command.Parameters.AddWithValue("@p3", int.Parse("0"));
-                    command.Parameters.AddWithValue("@p4", int.Parse("0"));
-
-                    break;
-
-                case 4:
-                    command.Parameters.AddWithValue("@p1", g.Players[0].Id);
-                    command.Parameters.AddWithValue("@p2", g.Players[1].Id);
-                    command.Parameters.AddWithValue("@p3", g.Players[2].Id);
-                    command.Parameters.AddWithValue("@p4", int.Parse("0"));
-                    break;
-
-                case 5:
-                    command.Parameters.AddWithValue("@p1", g.Players[0].Id);
-                    command.Parameters.AddWithValue("@p2", g.Players[1].Id);
-                    command.Parameters.AddWithValue("@p3", g.Players[2].Id);
-                    command.Parameters.AddWithValue("@p4", g.Players[3].Id);
-                    break;
-            }
+            command.CommandText = "UPDATE Game_Table SET [end_date] = '" + g.EndTime.ToString("G") + "', [losser_id] = @loss WHERE [ID] = " + g.Id + "";
 
             //parameters
 
-            command.Parameters.AddWithValue("@table", -g.Id);
             command.Parameters.AddWithValue("@loss", g.Losser);
         }
     

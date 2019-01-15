@@ -64,6 +64,7 @@
                 <ImageBrush ImageSource="Resources/Images/Logout_Icon.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
+        <Button x:Name="GamesButton" Content="Game History" Grid.Column="3" Grid.Row="5" Click="Game_Button_Click" Foreground="#FF4D99D0"/>
         <Button x:Name="AdminButton" Content="AdminButton" Grid.Column="3" Grid.Row="6" Click="Admin_Button_Click" Foreground="#FF4D99D0"/>
 
     </Grid>

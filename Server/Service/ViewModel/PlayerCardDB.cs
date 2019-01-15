@@ -24,7 +24,7 @@ namespace ViewModel
 
         public ConnectionList SelectByGameId(int cardId)
         {
-            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE 'card_id'= @id";
+            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [card_id] = @id";
 
 
             //parameters
@@ -37,7 +37,7 @@ namespace ViewModel
 
         public ConnectionList SelectByPlayerId(int playerId)
         {
-            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE 'player_id'= @id";
+            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [player_id] = @id";
 
 
             //parameters
@@ -73,10 +73,10 @@ namespace ViewModel
             return conList;
         }
 
-        public void SwitchConnectionsByPlayersId(int right, int left)
+        public void SwitchConnectionsByPlayersId(int left, int right)
         {
-            ConnectionList hand1 = GetConnectionsByPlayerId(right);
-            ConnectionList hand2 = GetConnectionsByPlayerId(left);
+            ConnectionList hand1 = GetConnectionsByPlayerId(left);
+            ConnectionList hand2 = GetConnectionsByPlayerId(right);
 
             foreach(Connection c in hand1)
             {

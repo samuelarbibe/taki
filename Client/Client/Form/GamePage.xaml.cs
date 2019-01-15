@@ -447,16 +447,16 @@ namespace Form
                                 Card = givenCard, // the card modified
                                 GameId = CurrentGame.Id // the game modified
                             });
+
+                            temp.Add(new Message() // add the top card of the table to the current player
+                            {
+                                Action = Message._action.remove,
+                                Target = currentPlayer.Id, // the person who's hand is modified
+                                Reciever = PlayersList[i].Id, // the peron who this message is for
+                                Card = givenCard, // the card modified
+                                GameId = CurrentGame.Id // the game modified
+                            });
                         }
-                        
-                        temp.Add(new Message() // add the top card of the table to the current player
-                        {
-                            Action = Message._action.remove,
-                            Target = currentPlayer.Id, // the person who's hand is modified
-                            Reciever = PlayersList[i].Id, // the peron who this message is for
-                            Card = givenCard, // the card modified
-                            GameId = CurrentGame.Id // the game modified
-                        });
                     }
 
                     MainWindow.Service.AddActions(temp);
@@ -618,7 +618,7 @@ namespace Form
             uc1.SetAsActive();
 
             MessageList temp = new MessageList();
-
+            
             for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
             {
                 temp.Add(new Message()
@@ -791,9 +791,17 @@ namespace Form
         {
             MessageList temp = new MessageList();
 
-            Thread.Sleep(100);
             for (int i = 0; i < (PlayersList.Count - 1); i++) //add for each player, not including the table
             {
+                temp.Add(new Message() // add the top card of the table to the current player
+                {
+                    Action = Message._action.remove,
+                    Target = CurrentPlayer.Id, // the person who's hand is modified
+                    Reciever = PlayersList[i].Id, // the peron who this message is for
+                    Card = new Card() {Id = 67}, // the card modified
+                    GameId = CurrentGame.Id // the game modified
+                });
+
                 temp.Add(new Message()
                 {
                     Action = Message._action.switch_hand,
@@ -801,10 +809,8 @@ namespace Form
                     Card = new Card() { Id = GetNextPlayerId(Card.Value.Nine) }, // pass the other Player's ID through the card field.
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
-                });
+                }); 
             }
-
-
             MainWindow.Service.AddActions(temp);
         }
 
@@ -929,6 +935,7 @@ namespace Form
         {
             CurrentUser.Score += 200;
             CurrentUser.Losses += 1;
+            CurrentUser.Level = (CurrentUser.Score - CurrentUser.Score % 1000) / 1000;
         }
     }
 }

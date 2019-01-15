@@ -113,6 +113,31 @@ namespace BusinessLayer
             return userList;
         }
 
+        public GameList BlGetAllUserGames(int UserId)
+        {
+            PlayerDb playerDB = new PlayerDb();
+            PlayerGameDb playerGameDB = new PlayerGameDb();
+            GameDb gameDB = new GameDb();
+
+            PlayerList playersList = playerDB.GetPlayersByUserId(UserId);
+
+            ConnectionList conList = new ConnectionList();
+
+            foreach(Player p in playersList)
+            {
+                conList.AddRange(playerGameDB.SelectByPlayerId(p.Id));
+            }
+
+            GameList temp = new GameList();
+
+            foreach(Connection c in conList)
+            {
+                temp.Add(gameDB.GetGameById(c.SideB));
+            }
+
+            return temp;
+        }
+
         // creates a new game and returns it
         // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public Game BlStartGame(Player p, int playerCount)
@@ -308,12 +333,13 @@ namespace BusinessLayer
         public void BlWin(Message m)
         {
             PlayerDb playerDb = new PlayerDb();
-            Player p = playerDb.SelectById(m.Target);
+            Player p = playerDb.GetPlayerById(m.Target);
             UserDb userDb = new UserDb();
             User u = userDb.SelectById(p.UserId);
 
             u.Score += 1000;
             u.Wins += 1;
+            u.Level = (u.Score - u.Score % 1000) / 1000;
 
             userDb.Update(u);
             userDb.SaveChanges();
@@ -322,7 +348,7 @@ namespace BusinessLayer
         public void BlLoss(Message m)
         {
             PlayerDb playerDb = new PlayerDb();
-            Player p = playerDb.SelectById(m.Target);
+            Player p = playerDb.GetPlayerById(m.Target);
             UserDb userDb = new UserDb();
             User u = userDb.SelectById(p.UserId);
 
@@ -335,6 +361,7 @@ namespace BusinessLayer
 
             u.Score += 200;
             u.Losses += 1;
+            u.Level = (u.Score - u.Score % 1000) / 1000;
 
             userDb.Update(u);
             gameDb.Update(g);

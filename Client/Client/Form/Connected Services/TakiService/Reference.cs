@@ -437,13 +437,13 @@ namespace Form.TakiService {
         private System.DateTime EndTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LosserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Form.TakiService.PlayerList PlayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime StartTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int WinnerField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime EndTime {
@@ -454,6 +454,19 @@ namespace Form.TakiService {
                 if ((this.EndTimeField.Equals(value) != true)) {
                     this.EndTimeField = value;
                     this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Losser {
+            get {
+                return this.LosserField;
+            }
+            set {
+                if ((this.LosserField.Equals(value) != true)) {
+                    this.LosserField = value;
+                    this.RaisePropertyChanged("Losser");
                 }
             }
         }
@@ -480,19 +493,6 @@ namespace Form.TakiService {
                 if ((this.StartTimeField.Equals(value) != true)) {
                     this.StartTimeField = value;
                     this.RaisePropertyChanged("StartTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Winner {
-            get {
-                return this.WinnerField;
-            }
-            set {
-                if ((this.WinnerField.Equals(value) != true)) {
-                    this.WinnerField = value;
-                    this.RaisePropertyChanged("Winner");
                 }
             }
         }
@@ -633,6 +633,13 @@ namespace Form.TakiService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="GameList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Game")]
+    [System.SerializableAttribute()]
+    public class GameList : System.Collections.Generic.List<Form.TakiService.Game> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="User")]
     [System.SerializableAttribute()]
     public class UserList : System.Collections.Generic.List<Form.TakiService.User> {
@@ -707,6 +714,12 @@ namespace Form.TakiService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/PasswordAvailable", ReplyAction="http://tempuri.org/IService/PasswordAvailableResponse")]
         System.Threading.Tasks.Task<bool> PasswordAvailableAsync(string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUserGames", ReplyAction="http://tempuri.org/IService/GetAllUserGamesResponse")]
+        Form.TakiService.GameList GetAllUserGames(int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUserGames", ReplyAction="http://tempuri.org/IService/GetAllUserGamesResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int UserId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         bool UsernameAvailable(string username);
@@ -858,6 +871,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<bool> PasswordAvailableAsync(string password) {
             return base.Channel.PasswordAvailableAsync(password);
+        }
+        
+        public Form.TakiService.GameList GetAllUserGames(int UserId) {
+            return base.Channel.GetAllUserGames(UserId);
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int UserId) {
+            return base.Channel.GetAllUserGamesAsync(UserId);
         }
         
         public bool UsernameAvailable(string username) {

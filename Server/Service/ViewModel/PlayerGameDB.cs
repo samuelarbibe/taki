@@ -66,7 +66,7 @@ namespace ViewModel
 
         public ConnectionList SelectByPlayerId(int playerId)
         {
-            Command.CommandText = "SELECT * FROM Player_Game_Table WHERE 'player_id'= @id";
+            Command.CommandText = "SELECT * FROM Player_Game_Table WHERE [player_id] = @id";
 
 
             //parameters

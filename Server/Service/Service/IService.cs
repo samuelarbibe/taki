@@ -49,6 +49,9 @@ namespace Service
         bool PasswordAvailable(string password);
 
         [OperationContract]
+        GameList GetAllUserGames(int UserId);
+
+        [OperationContract]
         bool UsernameAvailable(string username);
 
         [OperationContract]

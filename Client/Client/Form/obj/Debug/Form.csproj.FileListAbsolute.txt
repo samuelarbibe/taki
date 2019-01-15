@@ -181,7 +181,6 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\ExitDialog
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\ForceQuit.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\ExitDialog.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\ForceQuit.baml
-C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\ExitDialog.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\ForceQuit.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\Player1UC.g.cs
@@ -205,3 +204,5 @@ C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.baml
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.g.cs
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.baml

@@ -3,7 +3,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerDb : UserDb
+    public class PlayerDb : BaseDb
     {
         protected override BaseEntity NewEntity()
         {
@@ -35,6 +35,13 @@ namespace ViewModel
             return temp;
         }
 
+        public PlayerList GetPlayersByUserId(int userId)
+        {
+            Command.CommandText =
+                "SELECT * FROM Player_Table WHERE [user_id] = "+userId+"";
+            PlayerList temp = new PlayerList(Select());
+            return temp;
+        }
 
         //get the last <index> players inserted into the table
         public Player GetLastPlayer()
@@ -67,19 +74,17 @@ namespace ViewModel
         }
 
 
-        public Player SelectById(int id)
+        public Player GetPlayerById(int id)
         {
-            if (id != 0)
-            {
-                Command.CommandText = "SELECT * FROM Player_Table WHERE [ID] = @id";
+            Command.Parameters.Clear();
+            Command.CommandText = "SELECT * FROM Player_Table WHERE [ID] = @Id";
 
-                //parameters
-                Command.Parameters.Add(new OleDbParameter("@Id", id));
+            //parameters
+            Command.Parameters.Add(new OleDbParameter("@Id", id));
 
-                PlayerList temp = new PlayerList(Select());
+            PlayerList temp = new PlayerList(Select());
 
-                if (temp.Count == 1) return temp[0];
-            }
+            if (temp.Count >= 1) return temp[0];
 
             return null;
         }

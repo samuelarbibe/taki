@@ -62,5 +62,10 @@ namespace Form
         {
             MainMenu.MenuFrame.Navigate(new AdminUserPage());
         }
+
+        private void Game_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.MenuFrame.Navigate(new GameHistoryUserPage());
+        }
     }
 }

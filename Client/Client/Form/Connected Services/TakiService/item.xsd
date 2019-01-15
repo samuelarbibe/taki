@@ -93,9 +93,9 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Losser" type="xs:int" />
           <xs:element minOccurs="0" name="Players" nillable="true" type="tns:PlayerList" />
           <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Winner" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -141,6 +141,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MessageList" nillable="true" type="tns:MessageList" />
+  <xs:complexType name="GameList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameList" nillable="true" type="tns:GameList" />
   <xs:complexType name="UserList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />

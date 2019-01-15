@@ -67,6 +67,12 @@ namespace Service
             return bl.BlUsernameAvailable(username);
         }
 
+        public GameList GetAllUserGames(int UserId)
+        {
+            Bl bl = new Bl();
+            return bl.BlGetAllUserGames(UserId);
+        }
+
         public Game StartGame(Player p, int playerCount)
         {
             Bl bl = new Bl();

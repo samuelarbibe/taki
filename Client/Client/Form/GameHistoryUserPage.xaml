@@ -1,0 +1,46 @@
+﻿<Page x:Class="Form.GameHistoryUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Form"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GameHistoryUserPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BackButton" Content="Back" Click="BackButton_Click"/>
+
+        <ListView x:Name="DataGrid" Grid.Row="1" Grid.RowSpan="7" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="30" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Start Time" Width="120" DisplayMemberBinding="{Binding StartTime}"/>
+                    <GridViewColumn Header="End Time" Width="120" DisplayMemberBinding="{Binding EndTime}"/>
+                    <GridViewColumn Header="P1 ID" Width="56" DisplayMemberBinding="{Binding Players[0].Id}"/>
+                    <GridViewColumn Header="P2 ID" Width="56" DisplayMemberBinding="{Binding Players[1].Id}" />
+                    <GridViewColumn Header="P3 ID" Width="56" DisplayMemberBinding="{Binding Players[2].Id}" />
+                    <GridViewColumn Header="P4 ID" Width="56" DisplayMemberBinding="{Binding Players[3].Id}" />
+                    <GridViewColumn Header="Losser ID" Width="70" DisplayMemberBinding="{Binding Losser}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

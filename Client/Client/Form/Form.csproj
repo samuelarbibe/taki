@@ -84,6 +84,9 @@
     <Compile Include="Dialogs\SwitchColor.xaml.cs">
       <DependentUpon>SwitchColor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameHistoryUserPage.xaml.cs">
+      <DependentUpon>GameHistoryUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Check.cs" />
     <Compile Include="Connected Services\TakiService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\SwitchColor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameHistoryUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -251,6 +258,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\TakiService\Form.TakiService.Game.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\TakiService\Form.TakiService.GameList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\TakiService\Form.TakiService.MessageList.datasource">
