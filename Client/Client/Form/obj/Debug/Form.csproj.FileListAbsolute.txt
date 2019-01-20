@@ -206,3 +206,4 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\Player
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.baml
+C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache

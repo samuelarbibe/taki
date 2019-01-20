@@ -115,26 +115,9 @@ namespace BusinessLayer
 
         public GameList BlGetAllUserGames(int UserId)
         {
-            PlayerDb playerDB = new PlayerDb();
-            PlayerGameDb playerGameDB = new PlayerGameDb();
             GameDb gameDB = new GameDb();
 
-            PlayerList playersList = playerDB.GetPlayersByUserId(UserId);
-
-            ConnectionList conList = new ConnectionList();
-
-            foreach(Player p in playersList)
-            {
-                conList.AddRange(playerGameDB.SelectByPlayerId(p.Id));
-            }
-
-            GameList temp = new GameList();
-
-            foreach(Connection c in conList)
-            {
-                temp.Add(gameDB.GetGameById(c.SideB));
-            }
-
+            GameList temp = gameDB.SelectByUserId(UserId);
             return temp;
         }
 

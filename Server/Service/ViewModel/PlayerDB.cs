@@ -3,7 +3,7 @@ using Model;
 
 namespace ViewModel
 {
-    public class PlayerDb : BaseDb
+    public class PlayerDb : UserDb
     {
         protected override BaseEntity NewEntity()
         {
@@ -14,15 +14,10 @@ namespace ViewModel
         {
             Player p = entity as Player;
 
-            //base.CreateModel(p);
+            base.CreateModel(p);
             p.Id = (int) Reader["ID"];
             p.UserId = (int) Reader["user_id"];
             p.TempScore = (int) Reader["temp_score"];
-
-            //PlayerCardDb db = new PlayerCardDb();
-
-            //ConnectionList cl = db.SelectByPlayerId(p.Id);
-            //p.Hand = db.;
 
             return p;
         }
@@ -77,7 +72,10 @@ namespace ViewModel
         public Player GetPlayerById(int id)
         {
             Command.Parameters.Clear();
-            Command.CommandText = "SELECT * FROM Player_Table WHERE [ID] = @Id";
+            Command.CommandText = "SELECT *, Player_Table.ID AS ID FROM" +
+                    "(Player_Table INNER JOIN" +
+                    " User_Table ON User_Table.ID = Player_Table.user_id)"+
+                    "WHERE Player_Table.ID = @Id";
 
             //parameters
             Command.Parameters.Add(new OleDbParameter("@Id", id));

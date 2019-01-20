@@ -27,10 +27,10 @@ namespace ViewModel
             game.Players.Add((Player)db.GetPlayerById((int) Reader["player_4_id"]));
             game.Players.Add((Player)db.GetPlayerById((int) Reader["table_id"]));
 
-            //game.StartTime = DateTime.Parse(Reader["start_date"].ToString());
-            //game.EndTime = DateTime.Parse(Reader["end_date"].ToString());
+
             game.StartTime = (DateTime)Reader["start_date"];
             game.EndTime = (DateTime)Reader["end_date"];
+            game.Losser = (int)Reader["losser_id"];
 
             return game;
         }
@@ -54,6 +54,20 @@ namespace ViewModel
             Command.CommandText = "SELECT * FROM Game_Table WHERE [ID] = "+id+"";
             GameList temp = new GameList(Select());
             return temp.Count > 0 ? temp[0] : null;
+        }
+
+        public GameList SelectByUserId(int userId)
+        {
+            Command.CommandText = "SELECT * FROM Game_Table WHERE(ID IN "+
+                            "(SELECT Player_Game_Table.game_id"+
+                               " FROM(Player_Table INNER JOIN"+
+                               " Player_Game_Table ON Player_Table.ID = Player_Game_Table.player_id)"+
+                              " WHERE (Player_Table.user_id = @Id)))";
+
+            Command.Parameters.Add(new OleDbParameter("@Id", userId));
+
+            GameList temp = new GameList(Select());
+            return temp;
         }
 
         public int GetLastGameId()
