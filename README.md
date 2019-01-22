@@ -12,7 +12,7 @@ This Project is written in the C# .NET Framework, using Visual Studio 2017 Commu
 
 The Technologies used in this project are WPF and WCF services.
 
-This game is a Multiplayer Card game, played on windows-based PCs' and Android devices.
+This game is a Multiplayer Card game, played on windows-based PCs' and Android/IOS devices.
 
 The Project consist of two smaller projects: Client and Server.
 
