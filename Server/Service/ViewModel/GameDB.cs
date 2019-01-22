@@ -136,19 +136,13 @@ namespace ViewModel
             command.Parameters.AddWithValue("@p1", g.Players[0].Id);
             command.Parameters.AddWithValue("@p2", g.Players[1].Id);
 
-            //string s1 = "";
-            //string s2 = "";
-            //if (g.Players.Count > 2)
-            //{
-            //    s1 += ", [player_3_id]";
-            //    s2 += ", @p3";
-            //}
             switch (g.Players.Count)
             {
                 case 3:
 
                     command.Parameters.AddWithValue("@p3", int.Parse("0"));
                     command.Parameters.AddWithValue("@p4", int.Parse("0"));
+                    command.Parameters.AddWithValue("@table", g.Players[2].Id);
 
                     break;
 
@@ -156,20 +150,19 @@ namespace ViewModel
 
                     command.Parameters.AddWithValue("@p3", g.Players[2].Id);
                     command.Parameters.AddWithValue("@p4", int.Parse("0"));
+                    command.Parameters.AddWithValue("@table", g.Players[3].Id);
                     break;
 
                 case 5:
 
                     command.Parameters.AddWithValue("@p3", g.Players[2].Id);
                     command.Parameters.AddWithValue("@p4", g.Players[3].Id);
+                    command.Parameters.AddWithValue("@table", g.Players[4].Id);
                     break;
             }
 
             //parameters
-            command.Parameters.AddWithValue("@table", int.Parse("0"));
-
-            //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
-            //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));
+           
             command.Parameters.AddWithValue("@loss", int.Parse("0"));
         }
 
@@ -183,19 +176,13 @@ namespace ViewModel
             command.Parameters.AddWithValue("@p1", g.Players[0].Id);
             command.Parameters.AddWithValue("@p2", g.Players[1].Id);
 
-            //string s1 = "";
-            //string s2 = "";
-            //if (g.Players.Count > 2)
-            //{
-            //    s1 += ", [player_3_id]";
-            //    s2 += ", @p3";
-            //}
             switch (g.Players.Count)
             {
                 case 3:
 
                     command.Parameters.AddWithValue("@p3", int.Parse("0"));
                     command.Parameters.AddWithValue("@p4", int.Parse("0"));
+                    command.Parameters.AddWithValue("@table", g.Players[2].Id);
 
                     break;
 
@@ -203,17 +190,16 @@ namespace ViewModel
 
                     command.Parameters.AddWithValue("@p3", g.Players[2].Id);
                     command.Parameters.AddWithValue("@p4", int.Parse("0"));
+                    command.Parameters.AddWithValue("@table", g.Players[3].Id);
                     break;
 
                 case 5:
 
                     command.Parameters.AddWithValue("@p3", g.Players[2].Id);
                     command.Parameters.AddWithValue("@p4", g.Players[3].Id);
+                    command.Parameters.AddWithValue("@table", g.Players[4].Id);
                     break;
             }
-
-            //parameters
-            command.Parameters.AddWithValue("@table", -g.Id);
 
             //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
             //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));

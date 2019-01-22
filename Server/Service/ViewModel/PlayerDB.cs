@@ -93,11 +93,6 @@ namespace ViewModel
             if (p != null) Inserted.Add(new ChangeEntity(CreateInsertSql, entity));
         }
 
-        public void InsertTable(Game game)
-        {
-           Inserted.Add(new ChangeEntity(CreateInsertTableSql, game));
-        }
-
         public void InsertList(PlayerList entity)
         {
             PlayerList pl = entity;
@@ -148,20 +143,6 @@ namespace ViewModel
 
            // command.Parameters.Add(new OleDbParameter("@Id", p.Id));
             command.Parameters.Add(new OleDbParameter("@user_id", p.UserId));
-        }
-
-        public void CreateInsertTableSql(BaseEntity entity, OleDbCommand command)
-        {
-            command.Parameters.Clear();
-
-            Game g = entity as Game;
-
-            command.CommandText = "INSERT INTO Player_Table ([ID]) VALUES (@Id)";
-
-            //parameters
-
-            command.Parameters.Add(new OleDbParameter("@Id", -g.Id));
-           
         }
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)

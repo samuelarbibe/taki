@@ -20,3 +20,9 @@ C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.csproj
 C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.dll
 C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.pdb
 C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\bin\Debug\Model.dll
+C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\bin\Debug\Model.pdb
+C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.dll
+C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.pdb

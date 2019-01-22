@@ -255,18 +255,9 @@ namespace BusinessLayer
             ConnectionList playerCardConnectionList = new ConnectionList();
             Connection temp = new Connection();
 
-            //int lastGameId = gameDb.GetLastGame().Id;
-            //int lastPlayerId = playerDb.GetLastPlayer().Id;
-            //PlayerList pl = playerDb.SelectAll();
-            //g.Id = ++lastGameId;
-
             playerDb.InsertList(g.Players);
 
-            gameDb.Insert(g); // asign ID to game, and get 4 players' IDs in there
-
-            playerDb.InsertTable(g);
-
-            gameDb.Update(g);
+            gameDb.Insert(g); // asign ID to game, and all players' IDs in there
 
             foreach (Player p in g.Players)
             {

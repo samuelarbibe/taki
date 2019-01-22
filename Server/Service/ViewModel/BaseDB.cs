@@ -115,7 +115,7 @@ namespace ViewModel
                     recordsAffected += command.ExecuteNonQuery();
 
 
-                    command.CommandText = "SELECT @@Identity "; //get last ID on this session
+                    command.CommandText = "SELECT @@Identity"; //get last ID on this session
                     int temp = (int)command.ExecuteScalar();
                     item.Entity.Id = temp;
 
