@@ -255,17 +255,18 @@ namespace BusinessLayer
             ConnectionList playerCardConnectionList = new ConnectionList();
             Connection temp = new Connection();
 
-            int lastGameId = gameDb.GetLastGame().Id;
-            int lastPlayerId = playerDb.GetLastPlayer().Id;
+            //int lastGameId = gameDb.GetLastGame().Id;
+            //int lastPlayerId = playerDb.GetLastPlayer().Id;
+            //PlayerList pl = playerDb.SelectAll();
+            //g.Id = ++lastGameId;
 
-            g.Id = ++lastGameId;
+            playerDb.InsertList(g.Players);
 
-            foreach (var p in g.Players)
-            {
-                if (p.Username == "table") p.Id = -g.Id;
-                else p.Id = ++lastPlayerId;
-            }
+            gameDb.Insert(g); // asign ID to game, and get 4 players' IDs in there
 
+            playerDb.InsertTable(g);
+
+            gameDb.Update(g);
 
             foreach (Player p in g.Players)
             {
@@ -283,19 +284,13 @@ namespace BusinessLayer
                 }
             }
 
-            playerDb.InsertList(g.Players); // Insert players into database
-
-            gameDb.Insert(g); // Insert game into database
-
             playerGameDb.InsertList(playerGameConnectionList); // insert player - game connections
 
             playerCardDb.InsertList(playerCardConnectionList); // insert player - card connections
 
-
             // save the changes and insert the data into the database 
 
-            Thread thread = new Thread(BlSaveChanges); // save the changes on a different thread!
-            thread.Start();
+            gameDb.SaveChanges();
 
             return g;
         }

@@ -18,14 +18,14 @@ namespace ViewModel
             PlayerDb db = new PlayerDb();
             Game game = entity as Game;
 
-            game.Id = (int) Reader["ID"];
+            game.Id = (int)Reader["ID"];
 
 
-            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_1_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_2_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_3_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int) Reader["player_4_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int) Reader["table_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_1_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_2_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_3_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_4_id"]));
+            game.Players.Add((Player)db.GetPlayerById((int)Reader["table_id"]));
 
 
             game.StartTime = (DateTime)Reader["start_date"];
@@ -51,17 +51,17 @@ namespace ViewModel
 
         public Game GetGameById(int id)
         {
-            Command.CommandText = "SELECT * FROM Game_Table WHERE [ID] = "+id+"";
+            Command.CommandText = "SELECT * FROM Game_Table WHERE [ID] = " + id + "";
             GameList temp = new GameList(Select());
             return temp.Count > 0 ? temp[0] : null;
         }
 
         public GameList SelectByUserId(int userId)
         {
-            Command.CommandText = "SELECT * FROM Game_Table WHERE(ID IN "+
-                            "(SELECT Player_Game_Table.game_id"+
-                               " FROM(Player_Table INNER JOIN"+
-                               " Player_Game_Table ON Player_Table.ID = Player_Game_Table.player_id)"+
+            Command.CommandText = "SELECT * FROM Game_Table WHERE(ID IN " +
+                            "(SELECT Player_Game_Table.game_id" +
+                               " FROM(Player_Table INNER JOIN" +
+                               " Player_Game_Table ON Player_Table.ID = Player_Game_Table.player_id)" +
                               " WHERE (Player_Table.user_id = @Id)))";
 
             Command.Parameters.Add(new OleDbParameter("@Id", userId));
@@ -123,43 +123,51 @@ namespace ViewModel
         }
 
 
+
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
             Game g = entity as Game;
 
             command.CommandText =
-                "INSERT INTO Game_Table ([ID], [start_date], [end_date], [player_1_id], [player_2_id], [player_3_id], [player_4_id], [table_id], [losser_id]) VALUES (" +
-                g.Id + " , '" + g.StartTime.ToString("G") + "', '" + g.EndTime.ToString("G") +
+                "INSERT INTO Game_Table ([start_date], [end_date], [player_1_id], [player_2_id], [player_3_id], [player_4_id], [table_id], [losser_id]) VALUES (" +
+                "'" + g.StartTime.ToString("G") + "', '" + g.EndTime.ToString("G") +
                 "', @p1, @p2, @p3, @p4, @table, @loss)";
 
+            command.Parameters.AddWithValue("@p1", g.Players[0].Id);
+            command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+
+            //string s1 = "";
+            //string s2 = "";
+            //if (g.Players.Count > 2)
+            //{
+            //    s1 += ", [player_3_id]";
+            //    s2 += ", @p3";
+            //}
             switch (g.Players.Count)
             {
                 case 3:
-                    command.Parameters.AddWithValue("@p1", g.Players[0].Id);
-                    command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+
                     command.Parameters.AddWithValue("@p3", int.Parse("0"));
                     command.Parameters.AddWithValue("@p4", int.Parse("0"));
 
                     break;
 
                 case 4:
-                    command.Parameters.AddWithValue("@p1", g.Players[0].Id);
-                    command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+
                     command.Parameters.AddWithValue("@p3", g.Players[2].Id);
                     command.Parameters.AddWithValue("@p4", int.Parse("0"));
                     break;
 
                 case 5:
-                    command.Parameters.AddWithValue("@p1", g.Players[0].Id);
-                    command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+
                     command.Parameters.AddWithValue("@p3", g.Players[2].Id);
                     command.Parameters.AddWithValue("@p4", g.Players[3].Id);
                     break;
             }
 
             //parameters
+            command.Parameters.AddWithValue("@table", int.Parse("0"));
 
-            command.Parameters.AddWithValue("@table", -g.Id);
             //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
             //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));
             command.Parameters.AddWithValue("@loss", int.Parse("0"));
@@ -169,12 +177,48 @@ namespace ViewModel
         {
             Game g = entity as Game;
 
-            command.CommandText = "UPDATE Game_Table SET [end_date] = '" + g.EndTime.ToString("G") + "', [losser_id] = @loss WHERE [ID] = " + g.Id + "";
+            command.CommandText =
+                "UPDATE Game_Table SET start_date = '" + g.StartTime.ToString("G") + "', end_date = '" + g.EndTime.ToString("G") + "', player_1_id = @p1, player_2_id = @p2, player_3_id = @p3, player_4_id = @p4, table_id = @table, losser_id = @losser";
+
+            command.Parameters.AddWithValue("@p1", g.Players[0].Id);
+            command.Parameters.AddWithValue("@p2", g.Players[1].Id);
+
+            //string s1 = "";
+            //string s2 = "";
+            //if (g.Players.Count > 2)
+            //{
+            //    s1 += ", [player_3_id]";
+            //    s2 += ", @p3";
+            //}
+            switch (g.Players.Count)
+            {
+                case 3:
+
+                    command.Parameters.AddWithValue("@p3", int.Parse("0"));
+                    command.Parameters.AddWithValue("@p4", int.Parse("0"));
+
+                    break;
+
+                case 4:
+
+                    command.Parameters.AddWithValue("@p3", g.Players[2].Id);
+                    command.Parameters.AddWithValue("@p4", int.Parse("0"));
+                    break;
+
+                case 5:
+
+                    command.Parameters.AddWithValue("@p3", g.Players[2].Id);
+                    command.Parameters.AddWithValue("@p4", g.Players[3].Id);
+                    break;
+            }
 
             //parameters
+            command.Parameters.AddWithValue("@table", -g.Id);
 
-            command.Parameters.AddWithValue("@loss", g.Losser);
+            //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
+            //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));
+            command.Parameters.AddWithValue("@losser", g.Losser);
         }
-    
     }
+    
 }

@@ -96,13 +96,16 @@ namespace ViewModel
         public int SaveChanges()
         {
             OleDbCommand command = new OleDbCommand();
+            OleDbTransaction trans = null;
 
             int recordsAffected = 0;
             int errorIndex = 0;
             try
             {
-                command.Connection = con;
                 con.Open();
+                trans = con.BeginTransaction();
+                command.Connection = con;
+                command.Transaction = trans;
 
                 //inserted
                 foreach (var item in Inserted)
@@ -111,12 +114,10 @@ namespace ViewModel
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
 
-                    if (item.Entity.Id == 0)
-                    {
-                        command.CommandText = "SELECT @@Identity "; //get last ID on this session
-                        int temp = (int) command.ExecuteScalar();
-                        item.Entity.Id = temp == 0 ? 1 : temp;
-                    }
+
+                    command.CommandText = "SELECT @@Identity "; //get last ID on this session
+                    int temp = (int)command.ExecuteScalar();
+                    item.Entity.Id = temp;
 
                     errorIndex++;
                 }
@@ -130,12 +131,26 @@ namespace ViewModel
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
                 }
-
                 Updated.Clear();
+
+                trans.Commit();
             }
             catch (Exception e)
-            {
+            {               
                 Debug.WriteLine("\n" + e.Message + "\nSQL:" + command.CommandText);
+
+                try
+                {
+                    trans.Rollback();
+                }
+                catch (Exception ex2)
+                {
+                    // This catch block will handle any errors that may have occurred
+                    // on the server that would cause the rollback to fail, such as
+                    // a closed connection.
+                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                    Console.WriteLine("  Message: {0}", ex2.Message);
+                }
             }
             finally
             {

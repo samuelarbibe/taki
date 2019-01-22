@@ -22,10 +22,10 @@ namespace ViewModel
             return p;
         }
 
-        public PlayerList SelectAll()
+        public new PlayerList SelectAll()
         {
             Command.CommandText =
-                "SELECT *, User_Table.ID as id FROM (User_Table INNER JOIN  PlayerTable ON User_Table.ID = Player_Table.user_id)";
+                "SELECT *, Player_Table.Id AS ID FROM(User_Table INNER JOIN Player_Table ON User_Table.ID = Player_Table.user_id)";
             PlayerList temp = new PlayerList(Select());
             return temp;
         }
@@ -41,7 +41,7 @@ namespace ViewModel
         //get the last <index> players inserted into the table
         public Player GetLastPlayer()
         {
-            Command.CommandText = "SELECT * FROM Player_Table WHERE ID = (SELECT MAX(ID) FROM Player_Table)";
+            Command.CommandText = "SELECT User_Table.ID, User_Table.username, User_Table.[password], User_Table.first_name, User_Table.last_name, User_Table.score, User_Table.[level], User_Table.admin, User_Table.wins, User_Table.losses, Player_Table.ID AS Expr1, Player_Table.user_id, Player_Table.temp_score, Player_Table.ID AS Expr2 FROM(User_Table INNER JOIN Player_Table ON User_Table.ID = Player_Table.user_id) WHERE(User_Table.ID = (SELECT MAX(ID) AS Expr1 FROM Player_Table))";
             PlayerList temp = new PlayerList(Select());
             return temp.Count > 0 ? temp[0] : new Player(0);
         }
@@ -56,7 +56,7 @@ namespace ViewModel
 
         public UserList SelectByName(string firstName, string lastName)
         {
-            Command.CommandText = "SELECT * FROM User_Table WHERE [first_name] = @fName AND [last_name] = @lName";
+            Command.CommandText = "SELECT *, Player_Table.Id AS ID FROM(User_Table INNER JOIN Player_Table ON User_Table.ID = Player_Table.user_id) WHERE [first_name] = @fName AND [last_name] = @lName";
 
 
             //parameters
@@ -91,6 +91,11 @@ namespace ViewModel
         {
             Player p = entity as Player;
             if (p != null) Inserted.Add(new ChangeEntity(CreateInsertSql, entity));
+        }
+
+        public void InsertTable(Game game)
+        {
+           Inserted.Add(new ChangeEntity(CreateInsertTableSql, game));
         }
 
         public void InsertList(PlayerList entity)
@@ -137,14 +142,27 @@ namespace ViewModel
 
             Player p = entity as Player;
 
-            command.CommandText = "INSERT INTO Player_Table ([ID], [user_id], [temp_score]) VALUES (@Id, @user_id,  0)";
+            command.CommandText = "INSERT INTO Player_Table ([user_id], [temp_score]) VALUES (@user_id,  0)";
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@Id", p.Id));
+           // command.Parameters.Add(new OleDbParameter("@Id", p.Id));
             command.Parameters.Add(new OleDbParameter("@user_id", p.UserId));
         }
 
+        public void CreateInsertTableSql(BaseEntity entity, OleDbCommand command)
+        {
+            command.Parameters.Clear();
+
+            Game g = entity as Game;
+
+            command.CommandText = "INSERT INTO Player_Table ([ID]) VALUES (@Id)";
+
+            //parameters
+
+            command.Parameters.Add(new OleDbParameter("@Id", -g.Id));
+           
+        }
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
