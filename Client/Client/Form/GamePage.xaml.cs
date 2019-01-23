@@ -78,8 +78,6 @@ namespace Form
 
             SetBackgroundWorker();
 
-            int firstPlayerUserId = CurrentGame.Players[0].UserId;
-
             ClockWiseRotation = true;
             uc1.SetAsNonActive();
             OpenTaki = null;
@@ -87,6 +85,7 @@ namespace Form
             Active = true;
             PlusValue = 0;
 
+            int firstPlayerUserId = CurrentGame.Players[0].UserId;
             ReorderPlayerList();
 
             //the first player is the one to request changes saving in the database every x seconds
@@ -187,12 +186,13 @@ namespace Form
                         {
                             case Message._action.add:
 
-                                PlayersList.Find(p => p.Id == m.Target).Hand.Add(m.Card);
+
+                                PlayersList.Find(p => p.Id == m.Target.Id).Hand.Add(m.Card);
                                 break;
 
                             case Message._action.remove:
 
-                                Player tempPlayer = PlayersList.Find(p => p.Id == m.Target); // the target player
+                                Player tempPlayer = PlayersList.Find(p => p.Id == m.Target.Id); // the target player
                                 Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
                                 tempPlayer.Hand.Remove(tempCard); // remove the target card from the target player's hand
 
@@ -200,9 +200,9 @@ namespace Form
 
                             case Message._action.win:
 
-                                Player WinningPlayer = PlayersList.Find(p => p.Id == m.Target); // the winning player
+                                Player WinningPlayer = PlayersList.Find(p => p.Id == m.Target.Id); // the winning player
 
-                                if (CurrentPlayer.Id == m.Target)
+                                if (CurrentPlayer.Id == m.Target.Id)
                                 {
                                     PlayerWin();
                                     PlayerQuit();
@@ -220,7 +220,7 @@ namespace Form
                                         MainWindow.Service.AddAction(new Message()
                                         {
                                             Action = Message._action.loss,
-                                            Target = CurrentPlayer.Id,
+                                            Target = CurrentPlayer,
                                             Reciever = CurrentPlayer.Id,
                                             GameId = CurrentGame.Id
                                         });
@@ -232,9 +232,9 @@ namespace Form
 
                             case Message._action.switch_hand:
 
-                                CardList l1 = PlayersList.Find(p => p.Id == m.Target).Hand;
+                                CardList l1 = PlayersList.Find(p => p.Id == m.Target.Id).Hand;
 
-                                PlayersList.Find(p => p.Id == m.Target).Hand = PlayersList.Find(p => p.Id == m.Card.Id).Hand;
+                                PlayersList.Find(p => p.Id == m.Target.Id).Hand = PlayersList.Find(p => p.Id == m.Card.Id).Hand;
                                 PlayersList.Find(p => p.Id == m.Card.Id).Hand = l1;
 
                                 break;
@@ -243,7 +243,7 @@ namespace Form
 
                                 PlusValue = m.Card.Id;
 
-                                if (CurrentPlayer.Id == m.Target && PlusValue != 0)
+                                if (CurrentPlayer.Id == m.Target.Id && PlusValue != 0)
                                 {
                                     if (CurrentPlayer.Hand.Find(c => c.VALUE == Card.Value.PlusTwo) == null)
                                     {
@@ -255,8 +255,8 @@ namespace Form
 
                             case Message._action.next_turn:
 
-                                Turn = PlayersList.FindIndex(p => p.Id == m.Target);
-                                MyTurn = (m.Target == CurrentPlayer.Id);
+                                Turn = PlayersList.FindIndex(p => p.Id == m.Target.Id);
+                                MyTurn = (m.Target.Id == CurrentPlayer.Id);
 
                                 Win();
 
@@ -275,7 +275,7 @@ namespace Form
 
                                 int prevChangesSaverId = PlayersList[0].UserId;
 
-                                Player quitter = PlayersList.Find(p => p.Id == m.Target);
+                                Player quitter = PlayersList.Find(p => p.Id == m.Target.Id);
                                 PlayersList.Remove(quitter); // remove the quitting player from the local players list
 
                                 PlayersList.TrimExcess();
@@ -442,7 +442,7 @@ namespace Form
                             temp.Add(new Message() // add the top card of the table to the current player
                             {
                                 Action = Message._action.add,
-                                Target = table.Id, // the person who's hand is modified
+                                Target = table, // the person who's hand is modified
                                 Reciever = PlayersList[i].Id, // the peron who this message is for
                                 Card = givenCard, // the card modified
                                 GameId = CurrentGame.Id // the game modified
@@ -451,7 +451,7 @@ namespace Form
                             temp.Add(new Message() // add the top card of the table to the current player
                             {
                                 Action = Message._action.remove,
-                                Target = currentPlayer.Id, // the person who's hand is modified
+                                Target = CurrentPlayer, // the person who's hand is modified
                                 Reciever = PlayersList[i].Id, // the peron who this message is for
                                 Card = givenCard, // the card modified
                                 GameId = CurrentGame.Id // the game modified
@@ -505,7 +505,16 @@ namespace Form
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
                         Action = Message._action.add,
-                        Target = currentPlayer.Id, // the person who's hand is modified
+                        Target = CurrentPlayer, // the person who's hand is modified
+                        Reciever = PlayersList[i].Id, // the peron who this message is for
+                        Card = takenCard, // the card modified
+                        GameId = CurrentGame.Id // the game modified
+                    });
+
+                    temp.Add(new Message()// add the top card of the table to the current player
+                    {
+                        Action = Message._action.remove,
+                        Target = Table, // the person who's hand is modified
                         Reciever = PlayersList[i].Id, // the peron who this message is for
                         Card = takenCard, // the card modified
                         GameId = CurrentGame.Id // the game modified
@@ -530,7 +539,7 @@ namespace Form
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
                         Action = Message._action.add,
-                        Target = currentPlayer.Id, // the person who's hand is modified
+                        Target = CurrentPlayer, // the person who's hand is modified
                         Reciever = PlayersList[j].Id, // the peron who this message is for
                         Card = uctable.GetCardFromStack(), // the card modified
                         GameId = CurrentGame.Id // the game modified
@@ -602,7 +611,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.next_turn, // give next turn to
-                    Target = GetNextPlayerId(value),
+                    Target = PlayersList.Find(p => p.Id == GetNextPlayerId(value)),
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });
@@ -624,7 +633,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.next_turn, // give next turn to self
-                    Target = CurrentPlayer.Id,
+                    Target = CurrentPlayer,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });
@@ -646,7 +655,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.player_quit,
-                    Target = CurrentPlayer.Id,
+                    Target = CurrentPlayer,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });
@@ -796,7 +805,7 @@ namespace Form
                 temp.Add(new Message() // add the top card of the table to the current player
                 {
                     Action = Message._action.remove,
-                    Target = CurrentPlayer.Id, // the person who's hand is modified
+                    Target = CurrentPlayer, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
                     Card = new Card() {Id = 67}, // the card modified
                     GameId = CurrentGame.Id // the game modified
@@ -805,7 +814,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.switch_hand,
-                    Target = CurrentPlayer.Id,
+                    Target = CurrentPlayer,
                     Card = new Card() { Id = GetNextPlayerId(Card.Value.Nine) }, // pass the other Player's ID through the card field.
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -823,7 +832,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.add,
-                    Target = Table.Id,
+                    Target = Table,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id,
                     Card = selectedColorCard
@@ -843,7 +852,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.plus_two,
-                    Target = GetNextPlayerId(Card.Value.Nine), // get the next player
+                    Target = PlayersList.Find(p => p.Id == GetNextPlayerId(Card.Value.Nine)), // get the next player
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id,
                     Card = new Card() { Id = num }// the card's id represents the PlusValue Build-up
@@ -862,7 +871,7 @@ namespace Form
                 temp.Add(new Message()
                 {
                     Action = Message._action.switch_rotation,
-                    Target = CurrentPlayer.Id,
+                    Target = CurrentPlayer,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 });
@@ -915,7 +924,7 @@ namespace Form
                     temp.Add(new Message()
                     {
                         Action = Message._action.win,
-                        Target = CurrentPlayer.Id,
+                        Target = CurrentPlayer,
                         Reciever = PlayersList[i].Id,
                         GameId = CurrentGame.Id
                     });

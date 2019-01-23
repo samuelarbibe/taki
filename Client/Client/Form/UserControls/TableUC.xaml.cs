@@ -27,7 +27,7 @@ namespace Form.UserControls
         {
             CurrentPlayer = p;
 
-            DataContext = Stack.LastOrDefault();
+            DataContext = Deck.LastOrDefault();
         }
 
 
@@ -37,13 +37,9 @@ namespace Form.UserControls
         }
 
 
-        public Card GetCardFromStack() {           
-            if (Deck.Count == 0)
-            {
-                Deck = MainWindow.Service.BuildDeck();
-            }
+        public Card GetCardFromStack() {
 
-            Card temp = Deck[rand.Next(0,Deck.Count-1)];
+            Card temp = Deck[rand.Next(0, Deck.Count - 2)];
             Deck.Remove(temp);
 
             return temp;
@@ -53,11 +49,9 @@ namespace Form.UserControls
         {
             CurrentPlayer = currentPlayer;
 
-            Stack = CurrentPlayer.Hand;
+            Deck = CurrentPlayer.Hand; //set the deck as the table's hand
 
-            DataContext = Stack.LastOrDefault();
-
-            Deck = MainWindow.Service.BuildDeck();
+            DataContext = Deck.LastOrDefault(); // set the last card of the player's hand as the displayed card
 
         }
         

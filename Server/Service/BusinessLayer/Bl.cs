@@ -22,14 +22,13 @@ namespace BusinessLayer
         private static CardDb _cardDb = new CardDb();          
         private static CardList _deck = CardDb.SelectAll();       
         private static GameList _gameList = new GameList();
-        private static Dictionary<Player, int> _standbyPlayers = new Dictionary<Player, int>();         
+        private static List<CardList> _gameDecks = new List<CardList>();
         private static Game _game;
 
         public static UserList LoggedPlayers { get => _loggedPlayers; set => _loggedPlayers = value; }
         public static CardDb CardDb { get => _cardDb; set => _cardDb = value; }
         public static CardList Deck { get => _deck; set => _deck = value; }
         public static GameList GameList { get => _gameList; set => _gameList = value; }
-        public static Dictionary<Player, int> StandbyPlayers { get => _standbyPlayers; set => _standbyPlayers = value; }
 
         public CardList BlBuildDeck()
         {
@@ -153,12 +152,12 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(1,false);
+                    t.Hand = BuildShuffledHand(1, false);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
 
-                _game.Players[playerCount].Hand = BuildShuffledHand(1, true); // giving the table 100 shuffled cards
+                _game.Players[playerCount].Hand = BuildShuffledHand(59, false); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
@@ -189,12 +188,6 @@ namespace BusinessLayer
             return true;
         }
 
-
-        //public int BlUserInStandby(User u)
-        //{
-        //    return _standbyPlayers.ContainsKey()Find(p => p.UserId == u.Id);
-        //}
-
         public bool BlPlayerQuit(Player remove)
         {
             foreach (Game g in GameList)
@@ -202,46 +195,12 @@ namespace BusinessLayer
                 Player temp = g.Players.Find(p => p.UserId == remove.UserId);
                 if (temp != null)
                 {
-                    //_standbyPlayers.Add(temp, g.Id);
                     g.Players.Remove(temp);
                     return true;
                 }
             }
             return false;
         }
-
-        //public bool BlPlayerQuit(Player remove)
-        //{
-        //    foreach (Game g in _gameList)
-        //    {
-        //        Player temp = g.Players.Find(p => p.UserId == remove.UserId);
-        //        if (temp != null && g.Active)
-        //        {
-        //            _standbyPlayers.Add(temp, g.Id);
-        //            g.Players.Remove(temp);
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //public Player BlPlayerReturn(User returningPlayer)
-        //{
-        //    int gameId = BlUserInStandby(returningPlayer);
-
-        //    if (gameId == 0) return null;
-
-        //    //Player temp = g.Players.Find(p => p.Username == add.UserId.ToString());
-
-        //    _gameList[gameId].Players.Add()
-        //    player = temp;
-        //    //g.Active = true;
-
-        //    return player;
-
-
-        //    return null;
-        //}
 
         // insert game into database, including connections in PlayerGameDB and PlayerCardDB
         public Game BlStartGameDatabase(Game g)
@@ -251,33 +210,13 @@ namespace BusinessLayer
             PlayerGameDb playerGameDb = new PlayerGameDb();
             PlayerCardDb playerCardDb = new PlayerCardDb();
 
-            ConnectionList playerGameConnectionList = new ConnectionList();
-            ConnectionList playerCardConnectionList = new ConnectionList();
-            Connection temp = new Connection();
-
             playerDb.InsertList(g.Players);
 
             gameDb.Insert(g); // asign ID to game, and all players' IDs in there
 
-            foreach (Player p in g.Players)
-            {
-                temp.SideA = p.Id; // increment the player id for each player
-                temp.SideB = g.Id; // the game id will be the same when inserted
-                temp.ConnectionType = Connection._connectionType.player_game;
-                playerGameConnectionList.Add((Connection)temp.Clone());
+            playerGameDb.Insert(g);
 
-                foreach (Card c in p.Hand)
-                {
-                    temp.SideA = p.Id;
-                    temp.SideB = c.Id;
-                    temp.ConnectionType = Connection._connectionType.player_card;
-                    playerCardConnectionList.Add((Connection)temp.Clone());
-                }
-            }
-
-            playerGameDb.InsertList(playerGameConnectionList); // insert player - game connections
-
-            playerCardDb.InsertList(playerCardConnectionList); // insert player - card connections
+            playerCardDb.Insert(g);
 
             // save the changes and insert the data into the database 
 
@@ -290,10 +229,9 @@ namespace BusinessLayer
         {
             PlayerCardDb db = new PlayerCardDb();
 
-            Connection c = new Connection() {
-                ConnectionType = Model.Connection._connectionType.player_card,
-                SideA = m.Target,
-                SideB = m.Card.Id
+            PlayerCardConnection c = new PlayerCardConnection() {
+                Player = m.Target,
+                Card = m.Card
             };
 
             db.Insert(c);
@@ -302,9 +240,8 @@ namespace BusinessLayer
         public void BlWin(Message m)
         {
             PlayerDb playerDb = new PlayerDb();
-            Player p = playerDb.GetPlayerById(m.Target);
             UserDb userDb = new UserDb();
-            User u = userDb.SelectById(p.UserId);
+            User u = userDb.SelectById(m.Target.UserId);
 
             u.Score += 1000;
             u.Wins += 1;
@@ -317,16 +254,15 @@ namespace BusinessLayer
         public void BlLoss(Message m)
         {
             PlayerDb playerDb = new PlayerDb();
-            Player p = playerDb.GetPlayerById(m.Target);
             UserDb userDb = new UserDb();
-            User u = userDb.SelectById(p.UserId);
+            User u = userDb.SelectById(m.Target.UserId);
 
             GameDb gameDb = new GameDb();
             Game g = gameDb.GetGameById(m.GameId);
 
             g.EndTime = DateTime.Now;
 
-            g.Losser = m.Target;
+            g.Losser = m.Target.Id;
 
             u.Score += 200;
             u.Losses += 1;
@@ -341,8 +277,9 @@ namespace BusinessLayer
         public void BlSwitchHands(Message m)
         {
             PlayerCardDb db = new PlayerCardDb();
+            PlayerDb playerDb = new PlayerDb();
 
-            db.SwitchConnectionsByPlayersId(m.Target, m.Card.Id);
+            db.SwitchConnectionsByPlayersId(m.Target, playerDb.GetPlayerById(m.Card.Id));
         }
 
         public void SaveChnages() {
@@ -355,7 +292,7 @@ namespace BusinessLayer
         {
             PlayerCardDb db = new PlayerCardDb();
 
-            Connection temp = db.GetConnectionByPlayerIdAndCardId(m.Target, m.Card.Id);
+            PlayerCardConnection temp = db.GetConnectionByPlayerIdAndCardId(m.Target, m.Card);
 
             db.Delete(temp);
         }

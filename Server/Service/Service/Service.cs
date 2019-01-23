@@ -134,7 +134,7 @@ namespace Service
                         temp.Add(m);
                         PendingChanges.Remove(m);
 
-                        if (m.Reciever == m.Target) // make sure this happens once for each message
+                        if (m.Reciever == m.Target.Id) // make sure this happens once for each message
                         {
                             switch (m.Action)
                             {

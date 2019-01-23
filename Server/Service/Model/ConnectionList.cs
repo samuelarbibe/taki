@@ -5,17 +5,21 @@ using System.Runtime.Serialization;
 namespace Model
 {
     [CollectionDataContract]
-    public class ConnectionList : List<Connection>
+    public class ConnectionList : List<BaseEntity>
     {
         public ConnectionList()
         {
         }
 
-        public ConnectionList(IEnumerable<Connection> list) : base(list)
+        public ConnectionList(IEnumerable<BaseEntity> list) : base(list)
         {
         }
 
-        public ConnectionList(IEnumerable<BaseEntity> list) : base(list.Cast<Connection>().ToList())
+        public ConnectionList(IEnumerable<PlayerCardConnection> list) : base(list.Cast<PlayerCardConnection>().ToList())
+        {
+        }
+
+        public ConnectionList(IEnumerable<PlayerGameConnection> list) : base(list.Cast<PlayerGameConnection>().ToList())
         {
         }
     }

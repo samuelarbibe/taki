@@ -26,3 +26,4 @@ C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.cspro
 C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.dll
 C:\Users\samuel\Documents\GitHub\Taki\Server\Service\Model\obj\Debug\Model.pdb
+C:\Users\User1\Source\Repos\Taki\Server\Service\Model\obj\Debug\Model.csprojAssemblyReference.cache

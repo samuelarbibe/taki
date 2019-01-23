@@ -35,7 +35,7 @@ namespace ViewModel
         }
 
 
-        public CardList SelectById(int id)
+        public Card SelectById(int id)
         {
             Command.CommandText = "SELECT * FROM Card_Table WHERE [ID] = @id";
 
@@ -44,7 +44,7 @@ namespace ViewModel
 
             CardList temp = new CardList(Select());
 
-            if (temp.Any()) return temp;
+            if (temp.Any()) return temp[0];
 
             return null;
         }

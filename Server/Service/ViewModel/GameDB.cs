@@ -93,13 +93,12 @@ namespace ViewModel
             Game game = entity as Game;
             PlayerGameDb pGdb = new PlayerGameDb(); //delete all connections related to this game
 
-            ConnectionList pg = pGdb.SelectByGameId(game.Id);
+            ConnectionList pg = pGdb.SelectByGame(game);
 
 
             if (pg != null)
             {
-                foreach (Connection c in pg
-                ) //delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
+                foreach (PlayerGameConnection c in pg) //delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
                     Updated.Add(new ChangeEntity(pGdb.CreateDeleteSql, c));
 
                 Updated.Add(new ChangeEntity(CreateDeleteSql, entity)); //delete the player itself
@@ -164,6 +163,8 @@ namespace ViewModel
             //parameters
            
             command.Parameters.AddWithValue("@loss", int.Parse("0"));
+
+            Console.WriteLine("Game [" + g.Id + "] Added to the Database");
         }
 
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
@@ -204,6 +205,7 @@ namespace ViewModel
             //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
             //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));
             command.Parameters.AddWithValue("@losser", g.Losser);
+            Console.WriteLine("Game [" + g.Id + "] Updated");
         }
     }
     

@@ -1,4 +1,5 @@
-﻿using System.Data.OleDb;
+﻿using System;
+using System.Data.OleDb;
 using Model;
 
 namespace ViewModel
@@ -107,16 +108,16 @@ namespace ViewModel
             PlayerCardDb pCdb = new PlayerCardDb();
             PlayerGameDb pGdb = new PlayerGameDb();
 
-            ConnectionList pc = pCdb.SelectByPlayerId(p.Id);
-            ConnectionList pg = pGdb.SelectByPlayerId(p.Id);
+            ConnectionList pc = pCdb.SelectByPlayer(p);
+            ConnectionList pg = pGdb.SelectByPlayer(p);
 
 
             if (p != null)
             {
-                foreach (Connection c in pc) //delete all cards connections to this player using PlayerCardDB
+                foreach (PlayerCardConnection c in pc) //delete all cards connections to this player using PlayerCardDB
                     Updated.Add(new ChangeEntity(pCdb.CreateDeleteSql, c));
 
-                foreach (Connection c in pg) //delete all games connections to this player using PlayerGameDB
+                foreach (PlayerGameConnection c in pg) //delete all games connections to this player using PlayerGameDB
                     Updated.Add(new ChangeEntity(pGdb.CreateDeleteSql, c));
 
                 Updated.Add(new ChangeEntity(CreateDeleteSql, entity)); //delete the player itself
@@ -143,6 +144,8 @@ namespace ViewModel
 
            // command.Parameters.Add(new OleDbParameter("@Id", p.Id));
             command.Parameters.Add(new OleDbParameter("@user_id", p.UserId));
+
+            Console.WriteLine("Player [" + p.Id + "] Added");
         }
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)

@@ -9,6 +9,7 @@ namespace Model
         private DateTime _endTime;
 
         private PlayerList _players;
+        private CardList _deck;
         private DateTime _startTime;
         private int _losser;
 

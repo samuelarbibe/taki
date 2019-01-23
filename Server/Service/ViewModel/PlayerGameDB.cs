@@ -8,17 +8,19 @@ namespace ViewModel
     {
         protected override BaseEntity NewEntity()
         {
-            return new Connection();
+            return new PlayerGameConnection();
         }
 
 
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
-            Connection con = entity as Connection;
+            PlayerDb playerDb = new PlayerDb();
+            GameDb gameDb = new GameDb();
+
+            PlayerGameConnection con = entity as PlayerGameConnection;
             con.Id = (int) Reader["ID"];
-            con.SideA = (int) Reader["player_id"];
-            con.SideB = (int) Reader["game_id"];
-            con.ConnectionType = Model.Connection._connectionType.player_game;
+            con.Player = playerDb.GetPlayerById((int) Reader["player_id"]);
+            con.Game = gameDb.GetGameById((int) Reader["game_id"]);
             return con;
         }
 
@@ -26,37 +28,35 @@ namespace ViewModel
         public void InsertList(ConnectionList entity)
         {
             ConnectionList cl = entity;
-            foreach (Connection connection in cl)
-                if (connection != null)
-                    Inserted.Add(new ChangeEntity(CreateInsertSql, connection));
+            foreach (PlayerGameConnection PlayerGameConnection in cl)
+                if (PlayerGameConnection != null)
+                    Inserted.Add(new ChangeEntity(CreateInsertSql, PlayerGameConnection));
         }
 
 
-        public override void Insert(BaseEntity entity)
+        public void Insert(Game game)
         {
-            if (entity is Connection c) Inserted.Add(new ChangeEntity(CreateInsertSql, entity));
+            //Inserted.Add(new ChangeEntity(CreateInsertSql, game));
+            foreach (Player p in game.Players)
+            {
+
+                Inserted.Add(new ChangeEntity(CreateInsertSql, new PlayerGameConnection()
+                {
+                    Player = p, // increment the player id for each player
+                    Game = game // the game id will be the same when inserted
+                }));
+            }
         }
 
 
-        public override void Delete(BaseEntity entity)
-        {
-            if (entity is Connection u) Inserted.Add(new ChangeEntity(CreateDeleteSql, entity));
-        }
 
-
-        public override void Update(BaseEntity entity)
-        {
-            if (entity is Connection u) Inserted.Add(new ChangeEntity(CreateUpdateSql, entity));
-        }
-
-
-        public ConnectionList SelectByGameId(int gameId)
+        public ConnectionList SelectByGame(Game game)
         {
             Command.CommandText = "SELECT * FROM Player_Game_Table WHERE 'game_id'= @id";
 
 
             //parameters
-            Command.Parameters.Add(new OleDbParameter("@id", gameId));
+            Command.Parameters.Add(new OleDbParameter("@id", game.Id));
 
 
             ConnectionList conList = new ConnectionList(Select());
@@ -64,49 +64,47 @@ namespace ViewModel
         }
 
 
-        public ConnectionList SelectByPlayerId(int playerId)
+        public ConnectionList SelectByPlayer(Player player)
         {
             Command.CommandText = "SELECT * FROM Player_Game_Table WHERE [player_id] = @id";
 
 
             //parameters
-            Command.Parameters.Add(new OleDbParameter("@id", playerId));
+            Command.Parameters.Add(new OleDbParameter("@id", player.Id));
 
 
             ConnectionList conList = new ConnectionList(Select());
             return conList;
         }
 
-
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
-            Connection con = entity as Connection;
+            PlayerGameConnection con = entity as PlayerGameConnection;
 
 
             command.CommandText = "INSERT INTO Player_Game_Table (player_id, game_id) VALUES (@player_id, @game_id)";
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
-            command.Parameters.Add(new OleDbParameter("@game_id", con.SideB));
+            command.Parameters.Add(new OleDbParameter("@player_id", con.Player.Id));
+            command.Parameters.Add(new OleDbParameter("@game_id", con.Game.Id));
 
-            Console.WriteLine("connection between player [" + con.SideA + "] and game [" + con.SideB +
-                              "] INSERTED");
+            Console.WriteLine("PlayerGameConnection between player [" + con.Player.Id + "] and game [" + con.Game.Id + "] INSERTED");
         }
 
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
-            Connection con = entity as Connection;
+            PlayerGameConnection con = entity as PlayerGameConnection;
 
             command.CommandText = "DELETE FROM Player_Game_Table WHERE player_id = @player_id AND game_id = @game_id";
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@player_id", con.SideA));
-            command.Parameters.Add(new OleDbParameter("@game_id", con.SideB));
+            command.Parameters.Add(new OleDbParameter("@player_id", con.Player.Id));
+            command.Parameters.Add(new OleDbParameter("@game_id", con.Game.Id));
 
-            Console.WriteLine("connection between player" + con.SideA + " and game" + con.SideB + " DELETED");
+            Console.WriteLine("PlayerGameConnection between player [" + con.Player.Id + "] and game [" + con.Game.Id + "] DELETED");
         }
 
         //BaseDB abstract implementation.

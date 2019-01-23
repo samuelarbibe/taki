@@ -115,7 +115,7 @@
           <xs:element minOccurs="0" name="Card" nillable="true" type="tns:Card" />
           <xs:element minOccurs="0" name="GameId" type="xs:int" />
           <xs:element minOccurs="0" name="Reciever" type="xs:int" />
-          <xs:element minOccurs="0" name="Target" type="xs:int" />
+          <xs:element minOccurs="0" name="Target" nillable="true" type="tns:Player" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

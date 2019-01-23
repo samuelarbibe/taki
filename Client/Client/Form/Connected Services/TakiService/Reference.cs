@@ -517,7 +517,7 @@ namespace Form.TakiService {
         private int RecieverField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TargetField;
+        private Form.TakiService.Player TargetField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public Form.TakiService.Message._action Action {
@@ -572,12 +572,12 @@ namespace Form.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Target {
+        public Form.TakiService.Player Target {
             get {
                 return this.TargetField;
             }
             set {
-                if ((this.TargetField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.TargetField, value) != true)) {
                     this.TargetField = value;
                     this.RaisePropertyChanged("Target");
                 }

@@ -19,10 +19,10 @@ namespace Model
         private int _reciever;
         private int _gameId;
         private Card _card;
-        private int _target;
+        private Player _target;
 
         [DataMember]
-        public int Target
+        public Player Target
         {
             get => _target;
             set => _target = value;

@@ -46,14 +46,14 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardList.cs" />
-    <Compile Include="ComputerPlayer.cs" />
-    <Compile Include="Connection.cs" />
     <Compile Include="ConnectionList.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameList.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageList.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerCardConnection.cs" />
+    <Compile Include="PlayerGameConnection.cs" />
     <Compile Include="PlayerList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
