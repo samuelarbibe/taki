@@ -73,10 +73,11 @@ namespace ViewModel
         public Player GetPlayerById(int id)
         {
             Command.Parameters.Clear();
+
             Command.CommandText = "SELECT *, Player_Table.ID AS ID FROM" +
-                    "(Player_Table INNER JOIN" +
+                    " (Player_Table INNER JOIN" +
                     " User_Table ON User_Table.ID = Player_Table.user_id)"+
-                    "WHERE Player_Table.ID = @Id";
+                    " WHERE Player_Table.ID = @Id";
 
             //parameters
             Command.Parameters.Add(new OleDbParameter("@Id", id));

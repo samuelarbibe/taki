@@ -248,7 +248,6 @@ namespace BusinessLayer
             u.Level = (u.Score - u.Score % 1000) / 1000;
 
             userDb.Update(u);
-            userDb.SaveChanges();
         }
 
         public void BlLoss(Message m)
@@ -259,6 +258,8 @@ namespace BusinessLayer
 
             GameDb gameDb = new GameDb();
             Game g = gameDb.GetGameById(m.GameId);
+
+            g.Players.RemoveAll(p => p == null);
 
             g.EndTime = DateTime.Now;
 

@@ -16,6 +16,7 @@ namespace Model
         public Game()
         {
             Players = new PlayerList();
+            EndTime = DateTime.Now;
         }
 
         public Game(int id)
@@ -34,6 +35,7 @@ namespace Model
             }
 
             Players = temp;
+            EndTime = DateTime.Now;
         }
 
 
