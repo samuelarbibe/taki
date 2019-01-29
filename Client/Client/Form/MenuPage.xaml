@@ -49,42 +49,44 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="89"/>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="95"/>
-            <RowDefinition Height="33*"/>
-            <RowDefinition Height="103*"/>
-            <RowDefinition Height="33*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="82.415"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="107*"/>
+            <RowDefinition Height="34*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="259*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="265*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+        <DockPanel x:Name="menuBarWrapPanel" Height="89" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="0,0,-0.302,0" >
             <Image Source="Resources/Images/TAKI.png" Margin="20,10,10,10"/>
             <Button HorizontalAlignment="Right" DockPanel.Dock="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="UserButton_Click">
                 <StackPanel x:Name="UserInfoStackPanel" Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Left" x:Name="UsernameTextBlock" Text="" Padding="22" FontSize="20" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap Medium" Foreground="White"/>
-                    <Ellipse Fill="#FF49A3A6" Panel.ZIndex="1" Width="60" Height="60" RenderTransformOrigin="0.5,0.5" Margin="0,0,-55,0">
-                        <Ellipse.BitmapEffect>
-                            <DropShadowBitmapEffect Color="#FF868686"
-                            ShadowDepth="0" Softness="0.535" Direction="0" Opacity="0.745" />
-                        </Ellipse.BitmapEffect>
+                    <Ellipse Fill="#FFE3E3E3" Panel.ZIndex="1" Width="60" Height="60" RenderTransformOrigin="0.5,0.5" Margin="0,0,-55,0">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Color="#FFBEBEBE" Direction="0" Opacity="0.2" BlurRadius="3" ShadowDepth="3"/>
+                        </Ellipse.Effect>
                     </Ellipse>
-                    <TextBlock x:Name="LevelTextBlock" Panel.ZIndex="2" FontSize="26" Foreground="White" TextAlignment="Center" FontFamily="Arial Rounded MT Bold" Text="25"  HorizontalAlignment="Stretch" Width="50" Height="50" Padding="0,10,0,0" />
-                    <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Right" Margin="-20,20,20,20" Foreground="#FFBAED91" Background="#FF4C615B" Minimum="0" Maximum="1000" Width="220" Height="30" DockPanel.Dock="Right"/>
+                    <TextBlock x:Name="LevelTextBlock" Panel.ZIndex="2" FontSize="26" Foreground="#FF509BD0" TextAlignment="Center" FontFamily="Arial Rounded MT Bold" Text="25"  HorizontalAlignment="Stretch" Width="50" Height="50" Padding="0,10,0,0" />
+                    <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Right" Margin="-20,20,20,20" Minimum="0" Maximum="1000" Width="220" Height="30" DockPanel.Dock="Right" ClipToBounds="True" />
                 </StackPanel>
             </Button>
-
         </DockPanel>
-        <Button Visibility="Visible" x:Name="MultiplayerButton" Content="Multiplayer" Grid.Row="2" Grid.Column="1" Background="White" FontSize="42" Foreground="#FF4D99D0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Heavy" Click="MultiplayerButton_Click" >
+        <Button BorderThickness="0" Visibility="Visible" x:Name="MultiplayerButton" Content="Play" Grid.Row="2" Background="#FFE3E3E3" FontSize="38" Foreground="#FF509BD0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Heavy" Click="MultiplayerButton_Click" Grid.Column="1" >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="35"/>
+                    <Setter Property="CornerRadius" Value="43"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="SettingsButton" HorizontalAlignment="Right" Click="SettingsButton_Click"  VerticalAlignment="Bottom" Margin="0,0,20,19.6" Grid.Column="2" Grid.Row="4" Background="{x:Null}" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40" Grid.RowSpan="2" BorderThickness="0">
+
+        <Button x:Name="GoBackButton" Visibility="Hidden" Grid.Row="3" Grid.Column="1" Width="120" Height="15" Padding="-10" VerticalAlignment="Bottom" Content="Cancel" Background="{x:Null}" Click="GoBackButton_Click" BorderThickness="0"  Foreground="#FFC2C0C0" FontSize="12" FontFamily="/Form;component/Resources/Fonts/Varela_Round/#Varela Round" Margin="71.981,0,83.34,39.83" />
+
+
+        <Button x:Name="SettingsButton" HorizontalAlignment="Right" Click="SettingsButton_Click"  VerticalAlignment="Bottom" Margin="0,0,19.698,19.113" Grid.Column="2" Grid.Row="4" Background="{x:Null}" Foreground="White" FontFamily="Arial Rounded MT Bold" Height="40" Width="40" Grid.RowSpan="2" BorderThickness="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="20"/>
@@ -94,9 +96,9 @@
                 <Image Source="Resources/Images/Settings.png"/>
             </WrapPanel>
         </Button>
-        <TextBlock FontSize="15" x:Name="SearchFailed" HorizontalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Foreground="white" Grid.Column="1" VerticalAlignment="Top"/>
+        <TextBlock FontSize="15" x:Name="SearchFailed" HorizontalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Foreground="white" Grid.Column="1" VerticalAlignment="Top" Height="17" Margin="133.981,0.302,141.34,0" Width="0"/>
 
-        <Grid x:Name="WantedPlayersGrid" Grid.Column="1" Grid.Row="2" Visibility="Hidden">
+        <Grid x:Name="WantedPlayersGrid" Grid.Column="1" Grid.Row="2" Visibility="Hidden" Grid.ColumnSpan="1" Grid.RowSpan="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="1*"/>
@@ -105,21 +107,21 @@
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Multiplayer2PlayersButton" Grid.Column="0" Content="2" Background="White" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer2PlayersButton_Click">
+            <Button BorderThickness="0" x:Name="Multiplayer2PlayersButton" Grid.Column="0" Content="2" Background="#FFE3E3E3" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer2PlayersButton_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="Multiplayer3PlayersButton" Grid.Column="2" Content="3" Grid.Row="2" Background="White" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer3PlayersButton_Click" >
+            <Button BorderThickness="0" x:Name="Multiplayer3PlayersButton" Grid.Column="2" Content="3" Grid.Row="2" Background="#FFE3E3E3" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer3PlayersButton_Click" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button DockPanel.Dock="right" Grid.Column="4" x:Name="Multiplayer4PlayersButton" Content="4" Grid.Row="2" Background="White" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer4PlayersButton_Click" >
+            <Button BorderThickness="0" DockPanel.Dock="right" Grid.Column="4" x:Name="Multiplayer4PlayersButton" Content="4" Grid.Row="2" Background="#FFE3E3E3" FontSize="30" Foreground="#FF4D99D0" FontFamily="Arial Rounded MT Bold" Click="Multiplayer4PlayersButton_Click" >
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>

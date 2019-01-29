@@ -78,7 +78,6 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Login to The Game" FontSize="28" Grid.Row="0" HorizontalAlignment="Center" Height="32" Foreground="#FFE3E3E3" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Margin="266,0,266.698,0.66" FontWeight="Bold" VerticalAlignment="Bottom" Grid.ColumnSpan="3"/>
 
-
         <AdornerDecorator Grid.Row="2" Grid.Column="1">
             <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="Username" Background="{x:Null}" Padding="15,-2,0,0">
                 <utilities:WatermarkService.Watermark>

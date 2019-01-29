@@ -51,6 +51,14 @@ namespace Form
         {
             MultiplayerButton.Visibility = Visibility.Hidden;
             WantedPlayersGrid.Visibility = Visibility.Visible;
+            GoBackButton.Visibility = Visibility.Visible;
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MultiplayerButton.Visibility = Visibility.Visible;
+            WantedPlayersGrid.Visibility = Visibility.Hidden;
+            GoBackButton.Visibility = Visibility.Hidden;
         }
 
         private void Multiplayer2PlayersButton_Click(object sender, RoutedEventArgs e)

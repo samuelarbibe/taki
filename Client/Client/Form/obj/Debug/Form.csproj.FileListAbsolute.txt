@@ -197,7 +197,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\P
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\UserControls\TableUC.baml
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.baml
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.g.cs
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\SwitchColor.baml
 C:\Users\User1\Source\Repos\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerWin.g.cs
@@ -281,3 +280,6 @@ C:\Users\samuel\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.C
 C:\Users\samuel\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.CopyComplete
 C:\Users\samuel\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.exe
 C:\Users\samuel\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.g.cs
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.baml
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
