@@ -15,6 +15,7 @@ namespace Service
     public interface IService
     {
 
+
         [OperationContract]
         CardList GetCardList();
 
@@ -46,6 +47,12 @@ namespace Service
         bool Register(string firstName, string lastName, string username, string password);
 
         [OperationContract]
+        int DeleteUser(User user);
+
+        [OperationContract]
+        int UpdateUser(User user);
+
+        [OperationContract]
         bool PasswordAvailable(string password);
 
         [OperationContract]
@@ -67,7 +74,7 @@ namespace Service
         UserList GetAllUsers();
 
         [OperationContract]
-        void SaveChanges();
+        int SaveChanges();
 
     }
 

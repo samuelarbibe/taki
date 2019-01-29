@@ -466,28 +466,6 @@ namespace Form
             }
         }
 
-        //private void RemoveCardFromDeck()
-        //{
-        //    Player table = PlayersList.Last();
-        //    MessageList temp = new MessageList();
-
-        //    for (int i = 0; i < PlayersList.Count ; i++) //add for each player, not including the table
-        //    {
-
-        //        temp.Add(new Message()// add the top card of the table to the current player
-        //        {
-        //            Action = Message._action.remove,
-        //            Target = table.Id, // the person who's hand is modified
-        //            Reciever = PlayersList[i].Id, // the peron who this message is for
-        //            Card = new Card() { Id = 67 },
-        //            GameId = CurrentGame.Id // the game modified
-        //        });
-        //    }
-
-        //    MainWindow.Service.AddActions(temp);
-        //}
-
-
         private void TakeCardFromDeck(object sender, EventArgs e)
         {
             if (PlusValue != 0)

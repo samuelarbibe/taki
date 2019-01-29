@@ -117,8 +117,12 @@ namespace ViewModel
         {
             User u = entity as User;
 
-            PlayerDb playerDb = new PlayerDb();
-            playerDb.Delete(u as Player);
+            Player p = entity as Player;
+
+            if (p.UserId > 0) {
+                PlayerDb playerDb = new PlayerDb();
+                playerDb.Delete(u as Player);
+            }
 
             if (u != null) Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
         }

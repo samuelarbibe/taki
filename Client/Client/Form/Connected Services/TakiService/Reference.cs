@@ -709,6 +709,18 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Register", ReplyAction="http://tempuri.org/IService/RegisterResponse")]
         System.Threading.Tasks.Task<bool> RegisterAsync(string firstName, string lastName, string username, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
+        int DeleteUser(Form.TakiService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteUser", ReplyAction="http://tempuri.org/IService/DeleteUserResponse")]
+        System.Threading.Tasks.Task<int> DeleteUserAsync(Form.TakiService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
+        int UpdateUser(Form.TakiService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UpdateUser", ReplyAction="http://tempuri.org/IService/UpdateUserResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserAsync(Form.TakiService.User user);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/PasswordAvailable", ReplyAction="http://tempuri.org/IService/PasswordAvailableResponse")]
         bool PasswordAvailable(string password);
         
@@ -752,10 +764,10 @@ namespace Form.TakiService {
         System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SaveChanges", ReplyAction="http://tempuri.org/IService/SaveChangesResponse")]
-        void SaveChanges();
+        int SaveChanges();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SaveChanges", ReplyAction="http://tempuri.org/IService/SaveChangesResponse")]
-        System.Threading.Tasks.Task SaveChangesAsync();
+        System.Threading.Tasks.Task<int> SaveChangesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -865,6 +877,22 @@ namespace Form.TakiService {
             return base.Channel.RegisterAsync(firstName, lastName, username, password);
         }
         
+        public int DeleteUser(Form.TakiService.User user) {
+            return base.Channel.DeleteUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteUserAsync(Form.TakiService.User user) {
+            return base.Channel.DeleteUserAsync(user);
+        }
+        
+        public int UpdateUser(Form.TakiService.User user) {
+            return base.Channel.UpdateUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateUserAsync(Form.TakiService.User user) {
+            return base.Channel.UpdateUserAsync(user);
+        }
+        
         public bool PasswordAvailable(string password) {
             return base.Channel.PasswordAvailable(password);
         }
@@ -921,11 +949,11 @@ namespace Form.TakiService {
             return base.Channel.GetAllUsersAsync();
         }
         
-        public void SaveChanges() {
-            base.Channel.SaveChanges();
+        public int SaveChanges() {
+            return base.Channel.SaveChanges();
         }
         
-        public System.Threading.Tasks.Task SaveChangesAsync() {
+        public System.Threading.Tasks.Task<int> SaveChangesAsync() {
             return base.Channel.SaveChangesAsync();
         }
     }

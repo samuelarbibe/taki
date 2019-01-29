@@ -91,6 +91,20 @@ namespace BusinessLayer
             return true;
         }
 
+        public int BlDeleteUser(User user)
+        {
+            UserDb db = new UserDb();
+            db.Delete(user);
+            return db.SaveChanges();
+        }
+
+        public int BlUpdateUser(User user)
+        {
+            UserDb db = new UserDb();
+            db.Update(user);
+            return db.SaveChanges();
+        }
+
         public bool BlPasswordAvailable(string password)
         {
             UserDb db = new UserDb();
@@ -283,10 +297,10 @@ namespace BusinessLayer
             db.SwitchConnectionsByPlayersId(m.Target, playerDb.GetPlayerById(m.Card.Id));
         }
 
-        public void SaveChnages() {
+        public int SaveChanges() {
 
             PlayerCardDb sb = new PlayerCardDb();
-            sb.SaveChanges();
+            return sb.SaveChanges();
         }
 
         public void BlRemoveCard(Message m)

@@ -55,6 +55,18 @@ namespace Service
             return bl.BlRegister(firstName, lastName, username, password);
         }
 
+        public int DeleteUser(User user)
+        {
+            Bl bl = new Bl();
+            return bl.BlDeleteUser(user);
+        }
+
+        public int UpdateUser(User user)
+        {
+            Bl bl = new Bl();
+            return bl.BlUpdateUser(user);
+        }
+
         public bool PasswordAvailable(string password)
         {
             Bl bl = new Bl();
@@ -114,10 +126,10 @@ namespace Service
             PendingChanges.AddRange(ml);
         }
 
-        public void SaveChanges()
+        public int SaveChanges()
         {
             Bl bl = new Bl();
-            bl.SaveChnages();
+            return bl.SaveChanges();
         }
 
         public MessageList DoAction(int gameId, int playerId)
@@ -170,5 +182,6 @@ namespace Service
             return temp;
         }
 
+        
     }
 }

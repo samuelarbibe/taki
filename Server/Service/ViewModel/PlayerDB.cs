@@ -112,7 +112,6 @@ namespace ViewModel
             ConnectionList pc = pCdb.SelectByPlayer(p);
             ConnectionList pg = pGdb.SelectByPlayer(p);
 
-
             if (p != null)
             {
                 foreach (PlayerCardConnection c in pc) //delete all cards connections to this player using PlayerCardDB
