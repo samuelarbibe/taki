@@ -1,0 +1,67 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Asap-Medium;
+    background-image: linear-gradient(to bottom right, rgb(66, 134, 244), rgb(63, 125, 211));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.grid-container {
+    margin: 200px auto;
+    width: 25%;
+    min-width: 220px;
+    height: 20%;
+    min-height: 450px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 15% 15% 45%;
+    padding: 5px;
+}
+
+.grid-container > div {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+input {
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    border-color: rgb(171,171,171);
+    Background:transparent;
+}
+
+button {
+    font-size: 25px;
+    border-radius: 24px;
+    width: 100%;
+    height: 50px;
+    Background: rgb(277,277,277);
+    border: none;
+    color: rgb(66, 134, 244);
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.head{
+    font-size:28px;
+    text-align:center;
+}
+
+@font-face {
+    font-family: 'Asap-Medium';
+    src: url('Fonts/Asap/Asap-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Asap-Bold';
+    src: url('Fonts/Asap/Asap-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Asap-SemiBold';
+    src: url('Fonts/Asap/Asap-SemiBold.ttf') format('truetype');
+}
