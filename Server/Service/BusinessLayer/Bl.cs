@@ -166,7 +166,7 @@ namespace BusinessLayer
 
                 foreach (var t in _game.Players)
                 {
-                    t.Hand = BuildShuffledHand(1, false);
+                    t.Hand = BuildShuffledHand(6, false);
                 }
 
                 _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player

@@ -152,7 +152,7 @@ namespace Form
         //save the changes in the database every 2 seconds
         private void SaveChanges(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(500);
+            Thread.Sleep(200);
 
             MainWindow.Service.DoAction(CurrentGame.Id, Table.Id);
             MainWindow.Service.SaveChanges();
@@ -167,7 +167,7 @@ namespace Form
 
         private void FetchChanges(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(200);
+            Thread.Sleep(100);
 
             LocalMessageList = MainWindow.Service.DoAction(CurrentGame.Id, CurrentPlayer.Id);
         }
@@ -527,7 +527,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            PlusTwoMessage(0);
+            PlusTwoMessage(0); // finished taking cards
 
             TurnFinished(Card.Value.Nine); // give turn to next player
         }
