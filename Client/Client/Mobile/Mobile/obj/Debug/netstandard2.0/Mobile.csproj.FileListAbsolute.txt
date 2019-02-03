@@ -1,0 +1,11 @@
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\bin\Debug\netstandard2.0\Mobile.deps.json
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\bin\Debug\netstandard2.0\Mobile.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\bin\Debug\netstandard2.0\Mobile.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\Mobile.csproj.CoreCompileInputs.cache
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\Mobile.AssemblyInfoInputs.cache
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\Mobile.AssemblyInfo.cs
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\Mobile.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\Mobile.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Mobile\Mobile\obj\Debug\netstandard2.0\XamlC.stamp
