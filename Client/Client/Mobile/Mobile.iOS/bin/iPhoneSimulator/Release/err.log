@@ -1,0 +1,13 @@
+MonoTouch: Could not install sigaction override, unexpected sigaction implementation.
+2019-02-05 16:20:41.882146+0200 Mobile.iOS[1507:30020] SecTaskLoadEntitlements failed error=22 cs_flags=200, pid=1507
+2019-02-05 16:20:41.882659+0200 Mobile.iOS[1507:30020] SecTaskCopyDebugDescription: Mobile.iOS[1507]/0#-1 LF=0
+2019-02-05 16:20:41.948679+0200 Mobile.iOS[1507:30020] [AXMediaCommon] Unable to look up screen scale
+2019-02-05 16:20:41.948798+0200 Mobile.iOS[1507:30020] [AXMediaCommon] Unexpected physical screen orientation
+2019-02-05 16:20:41.983082+0200 Mobile.iOS[1507:30020] [AXMediaCommon] Unable to look up screen scale
+2019-02-05 16:20:41.988557+0200 Mobile.iOS[1507:30020] [AXMediaCommon] Unable to look up screen scale
+2019-02-05 16:20:41.988646+0200 Mobile.iOS[1507:30020] [AXMediaCommon] Unexpected physical screen orientation
+2019-02-05 16:20:53.111981+0200 Mobile.iOS[1507:30020] SecTaskLoadEntitlements failed error=22 cs_flags=200, pid=1507
+2019-02-05 16:20:53.112217+0200 Mobile.iOS[1507:30020] SecTaskCopyDebugDescription: Mobile.iOS[1507]/0#-1 LF=0
+2019-02-05 16:21:12.642850+0200 Mobile.iOS[1507:30154] [AXRuntimeCommon] Unknown client: Mobile.iOS
+2019-02-05 16:21:19.960137+0200 Mobile.iOS[1507:30020] [Snapshotting] Snapshotting a view (0x7f8d69466600, UIKeyboardImpl) that is not in a visible window requires afterScreenUpdates:YES.
+2019-02-05 16:21:23.470222+0200 Mobile.iOS[1507:30020] [Snapshotting] Snapshotting a view (0x7f8d6815b200, UIKeyboardImpl) that has not been rendered at least once requires afterScreenUpdates:YES.

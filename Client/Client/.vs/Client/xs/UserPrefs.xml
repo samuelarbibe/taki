@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{69AAA53D-4C4C-4C4D-8B39-E4E721108CF8}|Default">
+  <MonoDevelop.Ide.ItemProperties.Mobile.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.FD534B24-E7A5-4808-B434-AE17191FAC3C" />
+  <MonoDevelop.Ide.ItemProperties.Mobile.Android AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mobile/Mobile.iOS/Main.cs">
+    <Files>
+      <File FileName="Mobile/Mobile/Register.xaml" Line="24" Column="66" />
+      <File FileName="Mobile/Mobile/Register.xaml.cs" Line="59" Column="57" />
+      <File FileName="Mobile/Mobile/Login.xaml" Line="25" Column="15" />
+      <File FileName="Mobile/Mobile/Login.xaml.cs" Line="42" Column="9" />
+      <File FileName="Form/Register.xaml.cs" Line="34" Column="13" />
+      <File FileName="Mobile/Mobile/MainMenu.xaml" Line="34" Column="1" />
+      <File FileName="Mobile/Mobile/App.xaml" Line="5" Column="28" />
+      <File FileName="Mobile/Mobile/App.xaml.cs" Line="12" Column="35" />
+      <File FileName="Mobile/Mobile.iOS/Main.cs" Line="21" Column="1" />
+      <File FileName="Form/Login.xaml" Line="75" Column="40" NotebookId="1" />
+      <File FileName="Form/Login.xaml.cs" Line="35" Column="10" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
