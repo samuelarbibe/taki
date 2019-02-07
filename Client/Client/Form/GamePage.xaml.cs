@@ -437,7 +437,7 @@ namespace Form
                 {
                     for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
                     {
-                        if (givenCard.VALUE != Card.Value.SwitchHandAll) // don't add switchHands card to table
+                        if (givenCard.VALUE != Card.Value.SwitchHandAll) // don't add "SwitchHandsAll" card to table
                         {
                             temp.Add(new Message() // add the top card of the table to the current player
                             {

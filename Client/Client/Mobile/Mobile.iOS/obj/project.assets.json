@@ -618,10 +618,11 @@
   },
   "libraries": {
     "System.Net.Http/4.3.4": {
-      "sha512": "Fj7e73NNHwof97gFPTJuq8gv6G895yxkZt14DVnZdEh4gvKl8WrksCwNjIp/JeYX/yu/qxM/iOv9ai+ZY3Fp7Q==",
+      "sha512": "aOa2d51SEbmM+H+Csw7yJOuNZoHkrP2XnAurye5HWYgGVVU54YZDvsLUYRv6h18X3sPnjNCANmN7ZhIPiqMcjA==",
       "type": "package",
       "path": "system.net.http/4.3.4",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -659,10 +660,11 @@
       ]
     },
     "Xamarin.Forms/3.4.0.1029999": {
-      "sha512": "qupCyyDo1x3c0BfroaTOhkc6wjeBXQnRLkUhvlgfVmZAcBjSEOaPRsa5/HWShtnkgqnySrkwzYEu3N0dG0pn7Q==",
+      "sha512": "et3gAEFuO8E+VgZU0IQnMhgk9m8mYHN6q4Cc2mKhqPV7EA7qG/aYZKojP3/dXthruoi0T18PW1+BgEW2l40D5w==",
       "type": "package",
       "path": "xamarin.forms/3.4.0.1029999",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "build/Xamarin.Forms.DefaultItems.props",
         "build/Xamarin.Forms.DefaultItems.targets",
@@ -818,31 +820,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/samuelarbibe/.nuget/packages/": {}
+    "C:\\Users\\samue\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/samuelarbibe/Documents/GitHub/Taki/Client/Client/Mobile/Mobile.iOS/Mobile.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Mobile\\Mobile.iOS\\Mobile.iOS.csproj",
       "projectName": "Mobile.iOS",
-      "projectPath": "/Users/samuelarbibe/Documents/GitHub/Taki/Client/Client/Mobile/Mobile.iOS/Mobile.iOS.csproj",
-      "packagesPath": "/Users/samuelarbibe/.nuget/packages/",
-      "outputPath": "/Users/samuelarbibe/Documents/GitHub/Taki/Client/Client/Mobile/Mobile.iOS/obj",
+      "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Mobile\\Mobile.iOS\\Mobile.iOS.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Mobile\\Mobile.iOS\\obj\\",
       "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
       "configFilePaths": [
-        "/Users/samuelarbibe/.config/NuGet/NuGet.Config"
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "xamarinios10"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "/Users/samuelarbibe/Documents/GitHub/Taki/Client/Client/Mobile/Mobile/Mobile.csproj": {
-              "projectPath": "/Users/samuelarbibe/Documents/GitHub/Taki/Client/Client/Mobile/Mobile/Mobile.csproj"
+            "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Mobile\\Mobile\\Mobile.csproj": {
+              "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Mobile\\Mobile\\Mobile.csproj"
             }
           }
         }

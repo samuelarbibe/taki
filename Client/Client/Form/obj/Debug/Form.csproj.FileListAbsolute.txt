@@ -282,4 +282,3 @@ C:\Users\samuel\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.exe
 C:\Users\samuel\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\GameHistoryUserPage.baml
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache

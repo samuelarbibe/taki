@@ -7,13 +7,21 @@
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="StyleSheet.css" rel="stylesheet" />
+    <link href="bootstrap.css" rel="stylesheet" />
 </head>
-<body>
-    <form id="form1" runat="server">
+<body runat="server">
+    <form runat="server">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" runat="server">
+          <a class="navbar-brand mb-0 h1" href="#">TAKI</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <asp:button id="logout" onclick="Logout_Clicked" class="btn btn-outline-success my-2 my-sm-0" type="submit" Text="Logout" runat="server"/>
+        </nav>
+    
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
-        </asp:ContentPlaceHolder>     
+        </asp:ContentPlaceHolder>    
     </form>
 </body>
 </html>
