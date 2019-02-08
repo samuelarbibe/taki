@@ -26,10 +26,6 @@ public partial class Login : System.Web.UI.Page
         string usernameValue = Username.Value;
         string passwordValue = Password.Value;
 
-        List<Control> textBoxes = new List<Control>();
-        textBoxes.Add(Username);
-        textBoxes.Add(Password);
-
         if (Username.Value.Length > 0 && Password.Value.Length > 0)
         {
             User currentUserCheck = Service.Login(usernameValue, passwordValue);
@@ -54,8 +50,11 @@ public partial class Login : System.Web.UI.Page
         }
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void Fill_Click(object sender, EventArgs e)
     {
-        Console.WriteLine("Button Clicked");
+        Username.Value = "Samuelov1";
+        Password.Value = "123";
+
+        Button_Click(null, null);
     }
 }

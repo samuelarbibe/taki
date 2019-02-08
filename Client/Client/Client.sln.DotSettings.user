@@ -1,7 +1,0 @@
-﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:Boolean x:Key="/Default/RunConfigs/Config/=958F1CDB966C7C45B28E5ECCD8817DB0/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/RunConfigs/Config/=958F1CDB966C7C45B28E5ECCD8817DB0/Type/@EntryValue">project</s:String>
-	<s:String x:Key="/Default/RunConfigs/Config/=958F1CDB966C7C45B28E5ECCD8817DB0/Name/@EntryValue">Images</s:String>
-	<s:String x:Key="/Default/RunConfigs/Config/=958F1CDB966C7C45B28E5ECCD8817DB0/ProjectGuid/@EntryValue">A5BDD20FD14F0449AB83CF919F3CD9CF</s:String>
-	<s:String x:Key="/Default/RunConfigs/Active/@EntryValue">958F1CDB966C7C45B28E5ECCD8817DB0</s:String>
-	<s:Boolean x:Key="/Default/UserDictionary/Words/=taki/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

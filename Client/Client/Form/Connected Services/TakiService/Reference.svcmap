@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="ca744514-9e31-436b-8ace-9dd90b26a8bd" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/?disco" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3d4852a7-e98a-4f89-add1-eaeb0b27015b" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="076e6405-6988-49bc-ace2-ebf2f3b8a037" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="3c422046-834a-46dc-96e6-f590ec699f7a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="c731aae3-eecb-4af6-8a9a-325a6ba567e6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="38e53ab9-9215-4ff3-ac76-5fb79f689813" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="00e79cc6-af0e-453f-b5b7-fac8f510b59c" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
+    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="187779b4-b76c-4f5d-8ada-067104dd0612" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="2695bf07-5133-46a0-9fb9-677c130a3684" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?disco" />
+    <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="1ac8fb06-9615-448b-83a6-02e0885f75c1" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
