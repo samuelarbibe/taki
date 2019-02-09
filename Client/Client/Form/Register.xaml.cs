@@ -48,7 +48,7 @@ namespace Form
             {
                 if (passwordValue.Equals(confirmPasswordValue)) //checks if password and confirm password are equal
                 {
-                    if (MainWindow.Service.PasswordAvailable(passwordValue)) //checks if this password is used or not
+                    if (MainWindow.Service.PasswordAvailable(passwordValue) && MainWindow.Service.UsernameAvailable(usernameValue)) //checks if this password is used or not
                     {
                         PasswordStatus.Text = "";
 

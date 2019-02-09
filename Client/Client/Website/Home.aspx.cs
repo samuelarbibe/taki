@@ -11,30 +11,22 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ServiceClient Service = new ServiceClient();
-        UserList ul = Service.GetAllUsers();
-
-        if (MasterPage.currentUser != null)
-        {
-            if(MasterPage.currentUser.Admin == true)
-            {
-                this.GridView1.DataSource = ul;
-                this.GridView1.DataBind();
-            }
-            else
-            {
-                UserList temp = new UserList();
-                temp.Add(ul.Find(u => u.Id == MasterPage.currentUser.Id));
-                this.GridView1.DataSource = temp;
-                this.GridView1.DataBind();
-            }
-        }
-        else
+        if(MasterPage.currentUser == null)
         {
             Response.Redirect("Login.aspx");
         }
 
-        this.GridView1.DataSource = Service.GetAllUsers();
+        ServiceClient Service = new ServiceClient();
+        User ul = Service.GetUserByUsername(MasterPage.currentUser.Username);
+
+        Username.InnerText = ul.Username;
+        Level.InnerText = ul.Level.ToString();
+        //ProgressBar.Style.Clear();
+        //ProgressBar.Style.Add("Width", ((ul.Score % 1000)).ToString());
+
+        GameList gl = Service.GetAllUserGames(ul.Id);
+
+        this.GridView1.DataSource = gl;
         this.GridView1.DataBind();
     }
 

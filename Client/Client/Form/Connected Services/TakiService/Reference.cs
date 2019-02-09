@@ -733,6 +733,12 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUserGames", ReplyAction="http://tempuri.org/IService/GetAllUserGamesResponse")]
         System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int UserId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByUsername", ReplyAction="http://tempuri.org/IService/GetUserByUsernameResponse")]
+        Form.TakiService.User GetUserByUsername(string Username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByUsername", ReplyAction="http://tempuri.org/IService/GetUserByUsernameResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string Username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         bool UsernameAvailable(string username);
         
@@ -907,6 +913,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int UserId) {
             return base.Channel.GetAllUserGamesAsync(UserId);
+        }
+        
+        public Form.TakiService.User GetUserByUsername(string Username) {
+            return base.Channel.GetUserByUsername(Username);
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string Username) {
+            return base.Channel.GetUserByUsernameAsync(Username);
         }
         
         public bool UsernameAvailable(string username) {

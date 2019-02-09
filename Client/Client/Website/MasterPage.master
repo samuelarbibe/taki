@@ -11,14 +11,16 @@
 </head>
 <body class="bg-light" runat="server">
     <form runat="server">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white" runat="server">
-            <a class="navbar-brand" href="#">
-                <img src="\Resources\Images\TAKI.png" height="40" alt="">
-            </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <asp:button id="logout" onclick="Logout_Clicked" class="btn btn-outline-success my-2 my-sm-0" type="submit" Text="Logout" runat="server"/>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white justify-content-between" runat="server">
+                <a class="navbar-brand" href="Home.aspx">
+                    <img src="\Resources\Images\TAKI.png" height="40" alt="">
+                </a>
+            <div id="loggedTools" class="form-inline" runat="server">
+                <input id="searchBar" class="form-control my-2 mr-2" style="width:200px;" type="search" placeholder="Search For Players" aria-label="Search" runat="server">
+                <asp:button ID="searchButton" OnClick="Search_Clicked" class="btn btn-outline-success my-2 mr-2" Text="Search" runat="server"/>
+                <asp:button id="logout" onclick="Logout_Clicked" class="btn btn-outline-danger my-2 mr-2" type="submit" Text="Logout" runat="server"/>
+                <asp:button id="admin" onclick="Admin_Clicked" class="btn btn-outline-info my-2 mr-2" type="submit" Text="Admin" runat="server"/>
+            </div>
         </nav>
     
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">

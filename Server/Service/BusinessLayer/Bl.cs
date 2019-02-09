@@ -126,6 +126,13 @@ namespace BusinessLayer
             return userList;
         }
 
+        public User BlGetUserByUsername(string Username)
+        {
+            UserDb db = new UserDb();
+            User userList = db.SelectByUsername(Username);
+            return userList;
+        }
+
         public GameList BlGetAllUserGames(int UserId)
         {
             GameDb gameDB = new GameDb();
