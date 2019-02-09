@@ -59,9 +59,6 @@ namespace Service
         GameList GetAllUserGames(int UserId);
 
         [OperationContract]
-        User GetUserByUsername(string Username);
-
-        [OperationContract]
         bool UsernameAvailable(string username);
 
         [OperationContract]
