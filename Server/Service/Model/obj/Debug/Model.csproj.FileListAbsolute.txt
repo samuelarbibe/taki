@@ -1,6 +1,6 @@
-D:\Taki\Server\Service\Model\bin\Debug\Model.dll
-D:\Taki\Server\Service\Model\bin\Debug\Model.pdb
-D:\Taki\Server\Service\Model\obj\Debug\Model.csprojAssemblyReference.cache
-D:\Taki\Server\Service\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
-D:\Taki\Server\Service\Model\obj\Debug\Model.dll
-D:\Taki\Server\Service\Model\obj\Debug\Model.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Model\bin\Debug\Model.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Model\bin\Debug\Model.pdb
+C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.dll
+C:\Users\samue\Desktop\Taki\Server\Service\Model\obj\Debug\Model.pdb
