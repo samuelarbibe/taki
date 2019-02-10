@@ -19,8 +19,8 @@ namespace BusinessLayer
         };
 
         private static UserList _loggedPlayers = new UserList();
-        private static CardDb _cardDb = new CardDb();          
-        private static CardList _deck = CardDb.SelectAll();       
+        private static CardDb _cardDb = new CardDb();
+        private static CardList _deck = CardDb.SelectAll();
         private static GameList _gameList = new GameList();
         private static List<CardList> _gameDecks = new List<CardList>();
         private static Game _game;
@@ -124,6 +124,12 @@ namespace BusinessLayer
             UserDb db = new UserDb();
             UserList userList = db.SelectAll();
             return userList;
+        }
+
+        public User BlGetUserByUsername(string Username){
+            UserDb db = new UserDb();
+            User user = db.SelectByUsername(Username);
+            return user;
         }
 
         public GameList BlGetAllUserGames(int UserId)

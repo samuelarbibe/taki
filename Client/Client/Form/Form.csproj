@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Taki2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -272,16 +275,16 @@
     <None Include="Connected Services\TakiService\Form.TakiService.UserList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\TakiService\item3.xsd">
+    <None Include="Connected Services\TakiService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\item31.xsd">
+    <None Include="Connected Services\TakiService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\item32.xsd">
+    <None Include="Connected Services\TakiService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\Service1.wsdl" />
+    <None Include="Connected Services\TakiService\Service.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -399,7 +402,10 @@
     <Resource Include="Resources\Images\Logout_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\TakiService\item1.disco" />
+    <Resource Include="Taki2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TakiService\item.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

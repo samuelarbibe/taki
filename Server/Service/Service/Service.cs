@@ -37,6 +37,12 @@ namespace Service
             return bl.BlGetAllUsers();
         }
 
+        public User GetUserByUsername(string Username)
+        {
+            Bl bl = new Bl();
+            return bl.BlGetUserByUsername(Username);
+        }
+
         public User Login(string username, string password)
         {
             Bl bl = new Bl();

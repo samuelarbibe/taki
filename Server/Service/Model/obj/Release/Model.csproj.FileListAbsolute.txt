@@ -1,6 +1,0 @@
-C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\bin\Release\Model.dll
-C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\bin\Release\Model.pdb
-C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Release\Model.csprojAssemblyReference.cache
-C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
-C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Release\Model.dll
-C:\Users\samue\Documents\GitHub\Taki\Server\Service\Model\obj\Release\Model.pdb

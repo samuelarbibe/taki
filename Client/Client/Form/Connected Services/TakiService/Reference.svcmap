@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.140.132:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="38e53ab9-9215-4ff3-ac76-5fb79f689813" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?wsdl" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="00e79cc6-af0e-453f-b5b7-fac8f510b59c" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
-    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="187779b4-b76c-4f5d-8ada-067104dd0612" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
-    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="2695bf07-5133-46a0-9fb9-677c130a3684" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?disco" />
-    <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="1ac8fb06-9615-448b-83a6-02e0885f75c1" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a645fb30-ab5d-41d2-b37a-810d59b90ebd" SourceId="1" SourceUrl="http://192.168.140.132:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="f106aa3d-99fe-44e1-96b3-eed1ba93b342" SourceId="1" SourceUrl="http://192.168.140.132:8733/Design_Time_Addresses/Service/Service/?disco" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="aa6be992-6d23-44e4-a476-a2ca01984c81" SourceId="1" SourceUrl="http://192.168.140.132:8733/Design_Time_Addresses/Service/Service/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="be83a58d-2d71-4640-b3f9-5c46716caf38" SourceId="1" SourceUrl="http://192.168.140.132:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3573c089-fb33-4c37-be90-329ad4ca40b2" SourceId="1" SourceUrl="http://192.168.140.132:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

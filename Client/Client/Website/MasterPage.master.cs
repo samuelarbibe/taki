@@ -9,18 +9,25 @@ using TakiService;
 public partial class MasterPage : System.Web.UI.MasterPage
 {
     public static User currentUser;
-
-
+    public static User searchResults;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if(currentUser == null)
         {
-            logout.Visible = false;
+            loggedTools.Visible = false;
         }
         else
         {
-            logout.Visible = true;
+            loggedTools.Visible = true;
+            if (currentUser.Admin)
+            {
+                admin.Visible = true;
+            }
+            else
+            {
+                admin.Visible = false;
+            }
         }
     }
 
@@ -30,5 +37,20 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Service.Logout(currentUser.Id);
         currentUser = null;
         Response.Redirect("Login.aspx");
+    }
+
+    protected void Admin_Clicked(object sender, EventArgs e)
+    {
+        Response.Redirect("AdminPage.aspx");
+    }
+
+    protected void Search_Clicked(object sender, EventArgs e)
+    {
+        if(searchBar.Value != null)
+        {
+            ServiceClient Service = new ServiceClient();
+            searchResults = Service.GetUserByUsername(searchBar.Value);
+            Response.Redirect("Results.aspx");
+        }
     }
 }
