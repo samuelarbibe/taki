@@ -3,11 +3,10 @@
     "",
     "\\Client",
     "\\Client\\Client",
-    "\\Client\\Client\\Form",
-    "\\Client\\Client\\Form\\Properties",
-    "\\Client\\Client\\Form\\Resources",
+    "\\Client\\Client\\TakiApp",
     "\\Server",
     "\\Server\\Service"
   ],
+  "SelectedNode": "\\Client\\Client\\TakiApp\\TakiApp.Android",
   "PreviewInSolutionExplorer": false
 }

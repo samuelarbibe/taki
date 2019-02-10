@@ -72,6 +72,8 @@ namespace BusinessLayer
 
         public bool BlRegister(string firstName, string lastName, string username, string password)
         {
+            if (BlUsernameAvailable(username) == false || BlPasswordAvailable(password) == false) return false;
+
             UserDb db = new UserDb();
             User newUser = new User
             {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mobile;
+using System;
+using TakiApp.TakiService;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,11 +9,12 @@ namespace TakiApp
 {
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Login();
         }
 
         protected override void OnStart()
