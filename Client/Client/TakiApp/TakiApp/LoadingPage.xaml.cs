@@ -92,7 +92,7 @@ namespace TakiApp
                 }
                 else // if game is found
                 {
-                    this.Navigation.PushModalAsync(new GamePage());
+                    this.Navigation.PushModalAsync(new GamePage(_game));
 
                     autoEvent.Set();//signal the thread to stop
                 }

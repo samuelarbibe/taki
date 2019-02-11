@@ -9,6 +9,7 @@ namespace Mobile
     public partial class MainMenu : ContentPage
     {
         public static User CurrentUser;
+        public static GamePage CurrentGamePage;
 
         public MainMenu()
         {
