@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.Login.xaml", "Login.xaml", typeof(global::Mobile.Login))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.Login.xaml", "Login.xaml", typeof(global::TakiApp.Login))]
 
-namespace Mobile {
+namespace TakiApp {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Login.xaml")]

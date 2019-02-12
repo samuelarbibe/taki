@@ -275,16 +275,16 @@
     <None Include="Connected Services\TakiService\Form.TakiService.UserList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\TakiService\item.xsd">
+    <None Include="Connected Services\TakiService\Model.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\item1.xsd">
+    <None Include="Connected Services\TakiService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\item2.xsd">
+    <None Include="Connected Services\TakiService\service1.wsdl" />
+    <None Include="Connected Services\TakiService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\Service.wsdl" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -393,9 +393,6 @@
     <WCFMetadataStorage Include="Connected Services\TakiService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\TakiService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\TakiService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +403,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\wallpaper_blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TakiApp;
 using TakiApp.TakiService;
 using Xamarin.Forms;
 
-namespace Mobile
+namespace TakiApp
 {
     public partial class Register : ContentPage
     {

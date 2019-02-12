@@ -8,13 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.MainMenu.xaml", "MainMenu.xaml", typeof(global::Mobile.MainMenu))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.MainMenu.xaml", "MainMenu.xaml", typeof(global::TakiApp.MainMenu))]
 
-namespace Mobile {
+namespace TakiApp {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("MainMenu.xaml")]
     public partial class MainMenu : global::Xamarin.Forms.ContentPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Image BackgroundImage;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button PlayButton;
@@ -34,6 +37,7 @@ namespace Mobile {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainMenu));
+            BackgroundImage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "BackgroundImage");
             PlayButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "PlayButton");
             MultiplayerButton_1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "MultiplayerButton_1");
             MultiplayerButton_2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "MultiplayerButton_2");

@@ -1,5 +1,4 @@
-﻿using Mobile;
-using System;
+﻿using System;
 using TakiApp.TakiService;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

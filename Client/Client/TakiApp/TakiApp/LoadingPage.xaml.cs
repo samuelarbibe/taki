@@ -1,5 +1,4 @@
-﻿using Mobile;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +20,14 @@ namespace TakiApp
         private User _cu;
         private int _counter;
         private bool _gameNotFound;
+        private bool Busy;
 
-        public LoadingPage (int playerCount)
+        public LoadingPage()
+        {
+
+        }
+
+        public LoadingPage(int playerCount)
 		{
 
             service = new ServiceClient();
@@ -32,6 +37,7 @@ namespace TakiApp
             _playerCount = playerCount;
             _cu = MainMenu.CurrentUser;
             _gameNotFound = false;
+            Busy = true;
 
             InitializeComponent();
 
@@ -70,6 +76,7 @@ namespace TakiApp
                 {
                     _game = e.Result as Game;
                     msg = "Found";
+                    Busy = false;
                     //await this.Navigation.PushModalAsync(new GamePage(_game));
                 }
 
@@ -79,13 +86,9 @@ namespace TakiApp
                     else if (e.Result == null)
                     {
                         msg = "player is in queue...";
-                        service.StartGameAsync(_p, _playerCount);
                         _counter++;
-                    }
-                    else if (e.Cancelled)
-                    {
-                        msg = "canceled";
-                        _counter = 20;
+                        Thread.Sleep(500);
+                        service.StartGameAsync(_p, _playerCount);
                     }
                 }
                 else
@@ -97,6 +100,11 @@ namespace TakiApp
         }
 
 
+        private async void CancelButton_Click(object sender, System.EventArgs e)
+        {
+            _counter = 20;
+            await this.Navigation.PopModalAsync(true);
+        }
 
     }
 }

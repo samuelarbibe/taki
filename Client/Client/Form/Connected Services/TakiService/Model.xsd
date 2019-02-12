@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CardList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Card" nillable="true" type="tns:Card" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardList" nillable="true" type="tns:CardList" />
+  <xs:complexType name="Card">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="COLOR" type="tns:Card.Color" />
+          <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Special" type="xs:boolean" />
+          <xs:element minOccurs="0" name="VALUE" type="tns:Card.Value" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Card" nillable="true" type="tns:Card" />
+  <xs:complexType name="BaseEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
+  <xs:simpleType name="Card.Color">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="green" />
+      <xs:enumeration value="blue" />
+      <xs:enumeration value="red" />
+      <xs:enumeration value="yellow" />
+      <xs:enumeration value="multi" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Card.Color" nillable="true" type="tns:Card.Color" />
+  <xs:simpleType name="Card.Value">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Zero" />
+      <xs:enumeration value="One" />
+      <xs:enumeration value="PlusTwo" />
+      <xs:enumeration value="Three" />
+      <xs:enumeration value="Four" />
+      <xs:enumeration value="Five" />
+      <xs:enumeration value="Six" />
+      <xs:enumeration value="Seven" />
+      <xs:enumeration value="Eight" />
+      <xs:enumeration value="Nine" />
+      <xs:enumeration value="Stop" />
+      <xs:enumeration value="Plus" />
+      <xs:enumeration value="SwitchDirection" />
+      <xs:enumeration value="Taki" />
+      <xs:enumeration value="SwitchColor" />
+      <xs:enumeration value="TakiAll" />
+      <xs:enumeration value="SwitchColorAll" />
+      <xs:enumeration value="SwitchHandAll" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Card.Value" nillable="true" type="tns:Card.Value" />
+  <xs:complexType name="Player">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:User">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Hand" nillable="true" type="tns:CardList" />
+          <xs:element minOccurs="0" name="TempScore" type="xs:int" />
+          <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Admin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Level" type="xs:int" />
+          <xs:element minOccurs="0" name="Losses" type="xs:int" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Score" type="xs:int" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Wins" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="Game">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Losser" type="xs:int" />
+          <xs:element minOccurs="0" name="Players" nillable="true" type="tns:PlayerList" />
+          <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Game" nillable="true" type="tns:Game" />
+  <xs:complexType name="PlayerList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerList" nillable="true" type="tns:PlayerList" />
+  <xs:complexType name="Message">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action" type="tns:Message._action" />
+          <xs:element minOccurs="0" name="Card" nillable="true" type="tns:Card" />
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="Reciever" type="xs:int" />
+          <xs:element minOccurs="0" name="Target" nillable="true" type="tns:Player" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:simpleType name="Message._action">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="add" />
+      <xs:enumeration value="remove" />
+      <xs:enumeration value="next_turn" />
+      <xs:enumeration value="player_quit" />
+      <xs:enumeration value="switch_rotation" />
+      <xs:enumeration value="switch_hand" />
+      <xs:enumeration value="plus_two" />
+      <xs:enumeration value="win" />
+      <xs:enumeration value="loss" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Message._action" nillable="true" type="tns:Message._action" />
+  <xs:complexType name="MessageList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageList" nillable="true" type="tns:MessageList" />
+  <xs:complexType name="GameList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Game" nillable="true" type="tns:Game" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameList" nillable="true" type="tns:GameList" />
+  <xs:complexType name="UserList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserList" nillable="true" type="tns:UserList" />
+</xs:schema>
