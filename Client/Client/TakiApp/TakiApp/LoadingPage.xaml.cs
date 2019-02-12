@@ -21,7 +21,6 @@ namespace TakiApp
         private User _cu;
         private int _counter;
         private bool _gameNotFound;
-        private System.Threading.Timer dispatcherTimer;
 
         public LoadingPage (int playerCount)
 		{
@@ -57,61 +56,41 @@ namespace TakiApp
                 TempScore = 0
             };
 
-            //_game = MainWindow.Service.StartGame(_p, _playerCount);
-
-            var autoEvent = new AutoResetEvent(false);
-
-            // Create a timer that invokes FindGame after one second, 
-            // and every 1/2 second thereafter.
-            Console.WriteLine("{0:h:mm:ss.fff} Creating timer.\n", DateTime.Now);
-            var stateTimer = new Timer(FindGame, autoEvent, 2000, 2000);
-
-            // When autoEvent signals the second time, dispose of the timer.
-            autoEvent.WaitOne();
-            stateTimer.Dispose();
-            Console.WriteLine("\nDestroying timer.");
-
-
-            void FindGame(Object stateInfo)
-            {
-                if (_game == null)
-                {
-                    status.Text = "player is in queue...";
-
-                    if (_counter < 10)
-                    {
-                        service.StartGameAsync(_p, _playerCount);
-                        _counter++;
-                    }
-                    else
-                    {
-                        autoEvent.Set();//signal the thread to stop
-                        status.Text = "no game could be found... please try again";
-                        _gameNotFound = true;
-                    }
-                }
-                else // if game is found
-                {
-                    this.Navigation.PushModalAsync(new GamePage(_game));
-
-                    autoEvent.Set();//signal the thread to stop
-                }
-            }
+            service.StartGameAsync(_p, _playerCount);
         }
 
         private void Serv_RequestCompleted(object sender, StartGameCompletedEventArgs e)
         {
 
-            Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(() =>
             {
                 string msg = null;
 
-                if (e.Error != null) { msg = e.Error.Message; }
-                else if (e.Result == null) { msg = "Searching..."; }
-                else if (e.Cancelled) { msg = "No Games Found!"; }
-                else
+                if (e.Result != null)
                 {
                     _game = e.Result as Game;
+                    msg = "Found";
+                    //await this.Navigation.PushModalAsync(new GamePage(_game));
+                }
+
+                else if (_counter < 20)
+                {
+                    if (e.Error != null) { msg = e.Error.Message; }
+                    else if (e.Result == null)
+                    {
+                        msg = "player is in queue...";
+                        service.StartGameAsync(_p, _playerCount);
+                        _counter++;
+                    }
+                    else if (e.Cancelled)
+                    {
+                        msg = "canceled";
+                        _counter = 20;
+                    }
+                }
+                else
+                {
+                    msg = "No Games Found!";
                 }
                 this.status.Text = msg;
             });

@@ -4,9 +4,10 @@
     "\\Client",
     "\\Client\\Client",
     "\\Client\\Client\\TakiApp",
+    "\\Client\\Client\\TakiApp\\TakiApp.Android",
     "\\Server",
     "\\Server\\Service"
   ],
-  "SelectedNode": "\\Client\\Client\\TakiApp\\TakiApp.Android",
+  "SelectedNode": "\\Client\\Client\\TakiApp\\TakiApp.Android\\Properties",
   "PreviewInSolutionExplorer": false
 }

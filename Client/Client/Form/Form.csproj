@@ -78,6 +78,11 @@
     <Compile Include="AdminUserPage.xaml.cs">
       <DependentUpon>AdminUserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\TakiService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PlayerWin.xaml.cs">
       <DependentUpon>PlayerWin.xaml</DependentUpon>
     </Compile>
@@ -88,11 +93,6 @@
       <DependentUpon>GameHistoryUserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Check.cs" />
-    <Compile Include="Connected Services\TakiService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\ExitDialog.xaml.cs">
       <DependentUpon>ExitDialog.xaml</DependentUpon>
     </Compile>
@@ -308,21 +308,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\TakiService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\TakiService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\TakiService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\TakiService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Images\Settings.png" />
   </ItemGroup>
   <ItemGroup>
@@ -405,7 +390,22 @@
     <Resource Include="Taki2.ico" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\TakiService\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Connected Services\TakiService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TakiService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TakiService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TakiService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

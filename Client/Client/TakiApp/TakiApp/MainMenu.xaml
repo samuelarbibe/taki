@@ -25,9 +25,9 @@
         </StackLayout>
         
         <Button x:Name="PlayButton" Clicked="PlayButton_Click" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Text="PLAY" />
-        <Button x:Name="MultiplayerButton_1" Clicked="MultiplayerButton1_Click" IsVisible="false" Grid.Row="3" Grid.Column="2" Text="1"/>
-        <Button x:Name="MultiplayerButton_2" Clicked="MultiplayerButton2_Click" IsVisible="false"  Grid.Row="3" Grid.Column="3" Text="2"/>
-        <Button x:Name="MultiplayerButton_3" Clicked="MultiplayerButton3_Click" IsVisible="false" Grid.Row="3" Grid.Column="4" Text="3"/>
+        <Button x:Name="MultiplayerButton_1" Clicked="MultiplayerButton1_Click" IsVisible="false" Grid.Row="3" Grid.Column="2" Text="2"/>
+        <Button x:Name="MultiplayerButton_2" Clicked="MultiplayerButton2_Click" IsVisible="false"  Grid.Row="3" Grid.Column="3" Text="3"/>
+        <Button x:Name="MultiplayerButton_3" Clicked="MultiplayerButton3_Click" IsVisible="false" Grid.Row="3" Grid.Column="4" Text="4"/>
         <Button x:Name="CancelButton" Clicked="CancelButton_Click" BackgroundColor="Transparent" IsVisible="false" TextColor="Silver"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Cancel"/>
     </Grid>
 </ContentPage>
