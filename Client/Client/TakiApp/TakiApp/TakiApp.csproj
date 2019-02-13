@@ -13,21 +13,10 @@
 
   <ItemGroup>
     <Compile Remove="Connected Services\TakiService_Stam\**" />
-    <Compile Remove="UserControls\**" />
     <EmbeddedResource Remove="Connected Services\TakiService_Stam\**" />
-    <EmbeddedResource Remove="UserControls\**" />
     <None Remove="Connected Services\TakiService_Stam\**" />
-    <None Remove="UserControls\**" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="GamePage.xaml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="GamePage.xaml" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.5.3" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.5.3" />

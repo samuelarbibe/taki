@@ -825,23 +825,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\samue\\.nuget\\packages\\": {},
+    "C:\\Users\\User1\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
+      "projectUniqueName": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
       "projectName": "TakiApp",
-      "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
-      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\obj\\",
+      "projectPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
+      "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+      "outputPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -849,7 +849,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://software.xamarin.com": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

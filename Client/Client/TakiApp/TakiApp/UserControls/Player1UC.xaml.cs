@@ -26,23 +26,23 @@ namespace TakiApp.UserControls
         public bool Active { get => _active; set => _active = value; }
         public CardList Hand { get => _hand; set => _hand = value; }
 
-        public Card SelectedCard()
-        {
-            try
-            {
-                return (Card)HandView.SelectedItems[0];
-            }
-            catch
-            {
-                return null;
-            }
-        }
+        //public Card SelectedCard()
+        //{
+        //    try
+        //    {
+        //        return (Card)HandView.SelectedItems[0];
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //}
 
         public void UpdateUI(Player p)
         {
             CurrentPlayer = p;
 
-            DataContext = CurrentPlayer;
+            //BindingContext = CurrentPlayer;
 
             HandView.ItemsSource = null;
 
@@ -51,22 +51,21 @@ namespace TakiApp.UserControls
 
         public void SetAsActive()
         {
-            BackgroundActive.Fill = new SolidColorBrush(Color.FromArgb(90, 0, 250, 0));
+            //BackgroundActive.Fill = new SolidColorBrush(Color.FromArgb(90, 0, 250, 0));
         }
 
         public void SetAsNonActive()
         {
-            BackgroundActive.Fill = null;
+            //BackgroundActive.Fill = null;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)
         {
-
             CurrentPlayer = currentPlayer;
 
             Hand = currentPlayer.Hand;
 
-            DataContext = CurrentPlayer;
+            //BindingContext = CurrentPlayer;
 
             HandView.ItemsSource = CurrentPlayer.Hand;
         }

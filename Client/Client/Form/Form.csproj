@@ -275,14 +275,14 @@
     <None Include="Connected Services\TakiService\Form.TakiService.UserList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\TakiService\Model.xsd">
+    <None Include="Connected Services\TakiService\Model1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\service.xsd">
+    <None Include="Connected Services\TakiService\service.wsdl" />
+    <None Include="Connected Services\TakiService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\TakiService\service1.wsdl" />
-    <None Include="Connected Services\TakiService\service1.xsd">
+    <None Include="Connected Services\TakiService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />

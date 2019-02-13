@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://172.23.122.177:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="74fecb38-c39e-4af6-b5f2-282f037f4c1f" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="b95dd32b-7a00-4f11-bb4b-04fe51bd2f1b" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e4bfa889-2aa5-4c73-bdab-3b9c3d563de4" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="3fefe467-88d7-4f85-aa44-eb219a67eb2d" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4e4a5324-3a2a-480b-8c21-f76ad155c973" SourceId="1" SourceUrl="http://172.23.122.177:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="7f9d1c3f-a9e8-4115-8f1f-c22fd11c6a83" SourceId="1" SourceUrl="http://172.23.122.177:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="220bc269-6c30-48df-af43-3fcfe9114014" SourceId="1" SourceUrl="http://172.23.122.177:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="Model1.xsd" MetadataType="Schema" ID="c37f2f90-98f7-46b5-bd54-a1aa36804d57" SourceId="1" SourceUrl="http://172.23.122.177:8733/Design_Time_Addresses/Service/Service/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

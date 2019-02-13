@@ -72,12 +72,22 @@ namespace TakiApp
             {
                 string msg = null;
 
-                if (e.Result != null)
+                if(e.Error != null) { Console.WriteLine(e.Error); }
+                else if (e.Cancelled) { Console.WriteLine( " Canceled:"+e.Cancelled.ToString()); }
+                else if (e.Result != null)
                 {
                     _game = e.Result as Game;
-                    msg = "Found";
+                    msg = "Connecting...";
                     Busy = false;
-                    //await this.Navigation.PushModalAsync(new GamePage(_game));
+
+                    try
+                    {
+                        this.Navigation.PushAsync(new GamePage(_game));
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
 
                 else if (_counter < 20)
@@ -85,9 +95,10 @@ namespace TakiApp
                     if (e.Error != null) { msg = e.Error.Message; }
                     else if (e.Result == null)
                     {
+                        Console.WriteLine(_counter);
+                        Thread.Sleep(500);
                         msg = "player is in queue...";
                         _counter++;
-                        Thread.Sleep(500);
                         service.StartGameAsync(_p, _playerCount);
                     }
                 }

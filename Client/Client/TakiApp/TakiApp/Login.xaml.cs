@@ -39,9 +39,11 @@ namespace TakiApp
                 MainMenu.CurrentUser = null;
                 string msg = null;
 
-                if (e.Error != null) { msg = e.Error.Message; }
-                else if(e.Result == null) { msg = "Wrong Username or Password"; }
-                else if (e.Cancelled) { msg = "Didn't Work!"; }
+                if (e.Error != null) { msg = e.Error.Message;
+                    Console.WriteLine(msg);
+                    }
+                else if(e.Result == null) { msg = "Wrong Username or Password"; Console.WriteLine(msg); }
+                else if (e.Cancelled) { msg = "Didn't Work!"; Console.WriteLine(msg); }
                 else
                 {
                     MainMenu.CurrentUser = e.Result as User;

@@ -26,11 +26,11 @@
             <Entry x:Name="Password" IsPassword="true"  Placeholder="Password" />
         </Frame>
 
-        <Button x:Name="LoginButton" Padding="15" BorderRadius="28" Clicked="LoginButton_Click" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Text="Login" />
+        <Button x:Name="LoginButton" Padding="15" BorderRadius="28" Clicked="LoginButton_Click" Grid.Row="5" Grid.Column="1" HeightRequest="30" Text="Login" />
 
         <Button x:Name="RegisterButton" VerticalOptions="End" Clicked="RegisterButton_Click" BackgroundColor="Transparent" TextColor="Silver" Grid.Row="6" Grid.Column="1" Text="Create Account" />
 
-        <Label x:Name="noUserError" IsVisible="true" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="10" Grid.Row="5" Grid.Column="2" Text="Error"/>
+        <Label x:Name="noUserError" IsVisible="true" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="10" Grid.Row="7" Grid.Column="2" Text="Error"/>
 
     </Grid>
     
