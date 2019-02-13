@@ -171,184 +171,184 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0001.png" />
+    <EmbeddedResource Include="Resources\Cards\card0001.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0002.png" />
+    <EmbeddedResource Include="Resources\Cards\card0002.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0003.png" />
+    <EmbeddedResource Include="Resources\Cards\card0003.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0004.png" />
+    <EmbeddedResource Include="Resources\Cards\card0004.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0005.png" />
+    <EmbeddedResource Include="Resources\Cards\card0005.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0006.png" />
+    <EmbeddedResource Include="Resources\Cards\card0006.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0007.png" />
+    <EmbeddedResource Include="Resources\Cards\card0007.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0008.png" />
+    <EmbeddedResource Include="Resources\Cards\card0008.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0009.png" />
+    <EmbeddedResource Include="Resources\Cards\card0009.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0010.png" />
+    <EmbeddedResource Include="Resources\Cards\card0010.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0011.png" />
+    <EmbeddedResource Include="Resources\Cards\card0011.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0012.png" />
+    <EmbeddedResource Include="Resources\Cards\card0012.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0013.png" />
+    <EmbeddedResource Include="Resources\Cards\card0013.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0014.png" />
+    <EmbeddedResource Include="Resources\Cards\card0014.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0017.png" />
+    <EmbeddedResource Include="Resources\Cards\card0017.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0018.png" />
+    <EmbeddedResource Include="Resources\Cards\card0018.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0019.png" />
+    <EmbeddedResource Include="Resources\Cards\card0019.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0020.png" />
+    <EmbeddedResource Include="Resources\Cards\card0020.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0021.png" />
+    <EmbeddedResource Include="Resources\Cards\card0021.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0022.png" />
+    <EmbeddedResource Include="Resources\Cards\card0022.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0023.png" />
+    <EmbeddedResource Include="Resources\Cards\card0023.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0024.png" />
+    <EmbeddedResource Include="Resources\Cards\card0024.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0025.png" />
+    <EmbeddedResource Include="Resources\Cards\card0025.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0026.png" />
+    <EmbeddedResource Include="Resources\Cards\card0026.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0027.png" />
+    <EmbeddedResource Include="Resources\Cards\card0027.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0028.png" />
+    <EmbeddedResource Include="Resources\Cards\card0028.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0029.png" />
+    <EmbeddedResource Include="Resources\Cards\card0029.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0030.png" />
+    <EmbeddedResource Include="Resources\Cards\card0030.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0033.png" />
+    <EmbeddedResource Include="Resources\Cards\card0033.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0034.png" />
+    <EmbeddedResource Include="Resources\Cards\card0034.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0035.png" />
+    <EmbeddedResource Include="Resources\Cards\card0035.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0036.png" />
+    <EmbeddedResource Include="Resources\Cards\card0036.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0037.png" />
+    <EmbeddedResource Include="Resources\Cards\card0037.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0038.png" />
+    <EmbeddedResource Include="Resources\Cards\card0038.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0039.png" />
+    <EmbeddedResource Include="Resources\Cards\card0039.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0040.png" />
+    <EmbeddedResource Include="Resources\Cards\card0040.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0041.png" />
+    <EmbeddedResource Include="Resources\Cards\card0041.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0042.png" />
+    <EmbeddedResource Include="Resources\Cards\card0042.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0043.png" />
+    <EmbeddedResource Include="Resources\Cards\card0043.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0044.png" />
+    <EmbeddedResource Include="Resources\Cards\card0044.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0045.png" />
+    <EmbeddedResource Include="Resources\Cards\card0045.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0046.png" />
+    <EmbeddedResource Include="Resources\Cards\card0046.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0049.png" />
+    <EmbeddedResource Include="Resources\Cards\card0049.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0050.png" />
+    <EmbeddedResource Include="Resources\Cards\card0050.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0051.png" />
+    <EmbeddedResource Include="Resources\Cards\card0051.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0052.png" />
+    <EmbeddedResource Include="Resources\Cards\card0052.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0053.png" />
+    <EmbeddedResource Include="Resources\Cards\card0053.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0054.png" />
+    <EmbeddedResource Include="Resources\Cards\card0054.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0055.png" />
+    <EmbeddedResource Include="Resources\Cards\card0055.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0056.png" />
+    <EmbeddedResource Include="Resources\Cards\card0056.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0057.png" />
+    <EmbeddedResource Include="Resources\Cards\card0057.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0058.png" />
+    <EmbeddedResource Include="Resources\Cards\card0058.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0059.png" />
+    <EmbeddedResource Include="Resources\Cards\card0059.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0060.png" />
+    <EmbeddedResource Include="Resources\Cards\card0060.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0061.png" />
+    <EmbeddedResource Include="Resources\Cards\card0061.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0062.png" />
+    <EmbeddedResource Include="Resources\Cards\card0062.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0065.png" />
+    <EmbeddedResource Include="Resources\Cards\card0065.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0066.png" />
+    <EmbeddedResource Include="Resources\Cards\card0066.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0067.png" />
+    <EmbeddedResource Include="Resources\Cards\card0067.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\card0068.png" />
+    <EmbeddedResource Include="Resources\Cards\card0068.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Fonts\Asap\OFL.txt" />

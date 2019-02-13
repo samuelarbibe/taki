@@ -42,7 +42,7 @@ namespace TakiApp.UserControls
         {
             CurrentPlayer = p;
 
-            //BindingContext = CurrentPlayer;
+            BindingContext = CurrentPlayer;
 
             HandView.ItemsSource = null;
 
@@ -65,7 +65,7 @@ namespace TakiApp.UserControls
 
             Hand = currentPlayer.Hand;
 
-            //BindingContext = CurrentPlayer;
+            BindingContext = CurrentPlayer;
 
             HandView.ItemsSource = CurrentPlayer.Hand;
         }

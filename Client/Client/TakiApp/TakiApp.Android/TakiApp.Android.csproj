@@ -65,23 +65,13 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="Assets\Fonts\Asap\Asap-Bold.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-BoldItalic.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-Italic.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-Medium.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-MediumItalic.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-Regular.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-SemiBold.ttf" />
-    <None Include="Assets\Fonts\Asap\Asap-SemiBoldItalic.ttf" />
-    <None Include="Assets\Fonts\Fredoka_One\FredokaOne-Regular.ttf" />
-    <None Include="Assets\Fonts\Varela_Round\VarelaRound-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0001.png" />
+    <AndroidResource Include="Resources\drawable\card0001.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TakiApp\TakiApp.csproj">
@@ -90,220 +80,211 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0002.png" />
+    <AndroidResource Include="Resources\drawable\card0002.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0003.png" />
+    <AndroidResource Include="Resources\drawable\card0003.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0004.png" />
+    <AndroidResource Include="Resources\drawable\card0004.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0005.png" />
+    <AndroidResource Include="Resources\drawable\card0005.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0006.png" />
+    <AndroidResource Include="Resources\drawable\card0006.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0007.png" />
+    <AndroidResource Include="Resources\drawable\card0007.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0008.png" />
+    <AndroidResource Include="Resources\drawable\card0008.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0009.png" />
+    <AndroidResource Include="Resources\drawable\card0009.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0010.png" />
+    <AndroidResource Include="Resources\drawable\card0010.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0011.png" />
+    <AndroidResource Include="Resources\drawable\card0011.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0012.png" />
+    <AndroidResource Include="Resources\drawable\card0012.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0013.png" />
+    <AndroidResource Include="Resources\drawable\card0013.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0014.png" />
+    <AndroidResource Include="Resources\drawable\card0014.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0017.png" />
+    <AndroidResource Include="Resources\drawable\card0017.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0018.png" />
+    <AndroidResource Include="Resources\drawable\card0018.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0019.png" />
+    <AndroidResource Include="Resources\drawable\card0019.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0020.png" />
+    <AndroidResource Include="Resources\drawable\card0020.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0021.png" />
+    <AndroidResource Include="Resources\drawable\card0021.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0022.png" />
+    <AndroidResource Include="Resources\drawable\card0022.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0023.png" />
+    <AndroidResource Include="Resources\drawable\card0023.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0024.png" />
+    <AndroidResource Include="Resources\drawable\card0024.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0025.png" />
+    <AndroidResource Include="Resources\drawable\card0025.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0026.png" />
+    <AndroidResource Include="Resources\drawable\card0026.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0027.png" />
+    <AndroidResource Include="Resources\drawable\card0027.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0028.png" />
+    <AndroidResource Include="Resources\drawable\card0028.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0029.png" />
+    <AndroidResource Include="Resources\drawable\card0029.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0030.png" />
+    <AndroidResource Include="Resources\drawable\card0030.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0033.png" />
+    <AndroidResource Include="Resources\drawable\card0033.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0034.png" />
+    <AndroidResource Include="Resources\drawable\card0034.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0035.png" />
+    <AndroidResource Include="Resources\drawable\card0035.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0036.png" />
+    <AndroidResource Include="Resources\drawable\card0036.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0037.png" />
+    <AndroidResource Include="Resources\drawable\card0037.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0038.png" />
+    <AndroidResource Include="Resources\drawable\card0038.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0039.png" />
+    <AndroidResource Include="Resources\drawable\card0039.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0040.png" />
+    <AndroidResource Include="Resources\drawable\card0040.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0041.png" />
+    <AndroidResource Include="Resources\drawable\card0041.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0042.png" />
+    <AndroidResource Include="Resources\drawable\card0042.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0043.png" />
+    <AndroidResource Include="Resources\drawable\card0043.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0044.png" />
+    <AndroidResource Include="Resources\drawable\card0044.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0045.png" />
+    <AndroidResource Include="Resources\drawable\card0045.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0046.png" />
+    <AndroidResource Include="Resources\drawable\card0046.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0049.png" />
+    <AndroidResource Include="Resources\drawable\card0049.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0050.png" />
+    <AndroidResource Include="Resources\drawable\card0050.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0051.png" />
+    <AndroidResource Include="Resources\drawable\card0051.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0052.png" />
+    <AndroidResource Include="Resources\drawable\card0052.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0053.png" />
+    <AndroidResource Include="Resources\drawable\card0053.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0054.png" />
+    <AndroidResource Include="Resources\drawable\card0054.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0055.png" />
+    <AndroidResource Include="Resources\drawable\card0055.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0056.png" />
+    <AndroidResource Include="Resources\drawable\card0056.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0057.png" />
+    <AndroidResource Include="Resources\drawable\card0057.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0058.png" />
+    <AndroidResource Include="Resources\drawable\card0058.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0059.png" />
+    <AndroidResource Include="Resources\drawable\card0059.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0060.png" />
+    <AndroidResource Include="Resources\drawable\card0060.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0061.png" />
+    <AndroidResource Include="Resources\drawable\card0061.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0062.png" />
+    <AndroidResource Include="Resources\drawable\card0062.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0065.png" />
+    <AndroidResource Include="Resources\drawable\card0065.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0066.png" />
+    <AndroidResource Include="Resources\drawable\card0066.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0067.png" />
+    <AndroidResource Include="Resources\drawable\card0067.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cards\card0068.png" />
+    <AndroidResource Include="Resources\drawable\card0068.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fonts\Asap\OFL.txt" />
+    <None Include="Resources\drawable\Back_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fonts\Fredoka_One\OFL.txt" />
+    <None Include="Resources\drawable\Logout_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fonts\Varela_Round\OFL.txt" />
+    <None Include="Resources\drawable\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Images\Back_Icon.png" />
+    <None Include="Resources\drawable\TAKI.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Images\Logout_Icon.png" />
+    <None Include="Resources\drawable\wallpaper_blue.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Images\Settings.png" />
+    <None Include="Resources\drawable\aviv.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Images\TAKI.png" />
+    <None Include="Resources\drawable\liam.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Images\wallpaper_blue.png" />
+    <None Include="Resources\drawable\samuel.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Profile_Pictures\aviv.jpg" />
+    <None Include="Resources\drawable\yoav.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Profile_Pictures\liam.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Profile_Pictures\samuel.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Profile_Pictures\yoav.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Profile_Pictures\yogev.jpg" />
+    <None Include="Resources\drawable\yogev.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

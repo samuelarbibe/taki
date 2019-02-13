@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakiApp.iOS", "TakiApp\Taki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakiApp.UWP", "TakiApp\TakiApp.UWP\TakiApp.UWP.csproj", "{CE545837-BC00-4476-8580-714CC0663963}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakiApp", "TakiApp\TakiApp\TakiApp.csproj", "{9162FCEA-A087-44B6-9E91-64E988A02E9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TakiApp", "TakiApp\TakiApp\TakiApp.csproj", "{9162FCEA-A087-44B6-9E91-64E988A02E9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TakiApp.Utilities"
              x:Class="TakiApp.UserControls.Player1UC">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <local:SourceConverter x:Key="SourceConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <Grid x:Name="MyGrid">
-        <ListView x:Name="HandView" HeightRequest="400"  >
+        <ListView x:Name="HandView" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Image}"></Image>
+                    <ViewCell>
+                        <Image Rotation="90" Source="{Binding Image, Converter={StaticResource SourceConverter}}"></Image>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -20,7 +20,9 @@ namespace TakiApp
         private User _cu;
         private int _counter;
         private bool _gameNotFound;
-        private bool Busy;
+        private bool _busy;
+
+        public bool Busy { get => _busy; set => _busy = value; }
 
         public LoadingPage()
         {
@@ -37,6 +39,9 @@ namespace TakiApp
             _playerCount = playerCount;
             _cu = MainMenu.CurrentUser;
             _gameNotFound = false;
+
+            BindingContext = this;
+
             Busy = true;
 
             InitializeComponent();
@@ -77,17 +82,11 @@ namespace TakiApp
                 else if (e.Result != null)
                 {
                     _game = e.Result as Game;
-                    msg = "Connecting...";
+                    msg = "Connected";
                     Busy = false;
 
-                    try
-                    {
-                        this.Navigation.PushAsync(new GamePage(_game));
-                    }
-                    catch(Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    this.Navigation.PushModalAsync(new GamePage(_game));
+
                 }
 
                 else if (_counter < 20)
@@ -105,6 +104,7 @@ namespace TakiApp
                 else
                 {
                     msg = "No Games Found!";
+                    Busy = false;
                 }
                 this.status.Text = msg;
             });
@@ -114,6 +114,7 @@ namespace TakiApp
         private async void CancelButton_Click(object sender, System.EventArgs e)
         {
             _counter = 20;
+            Busy = false;
             await this.Navigation.PopModalAsync(true);
         }
 

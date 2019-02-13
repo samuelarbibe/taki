@@ -9,6 +9,9 @@ namespace TakiApp
     public partial class Login : ContentPage
     {
         ServiceClient service;
+        private string usernameValue;
+        private string passwordValue;
+
         public Login()
         {
             InitializeComponent();
@@ -18,8 +21,8 @@ namespace TakiApp
 
         private void LoginButton_Click(object sender, System.EventArgs e)
         {
-            string usernameValue = Username.Text;
-            string passwordValue = Password.Text;
+            usernameValue = Username.Text;
+            passwordValue = Password.Text;
 
             if (usernameValue != null && passwordValue != null)
             {
@@ -58,5 +61,12 @@ namespace TakiApp
             this.Navigation.PushModalAsync(new Register());
         }
 
+        private void AdminFillButton_Clicked(object sender, EventArgs e)
+        {
+            Username.Text = "Samuelov1";
+            Password.Text = "123";
+
+            LoginButton_Click(null, null);
+        }
     }
 }

@@ -137,6 +137,11 @@ namespace TakiApp
             //}
         }
 
+        private void ExitGameButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //private void SetBackgroundWorker()
         //{
         //    BackgroundProgress = new BackgroundWorker();
