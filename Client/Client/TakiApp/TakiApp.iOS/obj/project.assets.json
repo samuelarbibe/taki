@@ -185,6 +185,20 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
+      "Xfx.Controls/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.0.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        }
+      },
       "TakiApp/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -193,7 +207,8 @@
           "System.ServiceModel.Http": "4.5.3",
           "System.ServiceModel.NetTcp": "4.5.3",
           "System.ServiceModel.Security": "4.5.3",
-          "Xamarin.Forms": "3.5.0.129452"
+          "Xamarin.Forms": "3.5.0.129452",
+          "Xfx.Controls": "1.1.3"
         },
         "compile": {
           "bin/placeholder/TakiApp.dll": {}
@@ -387,6 +402,20 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
+      "Xfx.Controls/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.0.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        }
+      },
       "TakiApp/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -395,7 +424,8 @@
           "System.ServiceModel.Http": "4.5.3",
           "System.ServiceModel.NetTcp": "4.5.3",
           "System.ServiceModel.Security": "4.5.3",
-          "Xamarin.Forms": "3.5.0.129452"
+          "Xamarin.Forms": "3.5.0.129452",
+          "Xfx.Controls": "1.1.3"
         },
         "compile": {
           "bin/placeholder/TakiApp.dll": {}
@@ -589,6 +619,20 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
+      "Xfx.Controls/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.0.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        }
+      },
       "TakiApp/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -597,7 +641,8 @@
           "System.ServiceModel.Http": "4.5.3",
           "System.ServiceModel.NetTcp": "4.5.3",
           "System.ServiceModel.Security": "4.5.3",
-          "Xamarin.Forms": "3.5.0.129452"
+          "Xamarin.Forms": "3.5.0.129452",
+          "Xfx.Controls": "1.1.3"
         },
         "compile": {
           "bin/placeholder/TakiApp.dll": {}
@@ -791,6 +836,20 @@
           "build/Xamarin.Forms.targets": {}
         }
       },
+      "Xfx.Controls/1.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.0.0"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Xfx.Controls.dll": {},
+          "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll": {}
+        }
+      },
       "TakiApp/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -799,7 +858,8 @@
           "System.ServiceModel.Http": "4.5.3",
           "System.ServiceModel.NetTcp": "4.5.3",
           "System.ServiceModel.Security": "4.5.3",
-          "Xamarin.Forms": "3.5.0.129452"
+          "Xamarin.Forms": "3.5.0.129452",
+          "Xfx.Controls": "1.1.3"
         },
         "compile": {
           "bin/placeholder/TakiApp.dll": {}
@@ -1298,6 +1358,24 @@
         "xamarin.forms.nuspec"
       ]
     },
+    "Xfx.Controls/1.1.3": {
+      "sha512": "Vf66ME0jYWNXr+OZCGsacOncHAX867ugwmu7FIjHFcgPWaz8Af6z057qNbVbP2chsrrfco58slcfvAb8eXViwQ==",
+      "type": "package",
+      "path": "xfx.controls/1.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/Xfx.Controls.Droid.dll",
+        "lib/MonoAndroid/Xfx.Controls.dll",
+        "lib/Xamarin.iOS10/Xfx.Controls.dll",
+        "lib/Xamarin.iOS10/Xfx.Controls.iOS.dll",
+        "lib/netcore45/Xfx.Controls.dll",
+        "lib/netstandard1.3/Xfx.Controls.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Xfx.Controls.dll",
+        "xfx.controls.1.1.3.nupkg.sha512",
+        "xfx.controls.nuspec"
+      ]
+    },
     "TakiApp/1.0.0": {
       "type": "project",
       "path": "../TakiApp/TakiApp.csproj",
@@ -1308,7 +1386,8 @@
     "Xamarin.iOS,Version=v1.0": [
       "NETStandard.Library >= 2.0.3",
       "TakiApp >= 1.0.0",
-      "Xamarin.Forms >= 3.5.0.129452"
+      "Xamarin.Forms >= 3.5.0.129452",
+      "Xfx.Controls >= 1.1.3"
     ]
   },
   "packageFolders": {
@@ -1356,6 +1435,10 @@
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[3.5.0.129452, )"
+          },
+          "Xfx.Controls": {
+            "target": "Package",
+            "version": "[1.1.3, )"
           }
         }
       }

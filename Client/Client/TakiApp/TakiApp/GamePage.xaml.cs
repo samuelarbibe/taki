@@ -67,6 +67,11 @@ namespace TakiApp
         //public Card OpenTaki { get => _openTaki; set => _openTaki = value; }
         //public int PlusValue { get => _plusValue; set => _plusValue = value; }
 
+        public GamePage()
+        {
+
+        }
+
         public GamePage (Game game)
 		{
             InitializeComponent();

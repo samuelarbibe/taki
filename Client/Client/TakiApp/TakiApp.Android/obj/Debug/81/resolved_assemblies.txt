@@ -31,6 +31,8 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.Android.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xfx.Controls.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xfx.Controls.Droid.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.Net.Http.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.Runtime.Serialization.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.ServiceModel.Internals.dll
@@ -47,3 +49,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.ServiceModel.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.IdentityModel.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.ServiceModel.Http.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.Runtime.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.ObjectModel.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\System.Threading.dll

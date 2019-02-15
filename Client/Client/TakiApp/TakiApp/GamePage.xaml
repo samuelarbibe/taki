@@ -25,7 +25,7 @@
 
         <Button x:Name="ExitGameButton" Clicked="ExitGameButton_Click"></Button>
 
-        <control:Player1UC x:Name="uc1" Rotation="270" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="1" Grid.RowSpan="3"/>
+        <control:Player1UC x:Name="uc1" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
 
     <!--<control:Player2UC x:Name="uc2" Grid.Column="9" Grid.RowSpan="4" Rotation="270" Grid.ColumnSpan="5" Grid.Row="2" Margin="1,48,-134,0" />
 

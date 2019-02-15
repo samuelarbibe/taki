@@ -8,12 +8,13 @@
             <local:SourceConverter x:Key="SourceConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <Grid x:Name="MyGrid">
-        <ListView x:Name="HandView" >
+    <Grid x:Name="MyGrid" Rotation="270">
+        <ListView x:Name="HandView" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Image Rotation="90" Source="{Binding Image, Converter={StaticResource SourceConverter}}"></Image>
+                        <Image Margin="0,-20,0,0" Rotation="90" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="135" Aspect="AspectFit">
+                        </Image>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
