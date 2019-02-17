@@ -9,16 +9,18 @@
     <Grid>
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
 
-        <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
+        <Button Click="Username_Click">
+            <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Button>
 
         <ItemsControl x:Name="CardListItemControl" Margin="0,20,20,30">
             <ItemsControl.ItemTemplate>

@@ -70,6 +70,8 @@ namespace ViewModel
 
         public User SelectById(int id)
         {
+            Command.Parameters.Clear();
+            
             Command.CommandText = "SELECT * FROM User_Table WHERE [ID] = @Id";
 
             //parameters

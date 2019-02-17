@@ -134,12 +134,48 @@ namespace BusinessLayer
             return user;
         }
 
-        public GameList BlGetAllUserGames(int UserId)
+        public User BlGetUserById(int id)
+        {
+            UserDb db = new UserDb();
+            User user = db.SelectById(id);
+            return user;
+        }
+
+        public GameList BlGetAllUserGames(int userId)
         {
             GameDb gameDB = new GameDb();
 
-            GameList temp = gameDB.SelectByUserId(UserId);
+            GameList temp = gameDB.SelectByUserId(userId);
             return temp;
+        }
+
+        // return a list containing all the user's friends
+        public UserList BlGetAllUserFriends(int userId)
+        {
+            FriendDb db = new FriendDb();
+
+            UserList temp = db.GetAllUserFriends(userId);
+            return temp;
+        }
+
+        public bool BlAreFriends(int user1Id, int user2Id)
+        {
+            FriendDb db = new FriendDb();
+
+            return (db.SelectByUsersId(user1Id, user2Id).Count > 0);
+        }
+
+        public void BlMakeFriends(User u1, User u2)
+        {
+            FriendDb db = new FriendDb();
+
+            Friendship fr = new Friendship()
+            {
+                User1 = u1,
+                User2 = u2
+            };
+
+            db.Insert(fr);
         }
 
         // creates a new game and returns it

@@ -85,5 +85,10 @@ namespace Form
         {
             MainMenu.MenuFrame.Navigate(new SettingsPage());
         }
+
+        private void FriendsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.MenuFrame.Navigate(new FriendsPage());
+        }
     }
 }

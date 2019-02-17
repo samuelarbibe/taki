@@ -739,11 +739,35 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByUsername", ReplyAction="http://tempuri.org/IService/GetUserByUsernameResponse")]
         System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string Username);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        Form.TakiService.User GetUserById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.User> GetUserByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         bool UsernameAvailable(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUseFriends", ReplyAction="http://tempuri.org/IService/GetAllUseFriendsResponse")]
+        Form.TakiService.UserList GetAllUseFriends(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUseFriends", ReplyAction="http://tempuri.org/IService/GetAllUseFriendsResponse")]
+        System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUseFriendsAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AreFriends", ReplyAction="http://tempuri.org/IService/AreFriendsResponse")]
+        bool AreFriends(int user1Id, int user2Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AreFriends", ReplyAction="http://tempuri.org/IService/AreFriendsResponse")]
+        System.Threading.Tasks.Task<bool> AreFriendsAsync(int user1Id, int user2Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/MakeFriends", ReplyAction="http://tempuri.org/IService/MakeFriendsResponse")]
+        void MakeFriends(Form.TakiService.User u1, Form.TakiService.User u2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/MakeFriends", ReplyAction="http://tempuri.org/IService/MakeFriendsResponse")]
+        System.Threading.Tasks.Task MakeFriendsAsync(Form.TakiService.User u1, Form.TakiService.User u2);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
         bool StopSearchingForGame(Form.TakiService.Player p);
@@ -923,12 +947,44 @@ namespace Form.TakiService {
             return base.Channel.GetUserByUsernameAsync(Username);
         }
         
+        public Form.TakiService.User GetUserById(int id) {
+            return base.Channel.GetUserById(id);
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.User> GetUserByIdAsync(int id) {
+            return base.Channel.GetUserByIdAsync(id);
+        }
+        
         public bool UsernameAvailable(string username) {
             return base.Channel.UsernameAvailable(username);
         }
         
         public System.Threading.Tasks.Task<bool> UsernameAvailableAsync(string username) {
             return base.Channel.UsernameAvailableAsync(username);
+        }
+        
+        public Form.TakiService.UserList GetAllUseFriends(int userId) {
+            return base.Channel.GetAllUseFriends(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Form.TakiService.UserList> GetAllUseFriendsAsync(int userId) {
+            return base.Channel.GetAllUseFriendsAsync(userId);
+        }
+        
+        public bool AreFriends(int user1Id, int user2Id) {
+            return base.Channel.AreFriends(user1Id, user2Id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AreFriendsAsync(int user1Id, int user2Id) {
+            return base.Channel.AreFriendsAsync(user1Id, user2Id);
+        }
+        
+        public void MakeFriends(Form.TakiService.User u1, Form.TakiService.User u2) {
+            base.Channel.MakeFriends(u1, u2);
+        }
+        
+        public System.Threading.Tasks.Task MakeFriendsAsync(Form.TakiService.User u1, Form.TakiService.User u2) {
+            return base.Channel.MakeFriendsAsync(u1, u2);
         }
         
         public bool StopSearchingForGame(Form.TakiService.Player p) {

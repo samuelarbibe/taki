@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Media;
 using Form.TakiService;
 
@@ -13,11 +14,13 @@ namespace Form.UserControls
         private Player _currentPlayer;
         private bool _active;
 
+
         public Player1UC() {
 
             InitializeComponent();
         }
 
+        public event EventHandler ProfileButtonClicked;
         public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
         public bool Active { get => _active; set => _active = value; }
         public CardList Hand { get => _hand; set => _hand = value; }
@@ -67,5 +70,9 @@ namespace Form.UserControls
             HandView.ItemsSource = CurrentPlayer.Hand;
         }
 
+        private void Username_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

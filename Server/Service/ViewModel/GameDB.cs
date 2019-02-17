@@ -6,7 +6,6 @@ namespace ViewModel
 {
     public class GameDb : BaseDb
     {
-        private static GameList _list;
 
         protected override BaseEntity NewEntity()
         {

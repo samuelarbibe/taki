@@ -142,11 +142,6 @@ namespace ViewModel
             Console.WriteLine("PlayerCardConnection between player [" + con.Player.Id + "] and card [" + con.Card.Id + "] DELETED");
         }
 
-
-        //BUG
-        //cannot update the SET the WHERE parameters
-        //solution: use insert and delete for every player-card PlayerCardConnection(delete the old, insert updated)
-
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
             PlayerCardConnection con = entity as PlayerCardConnection;

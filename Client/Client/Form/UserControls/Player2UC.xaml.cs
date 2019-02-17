@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
+using Form.Dialogs;
 using Form.TakiService;
 
 namespace Form.UserControls
@@ -49,6 +50,18 @@ namespace Form.UserControls
             DataContext = CurrentPlayer;
 
             CardListItemControl.ItemsSource = CurrentPlayer.Hand;
+        }
+
+        private void Username_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            User temp = MainWindow.Service.GetUserById(CurrentPlayer.UserId);
+
+            PlayerProfile dialog = new PlayerProfile(temp);
+
+            if (dialog.ShowDialog() == true)
+            {
+                MainWindow.Service.MakeFriends(MainWindow.CurrentUser, temp);
+            }
         }
 
     }

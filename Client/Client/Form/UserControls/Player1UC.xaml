@@ -10,8 +10,10 @@
     <Grid x:Name="MyGrid">
 
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
-
-        <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}"  FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White"/>
+        
+        <Button FontSize="15" x:Name="Username" Click="Username_Click">
+            <TextBlock Text="{Binding Username}"  Foreground="White" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"></TextBlock>
+        </Button>
 
         <ListView BorderThickness="0" x:Name="HandView" Background="Transparent" HorizontalAlignment="Stretch">
             <ListView.ItemsPanel>

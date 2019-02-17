@@ -43,6 +43,12 @@ namespace Service
             return bl.BlGetUserByUsername(Username);
         }
 
+        public User GetUserById(int id)
+        {
+            Bl bl = new Bl();
+            return bl.BlGetUserById(id);
+        }
+
         public User Login(string username, string password)
         {
             Bl bl = new Bl();
@@ -85,10 +91,28 @@ namespace Service
             return bl.BlUsernameAvailable(username);
         }
 
-        public GameList GetAllUserGames(int UserId)
+        public GameList GetAllUserGames(int userId)
         {
             Bl bl = new Bl();
-            return bl.BlGetAllUserGames(UserId);
+            return bl.BlGetAllUserGames(userId);
+        }
+
+        public UserList GetAllUseFriends(int userId)
+        {
+            Bl bl = new Bl();
+            return bl.BlGetAllUserFriends(userId);
+        }
+
+        public bool AreFriends(int user1Id, int user2Id)
+        {
+            Bl bl = new Bl();
+            return bl.BlAreFriends(user1Id, user2Id);
+        }
+
+        public void MakeFriends(User u1, User u2)
+        {
+            Bl bl = new Bl();
+            bl.BlMakeFriends(u1, u2);
         }
 
         public Game StartGame(Player p, int playerCount)

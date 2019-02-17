@@ -100,7 +100,7 @@ namespace Form
             uctable.TakeCardFromDeckButtonClicked += TakeCardFromDeck;
 
             uctable.PassCardToStackButtonClicked += PassCardToDeck;
-
+        
             Deck = PlayersList[PlayersList.Count - 1].Hand.ToList();
 
             DataContext = PlayersList;

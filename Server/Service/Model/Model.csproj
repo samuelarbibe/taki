@@ -47,6 +47,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardList.cs" />
     <Compile Include="ConnectionList.cs" />
+    <Compile Include="Friendship.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameList.cs" />
     <Compile Include="Message.cs" />

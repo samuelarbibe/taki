@@ -83,11 +83,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\PlayerProfile.xaml.cs">
+      <DependentUpon>PlayerProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PlayerWin.xaml.cs">
       <DependentUpon>PlayerWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\SwitchColor.xaml.cs">
       <DependentUpon>SwitchColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FriendsPage.xaml.cs">
+      <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameHistoryUserPage.xaml.cs">
       <DependentUpon>GameHistoryUserPage.xaml</DependentUpon>
@@ -144,6 +150,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\PlayerProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\ExitDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\SwitchColor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FriendsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

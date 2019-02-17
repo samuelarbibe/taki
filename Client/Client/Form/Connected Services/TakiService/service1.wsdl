@@ -97,11 +97,35 @@
   <wsdl:message name="IService_GetUserByUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserByUsernameResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_GetUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_UsernameAvailable_InputMessage">
     <wsdl:part name="parameters" element="tns:UsernameAvailable" />
   </wsdl:message>
   <wsdl:message name="IService_UsernameAvailable_OutputMessage">
     <wsdl:part name="parameters" element="tns:UsernameAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllUseFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUseFriends" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetAllUseFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUseFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AreFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:AreFriends" />
+  </wsdl:message>
+  <wsdl:message name="IService_AreFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AreFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_MakeFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeFriends" />
+  </wsdl:message>
+  <wsdl:message name="IService_MakeFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeFriendsResponse" />
   </wsdl:message>
   <wsdl:message name="IService_StopSearchingForGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StopSearchingForGame" />
@@ -194,9 +218,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUserByUsername" message="tns:IService_GetUserByUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUserByUsernameResponse" message="tns:IService_GetUserByUsername_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUserById" message="tns:IService_GetUserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUserByIdResponse" message="tns:IService_GetUserById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UsernameAvailable">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/UsernameAvailable" message="tns:IService_UsernameAvailable_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/UsernameAvailableResponse" message="tns:IService_UsernameAvailable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUseFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetAllUseFriends" message="tns:IService_GetAllUseFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetAllUseFriendsResponse" message="tns:IService_GetAllUseFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AreFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AreFriends" message="tns:IService_AreFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AreFriendsResponse" message="tns:IService_AreFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/MakeFriends" message="tns:IService_MakeFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/MakeFriendsResponse" message="tns:IService_MakeFriends_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="StopSearchingForGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/StopSearchingForGame" message="tns:IService_StopSearchingForGame_InputMessage" />
@@ -356,8 +396,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://tempuri.org/IService/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UsernameAvailable">
       <soap:operation soapAction="http://tempuri.org/IService/UsernameAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUseFriends">
+      <soap:operation soapAction="http://tempuri.org/IService/GetAllUseFriends" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AreFriends">
+      <soap:operation soapAction="http://tempuri.org/IService/AreFriends" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeFriends">
+      <soap:operation soapAction="http://tempuri.org/IService/MakeFriends" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -413,7 +489,7 @@
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
-      <soap:address location="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/" />
+      <soap:address location="http://172.23.122.177:8733/Design_Time_Addresses/Service/Service/" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

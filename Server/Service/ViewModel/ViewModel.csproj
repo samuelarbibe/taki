@@ -44,6 +44,7 @@
     <Compile Include="BaseDB.cs" />
     <Compile Include="CardDB.cs" />
     <Compile Include="ChangeEntity.cs" />
+    <Compile Include="FriendDB.cs" />
     <Compile Include="GameDB.cs" />
     <Compile Include="PlayerCardDB.cs" />
     <Compile Include="PlayerDB.cs" />

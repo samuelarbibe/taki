@@ -62,7 +62,19 @@ namespace Service
         User GetUserByUsername(string Username);
 
         [OperationContract]
+        User GetUserById(int id);
+
+        [OperationContract]
         bool UsernameAvailable(string username);
+
+        [OperationContract]
+        UserList GetAllUseFriends(int userId);
+
+        [OperationContract]
+        bool AreFriends(int user1Id, int user2Id);
+
+        [OperationContract]
+        void MakeFriends(User u1, User u2);
 
         [OperationContract]
         bool StopSearchingForGame(Player p);
