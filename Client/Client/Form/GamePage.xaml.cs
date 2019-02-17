@@ -18,23 +18,11 @@ namespace Form
     {
 
         private bool _myTurn;
-        private int _plusValue;
-        private Card _openTaki;
-        private Game _currentGame;
-        private User _currentUser = MainWindow.CurrentUser;
-        private Player _currentPlayer;
-        private Player _table;
-        private PlayerList _playersList = new PlayerList();
-        private MessageList _localMessageList;
-        private BackgroundWorker _backgroundProgress;
-        private BackgroundWorker _saveChanges;
-        private List<Card> _deck;
-
-        private bool _active;
-        private int _turn;
-        private int _playersCount;
-        private int _currentPlayerIndex;
-        private bool _clockWiseRotation;
+        private PlayerList PlayersList { get; set; } = new PlayerList();
+        private Player Table { get; set; }
+        private Player CurrentPlayer { get; set; }
+        private User CurrentUser { get; set; } = MainWindow.CurrentUser;
+        private Game CurrentGame { get; set; }
 
         public bool MyTurn
         {
@@ -50,23 +38,16 @@ namespace Form
                 else uctable.CannotTakeCardFromDeck();
             }
         }
-        public bool Active { get => _active; set => _active = value; }
-        public int Turn { get => _turn; set => _turn = value; }
-        public List<Card> Deck { get => _deck; set => _deck = value; }
-        public bool ClockWiseRotation { get => _clockWiseRotation; set => _clockWiseRotation = value; }
-        public MessageList LocalMessageList { get => _localMessageList; set => _localMessageList = value; }
-        public BackgroundWorker BackgroundProgress { get => _backgroundProgress; set => _backgroundProgress = value; }
-        public BackgroundWorker SaveChanges1 { get => _saveChanges; set => _saveChanges = value; }
-        public int PlayersCount { get => _playersCount; set => _playersCount = value; }
-        public int CurrentPlayerIndex { get => _currentPlayerIndex; set => _currentPlayerIndex = value; }
-
-        private PlayerList PlayersList { get => _playersList; set => _playersList = value; }
-        private Player Table { get => _table; set => _table = value; }
-        private Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
-        private User CurrentUser { get => _currentUser; set => _currentUser = value; }
-        private Game CurrentGame { get => _currentGame; set => _currentGame = value; }
-        public Card OpenTaki { get => _openTaki; set => _openTaki = value; }
-        public int PlusValue { get => _plusValue; set => _plusValue = value; }
+        public bool Active { get; set; }
+        public bool ClockWiseRotation { get; set; }
+        public int Turn { get; set; }
+        public int CurrentPlayerIndex { get; set; }
+        public int PlayersCount { get; set; }
+        public int PlusValue { get; set; }
+        public Card OpenTaki { get; set; }
+        public List<Card> Deck { get; set; }
+        public MessageList LocalMessageList { get; set; }
+        public BackgroundWorker BackgroundProgress { get; set; }
 
         public GamePage(Game game)
         {
@@ -89,12 +70,9 @@ namespace Form
             ReorderPlayerList();
 
             //the first player is the one to request changes saving in the database every x seconds
-            if (_currentUser.Id == firstPlayerUserId)
+            if (CurrentUser.Id == firstPlayerUserId)
             {
-
                 InitialTurn();// broadcast that self is the first player in the game's players list
-
-                SetSaveChanges();
             }
 
             uctable.TakeCardFromDeckButtonClicked += TakeCardFromDeck;
@@ -139,32 +117,6 @@ namespace Form
             BackgroundProgress.RunWorkerAsync();
         }
 
-        private void SetSaveChanges()
-        {
-            SaveChanges1 = new BackgroundWorker();
-            SaveChanges1.DoWork += SaveChanges;
-            SaveChanges1.WorkerSupportsCancellation = true;
-            SaveChanges1.RunWorkerCompleted += SaveChanges_RunWorkerCompleted;
-
-            SaveChanges1.RunWorkerAsync();
-        }
-
-        //save the changes in the database every 2 seconds
-        private void SaveChanges(object sender, DoWorkEventArgs e)
-        {
-            Thread.Sleep(200);
-
-            MainWindow.Service.DoAction(CurrentGame.Id, Table.Id);
-            MainWindow.Service.SaveChanges();
-        }
-
-
-        private void SaveChanges_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (Active) SaveChanges1.RunWorkerAsync();
-        }
-
-
         private void FetchChanges(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(100);
@@ -184,13 +136,13 @@ namespace Form
                     {
                         switch (m.Action)
                         {
-                            case Message._action.add:
+                            case TakiService.Action.Add:
 
 
                                 PlayersList.Find(p => p.Id == m.Target.Id).Hand.Add(m.Card);
                                 break;
 
-                            case Message._action.remove:
+                            case TakiService.Action.Remove:
 
                                 Player tempPlayer = PlayersList.Find(p => p.Id == m.Target.Id); // the target player
                                 Card tempCard = tempPlayer.Hand.Find(c => c.Id == m.Card.Id); // the target card
@@ -198,7 +150,7 @@ namespace Form
 
                                 break;
 
-                            case Message._action.win:
+                            case TakiService.Action.Win:
 
                                 Player WinningPlayer = PlayersList.Find(p => p.Id == m.Target.Id); // the winning player
 
@@ -219,7 +171,7 @@ namespace Form
 
                                         MainWindow.Service.AddAction(new Message()
                                         {
-                                            Action = Message._action.loss,
+                                            Action = TakiService.Action.Loss,
                                             Target = CurrentPlayer,
                                             Reciever = CurrentPlayer.Id,
                                             GameId = CurrentGame.Id
@@ -230,7 +182,7 @@ namespace Form
 
                                 break;
 
-                            case Message._action.switch_hand:
+                            case TakiService.Action.SwitchHand:
 
                                 CardList l1 = PlayersList.Find(p => p.Id == m.Target.Id).Hand;
 
@@ -239,13 +191,13 @@ namespace Form
 
                                 break;
 
-                            case Message._action.plus_two:
+                            case TakiService.Action.PlusTwo:
 
                                 PlusValue = m.Card.Id;
 
                                 if (CurrentPlayer.Id == m.Target.Id && PlusValue != 0)
                                 {
-                                    if (CurrentPlayer.Hand.Find(c => c.VALUE == Card.Value.PlusTwo) == null)
+                                    if (CurrentPlayer.Hand.Find(c => c.Value == Value.PlusTwo) == null)
                                     {
                                         TakeMultipleCardsFromDeck(PlusValue);
                                     }
@@ -253,7 +205,7 @@ namespace Form
 
                                 break;
 
-                            case Message._action.next_turn:
+                            case TakiService.Action.NextTurn:
 
                                 Turn = PlayersList.FindIndex(p => p.Id == m.Target.Id);
                                 MyTurn = (m.Target.Id == CurrentPlayer.Id);
@@ -264,14 +216,14 @@ namespace Form
 
                                 break;
 
-                            case Message._action.switch_rotation:
+                            case TakiService.Action.SwitchRotation:
 
                                 if (ClockWiseRotation) ClockWiseRotation = false;
                                 else ClockWiseRotation = true;
 
                                 break;
 
-                            case Message._action.player_quit:
+                            case TakiService.Action.PlayerQuit:
 
                                 int prevChangesSaverId = PlayersList[0].UserId;
 
@@ -286,13 +238,6 @@ namespace Form
                                     InitialTurn(); // broadcast that self is the first player in the game's players list
 
                                     uc1.SetAsActive();
-
-                                    // if the player isn't already the player in charge of saving changes
-                                    if (CurrentUser.Id != prevChangesSaverId)
-                                    {
-                                        // pass the save changes functionality to the target player.
-                                        SetSaveChanges();
-                                    }
                                 }
                                 else
                                 {
@@ -321,7 +266,7 @@ namespace Form
                 cards += "\n \n Player " + p.Username + ":";
                 foreach (Card c in p.Hand)
                 {
-                    cards += "\n value:" + c.VALUE + ", color:" + c.COLOR;
+                    cards += "\n value:" + c.Value + ", color:" + c.Color;
                 }
             }
             Console.Write(cards);
@@ -428,7 +373,7 @@ namespace Form
 
             if (givenCard != null)
             {
-                if (givenCard.VALUE == Card.Value.TakiAll || givenCard.VALUE == Card.Value.Taki)
+                if (givenCard.Value == Value.TakiAll || givenCard.Value == Value.Taki)
                 {
                     OpenTaki = givenCard;
                 }
@@ -437,11 +382,11 @@ namespace Form
                 {
                     for (int i = 0; i < PlayersList.Count; i++) //add for each player, not including the table
                     {
-                        if (givenCard.VALUE != Card.Value.SwitchHandAll) // don't add "SwitchHandsAll" card to table
+                        if (givenCard.Value != Value.SwitchHandAll) // don't add "SwitchHandsAll" card to table
                         {
                             temp.Add(new Message() // add the top card of the table to the current player
                             {
-                                Action = Message._action.add,
+                                Action = TakiService.Action.Add,
                                 Target = table, // the person who's hand is modified
                                 Reciever = PlayersList[i].Id, // the peron who this message is for
                                 Card = givenCard, // the card modified
@@ -450,7 +395,7 @@ namespace Form
 
                             temp.Add(new Message() // add the top card of the table to the current player
                             {
-                                Action = Message._action.remove,
+                                Action = TakiService.Action.Remove,
                                 Target = CurrentPlayer, // the person who's hand is modified
                                 Reciever = PlayersList[i].Id, // the peron who this message is for
                                 Card = givenCard, // the card modified
@@ -482,7 +427,7 @@ namespace Form
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
-                        Action = Message._action.add,
+                        Action = TakiService.Action.Add,
                         Target = CurrentPlayer, // the person who's hand is modified
                         Reciever = PlayersList[i].Id, // the peron who this message is for
                         Card = takenCard, // the card modified
@@ -491,7 +436,7 @@ namespace Form
 
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
-                        Action = Message._action.remove,
+                        Action = TakiService.Action.Remove,
                         Target = Table, // the person who's hand is modified
                         Reciever = PlayersList[i].Id, // the peron who this message is for
                         Card = takenCard, // the card modified
@@ -501,7 +446,7 @@ namespace Form
 
                 MainWindow.Service.AddActions(temp);
 
-                TurnFinished(Card.Value.Nine); // give turn to next player
+                TurnFinished(Value.Nine); // give turn to next player
             }
         }
 
@@ -516,7 +461,7 @@ namespace Form
                 {
                     temp.Add(new Message()// add the top card of the table to the current player
                     {
-                        Action = Message._action.add,
+                        Action = TakiService.Action.Add,
                         Target = CurrentPlayer, // the person who's hand is modified
                         Reciever = PlayersList[j].Id, // the peron who this message is for
                         Card = uctable.GetCardFromStack(), // the card modified
@@ -529,7 +474,7 @@ namespace Form
 
             PlusTwoMessage(0); // finished taking cards
 
-            TurnFinished(Card.Value.Nine); // give turn to next player
+            TurnFinished(Value.Nine); // give turn to next player
         }
 
         private int GetUserControlOfPlayer(int playerIndex)
@@ -580,7 +525,7 @@ namespace Form
         }
 
 
-        public void TurnFinished(Card.Value value)
+        public void TurnFinished(Value value)
         {
             MessageList temp = new MessageList();
 
@@ -588,7 +533,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.next_turn, // give next turn to
+                    Action = TakiService.Action.NextTurn, // give next turn to
                     Target = PlayersList.Find(p => p.Id == GetNextPlayerId(value)),
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -610,7 +555,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.next_turn, // give next turn to self
+                    Action = TakiService.Action.NextTurn, // give next turn to self
                     Target = CurrentPlayer,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -632,7 +577,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.player_quit,
+                    Action = TakiService.Action.PlayerQuit,
                     Target = CurrentPlayer,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -641,7 +586,7 @@ namespace Form
 
             MainWindow.Service.AddActions(temp);
 
-            if (MyTurn) TurnFinished(Card.Value.Nine);
+            if (MyTurn) TurnFinished(Value.Nine);
             Active = false;
         }
 
@@ -650,11 +595,11 @@ namespace Form
         {
             if (PlusValue != 0)
             {
-                if (given.VALUE == table.VALUE) return true;
+                if (given.Value == table.Value) return true;
             }
 
-            // not multi-color
-            if (given.COLOR == Card.Color.multi || table.VALUE == Card.Value.TakiAll || given.COLOR == table.COLOR || given.VALUE == table.VALUE) return true;
+            // not Multi-color
+            if (given.Color == Color.Multi || table.Value == Value.TakiAll || given.Color == table.Color || given.Value == table.Value) return true;
 
             return false;
         }
@@ -663,55 +608,55 @@ namespace Form
         {
             if (OpenTaki != null)
             {
-                int colorCount = CurrentPlayer.Hand.FindAll(c => c.COLOR == OpenTaki.COLOR || c.VALUE == Table.Hand[Table.Hand.Count-1].VALUE).Count - 1;
+                int colorCount = CurrentPlayer.Hand.FindAll(c => c.Color == OpenTaki.Color || c.Value == Table.Hand[Table.Hand.Count-1].Value).Count - 1;
 
-                if (givenCard.VALUE == Card.Value.TakiAll)
+                if (givenCard.Value == Value.TakiAll)
                 {
                     colorCount = 2;
                 }
 
-                if (OpenTaki.VALUE == Card.Value.TakiAll && givenCard.VALUE != Card.Value.TakiAll)
+                if (OpenTaki.Value == Value.TakiAll && givenCard.Value != Value.TakiAll)
                 {
-                    switch (givenCard.COLOR)
+                    switch (givenCard.Color)
                     {
-                        case Card.Color.blue:
+                        case Color.Blue:
                             OpenTaki = new Card()
                             {
                                 Id = 61,
-                                COLOR = Card.Color.blue,
+                                Color = Color.Blue,
                                 Image = "../Resources/Cards/card0061.png",
                                 Special = true,
-                                VALUE = Card.Value.Taki
+                                Value = Value.Taki
                             };
                             break;
-                        case Card.Color.green:
+                        case Color.Green:
                             OpenTaki = new Card()
                             {
                                 Id = 13,
-                                COLOR = Card.Color.green,
+                                Color = Color.Green,
                                 Image = "../Resources/Cards/card0013.png",
                                 Special = true,
-                                VALUE = Card.Value.Taki
+                                Value = Value.Taki
                             };
                             break;
-                        case Card.Color.red:
+                        case Color.Red:
                             OpenTaki = new Card()
                             {
                                 Id = 29,
-                                COLOR = Card.Color.red,
+                                Color = Color.Red,
                                 Image = "../Resources/Cards/card0029.png",
                                 Special = true,
-                                VALUE = Card.Value.Taki
+                                Value = Value.Taki
                             };
                             break;
-                        case Card.Color.yellow:
+                        case Color.Yellow:
                             OpenTaki = new Card()
                             {
                                 Id = 45,
-                                COLOR = Card.Color.yellow,
+                                Color = Color.Yellow,
                                 Image = "../Resources/Cards/card0045.png",
                                 Special = true,
-                                VALUE = Card.Value.Taki
+                                Value = Value.Taki
                             };
                             break;
                     }
@@ -720,7 +665,7 @@ namespace Form
                 if (colorCount == 0)
                 {
                     OpenTaki = null;
-                    TurnFinished(Card.Value.Nine);
+                    TurnFinished(Value.Nine);
                 }
                 else
                 {
@@ -729,15 +674,15 @@ namespace Form
                         OpenTaki = null;
                     }
 
-                    TurnFinished(Card.Value.Plus);
+                    TurnFinished(Value.Plus);
                 }
             }
             else
             {
-                switch (givenCard.VALUE)
+                switch (givenCard.Value)
                 {
-                    case Card.Value.SwitchColor:
-                    case Card.Value.SwitchColorAll:
+                    case Value.SwitchColor:
+                    case Value.SwitchColorAll:
 
                         SwitchColor dialog = new SwitchColor
                         {
@@ -750,26 +695,26 @@ namespace Form
 
                         break;
 
-                    case Card.Value.PlusTwo:
+                    case Value.PlusTwo:
 
                         PlusTwoMessage(PlusValue + 2);
 
                         break;
 
-                    case Card.Value.SwitchDirection:
+                    case Value.SwitchDirection:
 
                         ChangeRotationMessage();
 
                         break;
 
-                    case Card.Value.SwitchHandAll:
+                    case Value.SwitchHandAll:
 
                         SwitchHandsMessage();
 
                         break;
                 }
 
-                TurnFinished(givenCard.VALUE); // GetNextPlayerId will handle this 
+                TurnFinished(givenCard.Value); // GetNextPlayerId will handle this 
             }
 
         }
@@ -782,7 +727,7 @@ namespace Form
             {
                 temp.Add(new Message() // add the top card of the table to the current player
                 {
-                    Action = Message._action.remove,
+                    Action = TakiService.Action.Remove,
                     Target = CurrentPlayer, // the person who's hand is modified
                     Reciever = PlayersList[i].Id, // the peron who this message is for
                     Card = new Card() {Id = 67}, // the card modified
@@ -791,9 +736,9 @@ namespace Form
 
                 temp.Add(new Message()
                 {
-                    Action = Message._action.switch_hand,
+                    Action = TakiService.Action.SwitchHand,
                     Target = CurrentPlayer,
-                    Card = new Card() { Id = GetNextPlayerId(Card.Value.Nine) }, // pass the other Player's ID through the card field.
+                    Card = new Card() { Id = GetNextPlayerId(Value.Nine) }, // pass the other Player's ID through the card field.
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
                 }); 
@@ -809,7 +754,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.add,
+                    Action = TakiService.Action.Add,
                     Target = Table,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id,
@@ -829,8 +774,8 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.plus_two,
-                    Target = PlayersList.Find(p => p.Id == GetNextPlayerId(Card.Value.Nine)), // get the next player
+                    Action = TakiService.Action.PlusTwo,
+                    Target = PlayersList.Find(p => p.Id == GetNextPlayerId(Value.Nine)), // get the next player
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id,
                     Card = new Card() { Id = num }// the card's id represents the PlusValue Build-up
@@ -848,7 +793,7 @@ namespace Form
             {
                 temp.Add(new Message()
                 {
-                    Action = Message._action.switch_rotation,
+                    Action = TakiService.Action.SwitchRotation,
                     Target = CurrentPlayer,
                     Reciever = PlayersList[i].Id,
                     GameId = CurrentGame.Id
@@ -860,12 +805,12 @@ namespace Form
         }
 
 
-        private int GetNextPlayerId(Card.Value value)
+        private int GetNextPlayerId(Value value)
         {
             // special card switch - case
             switch (value)
             {
-                case Card.Value.Stop:
+                case Value.Stop:
                     if (PlayersList.Count > 3)
                     {
                         if (ClockWiseRotation) return PlayersList[PlayersList.Count - 3].Id;
@@ -873,12 +818,12 @@ namespace Form
                     }
                     return CurrentPlayer.Id;
 
-                case Card.Value.Plus:
-                case Card.Value.Taki:
-                case Card.Value.TakiAll:
+                case Value.Plus:
+                case Value.Taki:
+                case Value.TakiAll:
                     return CurrentPlayer.Id;
 
-                case Card.Value.SwitchDirection:
+                case Value.SwitchDirection:
                     {
                         if (!ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
                         return PlayersList[1].Id;
@@ -901,7 +846,7 @@ namespace Form
                 {
                     temp.Add(new Message()
                     {
-                        Action = Message._action.win,
+                        Action = TakiService.Action.Win,
                         Target = CurrentPlayer,
                         Reciever = PlayersList[i].Id,
                         GameId = CurrentGame.Id

@@ -10,7 +10,7 @@
 
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
 
-        <Button Click="Username_Click">
+        <Button Click="Username_Click" Background="Transparent">
         <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}"  FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
             <TextBlock.RenderTransform>
                 <TransformGroup>

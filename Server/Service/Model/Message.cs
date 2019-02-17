@@ -3,45 +3,44 @@
 namespace Model
 {
     [DataContract]
+    public enum Action
+    {
+        [EnumMember]
+        Add,
+        [EnumMember]
+        Remove,
+        [EnumMember]
+        NextTurn,
+        [EnumMember]
+        PlayerQuit,
+        [EnumMember]
+        SwitchRotation,
+        [EnumMember]
+        SwitchHand,
+        [EnumMember]
+        PlusTwo,
+        [EnumMember]
+        Win,
+        [EnumMember]
+        Loss
+    }
+
+    [DataContract]
     public class Message : BaseEntity
     {
-        public enum _action {
-            add,
-            remove,
-            next_turn,
-            player_quit,
-            switch_rotation,
-            switch_hand,
-            plus_two,
-            win,
-            loss
-        }
-        private int _reciever;
-        private int _gameId;
-        private Card _card;
-        private Player _target;
+        
+        [DataMember]
+        public Player Target { get; set; }
+
+        [DataMember] public Action Action { get; set; }
 
         [DataMember]
-        public Player Target
-        {
-            get => _target;
-            set => _target = value;
-        }
+        public Card Card { get; set; }
 
         [DataMember]
-        public _action Action { get; set; }
+        public int GameId { get; set; }
 
         [DataMember]
-        public Card Card
-        {
-            get => _card;
-            set => _card = value;
-        }
-
-        [DataMember]
-        public int GameId { get => _gameId; set => _gameId = value; }
-
-        [DataMember]
-        public int Reciever { get => _reciever; set => _reciever = value; }
+        public int Reciever { get; set; }
     }
 }

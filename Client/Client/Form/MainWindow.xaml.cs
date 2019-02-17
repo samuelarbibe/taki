@@ -28,12 +28,7 @@ namespace Form
         public static Frame BigFrame;
         public static GamePage CurrentGamePage;
 
-        private static User currentUser; 
-
-        public static User CurrentUser {
-            get => currentUser;
-            set => currentUser = value;
-        }
+        public static User CurrentUser { get; set; }
 
         public MainWindow()
         {
@@ -41,12 +36,12 @@ namespace Form
             Service = new ServiceClient();
             BigFrame = MainFrame;
             BigFrame.Navigate(new LoginMenu());
-            this.DataContext = currentUser;
+            this.DataContext = CurrentUser;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (CurrentGamePage != null) CurrentGamePage.PlayerQuit();
+            CurrentGamePage?.PlayerQuit();
 
             if(CurrentUser != null) Service.Logout(CurrentUser.Id);
         }

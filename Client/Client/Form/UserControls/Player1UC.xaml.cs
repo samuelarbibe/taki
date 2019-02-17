@@ -10,31 +10,18 @@ namespace Form.UserControls
     /// </summary>
     public partial class Player1UC : UserControl
     {
-        private CardList _hand;
-        private Player _currentPlayer;
-        private bool _active;
-
-
         public Player1UC() {
 
             InitializeComponent();
         }
 
-        public event EventHandler ProfileButtonClicked;
-        public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
-        public bool Active { get => _active; set => _active = value; }
-        public CardList Hand { get => _hand; set => _hand = value; }
+        public Player CurrentPlayer { get; set; }
+
+        public CardList Hand { get; set; }
 
         public Card SelectedCard()
         {
-            try
-            {
-                return (Card)HandView.SelectedItems[0];
-            }
-            catch
-            {
-                return null;
-            }
+            return (Card) HandView?.SelectedItems[0];
         }
 
         public void UpdateUI(Player p)
@@ -50,7 +37,7 @@ namespace Form.UserControls
 
         public void SetAsActive()
         {
-            BackgroundActive.Fill = new SolidColorBrush(Color.FromArgb(90, 0, 250, 0));
+            BackgroundActive.Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(90, 0, 250, 0));
         }
 
         public void SetAsNonActive()

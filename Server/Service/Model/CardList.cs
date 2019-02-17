@@ -24,7 +24,6 @@ namespace Model
         }
 
 
-       
         public void Shuffle()
         {
             Random rng = new Random();
@@ -41,5 +40,3 @@ namespace Model
         }
     }
 }
-
-

@@ -2,6 +2,7 @@
 using System.Windows.Media;
 using Form.Dialogs;
 using Form.TakiService;
+using Color = System.Windows.Media.Color;
 
 namespace Form.UserControls
 {
@@ -10,7 +11,6 @@ namespace Form.UserControls
     /// </summary>
     public partial class Player2UC : UserControl
     {
-        private Player _currentPlayer;
         private CardList _hand;
 
         public Player2UC()
@@ -18,7 +18,7 @@ namespace Form.UserControls
             InitializeComponent();
         }
 
-        public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
+        public Player CurrentPlayer { get; set; }
 
         public void UpdateUI(Player p)
         {

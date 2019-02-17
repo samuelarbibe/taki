@@ -6,12 +6,6 @@ namespace Model
     [DataContract]
     public class Game : BaseEntity, ICloneable
     {
-        private DateTime _endTime;
-
-        private PlayerList _players;
-        private CardList _deck;
-        private DateTime _startTime;
-        private int _losser;
 
         public Game()
         {
@@ -29,9 +23,9 @@ namespace Model
         {
             PlayerList temp = new PlayerList();
 
-            foreach(Player p in pl)
+            foreach (Player p in pl)
             {
-                temp.Add((Player)p.Clone());
+                temp.Add((Player) p.Clone());
             }
 
             Players = temp;
@@ -40,32 +34,16 @@ namespace Model
 
 
         [DataMember]
-        public DateTime StartTime
-        {
-            get => _startTime;
-            set => _startTime = value;
-        }
+        public DateTime StartTime { get; set; }
 
         [DataMember]
-        public int Losser
-        {
-            get => _losser;
-            set => _losser = value;
-        }
+        public int Losser { get; set; }
 
         [DataMember]
-        public DateTime EndTime
-        {
-            get => _endTime;
-            set => _endTime = value;
-        }
+        public DateTime EndTime { get; set; }
 
         [DataMember]
-        public PlayerList Players
-        {
-            get => _players;
-            set => _players = value;
-        }
+        public PlayerList Players { get; set; }
 
         public object Clone()
         {

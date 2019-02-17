@@ -24,6 +24,5 @@ namespace Model
         {
             return MemberwiseClone();
         }
-
     }
 }

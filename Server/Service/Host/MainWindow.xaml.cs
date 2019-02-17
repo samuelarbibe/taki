@@ -29,8 +29,6 @@ namespace Host
             InitializeComponent();
             ServiceHost service = new ServiceHost(typeof(Service.Service));
             service.Open();
-
         }
-
     }
 }

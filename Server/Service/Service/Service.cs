@@ -15,9 +15,7 @@ namespace Service
 {
     public class Service : IService
     {
-        private static MessageList _pendingChanges = new MessageList(); // pending messages for each player 
-
-        public static MessageList PendingChanges { get => _pendingChanges; set => _pendingChanges = value; }
+        public static MessageList PendingChanges { get; set; } = new MessageList();
 
         public CardList BuildDeck()
         {
@@ -37,10 +35,10 @@ namespace Service
             return bl.BlGetAllUsers();
         }
 
-        public User GetUserByUsername(string Username)
+        public User GetUserByUsername(string username)
         {
             Bl bl = new Bl();
-            return bl.BlGetUserByUsername(Username);
+            return bl.BlGetUserByUsername(username);
         }
 
         public User GetUserById(int id)
@@ -180,27 +178,27 @@ namespace Service
                         {
                             switch (m.Action)
                             {
-                                case Message._action.add:
+                                case Model.Action.Add:
                                     Bl bl = new Bl();
                                     bl.BlAddCard(m);
                                     break;
 
-                                case Message._action.remove:
+                                case Model.Action.Remove:
                                     bl = new Bl();
                                     bl.BlRemoveCard(m);
                                     break;
 
-                                case Message._action.switch_hand:
+                                case Model.Action.SwitchHand:
                                     bl = new Bl();
                                     bl.BlSwitchHands(m);
                                     break;
 
-                                case Message._action.win:
+                                case Model.Action.Win:
                                     bl = new Bl();
                                     bl.BlWin(m);
                                     break;
 
-                                case Message._action.loss:
+                                case Model.Action.Loss:
                                     bl = new Bl();
                                     bl.BlLoss(m);
                                     break;
@@ -209,9 +207,8 @@ namespace Service
                     }
                 }
             }
+
             return temp;
         }
-
-        
     }
 }

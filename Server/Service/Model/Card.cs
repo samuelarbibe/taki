@@ -3,57 +3,72 @@
 namespace Model
 {
     [DataContract]
+    public enum Color
+    {
+        [EnumMember]
+        Green,
+        [EnumMember]
+        Blue,
+        [EnumMember]
+        Red,
+        [EnumMember]
+        Yellow,
+        [EnumMember]
+        Multi
+    }
+
+    [DataContract]
+    public enum Value
+    {
+        [EnumMember]
+        Zero,
+        [EnumMember]
+        One,
+        [EnumMember]
+        PlusTwo,
+        [EnumMember]
+        Three,
+        [EnumMember]
+        Four,
+        [EnumMember]
+        Five,
+        [EnumMember]
+        Six,
+        [EnumMember]
+        Seven,
+        [EnumMember]
+        Eight,
+        [EnumMember]
+        Nine,
+        [EnumMember]
+        Stop,
+        [EnumMember]
+        Plus,
+        [EnumMember]
+        SwitchDirection,
+        [EnumMember]
+        Taki,
+        [EnumMember]
+        SwitchColor,
+        [EnumMember]
+        TakiAll,
+        [EnumMember]
+        SwitchColorAll,
+        [EnumMember]
+        SwitchHandAll
+    }
+
+    [DataContract]
     public class Card : BaseEntity
     {
-        private string _color;
-        private string _image;
-        private bool _special;
-        private int _value;
+        [DataMember] public Color Color { get; set; }
 
-        public enum Color
-        {
-            green,
-            blue,
-            red,
-            yellow,
-            multi
-        }
-
-        public enum Value
-        { 
-            Zero,
-            One,
-            PlusTwo,
-            Three,
-            Four,
-            Five,
-            Six,
-            Seven,
-            Eight,
-            Nine,
-            Stop,
-            Plus,
-            SwitchDirection,
-            Taki,
-            SwitchColor,
-            TakiAll,
-            SwitchColorAll,
-            SwitchHandAll
-        }
-
+        [DataMember] public Value Value { get; set; }
 
         [DataMember]
-
-        public Color COLOR { get; set; }
-
-        [DataMember]
-
-        public Value VALUE { get; set; }
+        public string Image { get; set; }
 
         [DataMember]
-        public string Image { get => _image; set => _image = value; }
-
-        [DataMember]
-        public bool Special { get => _special; set => _special = value; }
+        public bool Special { get; set; }
     }
 }

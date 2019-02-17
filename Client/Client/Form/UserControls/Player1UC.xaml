@@ -11,8 +11,8 @@
 
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
         
-        <Button FontSize="15" x:Name="Username" Click="Username_Click">
-            <TextBlock Text="{Binding Username}"  Foreground="White" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"></TextBlock>
+        <Button FontSize="15" x:Name="Username" Click="Username_Click" Background="Transparent">
+            <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"></TextBlock>
         </Button>
 
         <ListView BorderThickness="0" x:Name="HandView" Background="Transparent" HorizontalAlignment="Stretch">

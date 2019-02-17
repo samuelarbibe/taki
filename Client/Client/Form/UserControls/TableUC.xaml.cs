@@ -14,17 +14,15 @@ namespace Form.UserControls
     /// </summary>
     public partial class TableUC : UserControl
     {
-        private CardList _deck;
-        private Player _currentPlayer;
-        private CardList _stack;
-        private Random rand = new Random();
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
-        private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
+        private static readonly RNGCryptoServiceProvider RngCsp = new RNGCryptoServiceProvider();
 
-        public Player CurrentPlayer { get => _currentPlayer; set => _currentPlayer = value; }
-        public CardList Deck { get => _deck; set => _deck = value; }
-        public CardList Stack { get => _stack; set => _stack = value; }
+        public Player CurrentPlayer { get; set; }
+
+        public CardList Deck { get; set; }
+
+        public CardList Stack { get; set; }
 
         public void UpdateUI(Player p)
         {
@@ -68,7 +66,7 @@ namespace Form.UserControls
             do
             {
                 // Fill the array with a random value.
-                rngCsp.GetBytes(randomNumber);
+                RngCsp.GetBytes(randomNumber);
             }
             while (!IsFairRoll(randomNumber[0], numberSides));
             // Return the random number mod the number

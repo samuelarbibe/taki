@@ -6,7 +6,6 @@ namespace ViewModel
 {
     public class GameDb : BaseDb
     {
-
         protected override BaseEntity NewEntity()
         {
             return new Game();
@@ -17,19 +16,19 @@ namespace ViewModel
             PlayerDb db = new PlayerDb();
             Game game = entity as Game;
 
-            game.Id = (int)Reader["ID"];
+            game.Id = (int) Reader["ID"];
 
 
-            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_1_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_2_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_3_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int)Reader["player_4_id"]));
-            game.Players.Add((Player)db.GetPlayerById((int)Reader["table_id"]));
+            game.Players.Add((Player) db.GetPlayerById((int) Reader["player_1_id"]));
+            game.Players.Add((Player) db.GetPlayerById((int) Reader["player_2_id"]));
+            game.Players.Add((Player) db.GetPlayerById((int) Reader["player_3_id"]));
+            game.Players.Add((Player) db.GetPlayerById((int) Reader["player_4_id"]));
+            game.Players.Add((Player) db.GetPlayerById((int) Reader["table_id"]));
 
 
-            game.StartTime = (DateTime)Reader["start_date"];
-            game.EndTime = (DateTime)Reader["end_date"];
-            game.Losser = (int)Reader["losser_id"];
+            game.StartTime = (DateTime) Reader["start_date"];
+            game.EndTime = (DateTime) Reader["end_date"];
+            game.Losser = (int) Reader["losser_id"];
 
             return game;
         }
@@ -58,10 +57,10 @@ namespace ViewModel
         public GameList SelectByUserId(int userId)
         {
             Command.CommandText = "SELECT * FROM Game_Table WHERE(ID IN " +
-                            "(SELECT Player_Game_Table.game_id" +
-                               " FROM(Player_Table INNER JOIN" +
-                               " Player_Game_Table ON Player_Table.ID = Player_Game_Table.player_id)" +
-                              " WHERE (Player_Table.user_id = @Id)))";
+                                  "(SELECT Player_Game_Table.game_id" +
+                                  " FROM(Player_Table INNER JOIN" +
+                                  " Player_Game_Table ON Player_Table.ID = Player_Game_Table.player_id)" +
+                                  " WHERE (Player_Table.user_id = @Id)))";
 
             Command.Parameters.Add(new OleDbParameter("@Id", userId));
 
@@ -97,7 +96,8 @@ namespace ViewModel
 
             if (pg != null)
             {
-                foreach (PlayerGameConnection c in pg) //delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
+                foreach (PlayerGameConnection c in pg
+                ) //delete all player-games connections to this Game id using PlayerGameDB.CreateDeleteSql
                     Updated.Add(new ChangeEntity(pGdb.CreateDeleteSql, c));
 
                 Updated.Add(new ChangeEntity(CreateDeleteSql, entity)); //delete the player itself
@@ -119,7 +119,6 @@ namespace ViewModel
 
             Console.WriteLine("All Connections and games related to this game have been deleted");
         }
-
 
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
@@ -160,7 +159,7 @@ namespace ViewModel
             }
 
             //parameters
-           
+
             command.Parameters.AddWithValue("@loss", int.Parse("0"));
 
             Console.WriteLine("Game [" + g.Id + "] Added to the Database");
@@ -171,7 +170,9 @@ namespace ViewModel
             Game g = entity as Game;
 
             command.CommandText =
-                "UPDATE Game_Table SET start_date = '" + g.StartTime.ToString("G") + "', end_date = '" + g.EndTime.ToString("G") + "', player_1_id = @p1, player_2_id = @p2, player_3_id = @p3, player_4_id = @p4, table_id = @table, losser_id = @losser";
+                "UPDATE Game_Table SET start_date = '" + g.StartTime.ToString("G") + "', end_date = '" +
+                g.EndTime.ToString("G") +
+                "', player_1_id = @p1, player_2_id = @p2, player_3_id = @p3, player_4_id = @p4, table_id = @table, losser_id = @losser";
 
             command.Parameters.AddWithValue("@p1", g.Players[0].Id);
             command.Parameters.AddWithValue("@p2", g.Players[1].Id);
@@ -207,5 +208,4 @@ namespace ViewModel
             Console.WriteLine("Game [" + g.Id + "] Updated");
         }
     }
-    
 }

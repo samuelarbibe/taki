@@ -39,16 +39,16 @@ namespace ViewModel
 
         public PlayerCardConnection GetConnectionByPlayerIdAndCardId(Player player, Card card)
         {
-            Command.CommandText = "SELECT * FROM Player_Card_Table WHERE [player_id] = @playerId AND [card_id] = @cardId";
-            
+            Command.CommandText =
+                "SELECT * FROM Player_Card_Table WHERE [player_id] = @playerId AND [card_id] = @cardId";
+
             // parameters
             Command.Parameters.Add(new OleDbParameter("@playerId", player.Id));
             Command.Parameters.Add(new OleDbParameter("@cardId", card.Id));
 
 
-
             ConnectionList conList = new ConnectionList(Select());
-            return (PlayerCardConnection)conList[0];
+            return (PlayerCardConnection) conList[0];
         }
 
         public ConnectionList GetConnectionsByPlayerId(Player player)
@@ -67,26 +67,25 @@ namespace ViewModel
             ConnectionList hand1 = GetConnectionsByPlayerId(player1);
             ConnectionList hand2 = GetConnectionsByPlayerId(player2);
 
-            foreach(PlayerCardConnection c in hand1)
+            foreach (PlayerCardConnection c in hand1)
             {
                 c.Player = player1; // switch the owner of the cards to the other player
                 Update(c); // update
             }
 
-            foreach(PlayerCardConnection c in hand2)
+            foreach (PlayerCardConnection c in hand2)
             {
-                c.Player = player2;// switch the owner of the cards to the other player
+                c.Player = player2; // switch the owner of the cards to the other player
                 Update(c); // update
             }
-
         }
 
         public void InsertList(ConnectionList entity)
         {
             ConnectionList cl = entity;
-            foreach (var PlayerCardConnection in cl)
-                if (PlayerCardConnection != null)
-                    Inserted.Add(new ChangeEntity(CreateInsertSql, PlayerCardConnection));
+            foreach (var playerCardConnection in cl)
+                if (playerCardConnection != null)
+                    Inserted.Add(new ChangeEntity(CreateInsertSql, playerCardConnection));
         }
 
         public void Insert(Game game)
@@ -102,12 +101,11 @@ namespace ViewModel
                     }));
                 }
             }
-
         }
 
         public override void Delete(BaseEntity entity)
         {
-            if(entity != null)
+            if (entity != null)
             {
                 Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
             }
@@ -139,7 +137,8 @@ namespace ViewModel
 
             command.Parameters.Add(new OleDbParameter("@id", con.Id));
 
-            Console.WriteLine("PlayerCardConnection between player [" + con.Player.Id + "] and card [" + con.Card.Id + "] DELETED");
+            Console.WriteLine("PlayerCardConnection between player [" + con.Player.Id + "] and card [" + con.Card.Id +
+                              "] DELETED");
         }
 
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
@@ -153,7 +152,8 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.Player.Id));
             command.Parameters.Add(new OleDbParameter("@id", con.Id));
 
-            Console.WriteLine("PlayerCardConnection between player [" + con.Player.Id + "] and card [" + con.Card.Id + "] UPDATED");
+            Console.WriteLine("PlayerCardConnection between player [" + con.Player.Id + "] and card [" + con.Card.Id +
+                              "] UPDATED");
         }
     }
 }

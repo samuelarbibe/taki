@@ -7,8 +7,6 @@ namespace ViewModel
 {
     public class CardDb : BaseDb
     {
-
-
         protected override BaseEntity NewEntity()
         {
             return new Card();
@@ -18,8 +16,8 @@ namespace ViewModel
         {
             Card card = entity as Card;
 
-            card.COLOR = (Card.Color)Enum.Parse(typeof(Card.Color), Reader["color"].ToString());
-            card.VALUE = (Card.Value)(int)Reader["value"];
+            card.Color = (Color) Enum.Parse(typeof(Color), Reader["color"].ToString());
+            card.Value = (Value) (int) Reader["value"];
             card.Special = (bool) Reader["special"];
             card.Image = Reader["source"].ToString();
             card.Id = (int) Reader["ID"];

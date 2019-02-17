@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using Model;
@@ -10,7 +11,10 @@ namespace BusinessLayer
 {
     public class Bl
     {
-        private static List<PlayerList> _waitingList = new List<PlayerList>
+        //TODO 
+        //create a save changes timer for each game
+
+        private static readonly List<PlayerList> WaitingList = new List<PlayerList>
         {
             // creating a list of waiting lists
             new PlayerList(), //waitingList[0] = players looking for 2 player games
@@ -18,17 +22,39 @@ namespace BusinessLayer
             new PlayerList() //waitingList[2] = players looking for 4 player games
         };
 
-        private static UserList _loggedPlayers = new UserList();
-        private static CardDb _cardDb = new CardDb();
-        private static CardList _deck = CardDb.SelectAll();
-        private static GameList _gameList = new GameList();
-        private static List<CardList> _gameDecks = new List<CardList>();
         private static Game _game;
 
-        public static UserList LoggedPlayers { get => _loggedPlayers; set => _loggedPlayers = value; }
-        public static CardDb CardDb { get => _cardDb; set => _cardDb = value; }
-        public static CardList Deck { get => _deck; set => _deck = value; }
-        public static GameList GameList { get => _gameList; set => _gameList = value; }
+        public static UserList LoggedPlayers { get; set; } = new UserList();
+
+        public static CardDb CardDb = new CardDb();
+
+        public static CardList Deck = new CardList();
+
+        public static GameList ActiveGameList { get; set; } = new GameList();
+
+        public static BackgroundWorker SaveChangesBackgroundWorker;
+
+        private void SetSaveChanges()
+        {
+            SaveChangesBackgroundWorker = new BackgroundWorker();
+            SaveChangesBackgroundWorker.DoWork += BlSaveChanges;
+            SaveChangesBackgroundWorker.WorkerSupportsCancellation = true;
+            SaveChangesBackgroundWorker.RunWorkerCompleted += SaveChangesBackgroundWorker_RunWorkerCompleted;
+
+            SaveChangesBackgroundWorker.RunWorkerAsync();
+        }
+
+        private void BlSaveChanges(object sender, DoWorkEventArgs args)
+        {
+            Thread.Sleep(500);
+            GameDb gameDb = new GameDb();
+            gameDb.SaveChanges();
+        }
+
+        private void SaveChangesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveGameList.Count > 0) SaveChangesBackgroundWorker.RunWorkerAsync();
+        }
 
         public CardList BlBuildDeck()
         {
@@ -55,6 +81,7 @@ namespace BusinessLayer
                 LoggedPlayers.Add(userList[0]);
                 return userList[0];
             }
+
             return null;
         }
 
@@ -128,9 +155,10 @@ namespace BusinessLayer
             return userList;
         }
 
-        public User BlGetUserByUsername(string Username){
+        public User BlGetUserByUsername(string username)
+        {
             UserDb db = new UserDb();
-            User user = db.SelectByUsername(Username);
+            User user = db.SelectByUsername(username);
             return user;
         }
 
@@ -143,9 +171,9 @@ namespace BusinessLayer
 
         public GameList BlGetAllUserGames(int userId)
         {
-            GameDb gameDB = new GameDb();
+            GameDb gameDb = new GameDb();
 
-            GameList temp = gameDB.SelectByUserId(userId);
+            GameList temp = gameDb.SelectByUserId(userId);
             return temp;
         }
 
@@ -179,49 +207,53 @@ namespace BusinessLayer
         }
 
         // creates a new game and returns it
-        // creates a new Game in the GameDB, and creates new connections in PlayerGameDB
         public Game BlStartGame(Player p, int playerCount)
         {
             //if there is a game in gameList containing this player and if game is active
-            Game temp = GameList.Find(g => g.Players.Find(q => q.UserId == p.UserId) != null);
+            Game temp = ActiveGameList.Find(g => g.Players.Find(q => q.UserId == p.UserId) != null);
 
             // return the game to the player!
-            if (temp != null) {
-                if (_waitingList[playerCount - 2].Count > 0) _waitingList[playerCount - 2].Clear();
+            if (temp != null)
+            {
+                if (WaitingList[playerCount - 2].Count > 0) WaitingList[playerCount - 2].Clear();
                 return temp;
             }
 
-            // if the list is null, create a new one.
-            //if (_waitingList[playerCount - 2] == null) _waitingList[playerCount - 2] = new PlayerList();
-
             // if the list contains a table, clear it! its old!
-            if (_waitingList[playerCount - 2].Count > playerCount) _waitingList[playerCount - 2].Clear();
+            if (WaitingList[playerCount - 2].Count > playerCount) WaitingList[playerCount - 2].Clear();
 
 
             // if the player isn't in the waiting list add him.
-            if (_waitingList[playerCount - 2].Find(q => q.UserId == p.UserId) == null) _waitingList[playerCount - 2].Add(p);
+            if (WaitingList[playerCount - 2].Find(q => q.UserId == p.UserId) == null)
+                WaitingList[playerCount - 2].Add(p);
 
 
             // if the player list is the size wanted including the requesting player, 
-            if (_waitingList[playerCount - 2].Count == playerCount && p.UserId == _waitingList[playerCount - 2][playerCount - 1].UserId)
+            if (WaitingList[playerCount - 2].Count == playerCount &&
+                p.UserId == WaitingList[playerCount - 2][playerCount - 1].UserId)
             {
                 // create a new game containing all the players on the last player's request
-                _game = new Game(_waitingList[playerCount - 2]); // create a new game with the players
+                _game = new Game(WaitingList[playerCount - 2]); // create a new game with the players
 
                 foreach (var t in _game.Players)
                 {
                     t.Hand = BuildShuffledHand(6, false);
                 }
 
-                _game.Players.Add(new Player(){Username = "table"}); // adding the table as a player
+                _game.Players.Add(new Player() {Username = "table"}); // adding the table as a player
 
                 _game.Players[playerCount].Hand = BuildShuffledHand(59, false); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 
-                //_game.Active = true;
+                // if no active games exist, no background worker is active.
+                // so set one:
+                if (ActiveGameList.Count == 0)
+                {
+                    SetSaveChanges();
+                }
 
-                GameList.Add((Game)_game.Clone()); // add this game to the game list
+                ActiveGameList.Add((Game) _game.Clone()); // add this game to the active games list
 
                 _game.StartTime = DateTime.Now; // start the game
 
@@ -233,12 +265,12 @@ namespace BusinessLayer
 
         public int BlGetPlayersFound(int playerCount)
         {
-            return _waitingList[playerCount - 2].Count;
+            return WaitingList[playerCount - 2].Count;
         }
 
         public bool BlStopSearchingForGame(Player remove)
         {
-            foreach (PlayerList w in _waitingList)
+            foreach (PlayerList w in WaitingList)
             {
                 w.Remove(w.Find(p => p.UserId == remove.UserId));
             }
@@ -248,7 +280,7 @@ namespace BusinessLayer
 
         public bool BlPlayerQuit(Player remove)
         {
-            foreach (Game g in GameList)
+            foreach (Game g in ActiveGameList)
             {
                 Player temp = g.Players.Find(p => p.UserId == remove.UserId);
                 if (temp != null)
@@ -257,6 +289,7 @@ namespace BusinessLayer
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -270,7 +303,7 @@ namespace BusinessLayer
 
             playerDb.InsertList(g.Players);
 
-            gameDb.Insert(g); // asign ID to game, and all players' IDs in there
+            gameDb.Insert(g); // assign ID to game, and all players' IDs in there
 
             playerGameDb.Insert(g);
 
@@ -287,7 +320,8 @@ namespace BusinessLayer
         {
             PlayerCardDb db = new PlayerCardDb();
 
-            PlayerCardConnection c = new PlayerCardConnection() {
+            PlayerCardConnection c = new PlayerCardConnection()
+            {
                 Player = m.Target,
                 Card = m.Card
             };
@@ -297,7 +331,6 @@ namespace BusinessLayer
 
         public void BlWin(Message m)
         {
-            PlayerDb playerDb = new PlayerDb();
             UserDb userDb = new UserDb();
             User u = userDb.SelectById(m.Target.UserId);
 
@@ -308,9 +341,10 @@ namespace BusinessLayer
             userDb.Update(u);
         }
 
+        //this is called when a game is finished.
+        //declares the loser to the game db.
         public void BlLoss(Message m)
         {
-            PlayerDb playerDb = new PlayerDb();
             UserDb userDb = new UserDb();
             User u = userDb.SelectById(m.Target.UserId);
 
@@ -330,6 +364,9 @@ namespace BusinessLayer
             userDb.Update(u);
             gameDb.Update(g);
 
+            // remove this game from static local list
+            ActiveGameList.Remove(ActiveGameList.Find(gm => gm.Id == m.GameId));
+
             userDb.SaveChanges();
         }
 
@@ -341,8 +378,8 @@ namespace BusinessLayer
             db.SwitchConnectionsByPlayersId(m.Target, playerDb.GetPlayerById(m.Card.Id));
         }
 
-        public int SaveChanges() {
-
+        public int SaveChanges()
+        {
             PlayerCardDb sb = new PlayerCardDb();
             return sb.SaveChanges();
         }
@@ -356,15 +393,11 @@ namespace BusinessLayer
             db.Delete(temp);
         }
 
-        public void BlSaveChanges()
-        {
-            GameDb gameDb = new GameDb();
-            gameDb.SaveChanges();
-        }
+        
 
         public CardList BuildShuffledHand(int length, bool noSpecial)
         {
-            Thread.Sleep(50);
+            Deck = CardDb.SelectAll();
 
             CardList hand = new CardList();
             Card temp;
@@ -373,11 +406,12 @@ namespace BusinessLayer
             for (int i = 0; i < length; i++)
             {
                 temp = Deck[rand.Next(0, 59)];
-                if (length < 60)//if hand is smaller than the deck length, make sure there are no doubles
+                if (length < 60) //if hand is smaller than the deck length, make sure there are no doubles
                 {
                     if (!noSpecial)
                     {
-                        while (hand.Find(q => q.Id == temp.Id) != null)// if the card is already in the hand, fetch for a different card
+                        while (hand.Find(q => q.Id == temp.Id) != null
+                        ) // if the card is already in the hand, fetch for a different card
                         {
                             temp = Deck[rand.Next(0, 59)];
                         }
@@ -389,11 +423,12 @@ namespace BusinessLayer
                             temp = Deck[rand.Next(0, 59)];
                         }
                     }
+
                     hand.Add(temp);
                 }
                 else
                 {
-                    hand.Add(temp);// if the hand's length is greater than the deck, just insert random cards
+                    hand.Add(temp); // if the hand's length is greater than the deck, just insert random cards
                 }
             }
 
@@ -401,4 +436,3 @@ namespace BusinessLayer
         }
     }
 }
-

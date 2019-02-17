@@ -8,26 +8,14 @@ namespace ViewModel
 
     public class ChangeEntity
     {
-        private CreateSql _createSql;
-        private BaseEntity _entity;
-
-
         public ChangeEntity(CreateSql createSql, BaseEntity entity)
         {
-            _entity = entity;
-            _createSql = createSql;
+            Entity = entity;
+            CreateSql = createSql;
         }
 
-        public BaseEntity Entity
-        {
-            get => _entity;
-            set => _entity = value;
-        }
+        public BaseEntity Entity { get; set; }
 
-        public CreateSql CreateSql
-        {
-            get => _createSql;
-            set => _createSql = value;
-        }
+        public CreateSql CreateSql { get; set; }
     }
 }

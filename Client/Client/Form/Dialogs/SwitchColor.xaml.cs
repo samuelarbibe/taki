@@ -20,13 +20,7 @@ namespace Form.Dialogs
     /// </summary>
     public partial class SwitchColor : Window
     {
-        private Card _selectedColor;
-
-        public Card SelectedColor
-        {
-            get => _selectedColor;
-            set => _selectedColor = value;
-        }
+        public Card SelectedColor { get; set; }
 
         public SwitchColor()
         {
@@ -38,8 +32,8 @@ namespace Form.Dialogs
             SelectedColor = new Card()
             {
                 Id = 30,
-                VALUE = Card.Value.SwitchColor,
-                COLOR = Card.Color.red,
+                Value = Value.SwitchColor,
+                Color = TakiService.Color.Red,
                 Image = "../Resources/Cards/card0030.png",
                 Special = true
             };
@@ -52,8 +46,8 @@ namespace Form.Dialogs
             SelectedColor = new Card()
             {
                 Id = 46,
-                VALUE = Card.Value.SwitchColor,
-                COLOR = Card.Color.yellow,
+                Value = Value.SwitchColor,
+                Color = TakiService.Color.Red,
                 Image = "../Resources/Cards/card0046.png",
                 Special = true
             };
@@ -66,8 +60,8 @@ namespace Form.Dialogs
             SelectedColor = new Card()
             {
                 Id = 14,
-                VALUE = Card.Value.SwitchColor,
-                COLOR = Card.Color.green,
+                Value = Value.SwitchColor,
+                Color = TakiService.Color.Green,
                 Image = "../Resources/Cards/card0014.png",
                 Special = true
             };
@@ -80,8 +74,8 @@ namespace Form.Dialogs
             SelectedColor = new Card()
             {
                 Id = 62,
-                VALUE = Card.Value.SwitchColor,
-                COLOR = Card.Color.blue,
+                Value = Value.SwitchColor,
+                Color = TakiService.Color.Blue,
                 Image = "../Resources/Cards/card0062.png",
                 Special = true
             };

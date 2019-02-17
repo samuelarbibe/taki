@@ -71,7 +71,7 @@ namespace ViewModel
         public User SelectById(int id)
         {
             Command.Parameters.Clear();
-            
+
             Command.CommandText = "SELECT * FROM User_Table WHERE [ID] = @Id";
 
             //parameters
@@ -121,7 +121,8 @@ namespace ViewModel
 
             Player p = entity as Player;
 
-            if (p.UserId > 0) {
+            if (p.UserId > 0)
+            {
                 PlayerDb playerDb = new PlayerDb();
                 playerDb.Delete(u as Player);
             }

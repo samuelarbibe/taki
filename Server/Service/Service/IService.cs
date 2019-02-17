@@ -14,8 +14,6 @@ namespace Service
     [ServiceContract]
     public interface IService
     {
-
-
         [OperationContract]
         CardList GetCardList();
 
@@ -56,10 +54,10 @@ namespace Service
         bool PasswordAvailable(string password);
 
         [OperationContract]
-        GameList GetAllUserGames(int UserId);
+        GameList GetAllUserGames(int userId);
 
         [OperationContract]
-        User GetUserByUsername(string Username);
+        User GetUserByUsername(string username);
 
         [OperationContract]
         User GetUserById(int id);
@@ -90,7 +88,5 @@ namespace Service
 
         [OperationContract]
         int SaveChanges();
-
     }
-
 }

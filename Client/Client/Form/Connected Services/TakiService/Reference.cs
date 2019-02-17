@@ -27,7 +27,7 @@ namespace Form.TakiService {
     public partial class Card : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Form.TakiService.Card.Color COLORField;
+        private Form.TakiService.Color ColorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImageField;
@@ -36,17 +36,17 @@ namespace Form.TakiService {
         private bool SpecialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Form.TakiService.Card.Value VALUEField;
+        private Form.TakiService.Value ValueField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Form.TakiService.Card.Color COLOR {
+        public Form.TakiService.Color Color {
             get {
-                return this.COLORField;
+                return this.ColorField;
             }
             set {
-                if ((this.COLORField.Equals(value) != true)) {
-                    this.COLORField = value;
-                    this.RaisePropertyChanged("COLOR");
+                if ((this.ColorField.Equals(value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
                 }
             }
         }
@@ -78,95 +78,16 @@ namespace Form.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Form.TakiService.Card.Value VALUE {
+        public Form.TakiService.Value Value {
             get {
-                return this.VALUEField;
+                return this.ValueField;
             }
             set {
-                if ((this.VALUEField.Equals(value) != true)) {
-                    this.VALUEField = value;
-                    this.RaisePropertyChanged("VALUE");
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
                 }
             }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.Color", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Color : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            green = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            blue = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            red = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            yellow = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            multi = 4,
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.Value", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Value : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Zero = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            One = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            PlusTwo = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Three = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Four = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Five = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Six = 6,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Seven = 7,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Eight = 8,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Nine = 9,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Stop = 10,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Plus = 11,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchDirection = 12,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Taki = 13,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColor = 14,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            TakiAll = 15,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColorAll = 16,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchHandAll = 17,
         }
     }
     
@@ -505,7 +426,7 @@ namespace Form.TakiService {
     public partial class Message : Form.TakiService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Form.TakiService.Message._action ActionField;
+        private Form.TakiService.Action ActionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Form.TakiService.Card CardField;
@@ -520,7 +441,7 @@ namespace Form.TakiService {
         private Form.TakiService.Player TargetField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Form.TakiService.Message._action Action {
+        public Form.TakiService.Action Action {
             get {
                 return this.ActionField;
             }
@@ -583,38 +504,85 @@ namespace Form.TakiService {
                 }
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Color", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum Color : int {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Message._action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum _action : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            add = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            remove = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            next_turn = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            player_quit = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            switch_rotation = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            switch_hand = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            plus_two = 6,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            win = 7,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            loss = 8,
-        }
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Green = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Blue = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Red = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Yellow = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Multi = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Value", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum Value : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Zero = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        One = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PlusTwo = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Three = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Four = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Five = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Six = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Seven = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Eight = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Nine = 9,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Stop = 10,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Plus = 11,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchDirection = 12,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Taki = 13,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchColor = 14,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TakiAll = 15,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchColorAll = 16,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchHandAll = 17,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -622,6 +590,38 @@ namespace Form.TakiService {
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PlayerList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Player")]
     [System.SerializableAttribute()]
     public class PlayerList : System.Collections.Generic.List<Form.TakiService.Player> {
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum Action : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Add = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Remove = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NextTurn = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PlayerQuit = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchRotation = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchHand = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PlusTwo = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Win = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Loss = 8,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -728,16 +728,16 @@ namespace Form.TakiService {
         System.Threading.Tasks.Task<bool> PasswordAvailableAsync(string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUserGames", ReplyAction="http://tempuri.org/IService/GetAllUserGamesResponse")]
-        Form.TakiService.GameList GetAllUserGames(int UserId);
+        Form.TakiService.GameList GetAllUserGames(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetAllUserGames", ReplyAction="http://tempuri.org/IService/GetAllUserGamesResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int UserId);
+        System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByUsername", ReplyAction="http://tempuri.org/IService/GetUserByUsernameResponse")]
-        Form.TakiService.User GetUserByUsername(string Username);
+        Form.TakiService.User GetUserByUsername(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserByUsername", ReplyAction="http://tempuri.org/IService/GetUserByUsernameResponse")]
-        System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string Username);
+        System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
         Form.TakiService.User GetUserById(int id);
@@ -931,20 +931,20 @@ namespace Form.TakiService {
             return base.Channel.PasswordAvailableAsync(password);
         }
         
-        public Form.TakiService.GameList GetAllUserGames(int UserId) {
-            return base.Channel.GetAllUserGames(UserId);
+        public Form.TakiService.GameList GetAllUserGames(int userId) {
+            return base.Channel.GetAllUserGames(userId);
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int UserId) {
-            return base.Channel.GetAllUserGamesAsync(UserId);
+        public System.Threading.Tasks.Task<Form.TakiService.GameList> GetAllUserGamesAsync(int userId) {
+            return base.Channel.GetAllUserGamesAsync(userId);
         }
         
-        public Form.TakiService.User GetUserByUsername(string Username) {
-            return base.Channel.GetUserByUsername(Username);
+        public Form.TakiService.User GetUserByUsername(string username) {
+            return base.Channel.GetUserByUsername(username);
         }
         
-        public System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string Username) {
-            return base.Channel.GetUserByUsernameAsync(Username);
+        public System.Threading.Tasks.Task<Form.TakiService.User> GetUserByUsernameAsync(string username) {
+            return base.Channel.GetUserByUsernameAsync(username);
         }
         
         public Form.TakiService.User GetUserById(int id) {

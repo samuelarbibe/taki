@@ -28,9 +28,9 @@ namespace ViewModel
         public void InsertList(ConnectionList entity)
         {
             ConnectionList cl = entity;
-            foreach (PlayerGameConnection PlayerGameConnection in cl)
-                if (PlayerGameConnection != null)
-                    Inserted.Add(new ChangeEntity(CreateInsertSql, PlayerGameConnection));
+            foreach (PlayerGameConnection playerGameConnection in cl)
+                if (playerGameConnection != null)
+                    Inserted.Add(new ChangeEntity(CreateInsertSql, playerGameConnection));
         }
 
 
@@ -39,7 +39,6 @@ namespace ViewModel
             //Inserted.Add(new ChangeEntity(CreateInsertSql, game));
             foreach (Player p in game.Players)
             {
-
                 Inserted.Add(new ChangeEntity(CreateInsertSql, new PlayerGameConnection()
                 {
                     Player = p, // increment the player id for each player
@@ -47,7 +46,6 @@ namespace ViewModel
                 }));
             }
         }
-
 
 
         public ConnectionList SelectByGame(Game game)
@@ -89,7 +87,8 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.Player.Id));
             command.Parameters.Add(new OleDbParameter("@game_id", con.Game.Id));
 
-            Console.WriteLine("PlayerGameConnection between player [" + con.Player.Id + "] and game [" + con.Game.Id + "] INSERTED");
+            Console.WriteLine("PlayerGameConnection between player [" + con.Player.Id + "] and game [" + con.Game.Id +
+                              "] INSERTED");
         }
 
 
@@ -104,7 +103,8 @@ namespace ViewModel
             command.Parameters.Add(new OleDbParameter("@player_id", con.Player.Id));
             command.Parameters.Add(new OleDbParameter("@game_id", con.Game.Id));
 
-            Console.WriteLine("PlayerGameConnection between player [" + con.Player.Id + "] and game [" + con.Game.Id + "] DELETED");
+            Console.WriteLine("PlayerGameConnection between player [" + con.Player.Id + "] and game [" + con.Game.Id +
+                              "] DELETED");
         }
 
         //BaseDB abstract implementation.

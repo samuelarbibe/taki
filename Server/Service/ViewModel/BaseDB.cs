@@ -13,7 +13,7 @@ namespace ViewModel
         protected static List<ChangeEntity> Inserted = new List<ChangeEntity>();
         protected static List<ChangeEntity> Updated = new List<ChangeEntity>();
         protected OleDbCommand Command;
-        protected OleDbConnection con;
+        protected OleDbConnection Con;
 
         //database
         protected string ConnectionString;
@@ -52,7 +52,7 @@ namespace ViewModel
                 @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + s1 +
                 @"\Database.accdb; Persist Security Info = True";
 
-            con = new OleDbConnection(ConnectionString);
+            Con = new OleDbConnection(ConnectionString);
             Command = new OleDbCommand();
         }
 
@@ -102,9 +102,9 @@ namespace ViewModel
             int errorIndex = 0;
             try
             {
-                con.Open();
-                trans = con.BeginTransaction();
-                command.Connection = con;
+                Con.Open();
+                trans = Con.BeginTransaction();
+                command.Connection = Con;
                 command.Transaction = trans;
 
                 //inserted
@@ -116,7 +116,7 @@ namespace ViewModel
 
 
                     command.CommandText = "SELECT @@Identity"; //get last ID on this session
-                    int temp = (int)command.ExecuteScalar();
+                    int temp = (int) command.ExecuteScalar();
                     item.Entity.Id = temp;
 
                     errorIndex++;
@@ -131,12 +131,13 @@ namespace ViewModel
                     item.CreateSql(item.Entity, command);
                     recordsAffected += command.ExecuteNonQuery();
                 }
+
                 Updated.Clear();
 
                 trans.Commit();
             }
             catch (Exception e)
-            {               
+            {
                 Debug.WriteLine("\n" + e.Message + "\nSQL:" + command.CommandText);
 
                 try
@@ -156,7 +157,7 @@ namespace ViewModel
             {
                 Reader?.Close();
 
-                if (con.State == ConnectionState.Open) con.Close();
+                if (Con.State == ConnectionState.Open) Con.Close();
             }
 
             return recordsAffected;
@@ -170,8 +171,8 @@ namespace ViewModel
 
             try
             {
-                Command.Connection = con;
-                con.Open();
+                Command.Connection = Con;
+                Con.Open();
                 Reader = Command.ExecuteReader();
 
                 while (Reader.Read())
@@ -188,7 +189,7 @@ namespace ViewModel
             {
                 Reader?.Close();
 
-                if (con.State == ConnectionState.Open) con.Close();
+                if (Con.State == ConnectionState.Open) Con.Close();
             }
 
             return list;

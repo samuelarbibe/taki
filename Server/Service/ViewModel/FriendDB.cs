@@ -20,9 +20,9 @@ namespace ViewModel
             UserDb userDb = new UserDb();
 
             Friendship con = entity as Friendship;
-            con.Id = (int)Reader["ID"];
-            con.User1 = userDb.SelectById((int)Reader["user_1_id"]);
-            con.User2 = userDb.SelectById((int)Reader["user_2_id"]);
+            con.Id = (int) Reader["ID"];
+            con.User1 = userDb.SelectById((int) Reader["user_1_id"]);
+            con.User2 = userDb.SelectById((int) Reader["user_2_id"]);
             return con;
         }
 
@@ -31,9 +31,9 @@ namespace ViewModel
             UserList ul = new UserList();
             ConnectionList temp = this.SelectByUserId(userId);
 
-            foreach(Friendship fr in temp)
+            foreach (Friendship fr in temp)
             {
-                if(fr.User1.Id == userId)
+                if (fr.User1.Id == userId)
                 {
                     ul.Add(fr.User2);
                 }
@@ -61,7 +61,8 @@ namespace ViewModel
 
         public ConnectionList SelectByUsersId(int id1, int id2)
         {
-            Command.CommandText = "SELECT * FROM Friends_Table WHERE ([user_1_id] = @id1 AND [user_2_id] = @id2) OR ([user_1_id] = @id2 AND [user_2_id] = @id1)";
+            Command.CommandText =
+                "SELECT * FROM Friends_Table WHERE ([user_1_id] = @id1 AND [user_2_id] = @id2) OR ([user_1_id] = @id2 AND [user_2_id] = @id1)";
 
 
             //parameters
@@ -75,8 +76,9 @@ namespace ViewModel
 
         public override void Insert(BaseEntity baseEntity)
         {
-            if (baseEntity is Friendship) {
-                if (((Friendship)baseEntity).User1 != null && ((Friendship)baseEntity).User2 != null)
+            if (baseEntity is Friendship)
+            {
+                if (((Friendship) baseEntity).User1 != null && ((Friendship) baseEntity).User2 != null)
                 {
                     Inserted.Add(new ChangeEntity(CreateInsertSql, baseEntity));
                 }
@@ -100,7 +102,8 @@ namespace ViewModel
             //parameters
             command.Parameters.Add(new OleDbParameter("@id", con.Id));
 
-            Console.WriteLine("Friendship between player [" + con.User1.Id + "] and card [" + con.User2.Id + "] DELETED");
+            Console.WriteLine(
+                "Friendship between player [" + con.User1.Id + "] and card [" + con.User2.Id + "] DELETED");
         }
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
@@ -122,6 +125,5 @@ namespace ViewModel
         {
             throw new NotImplementedException();
         }
-
     }
 }

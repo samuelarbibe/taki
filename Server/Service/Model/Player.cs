@@ -6,10 +6,6 @@ namespace Model
     [DataContract]
     public class Player : User, ICloneable
     {
-        private CardList _hand;
-        private int _tempScore;
-        private int _userId;
-
         public Player()
         {
         }
@@ -20,25 +16,13 @@ namespace Model
         }
 
         [DataMember]
-        public CardList Hand
-        {
-            get => _hand;
-            set => _hand = value;
-        }
+        public CardList Hand { get; set; }
 
         [DataMember]
-        public int TempScore
-        {
-            get => _tempScore;
-            set => _tempScore = value;
-        }
+        public int TempScore { get; set; }
 
         [DataMember]
-        public int UserId
-        {
-            get => _userId;
-            set => _userId = value;
-        }
+        public int UserId { get; set; }
 
         public object Clone()
         {
