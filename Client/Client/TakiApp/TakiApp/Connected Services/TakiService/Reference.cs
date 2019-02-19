@@ -23,23 +23,23 @@ namespace TakiApp.TakiService {
     [System.Runtime.Serialization.DataContractAttribute(Name="Card", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     public partial class Card : TakiApp.TakiService.BaseEntity {
         
-        private TakiApp.TakiService.Card.Color COLORField;
+        private TakiApp.TakiService.Color ColorField;
         
         private string ImageField;
         
         private bool SpecialField;
         
-        private TakiApp.TakiService.Card.Value VALUEField;
+        private TakiApp.TakiService.Value ValueField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TakiApp.TakiService.Card.Color COLOR {
+        public TakiApp.TakiService.Color Color {
             get {
-                return this.COLORField;
+                return this.ColorField;
             }
             set {
-                if ((this.COLORField.Equals(value) != true)) {
-                    this.COLORField = value;
-                    this.RaisePropertyChanged("COLOR");
+                if ((this.ColorField.Equals(value) != true)) {
+                    this.ColorField = value;
+                    this.RaisePropertyChanged("Color");
                 }
             }
         }
@@ -71,95 +71,16 @@ namespace TakiApp.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TakiApp.TakiService.Card.Value VALUE {
+        public TakiApp.TakiService.Value Value {
             get {
-                return this.VALUEField;
+                return this.ValueField;
             }
             set {
-                if ((this.VALUEField.Equals(value) != true)) {
-                    this.VALUEField = value;
-                    this.RaisePropertyChanged("VALUE");
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
                 }
             }
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.Color", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Color : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            green = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            blue = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            red = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            yellow = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            multi = 4,
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.Value", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum Value : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Zero = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            One = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            PlusTwo = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Three = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Four = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Five = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Six = 6,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Seven = 7,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Eight = 8,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Nine = 9,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Stop = 10,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Plus = 11,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchDirection = 12,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            Taki = 13,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColor = 14,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            TakiAll = 15,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchColorAll = 16,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            SwitchHandAll = 17,
         }
     }
     
@@ -462,7 +383,7 @@ namespace TakiApp.TakiService {
     [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     public partial class Message : TakiApp.TakiService.BaseEntity {
         
-        private TakiApp.TakiService.Message._action ActionField;
+        private TakiApp.TakiService.Action ActionField;
         
         private TakiApp.TakiService.Card CardField;
         
@@ -473,7 +394,7 @@ namespace TakiApp.TakiService {
         private TakiApp.TakiService.Player TargetField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TakiApp.TakiService.Message._action Action {
+        public TakiApp.TakiService.Action Action {
             get {
                 return this.ActionField;
             }
@@ -536,44 +457,123 @@ namespace TakiApp.TakiService {
                 }
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Color", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum Color : int {
         
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Message._action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
-        public enum _action : int {
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            add = 0,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            remove = 1,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            next_turn = 2,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            player_quit = 3,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            switch_rotation = 4,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            switch_hand = 5,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            plus_two = 6,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            win = 7,
-            
-            [System.Runtime.Serialization.EnumMemberAttribute()]
-            loss = 8,
-        }
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Green = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Blue = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Red = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Yellow = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Multi = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Value", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum Value : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Zero = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        One = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PlusTwo = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Three = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Four = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Five = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Six = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Seven = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Eight = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Nine = 9,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Stop = 10,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Plus = 11,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchDirection = 12,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Taki = 13,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchColor = 14,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TakiAll = 15,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchColorAll = 16,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchHandAll = 17,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="PlayerList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Player")]
     public class PlayerList : System.Collections.ObjectModel.ObservableCollection<TakiApp.TakiService.Player> {
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Action", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum Action : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Add = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Remove = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NextTurn = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PlayerQuit = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchRotation = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SwitchHand = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PlusTwo = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Win = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Loss = 8,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -664,14 +664,39 @@ namespace TakiApp.TakiService {
         bool EndPasswordAvailable(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetAllUserGames", ReplyAction="http://tempuri.org/IService/GetAllUserGamesResponse")]
-        System.IAsyncResult BeginGetAllUserGames(int UserId, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetAllUserGames(int userId, System.AsyncCallback callback, object asyncState);
         
         TakiApp.TakiService.GameList EndGetAllUserGames(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetUserByUsername", ReplyAction="http://tempuri.org/IService/GetUserByUsernameResponse")]
+        System.IAsyncResult BeginGetUserByUsername(string username, System.AsyncCallback callback, object asyncState);
+        
+        TakiApp.TakiService.User EndGetUserByUsername(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetUserById", ReplyAction="http://tempuri.org/IService/GetUserByIdResponse")]
+        System.IAsyncResult BeginGetUserById(int id, System.AsyncCallback callback, object asyncState);
+        
+        TakiApp.TakiService.User EndGetUserById(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/UsernameAvailable", ReplyAction="http://tempuri.org/IService/UsernameAvailableResponse")]
         System.IAsyncResult BeginUsernameAvailable(string username, System.AsyncCallback callback, object asyncState);
         
         bool EndUsernameAvailable(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetAllUseFriends", ReplyAction="http://tempuri.org/IService/GetAllUseFriendsResponse")]
+        System.IAsyncResult BeginGetAllUseFriends(int userId, System.AsyncCallback callback, object asyncState);
+        
+        TakiApp.TakiService.UserList EndGetAllUseFriends(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/AreFriends", ReplyAction="http://tempuri.org/IService/AreFriendsResponse")]
+        System.IAsyncResult BeginAreFriends(int user1Id, int user2Id, System.AsyncCallback callback, object asyncState);
+        
+        bool EndAreFriends(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/MakeFriends", ReplyAction="http://tempuri.org/IService/MakeFriendsResponse")]
+        System.IAsyncResult BeginMakeFriends(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState);
+        
+        void EndMakeFriends(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
         System.IAsyncResult BeginStopSearchingForGame(TakiApp.TakiService.Player p, System.AsyncCallback callback, object asyncState);
@@ -933,11 +958,87 @@ namespace TakiApp.TakiService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserByUsernameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserByUsernameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public TakiApp.TakiService.User Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TakiApp.TakiService.User)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public TakiApp.TakiService.User Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TakiApp.TakiService.User)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class UsernameAvailableCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
         public UsernameAvailableCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAllUseFriendsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAllUseFriendsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public TakiApp.TakiService.UserList Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TakiApp.TakiService.UserList)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AreFriendsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public AreFriendsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1133,11 +1234,41 @@ namespace TakiApp.TakiService {
         
         private System.Threading.SendOrPostCallback onGetAllUserGamesCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetUserByUsernameDelegate;
+        
+        private EndOperationDelegate onEndGetUserByUsernameDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserByUsernameCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserByIdDelegate;
+        
+        private EndOperationDelegate onEndGetUserByIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserByIdCompletedDelegate;
+        
         private BeginOperationDelegate onBeginUsernameAvailableDelegate;
         
         private EndOperationDelegate onEndUsernameAvailableDelegate;
         
         private System.Threading.SendOrPostCallback onUsernameAvailableCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetAllUseFriendsDelegate;
+        
+        private EndOperationDelegate onEndGetAllUseFriendsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAllUseFriendsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginAreFriendsDelegate;
+        
+        private EndOperationDelegate onEndAreFriendsDelegate;
+        
+        private System.Threading.SendOrPostCallback onAreFriendsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginMakeFriendsDelegate;
+        
+        private EndOperationDelegate onEndMakeFriendsDelegate;
+        
+        private System.Threading.SendOrPostCallback onMakeFriendsCompletedDelegate;
         
         private BeginOperationDelegate onBeginStopSearchingForGameDelegate;
         
@@ -1251,7 +1382,17 @@ namespace TakiApp.TakiService {
         
         public event System.EventHandler<GetAllUserGamesCompletedEventArgs> GetAllUserGamesCompleted;
         
+        public event System.EventHandler<GetUserByUsernameCompletedEventArgs> GetUserByUsernameCompleted;
+        
+        public event System.EventHandler<GetUserByIdCompletedEventArgs> GetUserByIdCompleted;
+        
         public event System.EventHandler<UsernameAvailableCompletedEventArgs> UsernameAvailableCompleted;
+        
+        public event System.EventHandler<GetAllUseFriendsCompletedEventArgs> GetAllUseFriendsCompleted;
+        
+        public event System.EventHandler<AreFriendsCompletedEventArgs> AreFriendsCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> MakeFriendsCompleted;
         
         public event System.EventHandler<StopSearchingForGameCompletedEventArgs> StopSearchingForGameCompleted;
         
@@ -1870,8 +2011,8 @@ namespace TakiApp.TakiService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TakiApp.TakiService.IService.BeginGetAllUserGames(int UserId, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetAllUserGames(UserId, callback, asyncState);
+        System.IAsyncResult TakiApp.TakiService.IService.BeginGetAllUserGames(int userId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllUserGames(userId, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1880,8 +2021,8 @@ namespace TakiApp.TakiService {
         }
         
         private System.IAsyncResult OnBeginGetAllUserGames(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int UserId = ((int)(inValues[0]));
-            return ((TakiApp.TakiService.IService)(this)).BeginGetAllUserGames(UserId, callback, asyncState);
+            int userId = ((int)(inValues[0]));
+            return ((TakiApp.TakiService.IService)(this)).BeginGetAllUserGames(userId, callback, asyncState);
         }
         
         private object[] OnEndGetAllUserGames(System.IAsyncResult result) {
@@ -1897,11 +2038,11 @@ namespace TakiApp.TakiService {
             }
         }
         
-        public void GetAllUserGamesAsync(int UserId) {
-            this.GetAllUserGamesAsync(UserId, null);
+        public void GetAllUserGamesAsync(int userId) {
+            this.GetAllUserGamesAsync(userId, null);
         }
         
-        public void GetAllUserGamesAsync(int UserId, object userState) {
+        public void GetAllUserGamesAsync(int userId, object userState) {
             if ((this.onBeginGetAllUserGamesDelegate == null)) {
                 this.onBeginGetAllUserGamesDelegate = new BeginOperationDelegate(this.OnBeginGetAllUserGames);
             }
@@ -1912,7 +2053,99 @@ namespace TakiApp.TakiService {
                 this.onGetAllUserGamesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUserGamesCompleted);
             }
             base.InvokeAsync(this.onBeginGetAllUserGamesDelegate, new object[] {
-                        UserId}, this.onEndGetAllUserGamesDelegate, this.onGetAllUserGamesCompletedDelegate, userState);
+                        userId}, this.onEndGetAllUserGamesDelegate, this.onGetAllUserGamesCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginGetUserByUsername(string username, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserByUsername(username, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TakiApp.TakiService.User TakiApp.TakiService.IService.EndGetUserByUsername(System.IAsyncResult result) {
+            return base.Channel.EndGetUserByUsername(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserByUsername(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string username = ((string)(inValues[0]));
+            return ((TakiApp.TakiService.IService)(this)).BeginGetUserByUsername(username, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserByUsername(System.IAsyncResult result) {
+            TakiApp.TakiService.User retVal = ((TakiApp.TakiService.IService)(this)).EndGetUserByUsername(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserByUsernameCompleted(object state) {
+            if ((this.GetUserByUsernameCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserByUsernameCompleted(this, new GetUserByUsernameCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserByUsernameAsync(string username) {
+            this.GetUserByUsernameAsync(username, null);
+        }
+        
+        public void GetUserByUsernameAsync(string username, object userState) {
+            if ((this.onBeginGetUserByUsernameDelegate == null)) {
+                this.onBeginGetUserByUsernameDelegate = new BeginOperationDelegate(this.OnBeginGetUserByUsername);
+            }
+            if ((this.onEndGetUserByUsernameDelegate == null)) {
+                this.onEndGetUserByUsernameDelegate = new EndOperationDelegate(this.OnEndGetUserByUsername);
+            }
+            if ((this.onGetUserByUsernameCompletedDelegate == null)) {
+                this.onGetUserByUsernameCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserByUsernameCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserByUsernameDelegate, new object[] {
+                        username}, this.onEndGetUserByUsernameDelegate, this.onGetUserByUsernameCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginGetUserById(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserById(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TakiApp.TakiService.User TakiApp.TakiService.IService.EndGetUserById(System.IAsyncResult result) {
+            return base.Channel.EndGetUserById(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserById(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((TakiApp.TakiService.IService)(this)).BeginGetUserById(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserById(System.IAsyncResult result) {
+            TakiApp.TakiService.User retVal = ((TakiApp.TakiService.IService)(this)).EndGetUserById(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserByIdCompleted(object state) {
+            if ((this.GetUserByIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserByIdCompleted(this, new GetUserByIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserByIdAsync(int id) {
+            this.GetUserByIdAsync(id, null);
+        }
+        
+        public void GetUserByIdAsync(int id, object userState) {
+            if ((this.onBeginGetUserByIdDelegate == null)) {
+                this.onBeginGetUserByIdDelegate = new BeginOperationDelegate(this.OnBeginGetUserById);
+            }
+            if ((this.onEndGetUserByIdDelegate == null)) {
+                this.onEndGetUserByIdDelegate = new EndOperationDelegate(this.OnEndGetUserById);
+            }
+            if ((this.onGetUserByIdCompletedDelegate == null)) {
+                this.onGetUserByIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserByIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserByIdDelegate, new object[] {
+                        id}, this.onEndGetUserByIdDelegate, this.onGetUserByIdCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1959,6 +2192,147 @@ namespace TakiApp.TakiService {
             }
             base.InvokeAsync(this.onBeginUsernameAvailableDelegate, new object[] {
                         username}, this.onEndUsernameAvailableDelegate, this.onUsernameAvailableCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginGetAllUseFriends(int userId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllUseFriends(userId, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TakiApp.TakiService.UserList TakiApp.TakiService.IService.EndGetAllUseFriends(System.IAsyncResult result) {
+            return base.Channel.EndGetAllUseFriends(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAllUseFriends(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int userId = ((int)(inValues[0]));
+            return ((TakiApp.TakiService.IService)(this)).BeginGetAllUseFriends(userId, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAllUseFriends(System.IAsyncResult result) {
+            TakiApp.TakiService.UserList retVal = ((TakiApp.TakiService.IService)(this)).EndGetAllUseFriends(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAllUseFriendsCompleted(object state) {
+            if ((this.GetAllUseFriendsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAllUseFriendsCompleted(this, new GetAllUseFriendsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAllUseFriendsAsync(int userId) {
+            this.GetAllUseFriendsAsync(userId, null);
+        }
+        
+        public void GetAllUseFriendsAsync(int userId, object userState) {
+            if ((this.onBeginGetAllUseFriendsDelegate == null)) {
+                this.onBeginGetAllUseFriendsDelegate = new BeginOperationDelegate(this.OnBeginGetAllUseFriends);
+            }
+            if ((this.onEndGetAllUseFriendsDelegate == null)) {
+                this.onEndGetAllUseFriendsDelegate = new EndOperationDelegate(this.OnEndGetAllUseFriends);
+            }
+            if ((this.onGetAllUseFriendsCompletedDelegate == null)) {
+                this.onGetAllUseFriendsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUseFriendsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAllUseFriendsDelegate, new object[] {
+                        userId}, this.onEndGetAllUseFriendsDelegate, this.onGetAllUseFriendsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginAreFriends(int user1Id, int user2Id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAreFriends(user1Id, user2Id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool TakiApp.TakiService.IService.EndAreFriends(System.IAsyncResult result) {
+            return base.Channel.EndAreFriends(result);
+        }
+        
+        private System.IAsyncResult OnBeginAreFriends(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int user1Id = ((int)(inValues[0]));
+            int user2Id = ((int)(inValues[1]));
+            return ((TakiApp.TakiService.IService)(this)).BeginAreFriends(user1Id, user2Id, callback, asyncState);
+        }
+        
+        private object[] OnEndAreFriends(System.IAsyncResult result) {
+            bool retVal = ((TakiApp.TakiService.IService)(this)).EndAreFriends(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnAreFriendsCompleted(object state) {
+            if ((this.AreFriendsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.AreFriendsCompleted(this, new AreFriendsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void AreFriendsAsync(int user1Id, int user2Id) {
+            this.AreFriendsAsync(user1Id, user2Id, null);
+        }
+        
+        public void AreFriendsAsync(int user1Id, int user2Id, object userState) {
+            if ((this.onBeginAreFriendsDelegate == null)) {
+                this.onBeginAreFriendsDelegate = new BeginOperationDelegate(this.OnBeginAreFriends);
+            }
+            if ((this.onEndAreFriendsDelegate == null)) {
+                this.onEndAreFriendsDelegate = new EndOperationDelegate(this.OnEndAreFriends);
+            }
+            if ((this.onAreFriendsCompletedDelegate == null)) {
+                this.onAreFriendsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAreFriendsCompleted);
+            }
+            base.InvokeAsync(this.onBeginAreFriendsDelegate, new object[] {
+                        user1Id,
+                        user2Id}, this.onEndAreFriendsDelegate, this.onAreFriendsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginMakeFriends(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginMakeFriends(u1, u2, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TakiApp.TakiService.IService.EndMakeFriends(System.IAsyncResult result) {
+            base.Channel.EndMakeFriends(result);
+        }
+        
+        private System.IAsyncResult OnBeginMakeFriends(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            TakiApp.TakiService.User u1 = ((TakiApp.TakiService.User)(inValues[0]));
+            TakiApp.TakiService.User u2 = ((TakiApp.TakiService.User)(inValues[1]));
+            return ((TakiApp.TakiService.IService)(this)).BeginMakeFriends(u1, u2, callback, asyncState);
+        }
+        
+        private object[] OnEndMakeFriends(System.IAsyncResult result) {
+            ((TakiApp.TakiService.IService)(this)).EndMakeFriends(result);
+            return null;
+        }
+        
+        private void OnMakeFriendsCompleted(object state) {
+            if ((this.MakeFriendsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.MakeFriendsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void MakeFriendsAsync(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2) {
+            this.MakeFriendsAsync(u1, u2, null);
+        }
+        
+        public void MakeFriendsAsync(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, object userState) {
+            if ((this.onBeginMakeFriendsDelegate == null)) {
+                this.onBeginMakeFriendsDelegate = new BeginOperationDelegate(this.OnBeginMakeFriends);
+            }
+            if ((this.onEndMakeFriendsDelegate == null)) {
+                this.onEndMakeFriendsDelegate = new EndOperationDelegate(this.OnEndMakeFriends);
+            }
+            if ((this.onMakeFriendsCompletedDelegate == null)) {
+                this.onMakeFriendsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMakeFriendsCompleted);
+            }
+            base.InvokeAsync(this.onBeginMakeFriendsDelegate, new object[] {
+                        u1,
+                        u2}, this.onEndMakeFriendsDelegate, this.onMakeFriendsCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2458,9 +2832,9 @@ namespace TakiApp.TakiService {
                 return _result;
             }
             
-            public System.IAsyncResult BeginGetAllUserGames(int UserId, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginGetAllUserGames(int userId, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
-                _args[0] = UserId;
+                _args[0] = userId;
                 System.IAsyncResult _result = base.BeginInvoke("GetAllUserGames", _args, callback, asyncState);
                 return _result;
             }
@@ -2468,6 +2842,32 @@ namespace TakiApp.TakiService {
             public TakiApp.TakiService.GameList EndGetAllUserGames(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 TakiApp.TakiService.GameList _result = ((TakiApp.TakiService.GameList)(base.EndInvoke("GetAllUserGames", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserByUsername(string username, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = username;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserByUsername", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TakiApp.TakiService.User EndGetUserByUsername(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TakiApp.TakiService.User _result = ((TakiApp.TakiService.User)(base.EndInvoke("GetUserByUsername", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserById(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserById", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TakiApp.TakiService.User EndGetUserById(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TakiApp.TakiService.User _result = ((TakiApp.TakiService.User)(base.EndInvoke("GetUserById", _args, result)));
                 return _result;
             }
             
@@ -2482,6 +2882,46 @@ namespace TakiApp.TakiService {
                 object[] _args = new object[0];
                 bool _result = ((bool)(base.EndInvoke("UsernameAvailable", _args, result)));
                 return _result;
+            }
+            
+            public System.IAsyncResult BeginGetAllUseFriends(int userId, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = userId;
+                System.IAsyncResult _result = base.BeginInvoke("GetAllUseFriends", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TakiApp.TakiService.UserList EndGetAllUseFriends(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TakiApp.TakiService.UserList _result = ((TakiApp.TakiService.UserList)(base.EndInvoke("GetAllUseFriends", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginAreFriends(int user1Id, int user2Id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = user1Id;
+                _args[1] = user2Id;
+                System.IAsyncResult _result = base.BeginInvoke("AreFriends", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndAreFriends(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("AreFriends", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginMakeFriends(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = u1;
+                _args[1] = u2;
+                System.IAsyncResult _result = base.BeginInvoke("MakeFriends", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndMakeFriends(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("MakeFriends", _args, result);
             }
             
             public System.IAsyncResult BeginStopSearchingForGame(TakiApp.TakiService.Player p, System.AsyncCallback callback, object asyncState) {

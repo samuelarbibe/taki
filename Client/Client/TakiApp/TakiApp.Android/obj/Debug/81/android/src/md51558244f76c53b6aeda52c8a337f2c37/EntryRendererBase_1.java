@@ -22,14 +22,6 @@ public abstract class EntryRendererBase_1
 	}
 
 
-	public EntryRendererBase_1 (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == EntryRendererBase_1.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryRendererBase`1, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
-	}
-
-
 	public EntryRendererBase_1 (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -43,6 +35,14 @@ public abstract class EntryRendererBase_1
 		super (p0, p1);
 		if (getClass () == EntryRendererBase_1.class)
 			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryRendererBase`1, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+	}
+
+
+	public EntryRendererBase_1 (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == EntryRendererBase_1.class)
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryRendererBase`1, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 

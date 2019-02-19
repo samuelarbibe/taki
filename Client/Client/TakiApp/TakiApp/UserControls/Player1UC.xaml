@@ -8,8 +8,8 @@
             <local:SourceConverter x:Key="SourceConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
-    <Grid x:Name="MyGrid" Rotation="270">
-        <CollectionView x:Name="HandView">
+    <Grid x:Name="MyGrid">
+        <CollectionView HorizontalOptions="Center" x:Name="HandView" SelectionMode="Single" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Image WidthRequest="55" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="100" Aspect="AspectFit"></Image>

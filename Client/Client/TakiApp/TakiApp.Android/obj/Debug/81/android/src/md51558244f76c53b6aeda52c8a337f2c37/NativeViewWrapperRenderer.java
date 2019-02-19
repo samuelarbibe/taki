@@ -17,14 +17,6 @@ public class NativeViewWrapperRenderer
 	}
 
 
-	public NativeViewWrapperRenderer (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == NativeViewWrapperRenderer.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.NativeViewWrapperRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
-	}
-
-
 	public NativeViewWrapperRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -38,6 +30,14 @@ public class NativeViewWrapperRenderer
 		super (p0, p1);
 		if (getClass () == NativeViewWrapperRenderer.class)
 			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.NativeViewWrapperRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+	}
+
+
+	public NativeViewWrapperRenderer (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == NativeViewWrapperRenderer.class)
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.NativeViewWrapperRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 

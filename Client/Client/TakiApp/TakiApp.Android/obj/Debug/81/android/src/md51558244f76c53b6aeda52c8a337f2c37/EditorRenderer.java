@@ -20,14 +20,6 @@ public class EditorRenderer
 	}
 
 
-	public EditorRenderer (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == EditorRenderer.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EditorRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
-	}
-
-
 	public EditorRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -41,6 +33,14 @@ public class EditorRenderer
 		super (p0, p1);
 		if (getClass () == EditorRenderer.class)
 			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EditorRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+	}
+
+
+	public EditorRenderer (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == EditorRenderer.class)
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EditorRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 

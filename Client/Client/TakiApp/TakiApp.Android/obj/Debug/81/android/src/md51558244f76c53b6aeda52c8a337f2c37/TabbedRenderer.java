@@ -17,14 +17,6 @@ public class TabbedRenderer
 	}
 
 
-	public TabbedRenderer (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == TabbedRenderer.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TabbedRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
-	}
-
-
 	public TabbedRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -38,6 +30,14 @@ public class TabbedRenderer
 		super (p0, p1);
 		if (getClass () == TabbedRenderer.class)
 			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TabbedRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+	}
+
+
+	public TabbedRenderer (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == TabbedRenderer.class)
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TabbedRenderer, Xamarin.Forms.Platform.Android", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 

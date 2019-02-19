@@ -15,7 +15,6 @@ namespace Form
 
         public AdminUserPage()
         {
-
             InitializeComponent();
             this.DataContext = tempUser;
             Style = (Style)FindResource(typeof(Page));

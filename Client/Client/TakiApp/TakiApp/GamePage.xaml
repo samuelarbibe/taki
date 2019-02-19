@@ -12,6 +12,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -25,15 +26,15 @@
 
         <Button x:Name="ExitGameButton" Clicked="ExitGameButton_Click"></Button>
 
-        <control:Player1UC x:Name="uc1" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
+        <control:Player1UC x:Name="uc1" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
 
-    <!--<control:Player2UC x:Name="uc2" Grid.Column="9" Grid.RowSpan="4" Rotation="270" Grid.ColumnSpan="5" Grid.Row="2" Margin="1,48,-134,0" />
+        <control:Player2UC x:Name="uc2" Grid.Column="5" Grid.RowSpan="4" Rotation="270" Grid.ColumnSpan="2" Grid.Row="1"/>
 
-        <control:Player3UC x:Name="uc3" Grid.Column="2" Grid.RowSpan="3" Rotation="180" Grid.ColumnSpan="10" Margin="46,0,45,27" />
+        <control:Player3UC x:Name="uc3" Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" Rotation="180" Grid.ColumnSpan="5" />
 
-        <control:Player4UC x:Name="uc4" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="5" Rotation="90" Margin="-108,18,15,36" />
+        <control:Player4UC x:Name="uc4" Grid.Row="1" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Rotation="90" />
 
-        <control:TableUC x:Name="uctable" Grid.ColumnSpan="8" Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Margin="10"/>-->
+        <control:TableUC x:Name="uctable" Grid.ColumnSpan="5" Grid.RowSpan="3" Grid.Column="1" Grid.Row="2"/>
     </Grid>
 
 </ContentPage>

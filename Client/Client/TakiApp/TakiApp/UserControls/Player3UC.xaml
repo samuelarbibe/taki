@@ -3,8 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TakiApp.UserControls.Player3UC">
   <ContentView.Content>
-      <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
-      </StackLayout>
-  </ContentView.Content>
+      <Grid x:Name="MyGrid">
+            <CollectionView HorizontalOptions="Center" x:Name="HandView" SelectionMode="Single" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
+              <CollectionView.ItemTemplate>
+                  <DataTemplate>
+                        <Image WidthRequest="42" Source="card0068.png" HeightRequest="80" Aspect="AspectFit"></Image>
+                  </DataTemplate>
+              </CollectionView.ItemTemplate>
+          </CollectionView>
+      </Grid>
+    </ContentView.Content>
 </ContentView>

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "c4637415ccff7136a581f046ca637c31328f0525"
+    "signature": "93ebdad8321edcdd23b829beb20dc43294532605"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,13 +9,15 @@
     ".NETStandard,Version=v2.0/": {
       "TakiApp/1.0.0": {
         "dependencies": {
+          "Form": "1.0.0",
           "NETStandard.Library": "2.0.3",
           "System.ServiceModel.Duplex": "4.5.3",
           "System.ServiceModel.Http": "4.5.3",
           "System.ServiceModel.NetTcp": "4.5.3",
           "System.ServiceModel.Security": "4.5.3",
-          "Xamarin.Forms": "3.5.0.129452",
-          "Xfx.Controls": "1.1.3"
+          "Xamarin.Forms": "4.0.0.135214-pre4",
+          "Xfx.Controls": "1.1.3",
+          "PresentationFramework": "4.0.0.0"
         },
         "runtime": {
           "TakiApp.dll": {}
@@ -113,7 +115,7 @@
           }
         }
       },
-      "Xamarin.Forms/3.5.0.129452": {
+      "Xamarin.Forms/4.0.0.135214-pre4": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
@@ -131,12 +133,153 @@
       },
       "Xfx.Controls/1.1.3": {
         "dependencies": {
-          "Xamarin.Forms": "3.5.0.129452"
+          "Xamarin.Forms": "4.0.0.135214-pre4"
         },
         "runtime": {
           "lib/netstandard1.3/Xfx.Controls.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Form/1.0.0": {
+        "dependencies": {
+          "WindowsBase": "4.0.0.0",
+          "System.Xaml": "4.0.0.0",
+          "PresentationCore": "4.0.0.0",
+          "System.Configuration": "4.0.0.0",
+          "UIAutomationProvider": "4.0.0.0",
+          "UIAutomationTypes": "4.0.0.0",
+          "ReachFramework": "4.0.0.0",
+          "System.Printing": "4.0.0.0",
+          "Accessibility": "4.0.0.0",
+          "System.Deployment": "4.0.0.0",
+          "System.Security": "4.0.0.0",
+          "System.Windows.Input.Manipulations": "4.0.0.0",
+          "System.Windows.Forms": "4.0.0.0",
+          "System.Runtime.Serialization.Formatters.Soap": "4.0.0.0"
+        },
+        "runtime": {
+          "Form.exe": {}
+        }
+      },
+      "PresentationFramework/4.0.0.0": {
+        "runtime": {
+          "PresentationFramework.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "WindowsBase.Reference/4.0.0.0": {
+        "runtime": {
+          "WindowsBase.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Xaml.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Xaml.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "PresentationCore.Reference/4.0.0.0": {
+        "runtime": {
+          "PresentationCore.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Configuration.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Configuration.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "UIAutomationProvider.Reference/4.0.0.0": {
+        "runtime": {
+          "UIAutomationProvider.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "UIAutomationTypes.Reference/4.0.0.0": {
+        "runtime": {
+          "UIAutomationTypes.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "ReachFramework.Reference/4.0.0.0": {
+        "runtime": {
+          "ReachFramework.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Printing.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Printing.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "Accessibility.Reference/4.0.0.0": {
+        "runtime": {
+          "Accessibility.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Deployment.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Deployment.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Security.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Security.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Windows.Input.Manipulations.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Windows.Input.Manipulations.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Windows.Forms.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Windows.Forms.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "System.Runtime.Serialization.Formatters.Soap.Reference/4.0.0.0": {
+        "runtime": {
+          "System.Runtime.Serialization.Formatters.Soap.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
           }
         }
       }
@@ -151,7 +294,7 @@
     "Microsoft.NETCore.Platforms/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
+      "sha512": "sha512-GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
       "path": "microsoft.netcore.platforms/2.1.0",
       "hashPath": "microsoft.netcore.platforms.2.1.0.nupkg.sha512"
     },
@@ -179,7 +322,7 @@
     "System.Security.Principal.Windows/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
+      "sha512": "sha512-hs2zF4tOQ3V4iQttVnLrnR/i8AOrrAgu2Gmp4/jNaE/+5hiZWDj20FK/m/OW3Itdi9XDvqf55WzHkiWYtOSUNg==",
       "path": "system.security.principal.windows/4.5.0",
       "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
     },
@@ -218,12 +361,12 @@
       "path": "system.servicemodel.security/4.5.3",
       "hashPath": "system.servicemodel.security.4.5.3.nupkg.sha512"
     },
-    "Xamarin.Forms/3.5.0.129452": {
+    "Xamarin.Forms/4.0.0.135214-pre4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gdoGJ7U7J+WDMmtp0PIZ5Bex/5KGy1wL1TMHyR2+5jbxPxVy/htyiR5wqKDmOXVJoVbeqWjcj0/7yl8ZHM7akQ==",
-      "path": "xamarin.forms/3.5.0.129452",
-      "hashPath": "xamarin.forms.3.5.0.129452.nupkg.sha512"
+      "sha512": "sha512-0f/SzB/SZDkJz5H11uyB8MWVNl4X/heZU2XWVgVupLin9SEmfRvweUHggp18CqXE4h81/SgGIMx4b+DqhW9faA==",
+      "path": "xamarin.forms/4.0.0.135214-pre4",
+      "hashPath": "xamarin.forms.4.0.0.135214-pre4.nupkg.sha512"
     },
     "Xfx.Controls/1.1.3": {
       "type": "package",
@@ -231,6 +374,86 @@
       "sha512": "sha512-Vf66ME0jYWNXr+OZCGsacOncHAX867ugwmu7FIjHFcgPWaz8Af6z057qNbVbP2chsrrfco58slcfvAb8eXViwQ==",
       "path": "xfx.controls/1.1.3",
       "hashPath": "xfx.controls.1.1.3.nupkg.sha512"
+    },
+    "Form/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PresentationFramework/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WindowsBase.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Xaml.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PresentationCore.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Configuration.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UIAutomationProvider.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UIAutomationTypes.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ReachFramework.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Printing.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Accessibility.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Deployment.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Security.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Windows.Input.Manipulations.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Windows.Forms.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Runtime.Serialization.Formatters.Soap.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

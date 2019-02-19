@@ -22,14 +22,6 @@ public class XfxEntryRendererDroid
 	}
 
 
-	public XfxEntryRendererDroid (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == XfxEntryRendererDroid.class)
-			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.Renderers.XfxEntryRendererDroid, Xfx.Controls.Droid", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
-	}
-
-
 	public XfxEntryRendererDroid (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -43,6 +35,14 @@ public class XfxEntryRendererDroid
 		super (p0, p1);
 		if (getClass () == XfxEntryRendererDroid.class)
 			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.Renderers.XfxEntryRendererDroid, Xfx.Controls.Droid", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+	}
+
+
+	public XfxEntryRendererDroid (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == XfxEntryRendererDroid.class)
+			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.Renderers.XfxEntryRendererDroid, Xfx.Controls.Droid", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 

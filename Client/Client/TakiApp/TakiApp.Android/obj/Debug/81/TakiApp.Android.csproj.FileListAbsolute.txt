@@ -103,6 +103,7 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\System.Web.Services.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\System.ServiceModel.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\System.IdentityModel.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\TakiApp.dll.mdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\TakiApp.Android.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\FormsViewGroup.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\Mono.Android.pdb
@@ -127,7 +128,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\System.Web.Services.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\System.ServiceModel.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\System.IdentityModel.pdb
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\TakiApp.dll.mdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\TakiApp.dll.mdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\TakiApp.dll.mdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\FormsViewGroup.pdb
@@ -154,4 +154,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\TakiApp.dll
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\TakiApp.dll.mdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\TakiApp.dll.mdb

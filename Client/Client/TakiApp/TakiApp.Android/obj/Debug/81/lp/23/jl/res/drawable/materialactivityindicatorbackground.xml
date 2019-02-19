@@ -1,0 +1,1 @@
+<!-- innerRadius = (diameter / 2) - (thickness * 2) = 16dp --><shape android:shape="ring" android:innerRadius="16dp" android:thickness="4dp" android:useLevel="false" xmlns:android="http://schemas.android.com/apk/res/android"><solid android:color="#000" /></shape>

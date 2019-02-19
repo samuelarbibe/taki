@@ -15,14 +15,6 @@ public class XfxComboBoxRendererDroid
 	}
 
 
-	public XfxComboBoxRendererDroid (android.content.Context p0)
-	{
-		super (p0);
-		if (getClass () == XfxComboBoxRendererDroid.class)
-			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.Renderers.XfxComboBoxRendererDroid, Xfx.Controls.Droid", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
-	}
-
-
 	public XfxComboBoxRendererDroid (android.content.Context p0, android.util.AttributeSet p1, int p2)
 	{
 		super (p0, p1, p2);
@@ -36,6 +28,14 @@ public class XfxComboBoxRendererDroid
 		super (p0, p1);
 		if (getClass () == XfxComboBoxRendererDroid.class)
 			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.Renderers.XfxComboBoxRendererDroid, Xfx.Controls.Droid", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android", this, new java.lang.Object[] { p0, p1 });
+	}
+
+
+	public XfxComboBoxRendererDroid (android.content.Context p0)
+	{
+		super (p0);
+		if (getClass () == XfxComboBoxRendererDroid.class)
+			mono.android.TypeManager.Activate ("Xfx.Controls.Droid.Renderers.XfxComboBoxRendererDroid, Xfx.Controls.Droid", "Android.Content.Context, Mono.Android", this, new java.lang.Object[] { p0 });
 	}
 
 	private java.util.ArrayList refList;

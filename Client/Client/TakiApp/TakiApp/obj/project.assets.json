@@ -137,7 +137,7 @@
           "lib/netstandard2.0/System.ServiceModel.Security.dll": {}
         }
       },
-      "Xamarin.Forms/3.5.0.129452": {
+      "Xamarin.Forms/4.0.0.135214-pre4": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
@@ -165,12 +165,21 @@
         "runtime": {
           "lib/netstandard1.3/Xfx.Controls.dll": {}
         }
+      },
+      "Form/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Form.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form.dll": {}
+        }
       }
     }
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
+      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -388,7 +397,7 @@
       ]
     },
     "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
+      "sha512": "hs2zF4tOQ3V4iQttVnLrnR/i8AOrrAgu2Gmp4/jNaE/+5hiZWDj20FK/m/OW3Itdi9XDvqf55WzHkiWYtOSUNg==",
       "type": "package",
       "path": "system.security.principal.windows/4.5.0",
       "files": [
@@ -662,10 +671,10 @@
         "version.txt"
       ]
     },
-    "Xamarin.Forms/3.5.0.129452": {
-      "sha512": "gdoGJ7U7J+WDMmtp0PIZ5Bex/5KGy1wL1TMHyR2+5jbxPxVy/htyiR5wqKDmOXVJoVbeqWjcj0/7yl8ZHM7akQ==",
+    "Xamarin.Forms/4.0.0.135214-pre4": {
+      "sha512": "0f/SzB/SZDkJz5H11uyB8MWVNl4X/heZU2XWVgVupLin9SEmfRvweUHggp18CqXE4h81/SgGIMx4b+DqhW9faA==",
       "type": "package",
-      "path": "xamarin.forms/3.5.0.129452",
+      "path": "xamarin.forms/4.0.0.135214-pre4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -821,7 +830,7 @@
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.5.0.129452.nupkg.sha512",
+        "xamarin.forms.4.0.0.135214-pre4.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -842,37 +851,43 @@
         "xfx.controls.1.1.3.nupkg.sha512",
         "xfx.controls.nuspec"
       ]
+    },
+    "Form/1.0.0": {
+      "type": "project",
+      "path": "../../Form/Form.csproj",
+      "msbuildProject": "../../Form/Form.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Form >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
       "System.ServiceModel.Duplex >= 4.5.3",
       "System.ServiceModel.Http >= 4.5.3",
       "System.ServiceModel.NetTcp >= 4.5.3",
       "System.ServiceModel.Security >= 4.5.3",
-      "Xamarin.Forms >= 3.5.0.129452",
+      "Xamarin.Forms >= 4.0.0.135214-pre4",
       "Xfx.Controls >= 1.1.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User1\\.nuget\\packages\\": {},
+    "C:\\Users\\samue\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
+      "projectUniqueName": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
       "projectName": "TakiApp",
-      "projectPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
-      "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
-      "outputPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\obj\\",
+      "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -884,7 +899,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Form\\Form.csproj": {
+              "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Form\\Form.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -920,7 +939,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.5.0.129452, )"
+            "version": "[4.0.0.135214-pre4, )"
           },
           "Xfx.Controls": {
             "target": "Package",

@@ -14,7 +14,6 @@ namespace TakiApp.UserControls
     {
         public Player1UC()
         {
-
             InitializeComponent();
         }
 
@@ -38,12 +37,12 @@ namespace TakiApp.UserControls
 
         public void SetAsActive()
         {
-            MyGrid.BackgroundColor = Color.FromRgba(90, 0, 250, 0);
+            MyGrid.BackgroundColor = Xamarin.Forms.Color.FromRgba(90, 0, 250, 0);
         }
 
         public void SetAsNonActive()
         {
-            MyGrid.BackgroundColor = Color.Transparent;
+            MyGrid.BackgroundColor = Xamarin.Forms.Color.Transparent;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)

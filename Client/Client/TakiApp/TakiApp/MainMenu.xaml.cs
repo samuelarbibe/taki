@@ -16,6 +16,8 @@ namespace TakiApp
             InitializeComponent();
         }
 
+        public static GamePage CurrentGamePage { get; set; }
+
         void PlayButton_Click(object sender, System.EventArgs e)
         {
             PlayButton.IsVisible = false;
