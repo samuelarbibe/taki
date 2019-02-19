@@ -9,15 +9,12 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <Grid x:Name="MyGrid" Rotation="270">
-        <ListView x:Name="HandView" HasUnevenRows="True" SeparatorVisibility="None">
-            <ListView.ItemTemplate>
+        <CollectionView x:Name="HandView">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Image Margin="0,-20,0,0" Rotation="90" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="135" Aspect="AspectFit">
-                        </Image>
-                    </ViewCell>
+                    <Image WidthRequest="55" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="100" Aspect="AspectFit"></Image>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentView>
