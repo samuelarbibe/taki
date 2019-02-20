@@ -13,8 +13,11 @@
 
   <ItemGroup>
     <Compile Remove="Connected Services\TakiService_Stam\**" />
+    <Compile Remove="Dialogs\**" />
     <EmbeddedResource Remove="Connected Services\TakiService_Stam\**" />
+    <EmbeddedResource Remove="Dialogs\**" />
     <None Remove="Connected Services\TakiService_Stam\**" />
+    <None Remove="Dialogs\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -203,9 +206,5 @@
     <None Update="Register.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dialogs\" />
   </ItemGroup>
 </Project>

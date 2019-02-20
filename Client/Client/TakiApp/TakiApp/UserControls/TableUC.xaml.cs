@@ -41,7 +41,7 @@ namespace TakiApp.UserControls
         {
 
             Card temp = Deck[RollDice((byte)(Deck.Count - 2))];
-            Deck.Remove(temp);
+            //Deck.Remove(temp);
 
             return temp;
         }

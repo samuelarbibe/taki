@@ -126,15 +126,14 @@ namespace TakiApp
                 else if (e.Cancelled) { msg = "Didn't Work!";  }
                 else
                 {
-                    LocalMessageList = e.Result;
-                    DoActions();
+                    LocalMessageList = e.Result;                  
                 }
-
                 if (Active)
                 {
                     Thread.Sleep(250);
-                    Service.DoActionAsync(CurrentGame.Id, CurrentPlayer.Id);
-                }
+                    DoActions();
+                    
+                }              
                 Console.WriteLine(msg);
             });
         }
@@ -176,7 +175,7 @@ namespace TakiApp
                                 }
                                 else
                                 {
-                                    DisplayAlert("Winner", "Player "+ WinningPlayer.Username+" Has won!", "OK");
+                                    DisplayAlert("Winner", "Player " + WinningPlayer.Username + " Has won!", "OK");
 
                                     if (PlayersList.Count == 3)
                                     {
@@ -263,7 +262,7 @@ namespace TakiApp
 
                     UpdateUI();
                 }
-
+                Service.DoActionAsync(CurrentGame.Id, CurrentPlayer.Id);
             }
         }
 
