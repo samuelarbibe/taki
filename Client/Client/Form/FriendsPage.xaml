@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Form"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:takiService="clr-namespace:Form.TakiService"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FriendsPage">
@@ -25,21 +27,77 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BackButton" Content="Back" Click="BackButton_Click"/>
+        <Button x:Name="BackButton" BorderBrush="Transparent" Click="BackButton_Click" Background="Transparent"  Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40" >
+            <materialDesign:PackIcon Kind="ArrowLeftThick" Width="40" Height="40"/>
+        </Button>
 
-        <ListView x:Name="DataGrid" Grid.Row="1" Grid.RowSpan="7" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Id" Width="20" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Username" Width="80" DisplayMemberBinding="{Binding Username}"/>
-                    <GridViewColumn Header="First Name" Width="80" DisplayMemberBinding="{Binding FirstName}"/>
-                    <GridViewColumn Header="Last Name" Width="80" DisplayMemberBinding="{Binding LastName}" />
-                    <GridViewColumn Header="Level" Width="40" DisplayMemberBinding="{Binding Level}" />
-                    <GridViewColumn Header="Score" Width="40" DisplayMemberBinding="{Binding Score}" />
-                    <GridViewColumn Header="Wins" Width="40" DisplayMemberBinding="{Binding Wins}" />
-                    <GridViewColumn Header="Losses" Width="40" DisplayMemberBinding="{Binding Losses}" />
-                </GridView>
-            </ListView.View>
+        <ListView Grid.Row="1" BorderThickness="0" x:Name="View" Background="Transparent" Grid.RowSpan="7" Grid.Column="1" HorizontalContentAlignment="Stretch">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" IsItemsHost="True" VerticalAlignment="Top"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type takiService:User}">
+                    <materialDesign:Card
+                        Background="#FFEFEFEF"
+                        Foreground="#FF4D99D0"
+                        Padding="0"
+                        Height="100"
+                        Width="380"
+                        HorizontalAlignment="Center"
+                        FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" 
+                        FontWeight="Heavy">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="Auto" />
+                                <RowDefinition
+                                    Height="Auto" />
+                                <RowDefinition
+                                    Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Margin="16 16 16 4"
+                                Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="{Binding Username}">
+                                
+                            </TextBlock>
+                            <Separator
+                                Grid.Row="1"
+                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Margin="16 0 16 8"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource MaterialDesignBody2TextBlock}">
+                                <Run Text="Level "/>
+                                <Run Text="{Binding Level}"/>
+                            </TextBlock>
+                            <StackPanel
+                                x:Name="Panels"
+                                Grid.Row="2"
+                                Orientation="Horizontal"
+                                Margin="16 0 16 8"
+                                HorizontalAlignment="Right">
+                                <Button
+                                    x:Name="RemoveFriendButton"
+                                    Click="RemoveFriendButton_OnClick"
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Width="30"
+                                    Padding="2 0 2 0"
+                                    materialDesign:RippleAssist.IsCentered="True"
+                                    ToolTip="Remove Friend">
+                                    <materialDesign:PackIcon Kind="AccountRemoveOutline" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

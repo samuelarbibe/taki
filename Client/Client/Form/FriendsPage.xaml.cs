@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes;
 
 namespace Form
 {
@@ -21,16 +22,18 @@ namespace Form
     /// </summary>
     public partial class FriendsPage : Page
     {
+        private UserList ul;
+
         public FriendsPage()
         {
             InitializeComponent();
 
-            UserList ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
+             ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
 
-            DataGrid.ItemsSource = ul;
+            View.ItemsSource = ul;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        protected void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.NavigationService.CanGoBack)
             {
@@ -40,6 +43,20 @@ namespace Form
             {
                 BackButton.Content = "cannot go back...";
             }
+        }
+
+        private void RemoveFriendButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            User u2 = b.DataContext as User;
+
+            MainWindow.Service.RemoveFriend(MainWindow.CurrentUser, u2);
+
+            View.ItemsSource = null;
+
+            ul.Remove(ul.Find(u => u.Id == u2.Id));
+
+            View.ItemsSource = ul;
         }
     }
 }

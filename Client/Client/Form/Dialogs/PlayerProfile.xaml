@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Form.Dialogs"
       mc:Ignorable="d" 
-      d:DesignHeight="200" d:DesignWidth="300"
+      Height="200" Width="300"
       Title="Profile">
 
     <Grid>
@@ -26,8 +26,19 @@
         <StackPanel x:Name="ResponseTextBox"  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1">
             <TextBlock Padding="10" Margin="30,0,30,0" FontSize="20" Text="{Binding Username}"></TextBlock>
             <TextBlock Padding="5" Margin="30,0,30,0" FontSize="15" Text="{Binding Level}"></TextBlock>
+            <TextBlock x:Name="AreFriends"></TextBlock>
         </StackPanel>
-        <Button Content="Add Friend" Grid.Column="1" Grid.Row="3" Click="RequestButton_Click"/>
-        <Button Content="Close" Grid.Column="3" Grid.Row="3" Click="QuitButton_Click"/>
+        <Button
+            x:Name="AddFriend" Content="Add Friend" Grid.Column="1" Grid.Row="3" Click="RequestButton_Click"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            FontSize="10" Height="Auto"
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8" BorderBrush="{x:Null}"/>
+        <Button
+            Content="Close" Grid.Column="3" Grid.Row="3" Click="QuitButton_Click"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            FontSize="10" Height="Auto"
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8" BorderBrush="{x:Null}"/>
     </Grid>
 </Window>

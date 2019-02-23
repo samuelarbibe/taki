@@ -21,7 +21,14 @@
             <ColumnDefinition Width="49*"/>
             <ColumnDefinition Width="41*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="You are the only player left. you will have to quit." x:Name="ResponseTextBox" Grid.Column="1" TextWrapping="Wrap" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center" FontSize="13" />
-        <Button Content="Exit game" Grid.Column="2" Grid.Row="3" Click="QuitButton_Click"/>
+        <TextBlock Text="You are the only player left. you will have to Exit." x:Name="ResponseTextBox" Grid.Column="1" TextWrapping="Wrap" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center" FontSize="13" />
+        <Button
+            Content="Exit game" Grid.Column="2" Grid.Row="3" Click="QuitButton_Click"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Height="Auto"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8" BorderBrush="{x:Null}">
+        </Button>
     </Grid>
 </Window>

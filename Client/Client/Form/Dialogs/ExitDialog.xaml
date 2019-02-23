@@ -21,8 +21,22 @@
             <ColumnDefinition Width="83*"/>
             <ColumnDefinition Width="41*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Do you realy want to quit?" x:Name="ResponseTextBox" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center" FontSize="16" />
-        <Button Content="Cancel" Grid.Column="1" Grid.Row="3" Click="CancelButton_Click"/>
-        <Button Content="Quit" Grid.Column="3" Grid.Row="3" Click="QuitButton_Click"/>
+        <TextBlock Text="Do you really want to quit?" x:Name="ResponseTextBox" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center" FontSize="16" />
+        <Button
+            Content="Cancel" Grid.Column="1" Grid.Row="3" Click="CancelButton_Click"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Height="Auto"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8" BorderBrush="{x:Null}">
+        </Button>
+        <Button
+            Content="Quit" Grid.Column="3" Grid.Row="3" Click="QuitButton_Click"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            Height="Auto"
+            ToolTip="Resource name: MaterialDesignRaisedLightButton"
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8" BorderBrush="{x:Null}">
+        </Button>
     </Grid>
 </Window>

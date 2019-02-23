@@ -12,7 +12,7 @@
         <CollectionView HorizontalOptions="Center" x:Name="HandView" SelectionMode="Single" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Image WidthRequest="55" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="100" Aspect="AspectFit"></Image>
+                    <Image WidthRequest="70" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="135" Aspect="AspectFit"></Image>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

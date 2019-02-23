@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Form"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LoadingPage">
@@ -28,16 +29,8 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="status" FontSize="30" TextWrapping="Wrap" Text="Searching for a Game..." FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFE3E3E3" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"/>
         <Button Visibility="Hidden"  x:Name="SearchAgainButton" Content="Search Again" Click="SearchAgainButton_Click" Grid.Row="5" Background="{x:Null}" BorderBrush="White" Foreground="DarkGray" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontSize="16" Grid.ColumnSpan="2" Margin="4.309,0.436,59.055,0.291" Grid.Column="2" />
-        <Button x:Name="CancelSearchButton" Content="Cancel search" Click="CancelSearchButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,15,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontSize="16" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="53" >
-            <Button.Effect>
-                <DropShadowEffect Color="#FF4A4A4A" Opacity="0.6"/>
-            </Button.Effect>
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFFF5555" Offset="0.458"/>
-                    <GradientStop Color="#FFFF3737" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
+        <Button x:Name="CancelSearchButton" BorderBrush="Transparent" Click="CancelSearchButton_Click" Background="Transparent"  Margin="10,10,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" >
+            <materialDesign:PackIcon Kind="ArrowLeftThick" Width="50" Height="50"/>
         </Button>
         <TextBlock x:Name="PlayersFound" FontSize="22" TextWrapping="Wrap" Text="Players Found: 5/5" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" TextAlignment="Center" Grid.ColumnSpan="3" Foreground="#FFE3E3E3" Grid.Row="1" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Bottom"/>
     </Grid>

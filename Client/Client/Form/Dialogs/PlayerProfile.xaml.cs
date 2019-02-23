@@ -13,6 +13,12 @@ namespace Form.Dialogs
             InitializeComponent();
 
             this.DataContext = user;
+
+            if (MainWindow.Service.AreFriends(user.Id, MainWindow.CurrentUser.Id))
+            {
+                AddFriend.Visibility = Visibility.Collapsed;
+                AreFriends.Text = "Your Are Already Friends With Him";
+            }
         }
 
         private void QuitButton_Click(object sender, System.Windows.RoutedEventArgs e)

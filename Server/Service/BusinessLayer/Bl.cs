@@ -204,6 +204,17 @@ namespace BusinessLayer
             };
 
             db.Insert(fr);
+            SaveChanges();
+        }
+
+        public void BlRemoveFriends(User u1, User u2)
+        {
+            FriendDb db = new FriendDb();
+
+            Friendship fr = (Friendship)db.SelectByUsersId(u1.Id, u2.Id)[0];
+       
+            db.Delete(fr);
+            SaveChanges();
         }
 
         // creates a new game and returns it
@@ -355,7 +366,7 @@ namespace BusinessLayer
 
             g.EndTime = DateTime.Now;
 
-            g.Losser = m.Target.Id;
+            g.Loser = m.Target.Id;
 
             u.Score += 200;
             u.Losses += 1;

@@ -358,7 +358,7 @@ namespace Form.TakiService {
         private System.DateTime EndTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LosserField;
+        private int LoserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Form.TakiService.PlayerList PlayersField;
@@ -380,14 +380,14 @@ namespace Form.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Losser {
+        public int Loser {
             get {
-                return this.LosserField;
+                return this.LoserField;
             }
             set {
-                if ((this.LosserField.Equals(value) != true)) {
-                    this.LosserField = value;
-                    this.RaisePropertyChanged("Losser");
+                if ((this.LoserField.Equals(value) != true)) {
+                    this.LoserField = value;
+                    this.RaisePropertyChanged("Loser");
                 }
             }
         }
@@ -769,6 +769,12 @@ namespace Form.TakiService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/MakeFriends", ReplyAction="http://tempuri.org/IService/MakeFriendsResponse")]
         System.Threading.Tasks.Task MakeFriendsAsync(Form.TakiService.User u1, Form.TakiService.User u2);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/RemoveFriend", ReplyAction="http://tempuri.org/IService/RemoveFriendResponse")]
+        void RemoveFriend(Form.TakiService.User u1, Form.TakiService.User u2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/RemoveFriend", ReplyAction="http://tempuri.org/IService/RemoveFriendResponse")]
+        System.Threading.Tasks.Task RemoveFriendAsync(Form.TakiService.User u1, Form.TakiService.User u2);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
         bool StopSearchingForGame(Form.TakiService.Player p);
         
@@ -985,6 +991,14 @@ namespace Form.TakiService {
         
         public System.Threading.Tasks.Task MakeFriendsAsync(Form.TakiService.User u1, Form.TakiService.User u2) {
             return base.Channel.MakeFriendsAsync(u1, u2);
+        }
+        
+        public void RemoveFriend(Form.TakiService.User u1, Form.TakiService.User u2) {
+            base.Channel.RemoveFriend(u1, u2);
+        }
+        
+        public System.Threading.Tasks.Task RemoveFriendAsync(Form.TakiService.User u1, Form.TakiService.User u2) {
+            return base.Channel.RemoveFriendAsync(u1, u2);
         }
         
         public bool StopSearchingForGame(Form.TakiService.Player p) {

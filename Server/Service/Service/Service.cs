@@ -110,11 +110,17 @@ namespace Service
         public void MakeFriends(User u1, User u2)
         {
             Bl bl = new Bl();
-            bl.BlMakeFriends(u1, u2);
+            bl.BlMakeFriends(u1, u2);               
+        }
+
+        public void RemoveFriend(User u1, User u2)
+        {
+            Bl bl = new Bl();
+            bl.BlRemoveFriends(u1, u2);
         }
 
         public Game StartGame(Player p, int playerCount)
-        {
+        { 
             Bl bl = new Bl();
             Game g = bl.BlStartGame(p, playerCount);
 

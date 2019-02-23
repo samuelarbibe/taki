@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using Form.TakiService;
+using MaterialDesignThemes.Wpf;
 
 namespace Form
 {
@@ -18,6 +19,7 @@ namespace Form
             InitializeComponent();
             this.DataContext = tempUser;
             Style = (Style)FindResource(typeof(Page));
+            show_btn_Click(null, null);
         }
 
         private void show_btn_Click(object sender, RoutedEventArgs e)
@@ -67,14 +69,10 @@ namespace Form
                     State.Foreground = Brushes.Red;
                     State.FontSize = 9;
                     GameGrid.Visibility = Visibility.Hidden;
-                    GameGridSize.Height = new GridLength(0);
-                    GameGridBottomMargin.Height = new GridLength(0);
                 }
                 else
                 {
                     GameGrid.Visibility = Visibility.Visible;
-                    GameGridSize.Height = new GridLength(120);
-                    GameGridBottomMargin.Height = new GridLength(0);
                     State.Text = "Success";
                     State.Foreground = Brushes.Gray;
                     State.FontSize = 11;
@@ -177,8 +175,6 @@ namespace Form
             SubmitBtn.Visibility = Visibility.Visible;
             UpdateBtn.Visibility = Visibility.Hidden;
             Form.Visibility = Visibility.Visible;
-            FormGridSize.Height = new GridLength(100);
-            GameGridBottomMargin.Height = new GridLength(0);
         }
 
 

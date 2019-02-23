@@ -9,7 +9,7 @@
     <Grid x:Name="MyGrid">
         <Rectangle Panel.ZIndex="-1" x:Name="BackgroundActive"/>
 
-        <Button Click="Username_Click" Background="Transparent">
+        <Button Click="Username_Click" Background="Transparent" BorderBrush="{x:Null}">
         <TextBlock FontSize="15" x:Name="Username" Text="{Binding Username}"  FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>

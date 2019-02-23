@@ -28,7 +28,7 @@ namespace ViewModel
 
             game.StartTime = (DateTime) Reader["start_date"];
             game.EndTime = (DateTime) Reader["end_date"];
-            game.Losser = (int) Reader["losser_id"];
+            game.Loser = (int) Reader["losser_id"];
 
             return game;
         }
@@ -204,7 +204,7 @@ namespace ViewModel
 
             //command.Parameters.AddWithValue("@sDate", (string)g.StartTime.ToString("G"));
             //command.Parameters.AddWithValue("@eDate", (string)g.StartTime.ToString("G"));
-            command.Parameters.AddWithValue("@losser", g.Losser);
+            command.Parameters.AddWithValue("@losser", g.Loser);
             Console.WriteLine("Game [" + g.Id + "] Updated");
         }
     }

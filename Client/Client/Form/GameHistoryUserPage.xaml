@@ -37,7 +37,7 @@
                     <GridViewColumn Header="P2 ID" Width="56" DisplayMemberBinding="{Binding Players[1].Id}" />
                     <GridViewColumn Header="P3 ID" Width="56" DisplayMemberBinding="{Binding Players[2].Id}" />
                     <GridViewColumn Header="P4 ID" Width="56" DisplayMemberBinding="{Binding Players[3].Id}" />
-                    <GridViewColumn Header="Losser ID" Width="70" DisplayMemberBinding="{Binding Losser}" />
+                    <GridViewColumn Header="Losser ID" Width="70" DisplayMemberBinding="{Binding Loser}" />
                 </GridView>
             </ListView.View>
         </ListView>

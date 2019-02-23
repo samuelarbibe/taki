@@ -1,6 +1,6 @@
-FormsViewGroup
 System.Runtime
 TakiApp
+FormsViewGroup
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Lifecycle.Common
 Xamarin.Android.Arch.Lifecycle.Runtime
@@ -26,6 +26,3 @@ Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 Xfx.Controls
 Xfx.Controls.Droid
-netstandard
-System.ObjectModel
-System.Threading

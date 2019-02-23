@@ -10,8 +10,8 @@
       </ContentView.Resources>
   <ContentView.Content>
         <Grid x:Name="MyGrid">
-            <ImageButton Source="{Binding Image, Converter={StaticResource SourceConverter}}" Aspect="AspectFit" BorderWidth="0" HorizontalOptions="Center" VerticalOptions="Center" x:Name="PassCardButton" HeightRequest="80" WidthRequest="42" Clicked="PassCardButton_Click" />
-            <ImageButton HorizontalOptions="End" Rotation="20" Margin="30" VerticalOptions="Center" Aspect="AspectFit" Source="card0068.png" x:Name="DeckButton" HeightRequest="60" WidthRequest="31" Clicked="DeckButton_OnClick" />
+            <ImageButton BackgroundColor="Transparent" Source="{Binding Image, Converter={StaticResource SourceConverter}}" Aspect="AspectFit" BorderWidth="0" HorizontalOptions="Center" VerticalOptions="Center" x:Name="PassCardButton" HeightRequest="135" WidthRequest="70" Clicked="PassCardButton_Click" />
+            <ImageButton BackgroundColor="Transparent" HorizontalOptions="End" Rotation="20" Margin="30" VerticalOptions="Center" Aspect="AspectFit" Source="card0068.png" x:Name="DeckButton" HeightRequest="100" WidthRequest="55" Clicked="DeckButton_OnClick" />
         </Grid>
   </ContentView.Content>
 </ContentView>

@@ -4,20 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Form"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserPage">
     <Page.Resources>
         <ControlTemplate x:Key="ButtonBaseControlTemplate" TargetType="{x:Type ButtonBase}">
-        <Grid x:Name="grid">
-            <Border Background="{TemplateBinding Background}" 
+            <Grid x:Name="grid">
+                <Border Background="{TemplateBinding Background}" 
                     x:Name="Bd"
                     BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="24">
-            </Border>
-        </Grid>
-    </ControlTemplate> 
+                </Border>
+            </Grid>
+        </ControlTemplate>
     </Page.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -37,35 +38,57 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="1" Grid.Row="2" FontSize="25" Content="Username"/>
-        <Label Grid.Column="1" Grid.Row="3"  FontSize="25" Content="First Name"/>
-        <Label Grid.Column="1" Grid.Row="4"  FontSize="25" Content="Last Name"/>
-        <Label Grid.Column="1" Grid.Row="5"  FontSize="25" Content="Level"/>
-        <Label Grid.Column="1" Grid.Row="6"  FontSize="25" Content="Wins"/>
-        <Label Grid.Column="1" Grid.Row="7"  FontSize="25" Content="Losses"/>
+        <Label Grid.Column="1" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="2" FontSize="25" Content="Username" Foreground="#DDECECEC"/>
+        <Label Grid.Column="1" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="3"  FontSize="25" Content="First Name" Foreground="#DDECECEC"/>
+        <Label Grid.Column="1" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="4"  FontSize="25" Content="Last Name" Foreground="#DDECECEC"/>
+        <Label Grid.Column="1" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="5"  FontSize="25" Content="Level" Foreground="#DDECECEC"/>
+        <Label Grid.Column="1" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="6"  FontSize="25" Content="Wins" Foreground="#DDECECEC"/>
+        <Label Grid.Column="1" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" FontWeight="Bold" Grid.Row="7"  FontSize="25" Content="Losses" Foreground="#DDECECEC"/>
 
-        <TextBlock Grid.Column="2" Grid.Row="2" FontSize="25" TextWrapping="Wrap" Text="{Binding Path=Username}"/>
-        <TextBlock Grid.Column="2" Grid.Row="3" FontSize="25" TextWrapping="Wrap" Text="{Binding Path=FirstName}"/>
-        <TextBlock Grid.Column="2" Grid.Row="4" FontSize="25" TextWrapping="Wrap" Text="{Binding Path=LastName}"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Grid.Column="2" Grid.Row="2" FontSize="20" TextWrapping="Wrap" Text="{Binding Path=Username}" Foreground="#DDECECEC"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Grid.Column="2" Grid.Row="3" FontSize="20" TextWrapping="Wrap" Text="{Binding Path=FirstName}" Foreground="#DDECECEC"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Grid.Column="2" Grid.Row="4" FontSize="20" TextWrapping="Wrap" Text="{Binding Path=LastName}" Foreground="#DDECECEC"/>
         <ProgressBar x:Name="LevelProgressBar" Grid.Column="2" Grid.Row="5" Minimum="0" Maximum="1000" Margin="8"/>
-        <TextBlock Grid.Column="2" Grid.Row="5" FontSize="25" TextWrapping="Wrap" Text="{Binding Path=Level}" Padding="8" Margin="15,0,0,0"/>
-        <TextBlock x:Name="ShowScore" Grid.Column="2" Grid.Row="5" FontSize="20" HorizontalAlignment="right" Padding="8" Margin="0,0,0,15"/>
-        <TextBlock Grid.Column="2" Grid.Row="6" FontSize="25" TextWrapping="Wrap" Text="{Binding Path=Wins}"/>
-        <TextBlock Grid.Column="2" Grid.Row="7" FontSize="25" TextWrapping="Wrap" Text="{Binding Path=Losses}"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Grid.Column="2" Grid.Row="5" FontSize="15" TextWrapping="Wrap" Text="{Binding Path=Level}" Padding="8" Margin="15,0,0,0"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" x:Name="ShowScore" Grid.Column="2" Grid.Row="5" FontSize="15" Height="Auto" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="right" Padding="8" Margin="0,0,0,15"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Grid.Column="2" Grid.Row="6" FontSize="20" TextWrapping="Wrap" Text="{Binding Path=Wins}" Foreground="#DDECECEC"/>
+        <TextBlock FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Grid.Column="2" Grid.Row="7" FontSize="20" TextWrapping="Wrap" Text="{Binding Path=Losses}" Foreground="#DDECECEC"/>
 
-        <Button x:Name="BackButton" Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="2" Click="BackButton_Click" Margin="0,0,127,0">
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/Images/Back_Icon.png"/>
-            </Button.Background>
+        <Button Grid.Column="0" Grid.Row="0" x:Name="BackButton" BorderBrush="Transparent" Click="BackButton_Click" Background="Transparent"
+                Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40"
+                VerticalAlignment="Top" HorizontalAlignment="Left" Width="40">
+            <materialDesign:PackIcon Kind="ArrowLeftThick" Width="40" Height="40" />
         </Button>
 
-        <Button Template="{StaticResource ButtonBaseControlTemplate}" Width="50" Height="50" Content="Logout" Grid.Column="3" Grid.Row="7" Click="Logout_Button_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/Images/Logout_Icon.png" Stretch="Uniform"/>
-            </Button.Background>
+        <Button Grid.Column="3" Grid.Row="7" Click="Logout_Button_Click" BorderBrush="Transparent"  Background="Transparent"
+                Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Width="40" ToolTip="Logout">
+            <materialDesign:PackIcon  Kind="Logout" Width="40" Height="40" />
         </Button>
-        <Button x:Name="GamesButton" Content="Game History" Grid.Column="3" Grid.Row="5" Click="Game_Button_Click" Foreground="#FF4D99D0"/>
-        <Button x:Name="AdminButton" Content="AdminButton" Grid.Column="3" Grid.Row="6" Click="Admin_Button_Click" Foreground="#FF4D99D0"/>
+
+        <Button
+            x:Name="GamesButton" 
+            Content="Game History" 
+            Grid.Column="3" Grid.Row="5" 
+            Click="Game_Button_Click" 
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            Height="30"
+            Width="100"
+            FontSize="10"
+            ToolTip="View Your Game History" BorderBrush="{x:Null}">
+        </Button>
+        <Button
+            x:Name="AdminButton" Content="AdminButton" Grid.Column="3" Grid.Row="6" Click="Admin_Button_Click"
+            Foreground="#FF4D99D0"
+            Background="#FFE8E8E8"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            Height="30"
+            Width="100"
+            FontSize="10"
+            BorderBrush="{x:Null}">
+        </Button>
 
     </Grid>
 </Page>

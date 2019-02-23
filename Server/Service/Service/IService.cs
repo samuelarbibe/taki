@@ -75,6 +75,9 @@ namespace Service
         void MakeFriends(User u1, User u2);
 
         [OperationContract]
+        void RemoveFriend(User u1, User u2);
+
+        [OperationContract]
         bool StopSearchingForGame(Player p);
 
         [OperationContract]

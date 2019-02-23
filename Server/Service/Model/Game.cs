@@ -37,7 +37,7 @@ namespace Model
         public DateTime StartTime { get; set; }
 
         [DataMember]
-        public int Losser { get; set; }
+        public int Loser { get; set; }
 
         [DataMember]
         public DateTime EndTime { get; set; }

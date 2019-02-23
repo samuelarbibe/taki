@@ -130,7 +130,7 @@ namespace TakiApp
                 }
                 if (Active)
                 {
-                    Thread.Sleep(250);
+                    Thread.Sleep(100);
                     DoActions();
                     
                 }              
@@ -573,7 +573,7 @@ namespace TakiApp
         {
             Service.PlayerQuitAsync(CurrentPlayer);
 
-            Console.WriteLine("Player" + CurrentPlayer.Username + " removed from the game in the gameList: ");
+            Console.WriteLine("Player #" + CurrentPlayer.Username + " removed from the game in the gameList: ");
 
             MessageList temp = new MessageList();
 
@@ -592,6 +592,8 @@ namespace TakiApp
 
             if (MyTurn) TurnFinished(Value.Nine);
             Active = false;
+
+            this.Navigation.PushModalAsync(new MainMenu());
         }
 
 
