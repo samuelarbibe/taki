@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 using Form.TakiService;
 using MaterialDesignThemes.Wpf;
@@ -13,6 +15,7 @@ namespace Form
     {
         User tempUser = new User();
         UserList dataList;
+        UserList ChangedDataList;
 
         public AdminUserPage()
         {
@@ -20,6 +23,7 @@ namespace Form
             this.DataContext = tempUser;
             Style = (Style)FindResource(typeof(Page));
             show_btn_Click(null, null);
+            ChangedDataList = new UserList();
         }
 
         private void show_btn_Click(object sender, RoutedEventArgs e)
@@ -45,17 +49,21 @@ namespace Form
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (DataGrid.SelectedItem == null) {
+                SubmitBtn.Visibility = Visibility.Collapsed;
+                return;
+            }
 
-            if (DataGrid.SelectedItem == null) return;
+            //change submit/update button
+            UpdateBtn.Visibility = Visibility.Visible;
 
-                //change submit/update button
-                SubmitBtn.Visibility = Visibility.Hidden;
-                UpdateBtn.Visibility = Visibility.Visible;
+            tempUser = DataGrid.SelectedItem as User;
+            this.DataContext = tempUser;
 
-                tempUser = DataGrid.SelectedItem as User;
-                this.DataContext = tempUser;
-
+            if (tempUser.Id != 999)
+            {
                 GameList dataList = MainWindow.Service.GetAllUserGames(tempUser.Id);
+
 
                 if (dataList == null)
                 {
@@ -69,19 +77,32 @@ namespace Form
                     State.Foreground = Brushes.Red;
                     State.FontSize = 9;
                     GameGrid.Visibility = Visibility.Hidden;
+                    DataGrid.Height = 370;
+                    GameGrid.Height = 0;
                 }
                 else
                 {
                     GameGrid.Visibility = Visibility.Visible;
+                    DataGrid.Height = 170;
+                    GameGrid.Height = 170;
                     State.Text = "Success";
                     State.Foreground = Brushes.Gray;
                     State.FontSize = 11;
                     GameGrid.ItemsSource = dataList;
                 }
-
+            }
             DeleteBtn.Visibility = Visibility.Visible;
         }
 
+        private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                ChangedDataList.Add((User)DataGrid.SelectedItem);//add the edited row to rows to be updated
+
+                // rowIndex has the row index
+            }
+        }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -115,24 +136,52 @@ namespace Form
         }
 
 
-        private void InsertSubmitBtn_Click(object sender, RoutedEventArgs e)
+        private void InsertBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Service.Register(tempUser.FirstName, tempUser.LastName, tempUser.Username, tempUser.Password);
+            DataGrid.ItemsSource = null;
+            dataList.Add(new User() {
+                FirstName = "*",
+                LastName = "*",
+                Username = "*",
+                Password = "*",
+                Level = 0,
+                Score = 0,
+                Id = 999,
+                Losses = 0,
+                Wins = 0,
+                Admin = false
+            });
+
+            DataGrid.ItemsSource = dataList;
+
+            for (int i = 0; i < DataGrid.Items.Count; i++)
+            {
+                DataGridRow row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(i);
+                TextBlock cellContent = DataGrid.Columns[1].GetCellContent(row) as TextBlock;
+                if (cellContent != null && cellContent.Text.Equals("*"))
+                {
+                    object item = DataGrid.Items[i];
+                    DataGrid.SelectedItem = item;
+                    DataGrid.ScrollIntoView(item);
+                    row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                    break;
+                }
+            }
+
+            SubmitBtn.Visibility = Visibility.Visible;
+        }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            User u = DataGrid.SelectedItem as User;
+
+            bool ok = MainWindow.Service.Register(u.FirstName, u.LastName, u.Username, u.Password);
+
             int x = MainWindow.Service.SaveChanges();
 
-            if (x > 0)//ok
+            if (x > 0 && ok)//ok
             {
-                if (dataList == null)
-                {
-                    dataList = new UserList();
-                }
-                dataList.Add(tempUser);
-                DataGrid.ItemsSource = null;
-                DataGrid.ItemsSource = dataList;
-                tempUser = null;
-                State.Text = "Inserted";
-                State.Foreground = Brushes.Red;
-                State.FontSize = 11;
+                show_btn_Click(null, null);
             }
             else
             {
@@ -144,39 +193,44 @@ namespace Form
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
-
-            int x = MainWindow.Service.UpdateUser(tempUser);
-
-            if (x > 0)//ok
+            if (ChangedDataList.Count > 0)
             {
-                if (dataList == null)
+                int x = 0;
+
+                foreach(User u in ChangedDataList)
                 {
-                    dataList = new UserList();
+                    x += MainWindow.Service.UpdateUser(u);
                 }
-                DataGrid.ItemsSource = null;
-                DataGrid.ItemsSource = dataList;
-                tempUser = null;
-                State.Text = "Updated";
-                State.Foreground = Brushes.Red;
-                State.FontSize = 11;
+                
+                if (x > 0)//ok
+                {
+                    if (dataList == null)
+                    {
+                        dataList = new UserList();
+                    }
+                    DataGrid.ItemsSource = null;
+                    DataGrid.ItemsSource = dataList;
+                    tempUser = null;
+                    State.Text = "Updated";
+                    State.Foreground = Brushes.Red;
+                    State.FontSize = 11;
+                }
+                else
+                {
+                    State.Text = "Error Updating";
+                    State.Foreground = Brushes.Red;
+                    State.FontSize = 9;
+                }
+                ChangedDataList = new UserList();
             }
             else
             {
-                State.Text = "Error Updating";
+                State.Text = "Nothing to Update!";
                 State.Foreground = Brushes.Red;
                 State.FontSize = 9;
             }
-        }
 
-        private void CreateBtnStudent_Click(object sender, RoutedEventArgs e)
-        {
-            tempUser = new User();
-            this.DataContext = tempUser;
-            SubmitBtn.Visibility = Visibility.Visible;
-            UpdateBtn.Visibility = Visibility.Hidden;
-            Form.Visibility = Visibility.Visible;
         }
-
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

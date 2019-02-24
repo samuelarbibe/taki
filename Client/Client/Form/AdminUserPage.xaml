@@ -18,15 +18,28 @@
             <TextBlock Name="State" HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent"
                        Margin="10" DockPanel.Dock="Right"/>
             <Button x:Name="DeleteBtn" BorderBrush="Transparent" Click="DeleteBtn_Click" Background="Transparent"
-                    Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40" HorizontalAlignment="Right" Width="40" DockPanel.Dock="Right">
+                    Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40" HorizontalAlignment="Right" Width="40" DockPanel.Dock="Right" ToolTip="Delete">
                 <materialDesign:PackIcon Kind="DeleteForever" Height="20" Width="20"/>
+            </Button>
+            <Button x:Name="UpdateBtn" BorderBrush="Transparent" Click="UpdateBtn_Click" Background="Transparent"
+                    Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40" HorizontalAlignment="Right" Width="40" DockPanel.Dock="Right" ToolTip="Update Changes">
+                <materialDesign:PackIcon Kind="Update" Height="20" Width="20"/>
+            </Button>
+            <Button x:Name="InsertBtn" BorderBrush="Transparent" Click="InsertBtn_Click" Background="Transparent"
+                    Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40" HorizontalAlignment="Right" Width="40" DockPanel.Dock="Right" ToolTip="Add User">
+                <materialDesign:PackIcon Kind="AddBox" Height="20" Width="20"/>
+            </Button>
+            <Button x:Name="SubmitBtn" Visibility="Hidden" BorderBrush="Transparent" Click="SubmitBtn_Click" Background="Transparent"
+                    Margin="5,5,0,0" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap" Height="40" HorizontalAlignment="Right" Width="40" DockPanel.Dock="Right" ToolTip="Add User">
+                <materialDesign:PackIcon Kind="Upload" Height="20" Width="20"/>
             </Button>
         </DockPanel>
 
 
         <DataGrid
             SelectionChanged="DataGrid_SelectionChanged"
-            Height="Auto"
+            Height="400"
+            CellEditEnding="DataGrid_CellEditEnding"
             x:Name="DataGrid"
             Margin="0 8 0 0"
             CanUserSortColumns="True"
@@ -38,6 +51,7 @@
                 <DataGridTextColumn
                     Binding="{Binding Id}"
                     Header="ID"
+                    IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                 <DataGridTextColumn
                     Binding="{Binding FirstName}"
@@ -71,7 +85,7 @@
 
         <DataGrid
         SelectionChanged="DataGrid_SelectionChanged"
-            Height="Auto"
+            Height="0"
             x:Name="GameGrid"
             Margin="0 8 0 0"
             CanUserSortColumns="True"
@@ -156,15 +170,6 @@
             <TextBox materialDesign:HintAssist.Hint="Password"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Password}"
                      TextWrapping="Wrap" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" />
-
-            <Button Name="SubmitBtn" Content="Submit" Background="White" Grid.ColumnSpan="4" Grid.RowSpan="2"
-                    Width="150" Grid.Column="2" Grid.Row="5" VerticalContentAlignment="Top" VerticalAlignment="Top"
-                    Height="23" Click="InsertSubmitBtn_Click" Visibility="Visible" />
-            <Button Name="UpdateBtn" Content="Update" Background="White" Grid.ColumnSpan="4" Grid.RowSpan="2"
-                    Width="150" Grid.Column="2" Grid.Row="5" VerticalContentAlignment="Top" VerticalAlignment="Top"
-                    Height="23" Click="UpdateBtn_Click" Visibility="Visible" />
         </Grid>
-
-
     </StackPanel>
 </Page>

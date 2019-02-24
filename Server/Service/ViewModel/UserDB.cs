@@ -119,15 +119,19 @@ namespace ViewModel
         {
             User u = entity as User;
 
-            Player p = entity as Player;
-
-            if (p.UserId > 0)
+            if (u.Id > 0)// check if user is not table!
             {
                 PlayerDb playerDb = new PlayerDb();
-                playerDb.Delete(u as Player);
-            }
+                PlayerList temp = playerDb.GetPlayersByUserId(u.Id);// get a lidst with all players of this user
 
-            if (u != null) Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
+                foreach(Player p in temp)
+                {
+                    playerDb.Delete(p);
+                }
+
+
+                if (u != null) Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
+            }
         }
 
         public override void Update(BaseEntity entity)

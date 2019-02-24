@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="d7480b52-3c7d-46c6-a946-19913b63e42e" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="ad65716c-0371-4a73-ba89-345674a471d7" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="84b4e53b-772d-40b7-a52b-a3262bac4e4a" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="d79a2bd8-ccc9-42b6-836a-d0c69b01dfaf" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="d7480b52-3c7d-46c6-a946-19913b63e42e" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="ad65716c-0371-4a73-ba89-345674a471d7" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="84b4e53b-772d-40b7-a52b-a3262bac4e4a" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="d79a2bd8-ccc9-42b6-836a-d0c69b01dfaf" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
