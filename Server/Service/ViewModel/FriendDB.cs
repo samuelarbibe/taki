@@ -95,6 +95,7 @@ namespace ViewModel
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
+            command.Parameters.Clear();
             Friendship con = entity as Friendship;
 
             command.CommandText = "DELETE FROM Friends_table WHERE [ID] = @id ";
@@ -108,14 +109,16 @@ namespace ViewModel
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
+            command.Parameters.Clear();
+
             Friendship con = entity as Friendship;
 
-            command.CommandText = "INSERT INTO Friends_Table (user_1_id, user_2_id) VALUES (@id1, @id2)";
+            command.CommandText = "INSERT INTO Friends_Table ([user_1_id], [user_2_id]) VALUES (@idOne, @idTwo)";
 
             //parameters
 
-            command.Parameters.Add(new OleDbParameter("@id1", con.User1.Id));
-            command.Parameters.Add(new OleDbParameter("@id2", con.User1.Id));
+            command.Parameters.Add(new OleDbParameter("@idOne", con.User1.Id));
+            command.Parameters.Add(new OleDbParameter("@idTwo", con.User2.Id));
 
             Console.WriteLine("Friendship between player [" + con.User1.Id + "] and card [" + con.User2.Id +
                               "] INSERTED");

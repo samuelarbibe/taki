@@ -13,20 +13,20 @@
             <RowDefinition Height="11*"/>
             <RowDefinition Height="127*"/>
             <RowDefinition Height="18*"/>
-            <RowDefinition Height="26*"/>
+            <RowDefinition Height="35*"/>
             <RowDefinition Height="18*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48*"/>
-            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="95*"/>
             <ColumnDefinition Width="39*"/>
-            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="95*"/>
             <ColumnDefinition Width="41*"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="ResponseTextBox"  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1">
             <TextBlock Padding="10" Margin="30,0,30,0" FontSize="20" Text="{Binding Username}"></TextBlock>
             <TextBlock Padding="5" Margin="30,0,30,0" FontSize="15" Text="{Binding Level}"></TextBlock>
-            <TextBlock x:Name="AreFriends"></TextBlock>
+            <TextBlock Padding="5" Margin="30,0,30,0" x:Name="AreFriends"></TextBlock>
         </StackPanel>
         <Button
             x:Name="AddFriend" Content="Add Friend" Grid.Column="1" Grid.Row="3" Click="RequestButton_Click"

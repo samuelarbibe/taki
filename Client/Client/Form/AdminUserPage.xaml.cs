@@ -106,12 +106,14 @@ namespace Form
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (DataGrid.SelectedItem != null)
+            if (DataGrid.SelectedItems != null)
             {
-                tempUser = DataGrid.SelectedItem as User;
-
-                int x = MainWindow.Service.DeleteUser(tempUser);
-
+                int x = 0;
+                foreach (var u in DataGrid.SelectedItems)
+                {
+                    tempUser = u as User;
+                    x += MainWindow.Service.DeleteUser(tempUser);
+                }
                 if (x > 0)//ok
                 {
                     dataList.Remove(tempUser);
@@ -154,19 +156,10 @@ namespace Form
 
             DataGrid.ItemsSource = dataList;
 
-            for (int i = 0; i < DataGrid.Items.Count; i++)
-            {
-                DataGridRow row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(i);
-                TextBlock cellContent = DataGrid.Columns[1].GetCellContent(row) as TextBlock;
-                if (cellContent != null && cellContent.Text.Equals("*"))
-                {
-                    object item = DataGrid.Items[i];
-                    DataGrid.SelectedItem = item;
-                    DataGrid.ScrollIntoView(item);
-                    row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                    break;
-                }
-            }
+            int index = DataGrid.Items.Count - 1;
+            object item = DataGrid.Items[index];
+            DataGrid.SelectedItem = item;
+            DataGrid.ScrollIntoView(item);
 
             SubmitBtn.Visibility = Visibility.Visible;
         }
@@ -174,18 +167,25 @@ namespace Form
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
             User u = DataGrid.SelectedItem as User;
-
-            bool ok = MainWindow.Service.Register(u.FirstName, u.LastName, u.Username, u.Password);
-
-            int x = MainWindow.Service.SaveChanges();
-
-            if (x > 0 && ok)//ok
+            if (u.Username != null && u.Password != null && u.FirstName != null && u.LastName != null)
             {
-                show_btn_Click(null, null);
+
+                bool ok = MainWindow.Service.Register(u.FirstName, u.LastName, u.Username, u.Password);
+
+                if (ok)//ok
+                {
+                    show_btn_Click(null, null);
+                }
+                else
+                {
+                    State.Text = "Error Inserting";
+                    State.Foreground = Brushes.Red;
+                    State.FontSize = 9;
+                }
             }
             else
             {
-                State.Text = "Error Inserting";
+                State.Text = "Fill All!";
                 State.Foreground = Brushes.Red;
                 State.FontSize = 9;
             }

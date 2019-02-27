@@ -43,7 +43,7 @@
             x:Name="DataGrid"
             Margin="0 8 0 0"
             CanUserSortColumns="True"
-            CanUserAddRows="True"
+            CanUserAddRows="False"
             AutoGenerateColumns="False"
             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
             materialDesign:DataGridAssist.ColumnHeaderPadding="8">
@@ -80,6 +80,12 @@
                     Binding="{Binding Score}"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}">
                 </DataGridTextColumn>
+                <DataGridCheckBoxColumn
+                    Header="Admin"
+                    Binding="{Binding Admin}"
+                    ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+                </DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
 

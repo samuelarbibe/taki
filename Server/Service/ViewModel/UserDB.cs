@@ -129,6 +129,14 @@ namespace ViewModel
                     playerDb.Delete(p);
                 }
 
+                FriendDb friendDb = new FriendDb();
+                ConnectionList friends = friendDb.SelectByUserId(u.Id);
+
+                foreach(Friendship f in friends)
+                {
+                    friendDb.Delete(f);
+                }
+
 
                 if (u != null) Updated.Add(new ChangeEntity(CreateDeleteSql, entity));
             }

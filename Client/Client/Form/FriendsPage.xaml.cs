@@ -28,7 +28,7 @@ namespace Form
         {
             InitializeComponent();
 
-             ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
+            ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
 
             View.ItemsSource = ul;
         }

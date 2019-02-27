@@ -204,7 +204,7 @@ namespace BusinessLayer
             };
 
             db.Insert(fr);
-            SaveChanges();
+            if (ActiveGameList.Count == 0) SaveChanges(); // if there is no backgroudnWorker Running, SaveChanges independently
         }
 
         public void BlRemoveFriends(User u1, User u2)
@@ -253,7 +253,7 @@ namespace BusinessLayer
 
                 _game.Players.Add(new Player() {Username = "table"}); // adding the table as a player
 
-                _game.Players[playerCount].Hand = BuildShuffledHand(59, false); // giving the table 100 shuffled cards
+                _game.Players[playerCount].Hand = BuildShuffledHand(59, true); // giving the table 100 shuffled cards
 
                 _game = BlStartGameDatabase(_game); // add this game to the database!
 

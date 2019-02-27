@@ -56,6 +56,8 @@ namespace ViewModel
 
         public GameList SelectByUserId(int userId)
         {
+            Command.Parameters.Clear();
+
             Command.CommandText = "SELECT * FROM Game_Table WHERE(ID IN " +
                                   "(SELECT Player_Game_Table.game_id" +
                                   " FROM(Player_Table INNER JOIN" +
@@ -70,6 +72,8 @@ namespace ViewModel
 
         public int GetLastGameId()
         {
+            Command.Parameters.Clear();
+
             Command.CommandText = "SELECT MAX(ID) FROM Game_Table";
             GameList temp = new GameList(Select());
             return temp.Count > 0 ? temp[0].Id : new Game(0).Id;
@@ -107,6 +111,8 @@ namespace ViewModel
 
         public override void CreateDeleteSql(BaseEntity entity, OleDbCommand command)
         {
+            command.Parameters.Clear();
+
             Game game = entity as Game;
 
             command.CommandText = "DELETE FROM Game_Table WHERE ID = @game_id";
@@ -123,6 +129,8 @@ namespace ViewModel
 
         public override void CreateInsertSql(BaseEntity entity, OleDbCommand command)
         {
+            command.Parameters.Clear();
+
             Game g = entity as Game;
 
             command.CommandText =
@@ -167,6 +175,8 @@ namespace ViewModel
 
         public override void CreateUpdateSql(BaseEntity entity, OleDbCommand command)
         {
+            command.Parameters.Clear();
+
             Game g = entity as Game;
 
             command.CommandText =

@@ -56,7 +56,7 @@ namespace ViewModel
         }
 
 
-        public UserList SelectByName(string firstName, string lastName)
+        public new UserList SelectByName(string firstName, string lastName)
         {
             Command.CommandText =
                 "SELECT *, Player_Table.Id AS ID FROM(User_Table INNER JOIN Player_Table ON User_Table.ID = Player_Table.user_id) WHERE [first_name] = @fName AND [last_name] = @lName";

@@ -11,14 +11,14 @@
             <RowDefinition Height="35*"/>
             <RowDefinition Height="33*"/>
             <RowDefinition Height="36*"/>
-            <RowDefinition Height="28*"/>
+            <RowDefinition Height="35*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48*"/>
-            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="95*"/>
             <ColumnDefinition Width="39*"/>
-            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="95*"/>
             <ColumnDefinition Width="41*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Do you really want to quit?" x:Name="ResponseTextBox" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" TextAlignment="Center" FontSize="16" />

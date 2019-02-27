@@ -6,9 +6,6 @@ using Color = System.Windows.Media.Color;
 
 namespace Form.UserControls
 {
-    /// <summary>
-    /// Inter_action logic for Player3UC.xaml
-    /// </summary>
     public partial class Player3UC : UserControl
     {
         private CardList _hand;
