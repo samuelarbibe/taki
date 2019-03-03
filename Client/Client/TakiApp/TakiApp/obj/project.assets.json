@@ -179,7 +179,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
+      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -397,7 +397,7 @@
       ]
     },
     "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
+      "sha512": "hs2zF4tOQ3V4iQttVnLrnR/i8AOrrAgu2Gmp4/jNaE/+5hiZWDj20FK/m/OW3Itdi9XDvqf55WzHkiWYtOSUNg==",
       "type": "package",
       "path": "system.security.principal.windows/4.5.0",
       "files": [
@@ -871,23 +871,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User1\\.nuget\\packages\\": {},
+    "C:\\Users\\samue\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
+      "projectUniqueName": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
       "projectName": "TakiApp",
-      "projectPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
-      "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
-      "outputPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\obj\\",
+      "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -900,8 +900,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Taki\\Client\\Client\\Form\\Form.csproj": {
-              "projectPath": "D:\\Taki\\Client\\Client\\Form\\Form.csproj"
+            "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Form\\Form.csproj": {
+              "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\Form\\Form.csproj"
             }
           }
         }

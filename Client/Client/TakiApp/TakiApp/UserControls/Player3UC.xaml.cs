@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TakiApp.TakiService;
+using TakiApp.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Color = Xamarin.Forms.Color;
@@ -15,17 +16,17 @@ namespace TakiApp.UserControls
 	{
         private ServiceClient Service;
 
-        private CardList _hand;
-
         public Player3UC()
         {
             InitializeComponent();
 
-            Service = new ServiceClient();
+            //add a row for all cards
+            MyGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
         }
 
-
         public Player CurrentPlayer { get; set; }
+        public CardList Hand { get; set; }
+        public List<ImageButton> ImageButtonList { get; set; }
 
         public void UpdateUI(Player p)
         {
@@ -33,31 +34,61 @@ namespace TakiApp.UserControls
 
             BindingContext = CurrentPlayer;
 
-            HandView.ItemsSource = null;
+            Hand = null;
 
-            HandView.ItemsSource = CurrentPlayer.Hand;
+            Hand = CurrentPlayer.Hand;
 
+            SetHandView();
+        }
+
+        private void SetHandView()
+        {
+            SourceConverter converter = new SourceConverter();
+            ImageButtonList = new List<ImageButton>();
+
+            MyGrid.Children.Clear();
+            MyGrid.ColumnDefinitions.Clear();
+
+
+            for (int i = 0; i < Hand.Count; i++)
+            {
+                ImageButton temp = new ImageButton();
+
+                MyGrid.ColumnSpacing = -30;
+
+                temp.Source = temp.Source = "card0068.png";
+                temp.BackgroundColor = Color.Transparent;
+
+                ImageButtonList.Add(temp);
+
+                MyGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                MyGrid.Children.Add(temp, i, 0);
+
+                MyGrid.Children[i].HorizontalOptions = LayoutOptions.FillAndExpand;
+
+                MyGrid.Children[i].HeightRequest = MyGrid.Height;
+
+                MyGrid.Children[i].WidthRequest = MyGrid.Children[i].Height / 1.9;
+            }
         }
 
         public void SetAsActive()
         {
-            MyGrid.BackgroundColor = Color.FromRgba(60, 0, 250, 0);
+            MyGrid.BackgroundColor = Xamarin.Forms.Color.FromRgba(0, 250, 0, 0.3);
         }
 
         public void SetAsNonActive()
         {
-            MyGrid.BackgroundColor = Color.Transparent;
+            MyGrid.BackgroundColor = Xamarin.Forms.Color.Transparent;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)
         {
             CurrentPlayer = currentPlayer;
 
-            _hand = currentPlayer.Hand;
+            Hand = currentPlayer.Hand;
 
             BindingContext = CurrentPlayer;
-
-            HandView.ItemsSource = CurrentPlayer.Hand;
         }
 
         //private void Username_Click(object sender, System.Windows.RoutedEventArgs e)

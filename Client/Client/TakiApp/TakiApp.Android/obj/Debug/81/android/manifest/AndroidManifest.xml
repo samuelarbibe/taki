@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.TakiApp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.TakiApp" android:installLocation="auto">
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <application android:label="TakiApp.Android" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:configChanges="orientation|screenSize" android:label="TakiApp" android:theme="@style/MainTheme" android:name="md5731f2d6e782bead17d399206e28b1e58.MainActivity">
+  <application android:label="TakiApp.Android" android:icon="@drawable/card0068" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+    <activity android:configChanges="orientation|screenSize" android:label="TakiApp" android:screenOrientation="landscape" android:theme="@style/MainTheme" android:name="md5731f2d6e782bead17d399206e28b1e58.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

@@ -3,18 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TakiApp.Utilities"
              x:Class="TakiApp.UserControls.Player1UC">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <local:SourceConverter x:Key="SourceConverter" />
-        </ResourceDictionary>
-    </ContentView.Resources>
     <Grid x:Name="MyGrid">
-        <CollectionView HorizontalOptions="Center" x:Name="HandView" SelectionMode="Single" ItemsLayout="{x:Static ListItemsLayout.HorizontalList}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Image WidthRequest="70" Source="{Binding Image, Converter={StaticResource SourceConverter}}" HeightRequest="135" Aspect="AspectFit"></Image>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+
     </Grid>
 </ContentView>

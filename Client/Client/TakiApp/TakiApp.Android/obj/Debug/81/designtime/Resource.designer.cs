@@ -4504,6 +4504,9 @@ namespace TakiApp.Droid
 			// aapt resource value: 0x7F09005B
 			public const int design_snackbar_background = 2131296347;
 			
+			// aapt resource value: 0x7F010064
+			public const int icon = 2130772068;
+			
 			// aapt resource value: 0x7F090054
 			public const int ic_audiotrack_dark = 2131296340;
 			
@@ -5035,14 +5038,14 @@ namespace TakiApp.Droid
 			// aapt resource value: 0x7F090104
 			public const int ic_vol_type_tv_light = 2131296516;
 			
-			// aapt resource value: 0x7F010064
-			public const int liam = 2130772068;
-			
 			// aapt resource value: 0x7F010065
-			public const int Logout_Icon = 2130772069;
+			public const int liam = 2130772069;
 			
-			// aapt resource value: 0x7F010375
-			public const int MaterialActivityIndicatorBackground = 2130772853;
+			// aapt resource value: 0x7F010066
+			public const int Logout_Icon = 2130772070;
+			
+			// aapt resource value: 0x7F010376
+			public const int MaterialActivityIndicatorBackground = 2130772854;
 			
 			// aapt resource value: 0x7F090105
 			public const int mr_button_connected_dark = 2131296517;
@@ -5143,14 +5146,14 @@ namespace TakiApp.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010066
-			public const int samuel = 2130772070;
-			
 			// aapt resource value: 0x7F010067
-			public const int Settings = 2130772071;
+			public const int samuel = 2130772071;
 			
 			// aapt resource value: 0x7F010068
-			public const int TAKI = 2130772072;
+			public const int Settings = 2130772072;
+			
+			// aapt resource value: 0x7F010069
+			public const int TAKI = 2130772073;
 			
 			// aapt resource value: 0x7F090069
 			public const int tooltip_frame_dark = 2131296361;
@@ -5158,14 +5161,14 @@ namespace TakiApp.Droid
 			// aapt resource value: 0x7F09006A
 			public const int tooltip_frame_light = 2131296362;
 			
-			// aapt resource value: 0x7F010069
-			public const int wallpaper_blue = 2130772073;
-			
 			// aapt resource value: 0x7F010070
-			public const int yoav = 2130772080;
+			public const int wallpaper_blue = 2130772080;
 			
 			// aapt resource value: 0x7F010071
-			public const int yogev = 2130772081;
+			public const int yoav = 2130772081;
+			
+			// aapt resource value: 0x7F010072
+			public const int yogev = 2130772082;
 			
 			static Drawable()
 			{

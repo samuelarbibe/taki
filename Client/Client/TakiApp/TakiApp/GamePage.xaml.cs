@@ -130,7 +130,7 @@ namespace TakiApp
                 }
                 if (Active)
                 {
-                    Thread.Sleep(100);
+                    Thread.Sleep(250);
                     DoActions();
                     
                 }              
@@ -209,7 +209,7 @@ namespace TakiApp
 
                                 if (CurrentPlayer.Id == m.Target.Id && PlusValue != 0)
                                 {
-                                    if (CurrentPlayer.Hand.First(c => c.Value == Value.PlusTwo) == null)
+                                    if (CurrentPlayer.Hand.FirstOrDefault(c => c.Value == Value.PlusTwo) == null)
                                     {
                                         TakeMultipleCardsFromDeck(PlusValue);
                                     }
@@ -311,14 +311,14 @@ namespace TakiApp
             Table = PlayersList[PlayersCount - 1];
         }
 
-        private void ExitGameButton_Click(object sender, EventArgs e)
+        private async void ExitGameButton_Click(object sender, EventArgs e)
         {
-            var answer = DisplayAlert("Quit", "Are you sure you want to quit? all progress will be lost", "Yes", "No");
+            var answer = await DisplayAlert("Quit", "Are you sure you want to quit? all progress will be lost", "Yes", "No");
 
-            if (answer.Result)
+            if (answer)
             {
                 PlayerQuit();
-                this.Navigation.PushModalAsync(new MainMenu());
+                await this.Navigation.PushModalAsync(new MainMenu());
             }
 
         }
@@ -371,7 +371,7 @@ namespace TakiApp
             Player currentPlayer = PlayersList.First();
             Player table = PlayersList.Last();
             MessageList temp = new MessageList();
-            Card givenCard = uc1.SelectedCard();
+            Card givenCard = uc1.SelectedCard;
 
             if (givenCard != null)
             {
@@ -690,54 +690,7 @@ namespace TakiApp
                     case Value.SwitchColor:
                     case Value.SwitchColorAll:
 
-                        var action = DisplayActionSheet("Choose a Color:", null, null, "Green", "Blue", "Yellow", "Red");
-
-                        switch (action.Result)
-                        {
-                            case "Green":
-                                SwitchColorMessage(new Card()
-                                {
-                                    Id = 14,
-                                    Value = Value.SwitchColor,
-                                    Color = Color.Green,
-                                    Image = "../Resources/Cards/card0014.png",
-                                    Special = true
-                                });
-                                break;
-
-                            case "Blue":
-                                SwitchColorMessage(new Card()
-                                {
-                                    Id = 62,
-                                    Value = Value.SwitchColor,
-                                    Color = TakiService.Color.Blue,
-                                    Image = "../Resources/Cards/card0062.png",
-                                    Special = true
-                                });
-                                break;
-
-                            case "Red":
-                                SwitchColorMessage(new Card()
-                                {
-                                    Id = 30,
-                                    Value = Value.SwitchColor,
-                                    Color = TakiService.Color.Red,
-                                    Image = "../Resources/Cards/card0030.png",
-                                    Special = true
-                                });
-                                break;
-
-                            case "Yellow":
-                                SwitchColorMessage(new Card()
-                                {
-                                    Id = 46,
-                                    Value = Value.SwitchColor,
-                                    Color = TakiService.Color.Red,
-                                    Image = "../Resources/Cards/card0046.png",
-                                    Special = true
-                                });
-                                break;
-                        }
+                        PromptSwitchColor();
 
                         break;
 
@@ -761,6 +714,59 @@ namespace TakiApp
                 }
 
                 TurnFinished(givenCard.Value); // GetNextPlayerId will handle this 
+            }
+
+        }
+
+        private async void PromptSwitchColor()
+        {
+            var action = await DisplayActionSheet("Choose a Color:", null, null, "Green", "Blue", "Yellow", "Red");
+
+            switch (action)
+            {
+                case "Green":
+                    SwitchColorMessage(new Card()
+                    {
+                        Id = 14,
+                        Value = Value.SwitchColor,
+                        Color = Color.Green,
+                        Image = "../Resources/Cards/card0014.png",
+                        Special = true
+                    });
+                    break;
+
+                case "Blue":
+                    SwitchColorMessage(new Card()
+                    {
+                        Id = 62,
+                        Value = Value.SwitchColor,
+                        Color = TakiService.Color.Blue,
+                        Image = "../Resources/Cards/card0062.png",
+                        Special = true
+                    });
+                    break;
+
+                case "Red":
+                    SwitchColorMessage(new Card()
+                    {
+                        Id = 30,
+                        Value = Value.SwitchColor,
+                        Color = TakiService.Color.Red,
+                        Image = "../Resources/Cards/card0030.png",
+                        Special = true
+                    });
+                    break;
+
+                case "Yellow":
+                    SwitchColorMessage(new Card()
+                    {
+                        Id = 46,
+                        Value = Value.SwitchColor,
+                        Color = TakiService.Color.Red,
+                        Image = "../Resources/Cards/card0046.png",
+                        Special = true
+                    });
+                    break;
             }
 
         }
@@ -807,7 +813,6 @@ namespace TakiApp
                     Card = selectedColorCard
                 });
             }
-
 
             Service.AddActionsAsync(temp);
         }

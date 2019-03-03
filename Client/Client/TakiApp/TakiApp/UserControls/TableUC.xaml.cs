@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using TakiApp.TakiService;
+using TakiApp.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,7 @@ namespace TakiApp.UserControls
 	{
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
+        private readonly SourceConverter converter = new SourceConverter();
         private static readonly RNGCryptoServiceProvider RngCsp = new RNGCryptoServiceProvider();
 
         public Player CurrentPlayer { get; set; }
@@ -28,6 +30,9 @@ namespace TakiApp.UserControls
             CurrentPlayer = p;
 
             BindingContext = Deck.LastOrDefault();
+
+            PassCardButton.Source = null;
+            PassCardButton.Source = converter.Convert(Deck.LastOrDefault().Image, null, null, null).ToString();
         }
 
 
@@ -39,7 +44,6 @@ namespace TakiApp.UserControls
 
         public Card GetCardFromStack()
         {
-
             Card temp = Deck[RollDice((byte)(Deck.Count - 2))];
             //Deck.Remove(temp);
 

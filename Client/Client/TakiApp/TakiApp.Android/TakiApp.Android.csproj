@@ -269,7 +269,7 @@
     <None Include="Resources\drawable\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\drawable\TAKI.png" />
+    <AndroidResource Include="Resources\drawable\TAKI.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drawable\wallpaper_blue.png" />
@@ -288,6 +288,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drawable\yogev.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -30,7 +30,7 @@
 
         <control:Player2UC x:Name="uc2" Grid.Column="5" Grid.RowSpan="4" Rotation="270" Grid.ColumnSpan="2" Grid.Row="1"/>
 
-        <control:Player3UC x:Name="uc3" Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" Rotation="180" Grid.ColumnSpan="5" />
+        <control:Player3UC x:Name="uc3" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" Rotation="180" Grid.ColumnSpan="3" />
 
         <control:Player4UC x:Name="uc4" Grid.Row="1" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Rotation="90" />
 
