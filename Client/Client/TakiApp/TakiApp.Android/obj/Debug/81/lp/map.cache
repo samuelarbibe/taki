@@ -26,3 +26,6 @@ Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 Xfx.Controls
 Xfx.Controls.Droid
+netstandard
+System.ObjectModel
+System.Threading
