@@ -54,6 +54,7 @@ namespace TakiApp
         public GamePage(Game game)
         {
             InitializeComponent();
+            BackgroundImage = "wallpaper.jpg";
 
             Service = new ServiceClient();
 

@@ -26,11 +26,13 @@ namespace TakiApp
 
         public LoadingPage()
         {
-
+            BackgroundImage = "wallpaper.jpg";
         }
 
         public LoadingPage(int playerCount)
 		{
+            InitializeComponent();
+            BackgroundImage = "wallpaper.jpg";
 
             service = new ServiceClient();
             service.StartGameCompleted += Serv_RequestCompleted;
@@ -44,7 +46,7 @@ namespace TakiApp
 
             Busy = true;
 
-            InitializeComponent();
+            
 
             SearchGame();
         }

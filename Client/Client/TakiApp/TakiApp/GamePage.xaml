@@ -24,7 +24,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="ExitGameButton" Clicked="ExitGameButton_Click"></Button>
+        <Button x:Name="ExitGameButton" Text="Quit" Clicked="ExitGameButton_Click"></Button>
 
         <control:Player1UC x:Name="uc1" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
 

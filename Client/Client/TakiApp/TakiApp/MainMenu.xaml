@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TakiApp.MainMenu">
-    <Grid>
+    <Grid x:Name="MyGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -17,16 +17,14 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Image x:Name="BackgroundImage" Grid.ColumnSpan="7" Grid.RowSpan="7" Source="wallpaper_blue.png" Aspect="AspectFill"></Image>
+        <!--<Image x:Name="BackgroundImage" Grid.ColumnSpan="7" Grid.RowSpan="7" Source="wallpaper_blue.png" Aspect="AspectFill"></Image>-->
 
-        <Button x:Name="PlayButton" BorderRadius="3" Clicked="PlayButton_Click" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Text="PLAY" />
-        <Button x:Name="MultiplayerButton_1" Clicked="MultiplayerButton1_Click" IsVisible="false" Grid.Row="3" Grid.Column="2" Text="2"/>
-        <Button x:Name="MultiplayerButton_2" Clicked="MultiplayerButton2_Click" IsVisible="false"  Grid.Row="3" Grid.Column="3" Text="3"/>
-        <Button x:Name="MultiplayerButton_3" Clicked="MultiplayerButton3_Click" IsVisible="false" Grid.Row="3" Grid.Column="4" Text="4"/>
-        <Button x:Name="CancelButton" Clicked="CancelButton_Click" BackgroundColor="Transparent" IsVisible="false" TextColor="Silver"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Cancel"/>
+        <Button x:Name="PlayButton" TextColor="#FF509BD0" BackgroundColor="#e3e3e3" BorderWidth="0" CornerRadius="27" Clicked="PlayButton_Click" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Text="PLAY" FontSize="23" FontAttributes="Bold"/>
+        <Button x:Name="MultiplayerButton_1" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton1_Click" Grid.Row="2" IsVisible="false"  Grid.Column="2" Text="2" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
+        <Button x:Name="MultiplayerButton_2" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton2_Click" Grid.Row="2" IsVisible="false"  Grid.Column="3" Text="3" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
+        <Button x:Name="MultiplayerButton_3" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton3_Click" Grid.Row="2" IsVisible="false"  Grid.Column="4" Text="4" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
+        <Button x:Name="CancelButton" Clicked="CancelButton_Click" BackgroundColor="Transparent" IsVisible="false" TextColor="Silver"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Cancel"/>
     </Grid>
 </ContentPage>

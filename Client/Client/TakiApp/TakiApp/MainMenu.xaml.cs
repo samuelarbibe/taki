@@ -14,6 +14,7 @@ namespace TakiApp
         public MainMenu()
         {
             InitializeComponent();
+            BackgroundImage = "wallpaper.jpg";
         }
 
         public static GamePage CurrentGamePage { get; set; }

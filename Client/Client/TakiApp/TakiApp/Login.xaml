@@ -20,13 +20,13 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!--<Image Source="Resources\Images\wallpaper_blue.png" Aspect="AspectFit" />-->
-        
-        <Label FontSize="23" FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Text="Login to The Game"/>
-        <Entry x:Name="Username" Placeholder="Username" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Entry x:Name="Password" IsPassword="true"  Placeholder="Password" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Label x:Name="noUserError" IsVisible="true" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="10" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" />
-        <Button x:Name="LoginButton" Padding="15" BorderRadius="28" Clicked="LoginButton_Click" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Text="Login" />
+
+        <Label FontSize="25" TextColor="#e3e3e3" FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Text="Login to The Game"/>
+        <Entry x:Name="Username" TextColor="#e3e3e3" Placeholder="Username" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Entry x:Name="Password" TextColor="#e3e3e3" IsPassword="true"  Placeholder="Password" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Label x:Name="NoUserError" TextColor="Silver" IsVisible="true" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="10" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" />
+
+        <Button x:Name="LoginButton" BackgroundColor="#e3e3e3" HeightRequest="60" TextColor="#FF509BD0" Padding="15" CornerRadius="27" Clicked="LoginButton_Click" Grid.Row="4" Grid.RowSpan="2" VerticalOptions="End" Grid.Column="2" Grid.ColumnSpan="3" Text="Login" FontSize="20" FontAttributes="Bold"/>
         <Button x:Name="RegisterButton" VerticalOptions="End" Clicked="RegisterButton_Click" BackgroundColor="Transparent" TextColor="Silver" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Text="Create Account" />
 
         <Button x:Name="AdminFillButton" Clicked="AdminFillButton_Clicked" Text="Fill" Grid.Row="4" Grid.Column="0"/>

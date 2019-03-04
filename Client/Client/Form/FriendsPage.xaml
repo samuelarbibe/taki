@@ -34,7 +34,7 @@
         <ListView Grid.Row="1" BorderThickness="0" x:Name="View" Background="Transparent" Grid.RowSpan="7" Grid.Column="1" HorizontalContentAlignment="Stretch">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" IsItemsHost="True" VerticalAlignment="Top"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" IsItemsHost="True" VerticalAlignment="Top" Background="#FFE3E3E3"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 

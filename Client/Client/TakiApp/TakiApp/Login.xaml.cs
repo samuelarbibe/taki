@@ -15,6 +15,7 @@ namespace TakiApp
         public Login()
         {
             InitializeComponent();
+            BackgroundImage = "wallpaper.jpg";
             service = new ServiceClient();
             service.LoginCompleted += Serv_LoginCompleted;
         }
@@ -30,7 +31,7 @@ namespace TakiApp
             }
             else
             {
-                noUserError.Text = "Please fill up all the fields!";
+                NoUserError.Text = "Please fill up all the fields!";
             }
         }
 
@@ -52,7 +53,7 @@ namespace TakiApp
                     MainMenu.CurrentUser = e.Result as User;
                     await this.Navigation.PushModalAsync(new MainMenu());
                 }
-                this.noUserError.Text = msg;
+                this.NoUserError.Text = msg;
             });
         }
 
