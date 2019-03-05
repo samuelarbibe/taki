@@ -20,29 +20,29 @@ namespace TakiApp {
         private global::Xamarin.Forms.Button ExitGameButton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::TakiApp.UserControls.Player1UC uc1;
+        private global::TakiApp.UserControls.Player1Uc uc1;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::TakiApp.UserControls.Player2UC uc2;
+        private global::TakiApp.UserControls.Player2Uc uc2;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::TakiApp.UserControls.Player3UC uc3;
+        private global::TakiApp.UserControls.Player3Uc uc3;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::TakiApp.UserControls.Player4UC uc4;
+        private global::TakiApp.UserControls.Player4Uc uc4;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::TakiApp.UserControls.TableUC uctable;
+        private global::TakiApp.UserControls.TableUc uctable;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(GamePage));
             ExitGameButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ExitGameButton");
-            uc1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player1UC>(this, "uc1");
-            uc2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player2UC>(this, "uc2");
-            uc3 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player3UC>(this, "uc3");
-            uc4 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player4UC>(this, "uc4");
-            uctable = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.TableUC>(this, "uctable");
+            uc1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player1Uc>(this, "uc1");
+            uc2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player2Uc>(this, "uc2");
+            uc3 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player3Uc>(this, "uc3");
+            uc4 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player4Uc>(this, "uc4");
+            uctable = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.TableUc>(this, "uctable");
         }
     }
 }

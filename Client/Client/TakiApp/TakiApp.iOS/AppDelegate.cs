@@ -24,7 +24,7 @@ namespace TakiApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.SetFlags("CollectionView_Experimental");
-            global::Xamarin.Forms.Forms.Init();
+            Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

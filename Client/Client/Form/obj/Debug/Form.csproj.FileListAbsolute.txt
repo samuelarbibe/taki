@@ -21,7 +21,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\ro\Xceed.Wpf.A
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\AdminUserPage.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerProfile.g.cs
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Dialogs\ExitDialog.g.cs
@@ -80,3 +79,4 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.Co
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csproj.CopyComplete
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.exe
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache

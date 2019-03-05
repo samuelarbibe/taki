@@ -12,7 +12,7 @@ namespace Form.UserControls
     /// <summary>
     /// Inter_action logic for TableUC.xaml
     /// </summary>
-    public partial class TableUC : UserControl
+    public partial class TableUc : UserControl
     {
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
@@ -24,7 +24,7 @@ namespace Form.UserControls
 
         public CardList Stack { get; set; }
 
-        public void UpdateUI(Player p)
+        public void UpdateUi(Player p)
         {
             CurrentPlayer = p;
 
@@ -32,7 +32,7 @@ namespace Form.UserControls
         }
 
 
-        public TableUC()
+        public TableUc()
         {
             InitializeComponent();
         }
@@ -112,7 +112,7 @@ namespace Form.UserControls
 
         private void PassCardButton_Click(object sender, RoutedEventArgs e)
         {   
-            this.PassCardToStackButtonClicked?.Invoke(this, EventArgs.Empty);
+            PassCardToStackButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

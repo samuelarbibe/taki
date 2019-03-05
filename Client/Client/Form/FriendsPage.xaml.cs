@@ -22,22 +22,22 @@ namespace Form
     /// </summary>
     public partial class FriendsPage : Page
     {
-        private UserList ul;
+        private UserList _ul;
 
         public FriendsPage()
         {
             InitializeComponent();
 
-            ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
+            _ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
 
-            View.ItemsSource = ul;
+            View.ItemsSource = _ul;
         }
 
         protected void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationService.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                this.NavigationService.GoBack();
+                NavigationService.GoBack();
             }
             else
             {
@@ -54,9 +54,9 @@ namespace Form
 
             View.ItemsSource = null;
 
-            ul.Remove(ul.Find(u => u.Id == u2.Id));
+            _ul.Remove(_ul.Find(u => u.Id == u2.Id));
 
-            View.ItemsSource = ul;
+            View.ItemsSource = _ul;
         }
     }
 }

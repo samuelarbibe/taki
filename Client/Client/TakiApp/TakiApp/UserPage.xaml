@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakiApp.UserPage">
+    <ContentPage.Content>
+        <Grid x:Name="MyGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="BackButton" Text="Back" Clicked="BackButton_Click" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#e3e3e3" FontAttributes="Bold"/>
+
+            <Label Text="First Name" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label Text="Last Name" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label Text="Username" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label Text="Password" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Label Text="Level" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" FontAttributes="Bold" VerticalOptions="Center"/>
+
+            <Label x:Name="FirstName" Text="{Binding FirstName}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+            <Label x:Name="LastName" Text="{Binding LastName}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+            <Label x:Name="Username" Text="{Binding Username}" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+            <Label x:Name="Password" Text="{Binding Password}" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+            <Grid Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="6*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{Binding Level}" />
+                <Grid x:Name="GridProgressBar" HeightRequest="20" Grid.Column="1" VerticalOptions="Center"/>
+            </Grid>
+
+            <Button x:Name="Logout" Grid.Row="5" Grid.Column="6" Clicked="Logout_Button_Click" Text="Logout"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

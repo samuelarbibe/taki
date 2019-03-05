@@ -12,7 +12,7 @@ namespace Form.Dialogs
             InitializeComponent();
         }
 
-        private void QuitButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }

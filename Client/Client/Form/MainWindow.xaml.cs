@@ -36,7 +36,7 @@ namespace Form
             Service = new ServiceClient();
             BigFrame = MainFrame;
             BigFrame.Navigate(new LoginMenu());
-            this.DataContext = CurrentUser;
+            DataContext = CurrentUser;
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)

@@ -13,7 +13,7 @@ namespace Form.Utilities
         /// <summary>
         /// <see cref="ContentPresenter"/> that holds the watermark
         /// </summary>
-        private readonly ContentPresenter contentPresenter;
+        private readonly ContentPresenter _contentPresenter;
 
         #endregion
 
@@ -27,23 +27,23 @@ namespace Form.Utilities
         public WatermarkAdorner(UIElement adornedElement, object watermark) :
            base(adornedElement)
         {
-            this.IsHitTestVisible = false;
-            this.contentPresenter = new ContentPresenter();
-            this.contentPresenter.Content = watermark;
-            this.contentPresenter.Opacity = 0.6;
-            this.contentPresenter.Margin = new Thickness(Control.Margin.Left + Control.Padding.Left, Control.Margin.Top + Control.Padding.Top, 0, 0);
+            IsHitTestVisible = false;
+            _contentPresenter = new ContentPresenter();
+            _contentPresenter.Content = watermark;
+            _contentPresenter.Opacity = 0.6;
+            _contentPresenter.Margin = new Thickness(Control.Margin.Left + Control.Padding.Left, Control.Margin.Top + Control.Padding.Top, 0, 0);
 
-            if (this.Control is ItemsControl && !(this.Control is ComboBox))
+            if (Control is ItemsControl && !(Control is ComboBox))
             {
-                this.contentPresenter.VerticalAlignment = VerticalAlignment.Center;
-                this.contentPresenter.HorizontalAlignment = HorizontalAlignment.Center;
+                _contentPresenter.VerticalAlignment = VerticalAlignment.Center;
+                _contentPresenter.HorizontalAlignment = HorizontalAlignment.Center;
             }
 
             // Hide the control adorner when the adorned element is hidden
             Binding binding = new Binding("IsVisible");
             binding.Source = adornedElement;
             binding.Converter = new BooleanToVisibilityConverter();
-            this.SetBinding(VisibilityProperty, binding);
+            SetBinding(VisibilityProperty, binding);
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace Form.Utilities
         /// </summary>
         private Control Control
         {
-            get { return (Control)this.AdornedElement; }
+            get { return (Control)AdornedElement; }
         }
 
         #endregion
@@ -81,7 +81,7 @@ namespace Form.Utilities
         /// <returns>The child <see cref="Visual"/>.</returns>
         protected override Visual GetVisualChild(int index)
         {
-            return this.contentPresenter;
+            return _contentPresenter;
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Form.Utilities
         protected override Size MeasureOverride(Size constraint)
         {
             // Here's the secret to getting the adorner to cover the whole control
-            this.contentPresenter.Measure(Control.RenderSize);
+            _contentPresenter.Measure(Control.RenderSize);
             return Control.RenderSize;
         }
 
@@ -103,7 +103,7 @@ namespace Form.Utilities
         /// <returns>The actual size used.</returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
-            this.contentPresenter.Arrange(new Rect(finalSize));
+            _contentPresenter.Arrange(new Rect(finalSize));
             return finalSize;
         }
 

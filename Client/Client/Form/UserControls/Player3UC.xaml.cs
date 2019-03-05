@@ -6,18 +6,18 @@ using Color = System.Windows.Media.Color;
 
 namespace Form.UserControls
 {
-    public partial class Player3UC : UserControl
+    public partial class Player3Uc : UserControl
     {
         private CardList _hand;
 
-        public Player3UC()
+        public Player3Uc()
         {
             InitializeComponent();
         }
 
         public Player CurrentPlayer { get; set; }
 
-        public void UpdateUI(Player p)
+        public void UpdateUi(Player p)
         {
             CurrentPlayer = p;
             DataContext = CurrentPlayer;

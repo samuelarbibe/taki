@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.UserControls.TableUC.xaml", "UserControls/TableUC.xaml", typeof(global::TakiApp.UserControls.TableUC))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.UserControls.TableUC.xaml", "UserControls/TableUC.xaml", typeof(global::TakiApp.UserControls.TableUc))]
 
 namespace TakiApp.UserControls {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("UserControls\\TableUC.xaml")]
-    public partial class TableUC : global::Xamarin.Forms.ContentView {
+    public partial class TableUc : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Grid MyGrid;
@@ -27,7 +27,7 @@ namespace TakiApp.UserControls {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(TableUC));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(TableUc));
             MyGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "MyGrid");
             PassCardButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "PassCardButton");
             DeckButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "DeckButton");

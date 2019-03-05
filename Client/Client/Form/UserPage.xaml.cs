@@ -27,7 +27,7 @@ namespace Form
         {
             InitializeComponent();
             
-            this.DataContext = _cu;
+            DataContext = _cu;
 
             LevelProgressBar.Value = _cu.Score % 1000;
             ShowScore.Text = (_cu.Score % 1000) + "/1000";
@@ -44,9 +44,9 @@ namespace Form
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationService.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                this.NavigationService.GoBack();
+                NavigationService.GoBack();
             }
         }
 

@@ -77,6 +77,9 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\card0066.png
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\card0067.png
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\card0068.png
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\taki.png
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\icon.ico
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\wallpaper.jpg
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\R.cs.flag
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\R.txt
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\uploadflags.txt
@@ -154,9 +157,6 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\D
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\taki.png
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\icon.ico
-C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\res\drawable\wallpaper.jpg
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\TakiApp.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\bin\Debug\TakiApp.dll.mdb
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp.Android\obj\Debug\81\linksrc\TakiApp.dll.mdb

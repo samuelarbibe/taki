@@ -144,9 +144,9 @@
       },
       "Form/1.0.0": {
         "dependencies": {
+          "WindowsBase": "4.0.0.0",
           "System.Xaml": "4.0.0.0",
           "PresentationCore": "4.0.0.0",
-          "WindowsBase": "4.0.0.0",
           "System.Configuration": "4.0.0.0",
           "UIAutomationProvider": "4.0.0.0",
           "UIAutomationTypes": "4.0.0.0",
@@ -154,8 +154,8 @@
           "System.Printing": "4.0.0.0",
           "Accessibility": "4.0.0.0",
           "System.Deployment": "4.0.0.0",
-          "System.Windows.Input.Manipulations": "4.0.0.0",
           "System.Security": "4.0.0.0",
+          "System.Windows.Input.Manipulations": "4.0.0.0",
           "System.Windows.Forms": "4.0.0.0",
           "System.Runtime.Serialization.Formatters.Soap": "4.0.0.0"
         },
@@ -166,6 +166,14 @@
       "PresentationFramework/4.0.0.0": {
         "runtime": {
           "PresentationFramework.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.1055.0"
+          }
+        }
+      },
+      "WindowsBase.Reference/4.0.0.0": {
+        "runtime": {
+          "WindowsBase.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.6.1055.0"
           }
@@ -182,14 +190,6 @@
       "PresentationCore.Reference/4.0.0.0": {
         "runtime": {
           "PresentationCore.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.1055.0"
-          }
-        }
-      },
-      "WindowsBase.Reference/4.0.0.0": {
-        "runtime": {
-          "WindowsBase.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.6.1055.0"
           }
@@ -251,17 +251,17 @@
           }
         }
       },
-      "System.Windows.Input.Manipulations.Reference/4.0.0.0": {
+      "System.Security.Reference/4.0.0.0": {
         "runtime": {
-          "System.Windows.Input.Manipulations.dll": {
+          "System.Security.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.6.1055.0"
           }
         }
       },
-      "System.Security.Reference/4.0.0.0": {
+      "System.Windows.Input.Manipulations.Reference/4.0.0.0": {
         "runtime": {
-          "System.Security.dll": {
+          "System.Windows.Input.Manipulations.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.6.1055.0"
           }
@@ -385,17 +385,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "WindowsBase.Reference/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "System.Xaml.Reference/4.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "PresentationCore.Reference/4.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "WindowsBase.Reference/4.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -435,12 +435,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Windows.Input.Manipulations.Reference/4.0.0.0": {
+    "System.Security.Reference/4.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "System.Security.Reference/4.0.0.0": {
+    "System.Windows.Input.Manipulations.Reference/4.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

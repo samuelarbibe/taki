@@ -26,7 +26,7 @@ namespace Form.Dialogs
         }
 
 
-        private void OkButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }

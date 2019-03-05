@@ -8,26 +8,26 @@ namespace TakiApp
 {
     public partial class Login : ContentPage
     {
-        ServiceClient service;
-        private string usernameValue;
-        private string passwordValue;
+        ServiceClient _service;
+        private string _usernameValue;
+        private string _passwordValue;
 
         public Login()
         {
             InitializeComponent();
-            BackgroundImage = "wallpaper.jpg";
-            service = new ServiceClient();
-            service.LoginCompleted += Serv_LoginCompleted;
+            BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
+            _service = new ServiceClient();
+            _service.LoginCompleted += Serv_LoginCompleted;
         }
 
-        private void LoginButton_Click(object sender, System.EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
-            usernameValue = Username.Text;
-            passwordValue = Password.Text;
+            _usernameValue = Username.Text;
+            _passwordValue = Password.Text;
 
-            if (usernameValue != null && passwordValue != null)
+            if (_usernameValue != null && _passwordValue != null)
             {
-                service.LoginAsync(usernameValue, passwordValue);
+                _service.LoginAsync(_usernameValue, _passwordValue);
             }
             else
             {
@@ -51,15 +51,15 @@ namespace TakiApp
                 else
                 {
                     MainMenu.CurrentUser = e.Result as User;
-                    await this.Navigation.PushModalAsync(new MainMenu());
+                    await Navigation.PushModalAsync(new MainMenu());
                 }
-                this.NoUserError.Text = msg;
+                NoUserError.Text = msg;
             });
         }
 
-        private void RegisterButton_Click(object sender, System.EventArgs e)
+        private void RegisterButton_Click(object sender, EventArgs e)
         {
-            this.Navigation.PushModalAsync(new Register());
+            Navigation.PushModalAsync(new Register());
         }
 
         private void AdminFillButton_Clicked(object sender, EventArgs e)

@@ -9,18 +9,18 @@ namespace Form.UserControls
     /// <summary>
     /// Inter_action logic for Player4UC.xaml
     /// </summary>
-    public partial class Player4UC : UserControl
+    public partial class Player4Uc : UserControl
     {
         private CardList _hand;
 
-        public Player4UC()
+        public Player4Uc()
         {
             InitializeComponent();
         }
 
         public Player CurrentPlayer { get; set; }
 
-        public void UpdateUI(Player p)
+        public void UpdateUi(Player p)
         {
             CurrentPlayer = p;
             DataContext = CurrentPlayer;

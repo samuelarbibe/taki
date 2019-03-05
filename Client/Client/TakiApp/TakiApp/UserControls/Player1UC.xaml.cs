@@ -12,9 +12,9 @@ using Color = Xamarin.Forms.Color;
 namespace TakiApp.UserControls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Player1UC : ContentView
+    public partial class Player1Uc : ContentView
     {
-        public Player1UC()
+        public Player1Uc()
         {
             InitializeComponent();
 
@@ -27,7 +27,7 @@ namespace TakiApp.UserControls
         public List<ImageButton> ImageButtonList { get; set; }
         public Card SelectedCard { get; set; }
 
-        public void UpdateUI(Player p)
+        public void UpdateUi(Player p)
         {
             CurrentPlayer = p;
 
@@ -75,12 +75,12 @@ namespace TakiApp.UserControls
 
         public void SetAsActive()
         {
-            MyGrid.BackgroundColor = Xamarin.Forms.Color.FromRgba(0, 250, 0, 0.3);
+            MyGrid.BackgroundColor = Color.FromRgba(0, 250, 0, 0.3);
         }
 
         public void SetAsNonActive()
         {
-            MyGrid.BackgroundColor = Xamarin.Forms.Color.Transparent;
+            MyGrid.BackgroundColor = Color.Transparent;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)

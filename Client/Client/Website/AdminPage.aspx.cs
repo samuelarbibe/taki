@@ -6,24 +6,24 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TakiService;
 
-public partial class AdminPage : System.Web.UI.Page
+public partial class AdminPage : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ServiceClient Service = new ServiceClient();
-        UserList ul = Service.GetAllUsers();
+        ServiceClient service = new ServiceClient();
+        UserList ul = service.GetAllUsers();
 
-        if (MasterPage.currentUser != null && MasterPage.currentUser.Admin == true)
+        if (MasterPage.CurrentUser != null && MasterPage.CurrentUser.Admin == true)
         {
-            this.GridView1.DataSource = ul;
-            this.GridView1.DataBind();
+            GridView1.DataSource = ul;
+            GridView1.DataBind();
         }
         else
         {
             Response.Redirect("Home.aspx");
         }
 
-        this.GridView1.DataSource = Service.GetAllUsers();
-        this.GridView1.DataBind();
+        GridView1.DataSource = service.GetAllUsers();
+        GridView1.DataBind();
     }
 }

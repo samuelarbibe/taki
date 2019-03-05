@@ -10,7 +10,7 @@ namespace Form.Utilities
 {
     public static class Check
     {
-        public static bool nullCheck(List<Control> inputList)
+        public static bool NullCheck(List<Control> inputList)
         {
             bool inputNotEmpty = true;
             foreach (var input in inputList)

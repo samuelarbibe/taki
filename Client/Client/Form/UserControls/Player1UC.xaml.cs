@@ -8,9 +8,9 @@ namespace Form.UserControls
     /// <summary>
     /// Inter_action logic for Player1UC.xaml
     /// </summary>
-    public partial class Player1UC : UserControl
+    public partial class Player1Uc : UserControl
     {
-        public Player1UC() {
+        public Player1Uc() {
 
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace Form.UserControls
             return (Card) HandView?.SelectedItems[0];
         }
 
-        public void UpdateUI(Player p)
+        public void UpdateUi(Player p)
         {
             CurrentPlayer = p;
 

@@ -29,7 +29,7 @@ namespace Form
         private User _cu;
         private int _counter;
         private bool _gameNotFound;
-        private System.Windows.Threading.DispatcherTimer dispatcherTimer;
+        private System.Windows.Threading.DispatcherTimer _dispatcherTimer;
 
 
         public LoadingPage(int playerCount)
@@ -64,10 +64,10 @@ namespace Form
 
             //_game = MainWindow.Service.StartGame(_p, _playerCount);
 
-            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += FindGame;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 500); //send request five times every second
-            dispatcherTimer.Start();
+            _dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            _dispatcherTimer.Tick += FindGame;
+            _dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 500); //send request five times every second
+            _dispatcherTimer.Start();
 
 
             void FindGame(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace Form
                     }
                     else
                     {
-                        dispatcherTimer.Stop();
+                        _dispatcherTimer.Stop();
                         status.Text = "no game could be found... please try again";
                         _gameNotFound = true;
                     }
@@ -95,7 +95,7 @@ namespace Form
                 else // if game is found
                 {
                     MainWindow.BigFrame.Navigate(new GamePage(_game));
-                    dispatcherTimer.Stop();// stop timer loop
+                    _dispatcherTimer.Stop();// stop timer loop
                 }
             }
         }
@@ -107,7 +107,7 @@ namespace Form
 
         private void CancelSearchButton_Click(object sender, RoutedEventArgs e)
         {
-            dispatcherTimer.Stop();
+            _dispatcherTimer.Stop();
             MainWindow.Service.StopSearchingForGame(_p);
             MainWindow.BigFrame.Navigate(_gameNotFound ? new MainMenu(true) : new MainMenu());
         }

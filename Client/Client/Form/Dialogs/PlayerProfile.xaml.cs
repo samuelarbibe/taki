@@ -12,7 +12,7 @@ namespace Form.Dialogs
         {
             InitializeComponent();
 
-            this.DataContext = user;
+            DataContext = user;
 
             if (MainWindow.Service.AreFriends(user.Id, MainWindow.CurrentUser.Id))
             {
@@ -21,12 +21,12 @@ namespace Form.Dialogs
             }
         }
 
-        private void QuitButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
         }
 
-        private void RequestButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void RequestButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }

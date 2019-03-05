@@ -12,11 +12,11 @@ using Xamarin.Forms.Xaml;
 namespace TakiApp.UserControls
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TableUC : ContentView
+	public partial class TableUc : ContentView
 	{
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
-        private readonly SourceConverter converter = new SourceConverter();
+        private readonly SourceConverter _converter = new SourceConverter();
         private static readonly RNGCryptoServiceProvider RngCsp = new RNGCryptoServiceProvider();
 
         public Player CurrentPlayer { get; set; }
@@ -25,18 +25,18 @@ namespace TakiApp.UserControls
 
         public CardList Stack { get; set; }
 
-        public void UpdateUI(Player p)
+        public void UpdateUi(Player p)
         {
             CurrentPlayer = p;
 
             BindingContext = Deck.LastOrDefault();
 
             PassCardButton.Source = null;
-            PassCardButton.Source = converter.Convert(Deck.LastOrDefault().Image, null, null, null).ToString();
+            PassCardButton.Source = _converter.Convert(Deck.LastOrDefault().Image, null, null, null).ToString();
         }
 
 
-        public TableUC()
+        public TableUc()
         {
             InitializeComponent();
         }
@@ -116,7 +116,7 @@ namespace TakiApp.UserControls
 
         private void PassCardButton_Click(object sender, EventArgs e)
         {
-            this.PassCardToStackButtonClicked?.Invoke(this, EventArgs.Empty);
+            PassCardToStackButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

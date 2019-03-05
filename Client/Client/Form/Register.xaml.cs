@@ -44,7 +44,7 @@ namespace Form
             inputList.Add(Password);
             inputList.Add(ConfirmPassword);
 
-            if (Check.nullCheck(inputList))
+            if (Check.NullCheck(inputList))
             {
                 if (passwordValue.Equals(confirmPasswordValue)) //checks if password and confirm password are equal
                 {

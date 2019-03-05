@@ -43,7 +43,7 @@ namespace Form
             textBoxes.Add(Username);
             textBoxes.Add(Password);
 
-            if (Check.nullCheck(textBoxes))
+            if (Check.NullCheck(textBoxes))
             {
                 User currentUserCheck = MainWindow.Service.Login(usernameValue, passwordValue);
 

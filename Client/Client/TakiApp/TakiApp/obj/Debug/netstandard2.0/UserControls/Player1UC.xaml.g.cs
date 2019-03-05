@@ -8,20 +8,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.UserControls.Player1UC.xaml", "UserControls/Player1UC.xaml", typeof(global::TakiApp.UserControls.Player1UC))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("TakiApp.UserControls.Player1UC.xaml", "UserControls/Player1UC.xaml", typeof(global::TakiApp.UserControls.Player1Uc))]
 
 namespace TakiApp.UserControls {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("UserControls\\Player1UC.xaml")]
-    public partial class Player1UC : global::Xamarin.Forms.ContentView {
+    public partial class Player1Uc : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Grid MyGrid;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(Player1UC));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(Player1Uc));
             MyGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "MyGrid");
         }
     }

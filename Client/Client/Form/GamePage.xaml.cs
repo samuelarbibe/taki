@@ -152,7 +152,7 @@ namespace Form
 
                             case TakiService.Action.Win:
 
-                                Player WinningPlayer = PlayersList.Find(p => p.Id == m.Target.Id); // the winning player
+                                Player winningPlayer = PlayersList.Find(p => p.Id == m.Target.Id); // the winning player
 
                                 if (CurrentPlayer.Id == m.Target.Id)
                                 {
@@ -162,7 +162,7 @@ namespace Form
                                 }
                                 else
                                 {
-                                    PlayerWin pw = new PlayerWin(WinningPlayer.Username);
+                                    PlayerWin pw = new PlayerWin(winningPlayer.Username);
                                     pw.ShowDialog();
 
                                     if (PlayersList.Count == 3)
@@ -250,7 +250,7 @@ namespace Form
                         }
                     }
 
-                    UpdateUI();
+                    UpdateUi();
                 }
 
                 // Run again
@@ -318,9 +318,9 @@ namespace Form
 
         }
 
-        private void UpdateUI()
+        private void UpdateUi()
         {
-            uc1.UpdateUI(PlayersList[0]);
+            uc1.UpdateUi(PlayersList[0]);
 
             switch (PlayersList.Count)
             {
@@ -328,9 +328,9 @@ namespace Form
                     uc2.Visibility = Visibility.Hidden;
                     uc3.Visibility = Visibility.Hidden;
                     uc4.Visibility = Visibility.Hidden;
-                    uctable.UpdateUI(PlayersList[1]);
+                    uctable.UpdateUi(PlayersList[1]);
 
-                    Dialogs.ForceQuit dialog = new Dialogs.ForceQuit
+                    ForceQuit dialog = new ForceQuit
                     {
                         Owner = Application.Current.MainWindow
                     };
@@ -345,21 +345,21 @@ namespace Form
 
                 case 3:
                     uc2.Visibility = Visibility.Hidden;
-                    uc3.UpdateUI(PlayersList[1]);
+                    uc3.UpdateUi(PlayersList[1]);
                     uc4.Visibility = Visibility.Hidden;
-                    uctable.UpdateUI(PlayersList[2]);
+                    uctable.UpdateUi(PlayersList[2]);
                     break;
                 case 4:
-                    uc2.UpdateUI(PlayersList[1]);
-                    uc3.UpdateUI(PlayersList[2]);
+                    uc2.UpdateUi(PlayersList[1]);
+                    uc3.UpdateUi(PlayersList[2]);
                     uc4.Visibility = Visibility.Hidden;
-                    uctable.UpdateUI(PlayersList[3]);
+                    uctable.UpdateUi(PlayersList[3]);
                     break;
                 case 5:
-                    uc2.UpdateUI(PlayersList[1]);
-                    uc3.UpdateUI(PlayersList[2]);
-                    uc4.UpdateUI(PlayersList[3]);
-                    uctable.UpdateUI(PlayersList[4]);
+                    uc2.UpdateUi(PlayersList[1]);
+                    uc3.UpdateUi(PlayersList[2]);
+                    uc4.UpdateUi(PlayersList[3]);
+                    uctable.UpdateUi(PlayersList[4]);
                     break;
             }
         }

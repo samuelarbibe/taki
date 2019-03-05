@@ -7,14 +7,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TakiService;
 
-public partial class Login : System.Web.UI.Page
+public partial class Login : Page
 {
-    ServiceClient Service;
+    ServiceClient _service;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Service = new ServiceClient();
-        if (Service == null)
+        _service = new ServiceClient();
+        if (_service == null)
         {
             ErrorDiv.Visible = true;
             noUserError.InnerText = "Not Connected to server.";
@@ -28,13 +28,13 @@ public partial class Login : System.Web.UI.Page
 
         if (Username.Value.Length > 0 && Password.Value.Length > 0)
         {
-            User currentUserCheck = Service.Login(usernameValue, passwordValue);
+            User currentUserCheck = _service.Login(usernameValue, passwordValue);
 
             if (currentUserCheck != null)
             {
                 ErrorDiv.Visible = false;
                 noUserError.InnerText = "";
-                MasterPage.currentUser = currentUserCheck;
+                MasterPage.CurrentUser = currentUserCheck;
                 Response.Redirect("Home.aspx");
             }
             else

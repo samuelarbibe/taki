@@ -7,27 +7,27 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TakiService;
 
-public partial class Home : System.Web.UI.Page
+public partial class Home : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(MasterPage.currentUser == null)
+        if(MasterPage.CurrentUser == null)
         {
             Response.Redirect("Login.aspx");
         }
 
-        ServiceClient Service = new ServiceClient();
-        User ul = Service.GetUserByUsername(MasterPage.currentUser.Username);
+        ServiceClient service = new ServiceClient();
+        User ul = service.GetUserByUsername(MasterPage.CurrentUser.Username);
 
         Username.InnerText = ul.Username;
         Level.InnerText = ul.Level.ToString();
         //ProgressBar.Style.Clear();
         //ProgressBar.Style.Add("Width", ((ul.Score % 1000)).ToString());
 
-        GameList gl = Service.GetAllUserGames(ul.Id);
+        GameList gl = service.GetAllUserGames(ul.Id);
 
-        this.GridView1.DataSource = gl;
-        this.GridView1.DataBind();
+        GridView1.DataSource = gl;
+        GridView1.DataBind();
     }
 
 

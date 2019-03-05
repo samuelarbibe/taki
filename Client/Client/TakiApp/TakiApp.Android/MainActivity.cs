@@ -16,7 +16,7 @@ namespace TakiApp.Droid
         {
             base.OnCreate(savedInstanceState);
             Forms.SetFlags("CollectionView_Experimental");
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
     }

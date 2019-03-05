@@ -13,25 +13,25 @@ namespace Form
     /// </summary>
     public partial class AdminUserPage : Page
     {
-        User tempUser = new User();
-        UserList dataList;
-        UserList ChangedDataList;
+        User _tempUser = new User();
+        UserList _dataList;
+        UserList _changedDataList;
 
         public AdminUserPage()
         {
             InitializeComponent();
-            this.DataContext = tempUser;
+            DataContext = _tempUser;
             Style = (Style)FindResource(typeof(Page));
             show_btn_Click(null, null);
-            ChangedDataList = new UserList();
+            _changedDataList = new UserList();
         }
 
         private void show_btn_Click(object sender, RoutedEventArgs e)
         {
-            tempUser = null;
-            dataList = MainWindow.Service.GetAllUsers();
+            _tempUser = null;
+            _dataList = MainWindow.Service.GetAllUsers();
 
-            if (dataList.Count == 0)
+            if (_dataList.Count == 0)
             {
                 State.Text = "Error Retrieving Data";
                 State.Foreground = Brushes.Red;
@@ -42,7 +42,7 @@ namespace Form
                 State.Text = "Success";
                 State.Foreground = Brushes.Gray;
                 State.FontSize = 11;
-                DataGrid.ItemsSource = dataList;
+                DataGrid.ItemsSource = _dataList;
             }
         }
 
@@ -57,12 +57,12 @@ namespace Form
             //change submit/update button
             UpdateBtn.Visibility = Visibility.Visible;
 
-            tempUser = DataGrid.SelectedItem as User;
-            this.DataContext = tempUser;
+            _tempUser = DataGrid.SelectedItem as User;
+            DataContext = _tempUser;
 
-            if (tempUser.Id != 999)
+            if (_tempUser.Id != 999)
             {
-                GameList dataList = MainWindow.Service.GetAllUserGames(tempUser.Id);
+                GameList dataList = MainWindow.Service.GetAllUserGames(_tempUser.Id);
 
 
                 if (dataList == null)
@@ -98,7 +98,7 @@ namespace Form
         {
             if (e.EditAction == DataGridEditAction.Commit)
             {
-                ChangedDataList.Add((User)DataGrid.SelectedItem);//add the edited row to rows to be updated
+                _changedDataList.Add((User)DataGrid.SelectedItem);//add the edited row to rows to be updated
 
                 // rowIndex has the row index
             }
@@ -111,15 +111,15 @@ namespace Form
                 int x = 0;
                 foreach (var u in DataGrid.SelectedItems)
                 {
-                    tempUser = u as User;
-                    x += MainWindow.Service.DeleteUser(tempUser);
+                    _tempUser = u as User;
+                    x += MainWindow.Service.DeleteUser(_tempUser);
                 }
                 if (x > 0)//ok
                 {
-                    dataList.Remove(tempUser);
+                    _dataList.Remove(_tempUser);
                     DataGrid.ItemsSource = null;
-                    DataGrid.ItemsSource = dataList;
-                    tempUser = null;
+                    DataGrid.ItemsSource = _dataList;
+                    _tempUser = null;
                     State.Text = "Deleted";
                     State.Foreground = Brushes.Red;
                     State.FontSize = 11;
@@ -133,7 +133,7 @@ namespace Form
             }
             else {
                 State.Text = "please select an item to delete";
-                tempUser = null;
+                _tempUser = null;
             }
         }
 
@@ -141,7 +141,7 @@ namespace Form
         private void InsertBtn_Click(object sender, RoutedEventArgs e)
         {
             DataGrid.ItemsSource = null;
-            dataList.Add(new User() {
+            _dataList.Add(new User() {
                 FirstName = "*",
                 LastName = "*",
                 Username = "*",
@@ -154,7 +154,7 @@ namespace Form
                 Admin = false
             });
 
-            DataGrid.ItemsSource = dataList;
+            DataGrid.ItemsSource = _dataList;
 
             int index = DataGrid.Items.Count - 1;
             object item = DataGrid.Items[index];
@@ -193,24 +193,24 @@ namespace Form
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (ChangedDataList.Count > 0)
+            if (_changedDataList.Count > 0)
             {
                 int x = 0;
 
-                foreach(User u in ChangedDataList)
+                foreach(User u in _changedDataList)
                 {
                     x += MainWindow.Service.UpdateUser(u);
                 }
                 
                 if (x > 0)//ok
                 {
-                    if (dataList == null)
+                    if (_dataList == null)
                     {
-                        dataList = new UserList();
+                        _dataList = new UserList();
                     }
                     DataGrid.ItemsSource = null;
-                    DataGrid.ItemsSource = dataList;
-                    tempUser = null;
+                    DataGrid.ItemsSource = _dataList;
+                    _tempUser = null;
                     State.Text = "Updated";
                     State.Foreground = Brushes.Red;
                     State.FontSize = 11;
@@ -221,7 +221,7 @@ namespace Form
                     State.Foreground = Brushes.Red;
                     State.FontSize = 9;
                 }
-                ChangedDataList = new UserList();
+                _changedDataList = new UserList();
             }
             else
             {
@@ -234,9 +234,9 @@ namespace Form
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationService.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                this.NavigationService.GoBack();
+                NavigationService.GoBack();
             }
             else
             {

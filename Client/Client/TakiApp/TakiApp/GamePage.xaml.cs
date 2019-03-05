@@ -18,7 +18,7 @@ namespace TakiApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GamePage
     {
-        private ServiceClient Service;
+        private ServiceClient _service;
         private bool _myTurn;
         private PlayerList PlayersList { get; set; } = new PlayerList();
         private Player Table { get; set; }
@@ -54,15 +54,15 @@ namespace TakiApp
         public GamePage(Game game)
         {
             InitializeComponent();
-            BackgroundImage = "wallpaper.jpg";
+            BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
 
-            Service = new ServiceClient();
+            _service = new ServiceClient();
 
             MainMenu.CurrentGamePage = this;
 
             CurrentGame = game;
 
-            Service.DoActionCompleted += Service_ActionCompleted;
+            _service.DoActionCompleted += Service_ActionCompleted;
 
             ClockWiseRotation = true;
             uc1.SetAsNonActive();
@@ -112,7 +112,7 @@ namespace TakiApp
                     break;
             }
 
-            Service.DoActionAsync(CurrentGame.Id, CurrentPlayer.Id);
+            _service.DoActionAsync(CurrentGame.Id, CurrentPlayer.Id);
         }
 
         private void Service_ActionCompleted(object sender, DoActionCompletedEventArgs e)
@@ -166,23 +166,23 @@ namespace TakiApp
 
                             case TakiService.Action.Win:
 
-                                Player WinningPlayer = PlayersList.First(p => p.Id == m.Target.Id); // the winning player
+                                Player winningPlayer = PlayersList.First(p => p.Id == m.Target.Id); // the winning player
 
                                 if (CurrentPlayer.Id == m.Target.Id)
                                 {
                                     PlayerWin();
                                     PlayerQuit();
-                                    this.Navigation.PushModalAsync(new MainMenu());
+                                    Navigation.PushModalAsync(new MainMenu());
                                 }
                                 else
                                 {
-                                    DisplayAlert("Winner", "Player " + WinningPlayer.Username + " Has won!", "OK");
+                                    DisplayAlert("Winner", "Player " + winningPlayer.Username + " Has won!", "OK");
 
                                     if (PlayersList.Count == 3)
                                     {
                                         PlayerLoss();
 
-                                        Service.AddActionAsync(new Message()
+                                        _service.AddActionAsync(new Message()
                                         {
                                             Action = TakiService.Action.Loss,
                                             Target = CurrentPlayer,
@@ -261,9 +261,9 @@ namespace TakiApp
                         }
                     }
 
-                    UpdateUI();
+                    UpdateUi();
                 }
-                Service.DoActionAsync(CurrentGame.Id, CurrentPlayer.Id);
+                _service.DoActionAsync(CurrentGame.Id, CurrentPlayer.Id);
             }
         }
 
@@ -319,14 +319,14 @@ namespace TakiApp
             if (answer)
             {
                 PlayerQuit();
-                await this.Navigation.PushModalAsync(new MainMenu());
+                await Navigation.PushModalAsync(new MainMenu());
             }
 
         }
 
-        private void UpdateUI()
+        private void UpdateUi()
         {
-            uc1.UpdateUI(PlayersList[0]);
+            uc1.UpdateUi(PlayersList[0]);
 
             switch (PlayersList.Count)
             {
@@ -334,35 +334,35 @@ namespace TakiApp
                     uc2.IsVisible = false;
                     uc3.IsVisible = false;
                     uc4.IsVisible = false;
-                    uctable.UpdateUI(PlayersList[1]);
+                    uctable.UpdateUi(PlayersList[1]);
 
                     var answer = DisplayAlert("Force Quit", "You are the last player left. you have to quit!", "OK");
 
                     if (answer.IsCanceled)
                     {
                         PlayerQuit();
-                        this.Navigation.PushModalAsync(new MainMenu());
+                        Navigation.PushModalAsync(new MainMenu());
                     }
 
                     break;
 
                 case 3:
                     uc2.IsVisible = false;
-                    uc3.UpdateUI(PlayersList[1]);
+                    uc3.UpdateUi(PlayersList[1]);
                     uc4.IsVisible = false;
-                    uctable.UpdateUI(PlayersList[2]);
+                    uctable.UpdateUi(PlayersList[2]);
                     break;
                 case 4:
-                    uc2.UpdateUI(PlayersList[1]);
-                    uc3.UpdateUI(PlayersList[2]);
+                    uc2.UpdateUi(PlayersList[1]);
+                    uc3.UpdateUi(PlayersList[2]);
                     uc4.IsVisible = false;
-                    uctable.UpdateUI(PlayersList[3]);
+                    uctable.UpdateUi(PlayersList[3]);
                     break;
                 case 5:
-                    uc2.UpdateUI(PlayersList[1]);
-                    uc3.UpdateUI(PlayersList[2]);
-                    uc4.UpdateUI(PlayersList[3]);
-                    uctable.UpdateUI(PlayersList[4]);
+                    uc2.UpdateUi(PlayersList[1]);
+                    uc3.UpdateUi(PlayersList[2]);
+                    uc4.UpdateUi(PlayersList[3]);
+                    uctable.UpdateUi(PlayersList[4]);
                     break;
             }
         }
@@ -407,7 +407,7 @@ namespace TakiApp
                         }
                     }
 
-                    Service.AddActionsAsync(temp);
+                    _service.AddActionsAsync(temp);
 
                     Switch(givenCard);
                 }
@@ -447,7 +447,7 @@ namespace TakiApp
                     });
                 }
 
-                Service.AddActionsAsync(temp);
+                _service.AddActionsAsync(temp);
 
                 TurnFinished(Value.Nine); // give turn to next player
             }
@@ -473,7 +473,7 @@ namespace TakiApp
                 }
             }
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
 
             PlusTwoMessage(0); // finished taking cards
 
@@ -543,7 +543,7 @@ namespace TakiApp
                 });
             }
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
 
             MyTurn = false;
         }
@@ -565,14 +565,14 @@ namespace TakiApp
                 });
             }
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
 
             MyTurn = true;
         }
 
         public void PlayerQuit()
         {
-            Service.PlayerQuitAsync(CurrentPlayer);
+            _service.PlayerQuitAsync(CurrentPlayer);
 
             Console.WriteLine("Player #" + CurrentPlayer.Username + " removed from the game in the gameList: ");
 
@@ -589,12 +589,12 @@ namespace TakiApp
                 });
             }
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
 
             if (MyTurn) TurnFinished(Value.Nine);
             Active = false;
 
-            this.Navigation.PushModalAsync(new MainMenu());
+            Navigation.PushModalAsync(new MainMenu());
         }
 
 
@@ -741,7 +741,7 @@ namespace TakiApp
                     {
                         Id = 62,
                         Value = Value.SwitchColor,
-                        Color = TakiService.Color.Blue,
+                        Color = Color.Blue,
                         Image = "../Resources/Cards/card0062.png",
                         Special = true
                     });
@@ -752,7 +752,7 @@ namespace TakiApp
                     {
                         Id = 30,
                         Value = Value.SwitchColor,
-                        Color = TakiService.Color.Red,
+                        Color = Color.Red,
                         Image = "../Resources/Cards/card0030.png",
                         Special = true
                     });
@@ -763,7 +763,7 @@ namespace TakiApp
                     {
                         Id = 46,
                         Value = Value.SwitchColor,
-                        Color = TakiService.Color.Red,
+                        Color = Color.Red,
                         Image = "../Resources/Cards/card0046.png",
                         Special = true
                     });
@@ -796,7 +796,7 @@ namespace TakiApp
                     GameId = CurrentGame.Id
                 });
             }
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
         }
 
         private void SwitchColorMessage(Card selectedColorCard)
@@ -815,7 +815,7 @@ namespace TakiApp
                 });
             }
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
         }
 
         private void PlusTwoMessage(int num)
@@ -834,7 +834,7 @@ namespace TakiApp
                 });
             }
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
         }
 
         private void ChangeRotationMessage()
@@ -853,7 +853,7 @@ namespace TakiApp
             }
 
 
-            Service.AddActionsAsync(temp);
+            _service.AddActionsAsync(temp);
         }
 
 
@@ -904,7 +904,7 @@ namespace TakiApp
                         GameId = CurrentGame.Id
                     });
                 }
-                Service.AddActionsAsync(temp);
+                _service.AddActionsAsync(temp);
             }
         }
 

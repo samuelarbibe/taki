@@ -51,37 +51,37 @@
             </materialDesign:PackIcon>
         </Button>
 
-        <userControls:Player1UC x:Name="uc1" Grid.ColumnSpan="10" Grid.RowSpan="4" Grid.Column="2" Grid.Row="5" Margin="42,23,43,0"/>
-        <userControls:Player2UC x:Name="uc2" Grid.Column="9" Grid.RowSpan="4" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.Row="2" Margin="1,48,-134,0">
-            <userControls:Player2UC.RenderTransform>
+        <userControls:Player1Uc x:Name="uc1" Grid.ColumnSpan="10" Grid.RowSpan="4" Grid.Column="2" Grid.Row="5" Margin="42,23,43,0"/>
+        <userControls:Player2Uc x:Name="uc2" Grid.Column="9" Grid.RowSpan="4" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.Row="2" Margin="1,48,-134,0">
+            <userControls:Player2Uc.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="270"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </userControls:Player2UC.RenderTransform>
-        </userControls:Player2UC>
-        <userControls:Player3UC x:Name="uc3" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="10" Margin="46,0,45,27" RenderTransformOrigin="0.5,0.5">
-            <userControls:Player3UC.RenderTransform>
+            </userControls:Player2Uc.RenderTransform>
+        </userControls:Player2Uc>
+        <userControls:Player3Uc x:Name="uc3" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="10" Margin="46,0,45,27" RenderTransformOrigin="0.5,0.5">
+            <userControls:Player3Uc.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="180"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </userControls:Player3UC.RenderTransform>
-        </userControls:Player3UC>
-        <userControls:Player4UC x:Name="uc4" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="5" RenderTransformOrigin="0.5,0.5" Margin="-108,18,15,36">
-            <userControls:Player4UC.RenderTransform>
+            </userControls:Player3Uc.RenderTransform>
+        </userControls:Player3Uc>
+        <userControls:Player4Uc x:Name="uc4" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="5" RenderTransformOrigin="0.5,0.5" Margin="-108,18,15,36">
+            <userControls:Player4Uc.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="90"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </userControls:Player4UC.RenderTransform>
-        </userControls:Player4UC>
-        <userControls:TableUC x:Name="uctable" Grid.ColumnSpan="8" Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Margin="10"/>
+            </userControls:Player4Uc.RenderTransform>
+        </userControls:Player4Uc>
+        <userControls:TableUc x:Name="uctable" Grid.ColumnSpan="8" Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Margin="10"/>
     </Grid>
 </Page>

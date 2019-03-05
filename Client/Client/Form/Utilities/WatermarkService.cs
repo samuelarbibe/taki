@@ -24,7 +24,7 @@ namespace Form.Utilities
         /// <summary>
         /// Dictionary of ItemsControls
         /// </summary>
-        private static readonly Dictionary<object, ItemsControl> itemsControls = new Dictionary<object, ItemsControl>();
+        private static readonly Dictionary<object, ItemsControl> ItemsControls = new Dictionary<object, ItemsControl>();
 
         #endregion
 
@@ -75,7 +75,7 @@ namespace Form.Utilities
 
                 // for Items property  
                 i.ItemContainerGenerator.ItemsChanged += ItemsChanged;
-                itemsControls.Add(i.ItemContainerGenerator, i);
+                ItemsControls.Add(i.ItemContainerGenerator, i);
 
                 // for ItemsSource property  
                 DependencyPropertyDescriptor prop = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, i.GetType());
@@ -164,7 +164,7 @@ namespace Form.Utilities
         private static void ItemsChanged(object sender, ItemsChangedEventArgs e)
         {
             ItemsControl control;
-            if (itemsControls.TryGetValue(sender, out control))
+            if (ItemsControls.TryGetValue(sender, out control))
             {
                 if (ShouldShowWatermark(control))
                 {

@@ -53,3 +53,4 @@ C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\net
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\TakiApp.csproj.CopyComplete
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\TakiApp.dll
 C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\TakiApp.pdb
+C:\Users\samue\Documents\GitHub\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\UserPage.xaml.g.cs

@@ -13,7 +13,7 @@ namespace TakiApp
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoadingPage : ContentPage
 	{
-        private ServiceClient service;
+        private ServiceClient _service;
         private Game _game;
         private int _playerCount;
         private Player _p;
@@ -26,16 +26,16 @@ namespace TakiApp
 
         public LoadingPage()
         {
-            BackgroundImage = "wallpaper.jpg";
+            BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
         }
 
         public LoadingPage(int playerCount)
 		{
             InitializeComponent();
-            BackgroundImage = "wallpaper.jpg";
+            BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
 
-            service = new ServiceClient();
-            service.StartGameCompleted += Serv_RequestCompleted;
+            _service = new ServiceClient();
+            _service.StartGameCompleted += Serv_RequestCompleted;
 
             _counter = 0;
             _playerCount = playerCount;
@@ -69,7 +69,7 @@ namespace TakiApp
                 TempScore = 0
             };
 
-            service.StartGameAsync(_p, _playerCount);
+            _service.StartGameAsync(_p, _playerCount);
         }
 
         private void Serv_RequestCompleted(object sender, StartGameCompletedEventArgs e)
@@ -87,7 +87,7 @@ namespace TakiApp
                     msg = "Connected";
                     Busy = false;
 
-                    this.Navigation.PushModalAsync(new GamePage(_game));
+                    Navigation.PushModalAsync(new GamePage(_game));
 
                 }
 
@@ -100,7 +100,7 @@ namespace TakiApp
                         Thread.Sleep(500);
                         msg = "player is in queue...";
                         _counter++;
-                        service.StartGameAsync(_p, _playerCount);
+                        _service.StartGameAsync(_p, _playerCount);
                     }
                 }
                 else
@@ -108,16 +108,16 @@ namespace TakiApp
                     msg = "No Games Found!";
                     Busy = false;
                 }
-                this.status.Text = msg;
+                status.Text = msg;
             });
         }
 
 
-        private async void CancelButton_Click(object sender, System.EventArgs e)
+        private async void CancelButton_Click(object sender, EventArgs e)
         {
             _counter = 20;
             Busy = false;
-            await this.Navigation.PopModalAsync(true);
+            await Navigation.PopModalAsync(true);
         }
 
     }

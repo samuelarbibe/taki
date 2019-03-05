@@ -8,15 +8,15 @@ namespace TakiApp
 {
     public partial class Register : ContentPage
     {
-        ServiceClient service;
+        ServiceClient _service;
         public Register()
         {
             InitializeComponent();
-            service = new ServiceClient();
-            service.RegisterCompleted += Serv_RegisterCompleted;
+            _service = new ServiceClient();
+            _service.RegisterCompleted += Serv_RegisterCompleted;
         }
 
-        private void RegisterButton_Click(object sender, System.EventArgs e)
+        private void RegisterButton_Click(object sender, EventArgs e)
         {
             string firstNameValue = FirstName.Text;
             string lastNameValue = LastName.Text;
@@ -28,7 +28,7 @@ namespace TakiApp
             {
                 if (passwordValue.Equals(confirmPasswordValue)) //checks if password and confirm password are equal
                 {
-                    service.RegisterAsync(firstNameValue, lastNameValue, usernameValue, passwordValue);
+                    _service.RegisterAsync(firstNameValue, lastNameValue, usernameValue, passwordValue);
                 }
             }
         }
@@ -45,15 +45,15 @@ namespace TakiApp
                 else if (e.Cancelled) { msg = "Didn't work!"; }
                 else
                 {
-                    await this.Navigation.PushModalAsync(new Login());
+                    await Navigation.PushModalAsync(new Login());
                 }
-                this.InsertStatus.Text = msg;
+                InsertStatus.Text = msg;
             });
         }
 
-        private void ReturnButton_Click(object sender, System.EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
-            this.Navigation.PushModalAsync(new Login());
+            Navigation.PushModalAsync(new Login());
         }           
     }
 }

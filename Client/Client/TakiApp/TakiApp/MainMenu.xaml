@@ -19,21 +19,21 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Image Source="TAKI.png" Grid.Row="0" Grid.Column="0" Margin="10"/>
-        <Grid Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="0">
+        <Image Source="TAKI.png" Grid.Row="0" Grid.Column="0" Margin="30,0,0,0"/>
+        <Grid Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="0" Padding="50,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="8*" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
-            <Label Text="{Binding Username}" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#FF509BD0" FontSize="23" FontAttributes="Bold"/>
-            <Button Text="{Binding Level}" Grid.Column="1" BackgroundColor="#FF509BD0" TextColor="#e3e3e3" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" HeightRequest="40" WidthRequest="40" FontSize="26" FontAttributes="Bold"/>
-            <Grid x:Name="GridProgressBar" Grid.Column="2" Padding="20" HorizontalOptions="Center" VerticalOptions="Center" />
+
+            <Button Text="{Binding Username}" Clicked="UserPageButton_Clicked" BackgroundColor="Transparent" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#e3e3e3" FontSize="23" FontAttributes="Bold"/>
+            <Button Text="{Binding Level}" Clicked="UserPageButton_Clicked" Grid.Column="1" BackgroundColor="#e3e3e3" TextColor="#FF509BD0" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="30" HeightRequest="60" WidthRequest="60" FontSize="24" FontAttributes="Bold"/>
+            <Grid x:Name="GridProgressBar" Grid.Column="2" Margin="-35, 27, 40, 27" HorizontalOptions="Center" VerticalOptions="Center" />
         </Grid>
         <Button x:Name="PlayButton" TextColor="#FF509BD0" BackgroundColor="#e3e3e3" BorderWidth="0" CornerRadius="27" Clicked="PlayButton_Click" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Text="PLAY" FontSize="23" FontAttributes="Bold"/>
         <Button x:Name="MultiplayerButton_1" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton1_Click" Grid.Row="2" IsVisible="false"  Grid.Column="2" Text="2" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>

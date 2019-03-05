@@ -26,15 +26,15 @@ namespace Form
             GameList gl = MainWindow.Service.GetAllUserGames(MainWindow.CurrentUser.Id);
 
             InitializeComponent();
-            this.DataContext = gl;
-            this.DataGrid.ItemsSource = gl;
+            DataContext = gl;
+            DataGrid.ItemsSource = gl;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.NavigationService.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                this.NavigationService.GoBack();
+                NavigationService.GoBack();
             }
             else
             {
