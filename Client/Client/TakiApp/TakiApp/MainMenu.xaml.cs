@@ -14,7 +14,29 @@ namespace TakiApp
         public MainMenu()
         {
             InitializeComponent();
+
+            BindingContext = CurrentUser;
+
             BackgroundImage = "wallpaper.jpg";
+
+            int active = CurrentUser.Score % 1000;
+            int full = 1000;
+
+            GridProgressBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(active, GridUnitType.Star) });
+            GridProgressBar.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(full - active, GridUnitType.Star) });
+
+            GridProgressBar.BackgroundColor = Xamarin.Forms.Color.FromRgb(227, 227, 227);
+
+            GridProgressBar.Padding = 1;
+
+            BoxView Progress = new BoxView();
+            Progress.BackgroundColor = Xamarin.Forms.Color.FromRgb(227,227,227);
+
+            BoxView Empty = new BoxView();
+            Empty.BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
+
+            GridProgressBar.Children.Add(Progress, 0, 0);          
+            GridProgressBar.Children.Add(Empty, 1, 0);
         }
 
         public static GamePage CurrentGamePage { get; set; }

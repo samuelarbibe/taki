@@ -19,8 +19,22 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--<Image x:Name="BackgroundImage" Grid.ColumnSpan="7" Grid.RowSpan="7" Source="wallpaper_blue.png" Aspect="AspectFill"></Image>-->
+        <Image Source="TAKI.png" Grid.Row="0" Grid.Column="0" Margin="10"/>
+        <Grid Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <Label Text="{Binding Username}" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#FF509BD0" FontSize="23" FontAttributes="Bold"/>
+            <Button Text="{Binding Level}" Grid.Column="1" BackgroundColor="#FF509BD0" TextColor="#e3e3e3" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" HeightRequest="40" WidthRequest="40" FontSize="26" FontAttributes="Bold"/>
+            <Grid x:Name="GridProgressBar" Grid.Column="2" Padding="20" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
         <Button x:Name="PlayButton" TextColor="#FF509BD0" BackgroundColor="#e3e3e3" BorderWidth="0" CornerRadius="27" Clicked="PlayButton_Click" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Text="PLAY" FontSize="23" FontAttributes="Bold"/>
         <Button x:Name="MultiplayerButton_1" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton1_Click" Grid.Row="2" IsVisible="false"  Grid.Column="2" Text="2" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
         <Button x:Name="MultiplayerButton_2" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton2_Click" Grid.Row="2" IsVisible="false"  Grid.Column="3" Text="3" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
