@@ -10,20 +10,20 @@
                 </div>
                 <div class="form-group">
                 <label for="Username">Username</label>
-                <input class="form-control" id="Username" placeholder="Username" runat="server">
+                    <input class="form-control" id="Username" placeholder="Username" runat="server"/>
                 </div>
                 <div class="form-group">
                 <label for="Password">Password</label>
-                <input type="password" class="form-control" id="Password" placeholder="Password" runat="server">
+                    <input type="password" class="form-control" id="Password" placeholder="Password" runat="server"/>
                 </div>
                 <div class="form-group">
-                <div visible="false" ID="ErrorDiv" class="alert alert-danger" role="alert" runat="server">
-                    <span ID="noUserError" runat="server"></span>
-                </div>
+                    <div visible="false" ID="ErrorDiv" class="alert alert-danger" role="alert" runat="server">
+                        <span ID="noUserError" runat="server"></span>
+                    </div>
                 </div>
         <div class="container p-0">            
-            <asp:button Text="Sumbit" OnClick="Button_Click" class="btn btn-primary mt-3" runat="server"/>
-            <asp:button Text="Fill" OnClick="Fill_Click" class="btn btn-outline-secondary mt-3" runat="server"/>
+            <asp:button Text="Sumbit" OnClick="Button_Click" class="btn btn-primary mt-3" runat="server"></asp:button>
+            <asp:button Text="Fill" OnClick="Fill_Click" class="btn btn-outline-secondary mt-3" runat="server"></asp:button>
             <a href="Register.aspx" class="text-muted float-sm-right pt-4" ID="Text" runat="server">Register</a>
         </div>           
     </div>

@@ -49,7 +49,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if(searchBar.Value != null)
         {
             ServiceClient service = new ServiceClient();
-            SearchResults = service.GetUserByUsername(searchBar.Value);
+            SearchResults = service.GetUserByUsername(searchBar.Value.ToString());
             Response.Redirect("Results.aspx");
         }
     }

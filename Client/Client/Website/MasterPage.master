@@ -16,7 +16,7 @@
                     <img src="\Resources\Images\TAKI.png" height="40" alt="">
                 </a>
             <div id="loggedTools" class="form-inline" runat="server">
-                <input id="searchBar" class="form-control my-2 mr-2" style="width:200px;" type="search" placeholder="Search For Players" aria-label="Search" runat="server">
+                <input name="searchBar" ID="searchBar" class="form-control my-2 mr-2" style="width:200px;" type="search" placeholder="Search For Players" aria-label="Search" runat="server" />
                 <asp:button ID="searchButton" OnClick="Search_Clicked" class="btn btn-outline-success my-2 mr-2" Text="Search" runat="server"/>
                 <asp:button id="logout" onclick="Logout_Clicked" class="btn btn-outline-danger my-2 mr-2" type="submit" Text="Logout" runat="server"/>
                 <asp:button id="admin" onclick="Admin_Clicked" class="btn btn-outline-info my-2 mr-2" type="submit" Text="Admin" runat="server"/>

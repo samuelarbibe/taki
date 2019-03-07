@@ -10,10 +10,10 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="COLOR" type="tns:Card.Color" />
+          <xs:element minOccurs="0" name="Color" type="tns:Color" />
           <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Special" type="xs:boolean" />
-          <xs:element minOccurs="0" name="VALUE" type="tns:Card.Value" />
+          <xs:element minOccurs="0" name="Value" type="tns:Value" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -25,17 +25,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
-  <xs:simpleType name="Card.Color">
+  <xs:simpleType name="Color">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="green" />
-      <xs:enumeration value="blue" />
-      <xs:enumeration value="red" />
-      <xs:enumeration value="yellow" />
-      <xs:enumeration value="multi" />
+      <xs:enumeration value="Green" />
+      <xs:enumeration value="Blue" />
+      <xs:enumeration value="Red" />
+      <xs:enumeration value="Yellow" />
+      <xs:enumeration value="Multi" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="Card.Color" nillable="true" type="tns:Card.Color" />
-  <xs:simpleType name="Card.Value">
+  <xs:element name="Color" nillable="true" type="tns:Color" />
+  <xs:simpleType name="Value">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Zero" />
       <xs:enumeration value="One" />
@@ -57,7 +57,7 @@
       <xs:enumeration value="SwitchHandAll" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="Card.Value" nillable="true" type="tns:Card.Value" />
+  <xs:element name="Value" nillable="true" type="tns:Value" />
   <xs:complexType name="Player">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:User">
@@ -93,7 +93,7 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Losser" type="xs:int" />
+          <xs:element minOccurs="0" name="Loser" type="xs:int" />
           <xs:element minOccurs="0" name="Players" nillable="true" type="tns:PlayerList" />
           <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
         </xs:sequence>
@@ -111,7 +111,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Action" type="tns:Message._action" />
+          <xs:element minOccurs="0" name="Action" type="tns:Action" />
           <xs:element minOccurs="0" name="Card" nillable="true" type="tns:Card" />
           <xs:element minOccurs="0" name="GameId" type="xs:int" />
           <xs:element minOccurs="0" name="Reciever" type="xs:int" />
@@ -121,20 +121,20 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Message" nillable="true" type="tns:Message" />
-  <xs:simpleType name="Message._action">
+  <xs:simpleType name="Action">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="add" />
-      <xs:enumeration value="remove" />
-      <xs:enumeration value="next_turn" />
-      <xs:enumeration value="player_quit" />
-      <xs:enumeration value="switch_rotation" />
-      <xs:enumeration value="switch_hand" />
-      <xs:enumeration value="plus_two" />
-      <xs:enumeration value="win" />
-      <xs:enumeration value="loss" />
+      <xs:enumeration value="Add" />
+      <xs:enumeration value="Remove" />
+      <xs:enumeration value="NextTurn" />
+      <xs:enumeration value="PlayerQuit" />
+      <xs:enumeration value="SwitchRotation" />
+      <xs:enumeration value="SwitchHand" />
+      <xs:enumeration value="PlusTwo" />
+      <xs:enumeration value="Win" />
+      <xs:enumeration value="Loss" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="Message._action" nillable="true" type="tns:Message._action" />
+  <xs:element name="Action" nillable="true" type="tns:Action" />
   <xs:complexType name="MessageList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
