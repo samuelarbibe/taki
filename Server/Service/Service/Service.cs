@@ -95,10 +95,16 @@ namespace Service
             return bl.BlGetAllUserGames(userId);
         }
 
-        public UserList GetAllUseFriends(int userId)
+        public UserList GetAllUserFriends(int userId)
         {
             Bl bl = new Bl();
             return bl.BlGetAllUserFriends(userId);
+        }
+
+        public GameList GetMutualGames(int u1, int u2)
+        {
+            Bl bl = new Bl();
+            return bl.BlGetMutualGames(u1, u2);
         }
 
         public bool AreFriends(int user1Id, int user2Id)

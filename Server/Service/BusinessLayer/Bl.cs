@@ -186,6 +186,14 @@ namespace BusinessLayer
             return temp;
         }
 
+        public GameList BlGetMutualGames(int u1, int u2)
+        {
+            GameDb gameDb = new GameDb();
+
+            GameList temp = gameDb.SelectByUsersId(u1, u2);
+            return temp;
+        }
+
         public bool BlAreFriends(int user1Id, int user2Id)
         {
             FriendDb db = new FriendDb();

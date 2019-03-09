@@ -66,7 +66,10 @@ namespace Service
         bool UsernameAvailable(string username);
 
         [OperationContract]
-        UserList GetAllUseFriends(int userId);
+        UserList GetAllUserFriends(int userId);
+
+        [OperationContract]
+        GameList GetMutualGames(int u1, int u2);
 
         [OperationContract]
         bool AreFriends(int user1Id, int user2Id);

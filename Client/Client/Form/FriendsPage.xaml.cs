@@ -28,7 +28,7 @@ namespace Form
         {
             InitializeComponent();
 
-            _ul = MainWindow.Service.GetAllUseFriends(MainWindow.CurrentUser.Id);
+            _ul = MainWindow.Service.GetAllUserFriends(MainWindow.CurrentUser.Id);
 
             View.ItemsSource = _ul;
         }
@@ -57,6 +57,14 @@ namespace Form
             _ul.Remove(_ul.Find(u => u.Id == u2.Id));
 
             View.ItemsSource = _ul;
+        }
+
+        private void MutualGamesButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            User u2 = b.DataContext as User;
+
+            NavigationService.Navigate(new GameHistoryUserPage(MainWindow.CurrentUser.Id, u2.Id));
         }
     }
 }

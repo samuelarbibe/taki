@@ -93,6 +93,17 @@
                                     ToolTip="Remove Friend">
                                     <materialDesign:PackIcon Kind="AccountRemoveOutline" />
                                 </Button>
+                                <Button
+                                    x:Name="MutualGamesButton"
+                                    Click="MutualGamesButton_OnClick"
+                                    HorizontalAlignment="right"
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Width="30"
+                                    Padding="2 0 2 0"
+                                    materialDesign:RippleAssist.IsCentered="True"
+                                    ToolTip="See Mutual Games">
+                                    <materialDesign:PackIcon Kind="EventTime" />
+                                </Button>
                             </StackPanel>
                         </Grid>
                     </materialDesign:Card>

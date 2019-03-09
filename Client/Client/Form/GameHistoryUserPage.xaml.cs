@@ -21,9 +21,18 @@ namespace Form
     /// </summary>
     public partial class GameHistoryUserPage : Page
     {
-        public GameHistoryUserPage()
+        public GameHistoryUserPage(int u1)
         {
-            GameList gl = MainWindow.Service.GetAllUserGames(MainWindow.CurrentUser.Id);
+            GameList gl = MainWindow.Service.GetAllUserGames(u1);
+
+            InitializeComponent();
+            DataContext = gl;
+            DataGrid.ItemsSource = gl;
+        }
+
+        public GameHistoryUserPage(int u1, int u2)
+        {
+            GameList gl = MainWindow.Service.GetMutualGames(u1, u2);
 
             InitializeComponent();
             DataContext = gl;

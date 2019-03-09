@@ -8,6 +8,15 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="bootstrap.css" rel="stylesheet" />
+
+    <script src="svg-injector.min.js"></script>
+    <script>
+        // Elements to inject
+        var mySVGsToInject = document.querySelectorAll('.iconic-sprite');
+
+        // Do the injection
+        SVGInjector(mySVGsToInject);
+    </script>
 </head>
 <body class="bg-light" runat="server">
     <form runat="server">

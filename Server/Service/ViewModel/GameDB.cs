@@ -70,6 +70,27 @@ namespace ViewModel
             return temp;
         }
 
+        public GameList SelectByUsersId(int u1, int u2)
+        {
+            GameList u1Games = this.SelectByUserId(u1);
+            GameList u2Games = this.SelectByUserId(u2);
+
+            GameList mutualGames = new GameList();
+
+            foreach (Game g1 in u1Games)
+            {
+                foreach (Game g2 in u2Games)
+                {
+                    if (g1.Id == g2.Id)
+                    {
+                        mutualGames.Add(g1);
+                    }
+                }
+            }
+
+            return mutualGames;
+        }
+
         public int GetLastGameId()
         {
             Command.Parameters.Clear();
