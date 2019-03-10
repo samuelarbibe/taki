@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using TakiApp.TakiService;
 
 using Xamarin.Forms;
@@ -15,7 +16,8 @@ namespace TakiApp
         public Login()
         {
             InitializeComponent();
-            BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
+            //BackgroundColor = Xamarin.Forms.Color.FromRgb(80, 155, 208);
+            img.Source = ImageSource.FromResource("TakiApp.Resources.wallpaper.jpg");
             _service = new ServiceClient();
             _service.LoginCompleted += Serv_LoginCompleted;
         }

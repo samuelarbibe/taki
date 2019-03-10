@@ -59,7 +59,7 @@ namespace TakiApp.UserControls
 
                 temp.Clicked += new EventHandler(ImageButtonClicked);
 
-                temp.Source = "card0068.png";
+                temp.Source = ImageSource.FromResource(Utilities.EmbeddedSourcesConverter.ConvertWithoutTrim("card0068.png").ToString());
                 temp.BackgroundColor = Color.Transparent;
 
                 ImageButtonList.Add(temp);

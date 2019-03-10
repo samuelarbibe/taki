@@ -56,7 +56,7 @@ namespace TakiApp.UserControls
 
                 MyGrid.ColumnSpacing = -30;
 
-                temp.Source = temp.Source = "card0068.png";
+                temp.Source = ImageSource.FromResource(EmbeddedSourcesConverter.ConvertWithoutTrim("card0068.png"));
                 temp.BackgroundColor = Color.Transparent;
 
                 ImageButtonList.Add(temp);

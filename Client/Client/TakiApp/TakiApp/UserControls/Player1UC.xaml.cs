@@ -57,7 +57,7 @@ namespace TakiApp.UserControls
 
                 temp.Clicked += new EventHandler(ImageButtonClicked);
 
-                temp.Source = converter.Convert(Hand[i].Image, null, null, null).ToString();
+                temp.Source = ImageSource.FromResource(EmbeddedSourcesConverter.Convert(Hand[i].Image));
                 temp.BackgroundColor = Color.Transparent;
 
                 ImageButtonList.Add(temp);

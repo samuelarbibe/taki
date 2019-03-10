@@ -1228,20 +1228,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User1\\.nuget\\packages\\": {}
+    "C:\\Users\\samue\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp.Android\\TakiApp.Android.csproj",
+      "projectUniqueName": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp.Android\\TakiApp.Android.csproj",
       "projectName": "TakiApp.Android",
-      "projectPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp.Android\\TakiApp.Android.csproj",
-      "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
-      "outputPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp.Android\\obj\\",
+      "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp.Android\\TakiApp.Android.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1254,8 +1254,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj": {
-              "projectPath": "D:\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj"
+            "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj": {
+              "projectPath": "C:\\Users\\samue\\Documents\\GitHub\\Taki\\Client\\Client\\TakiApp\\TakiApp\\TakiApp.csproj"
             }
           }
         }

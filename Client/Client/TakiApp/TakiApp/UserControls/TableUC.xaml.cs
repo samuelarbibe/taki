@@ -16,7 +16,6 @@ namespace TakiApp.UserControls
 	{
         public event EventHandler TakeCardFromDeckButtonClicked;
         public event EventHandler PassCardToStackButtonClicked;
-        private readonly SourceConverter _converter = new SourceConverter();
         private static readonly RNGCryptoServiceProvider RngCsp = new RNGCryptoServiceProvider();
 
         public Player CurrentPlayer { get; set; }
@@ -32,20 +31,23 @@ namespace TakiApp.UserControls
             BindingContext = Deck.LastOrDefault();
 
             PassCardButton.Source = null;
-            PassCardButton.Source = _converter.Convert(Deck.LastOrDefault().Image, null, null, null).ToString();
+            PassCardButton.Source = ImageSource.FromResource(EmbeddedSourcesConverter.Convert(Deck.LastOrDefault().Image));
         }
 
 
         public TableUc()
         {
             InitializeComponent();
+
+            DeckButton.Source = ImageSource.FromResource(EmbeddedSourcesConverter.ConvertWithoutTrim("card0068.png"));
         }
 
 
         public Card GetCardFromStack()
         {
             Card temp = Deck[RollDice((byte)(Deck.Count - 2))];
-            //Deck.Remove(temp);
+
+            Deck.Remove(temp);
 
             return temp;
         }
