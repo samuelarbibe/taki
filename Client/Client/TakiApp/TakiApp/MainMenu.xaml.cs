@@ -79,5 +79,10 @@ namespace TakiApp
         {
             await Navigation.PushModalAsync(new UserPage());
         }
+
+        private void FriendsButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new FriendsPage());
+        }
     }
 }

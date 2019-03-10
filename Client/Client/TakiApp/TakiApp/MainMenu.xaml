@@ -40,5 +40,7 @@
         <Button x:Name="MultiplayerButton_2" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton2_Click" Grid.Row="2" IsVisible="false"  Grid.Column="3" Text="3" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
         <Button x:Name="MultiplayerButton_3" CornerRadius="10" BorderWidth="0" BackgroundColor="#e3e3e3" Clicked="MultiplayerButton3_Click" Grid.Row="2" IsVisible="false"  Grid.Column="4" Text="4" FontSize="23" FontAttributes="Bold" TextColor="#FF509BD0"/>
         <Button x:Name="CancelButton" Clicked="CancelButton_Click" BackgroundColor="Transparent" IsVisible="false" TextColor="Silver"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Cancel"/>
+
+        <Button x:Name="FriendsButton" Grid.Row="4" Grid.Column="0" Clicked="FriendsButton_Clicked" Text="Friends"/>
     </Grid>
 </ContentPage>

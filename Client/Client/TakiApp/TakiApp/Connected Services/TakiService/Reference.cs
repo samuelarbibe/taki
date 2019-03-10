@@ -319,7 +319,7 @@ namespace TakiApp.TakiService {
         
         private System.DateTime EndTimeField;
         
-        private int LosserField;
+        private int LoserField;
         
         private TakiApp.TakiService.PlayerList PlayersField;
         
@@ -339,14 +339,14 @@ namespace TakiApp.TakiService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Losser {
+        public int Loser {
             get {
-                return this.LosserField;
+                return this.LoserField;
             }
             set {
-                if ((this.LosserField.Equals(value) != true)) {
-                    this.LosserField = value;
-                    this.RaisePropertyChanged("Losser");
+                if ((this.LoserField.Equals(value) != true)) {
+                    this.LoserField = value;
+                    this.RaisePropertyChanged("Loser");
                 }
             }
         }
@@ -683,10 +683,15 @@ namespace TakiApp.TakiService {
         
         bool EndUsernameAvailable(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetAllUseFriends", ReplyAction="http://tempuri.org/IService/GetAllUseFriendsResponse")]
-        System.IAsyncResult BeginGetAllUseFriends(int userId, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetAllUserFriends", ReplyAction="http://tempuri.org/IService/GetAllUserFriendsResponse")]
+        System.IAsyncResult BeginGetAllUserFriends(int userId, System.AsyncCallback callback, object asyncState);
         
-        TakiApp.TakiService.UserList EndGetAllUseFriends(System.IAsyncResult result);
+        TakiApp.TakiService.UserList EndGetAllUserFriends(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetMutualGames", ReplyAction="http://tempuri.org/IService/GetMutualGamesResponse")]
+        System.IAsyncResult BeginGetMutualGames(int u1, int u2, System.AsyncCallback callback, object asyncState);
+        
+        TakiApp.TakiService.GameList EndGetMutualGames(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/AreFriends", ReplyAction="http://tempuri.org/IService/AreFriendsResponse")]
         System.IAsyncResult BeginAreFriends(int user1Id, int user2Id, System.AsyncCallback callback, object asyncState);
@@ -697,6 +702,11 @@ namespace TakiApp.TakiService {
         System.IAsyncResult BeginMakeFriends(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState);
         
         void EndMakeFriends(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/RemoveFriend", ReplyAction="http://tempuri.org/IService/RemoveFriendResponse")]
+        System.IAsyncResult BeginRemoveFriend(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState);
+        
+        void EndRemoveFriend(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/StopSearchingForGame", ReplyAction="http://tempuri.org/IService/StopSearchingForGameResponse")]
         System.IAsyncResult BeginStopSearchingForGame(TakiApp.TakiService.Player p, System.AsyncCallback callback, object asyncState);
@@ -1015,11 +1025,11 @@ namespace TakiApp.TakiService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetAllUseFriendsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetAllUserFriendsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetAllUseFriendsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetAllUserFriendsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1028,6 +1038,25 @@ namespace TakiApp.TakiService {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((TakiApp.TakiService.UserList)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetMutualGamesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetMutualGamesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public TakiApp.TakiService.GameList Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TakiApp.TakiService.GameList)(this.results[0]));
             }
         }
     }
@@ -1252,11 +1281,17 @@ namespace TakiApp.TakiService {
         
         private System.Threading.SendOrPostCallback onUsernameAvailableCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetAllUseFriendsDelegate;
+        private BeginOperationDelegate onBeginGetAllUserFriendsDelegate;
         
-        private EndOperationDelegate onEndGetAllUseFriendsDelegate;
+        private EndOperationDelegate onEndGetAllUserFriendsDelegate;
         
-        private System.Threading.SendOrPostCallback onGetAllUseFriendsCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetAllUserFriendsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetMutualGamesDelegate;
+        
+        private EndOperationDelegate onEndGetMutualGamesDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetMutualGamesCompletedDelegate;
         
         private BeginOperationDelegate onBeginAreFriendsDelegate;
         
@@ -1269,6 +1304,12 @@ namespace TakiApp.TakiService {
         private EndOperationDelegate onEndMakeFriendsDelegate;
         
         private System.Threading.SendOrPostCallback onMakeFriendsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginRemoveFriendDelegate;
+        
+        private EndOperationDelegate onEndRemoveFriendDelegate;
+        
+        private System.Threading.SendOrPostCallback onRemoveFriendCompletedDelegate;
         
         private BeginOperationDelegate onBeginStopSearchingForGameDelegate;
         
@@ -1388,11 +1429,15 @@ namespace TakiApp.TakiService {
         
         public event System.EventHandler<UsernameAvailableCompletedEventArgs> UsernameAvailableCompleted;
         
-        public event System.EventHandler<GetAllUseFriendsCompletedEventArgs> GetAllUseFriendsCompleted;
+        public event System.EventHandler<GetAllUserFriendsCompletedEventArgs> GetAllUserFriendsCompleted;
+        
+        public event System.EventHandler<GetMutualGamesCompletedEventArgs> GetMutualGamesCompleted;
         
         public event System.EventHandler<AreFriendsCompletedEventArgs> AreFriendsCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> MakeFriendsCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> RemoveFriendCompleted;
         
         public event System.EventHandler<StopSearchingForGameCompletedEventArgs> StopSearchingForGameCompleted;
         
@@ -2195,49 +2240,97 @@ namespace TakiApp.TakiService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TakiApp.TakiService.IService.BeginGetAllUseFriends(int userId, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetAllUseFriends(userId, callback, asyncState);
+        System.IAsyncResult TakiApp.TakiService.IService.BeginGetAllUserFriends(int userId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllUserFriends(userId, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        TakiApp.TakiService.UserList TakiApp.TakiService.IService.EndGetAllUseFriends(System.IAsyncResult result) {
-            return base.Channel.EndGetAllUseFriends(result);
+        TakiApp.TakiService.UserList TakiApp.TakiService.IService.EndGetAllUserFriends(System.IAsyncResult result) {
+            return base.Channel.EndGetAllUserFriends(result);
         }
         
-        private System.IAsyncResult OnBeginGetAllUseFriends(object[] inValues, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult OnBeginGetAllUserFriends(object[] inValues, System.AsyncCallback callback, object asyncState) {
             int userId = ((int)(inValues[0]));
-            return ((TakiApp.TakiService.IService)(this)).BeginGetAllUseFriends(userId, callback, asyncState);
+            return ((TakiApp.TakiService.IService)(this)).BeginGetAllUserFriends(userId, callback, asyncState);
         }
         
-        private object[] OnEndGetAllUseFriends(System.IAsyncResult result) {
-            TakiApp.TakiService.UserList retVal = ((TakiApp.TakiService.IService)(this)).EndGetAllUseFriends(result);
+        private object[] OnEndGetAllUserFriends(System.IAsyncResult result) {
+            TakiApp.TakiService.UserList retVal = ((TakiApp.TakiService.IService)(this)).EndGetAllUserFriends(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetAllUseFriendsCompleted(object state) {
-            if ((this.GetAllUseFriendsCompleted != null)) {
+        private void OnGetAllUserFriendsCompleted(object state) {
+            if ((this.GetAllUserFriendsCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetAllUseFriendsCompleted(this, new GetAllUseFriendsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetAllUserFriendsCompleted(this, new GetAllUserFriendsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetAllUseFriendsAsync(int userId) {
-            this.GetAllUseFriendsAsync(userId, null);
+        public void GetAllUserFriendsAsync(int userId) {
+            this.GetAllUserFriendsAsync(userId, null);
         }
         
-        public void GetAllUseFriendsAsync(int userId, object userState) {
-            if ((this.onBeginGetAllUseFriendsDelegate == null)) {
-                this.onBeginGetAllUseFriendsDelegate = new BeginOperationDelegate(this.OnBeginGetAllUseFriends);
+        public void GetAllUserFriendsAsync(int userId, object userState) {
+            if ((this.onBeginGetAllUserFriendsDelegate == null)) {
+                this.onBeginGetAllUserFriendsDelegate = new BeginOperationDelegate(this.OnBeginGetAllUserFriends);
             }
-            if ((this.onEndGetAllUseFriendsDelegate == null)) {
-                this.onEndGetAllUseFriendsDelegate = new EndOperationDelegate(this.OnEndGetAllUseFriends);
+            if ((this.onEndGetAllUserFriendsDelegate == null)) {
+                this.onEndGetAllUserFriendsDelegate = new EndOperationDelegate(this.OnEndGetAllUserFriends);
             }
-            if ((this.onGetAllUseFriendsCompletedDelegate == null)) {
-                this.onGetAllUseFriendsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUseFriendsCompleted);
+            if ((this.onGetAllUserFriendsCompletedDelegate == null)) {
+                this.onGetAllUserFriendsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUserFriendsCompleted);
             }
-            base.InvokeAsync(this.onBeginGetAllUseFriendsDelegate, new object[] {
-                        userId}, this.onEndGetAllUseFriendsDelegate, this.onGetAllUseFriendsCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetAllUserFriendsDelegate, new object[] {
+                        userId}, this.onEndGetAllUserFriendsDelegate, this.onGetAllUserFriendsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginGetMutualGames(int u1, int u2, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetMutualGames(u1, u2, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TakiApp.TakiService.GameList TakiApp.TakiService.IService.EndGetMutualGames(System.IAsyncResult result) {
+            return base.Channel.EndGetMutualGames(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetMutualGames(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int u1 = ((int)(inValues[0]));
+            int u2 = ((int)(inValues[1]));
+            return ((TakiApp.TakiService.IService)(this)).BeginGetMutualGames(u1, u2, callback, asyncState);
+        }
+        
+        private object[] OnEndGetMutualGames(System.IAsyncResult result) {
+            TakiApp.TakiService.GameList retVal = ((TakiApp.TakiService.IService)(this)).EndGetMutualGames(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetMutualGamesCompleted(object state) {
+            if ((this.GetMutualGamesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetMutualGamesCompleted(this, new GetMutualGamesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetMutualGamesAsync(int u1, int u2) {
+            this.GetMutualGamesAsync(u1, u2, null);
+        }
+        
+        public void GetMutualGamesAsync(int u1, int u2, object userState) {
+            if ((this.onBeginGetMutualGamesDelegate == null)) {
+                this.onBeginGetMutualGamesDelegate = new BeginOperationDelegate(this.OnBeginGetMutualGames);
+            }
+            if ((this.onEndGetMutualGamesDelegate == null)) {
+                this.onEndGetMutualGamesDelegate = new EndOperationDelegate(this.OnEndGetMutualGames);
+            }
+            if ((this.onGetMutualGamesCompletedDelegate == null)) {
+                this.onGetMutualGamesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetMutualGamesCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetMutualGamesDelegate, new object[] {
+                        u1,
+                        u2}, this.onEndGetMutualGamesDelegate, this.onGetMutualGamesCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2333,6 +2426,53 @@ namespace TakiApp.TakiService {
             base.InvokeAsync(this.onBeginMakeFriendsDelegate, new object[] {
                         u1,
                         u2}, this.onEndMakeFriendsDelegate, this.onMakeFriendsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TakiApp.TakiService.IService.BeginRemoveFriend(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginRemoveFriend(u1, u2, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TakiApp.TakiService.IService.EndRemoveFriend(System.IAsyncResult result) {
+            base.Channel.EndRemoveFriend(result);
+        }
+        
+        private System.IAsyncResult OnBeginRemoveFriend(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            TakiApp.TakiService.User u1 = ((TakiApp.TakiService.User)(inValues[0]));
+            TakiApp.TakiService.User u2 = ((TakiApp.TakiService.User)(inValues[1]));
+            return ((TakiApp.TakiService.IService)(this)).BeginRemoveFriend(u1, u2, callback, asyncState);
+        }
+        
+        private object[] OnEndRemoveFriend(System.IAsyncResult result) {
+            ((TakiApp.TakiService.IService)(this)).EndRemoveFriend(result);
+            return null;
+        }
+        
+        private void OnRemoveFriendCompleted(object state) {
+            if ((this.RemoveFriendCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.RemoveFriendCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void RemoveFriendAsync(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2) {
+            this.RemoveFriendAsync(u1, u2, null);
+        }
+        
+        public void RemoveFriendAsync(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, object userState) {
+            if ((this.onBeginRemoveFriendDelegate == null)) {
+                this.onBeginRemoveFriendDelegate = new BeginOperationDelegate(this.OnBeginRemoveFriend);
+            }
+            if ((this.onEndRemoveFriendDelegate == null)) {
+                this.onEndRemoveFriendDelegate = new EndOperationDelegate(this.OnEndRemoveFriend);
+            }
+            if ((this.onRemoveFriendCompletedDelegate == null)) {
+                this.onRemoveFriendCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRemoveFriendCompleted);
+            }
+            base.InvokeAsync(this.onBeginRemoveFriendDelegate, new object[] {
+                        u1,
+                        u2}, this.onEndRemoveFriendDelegate, this.onRemoveFriendCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2643,7 +2783,7 @@ namespace TakiApp.TakiService {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IService)) {
-                return new System.ServiceModel.EndpointAddress("http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/");
+                return new System.ServiceModel.EndpointAddress("http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
@@ -2884,16 +3024,30 @@ namespace TakiApp.TakiService {
                 return _result;
             }
             
-            public System.IAsyncResult BeginGetAllUseFriends(int userId, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginGetAllUserFriends(int userId, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = userId;
-                System.IAsyncResult _result = base.BeginInvoke("GetAllUseFriends", _args, callback, asyncState);
+                System.IAsyncResult _result = base.BeginInvoke("GetAllUserFriends", _args, callback, asyncState);
                 return _result;
             }
             
-            public TakiApp.TakiService.UserList EndGetAllUseFriends(System.IAsyncResult result) {
+            public TakiApp.TakiService.UserList EndGetAllUserFriends(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                TakiApp.TakiService.UserList _result = ((TakiApp.TakiService.UserList)(base.EndInvoke("GetAllUseFriends", _args, result)));
+                TakiApp.TakiService.UserList _result = ((TakiApp.TakiService.UserList)(base.EndInvoke("GetAllUserFriends", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetMutualGames(int u1, int u2, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = u1;
+                _args[1] = u2;
+                System.IAsyncResult _result = base.BeginInvoke("GetMutualGames", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TakiApp.TakiService.GameList EndGetMutualGames(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TakiApp.TakiService.GameList _result = ((TakiApp.TakiService.GameList)(base.EndInvoke("GetMutualGames", _args, result)));
                 return _result;
             }
             
@@ -2922,6 +3076,19 @@ namespace TakiApp.TakiService {
             public void EndMakeFriends(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("MakeFriends", _args, result);
+            }
+            
+            public System.IAsyncResult BeginRemoveFriend(TakiApp.TakiService.User u1, TakiApp.TakiService.User u2, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = u1;
+                _args[1] = u2;
+                System.IAsyncResult _result = base.BeginInvoke("RemoveFriend", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndRemoveFriend(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("RemoveFriend", _args, result);
             }
             
             public System.IAsyncResult BeginStopSearchingForGame(TakiApp.TakiService.Player p, System.AsyncCallback callback, object asyncState) {
