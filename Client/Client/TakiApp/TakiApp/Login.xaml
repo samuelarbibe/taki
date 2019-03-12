@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="img" Grid.Row="0" Grid.Column="0"/>
+
         <Label FontSize="25" TextColor="#e3e3e3" FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Text="Login to The Game"/>
         <Entry x:Name="Username" TextColor="#e3e3e3" Placeholder="Username" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
         <Entry x:Name="Password" TextColor="#e3e3e3" IsPassword="true"  Placeholder="Password" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>

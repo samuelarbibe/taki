@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="933cb399-21df-4ca8-87fd-5a71327d8107" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="5077458b-a955-438a-99e3-142a7b45c14f" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="0cd335e3-9a5b-4a5e-aab1-16ac77d9d32d" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="Model1.xsd" MetadataType="Schema" ID="f50df962-0b6d-41cf-a6a0-3db3858585bd" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="933cb399-21df-4ca8-87fd-5a71327d8107" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="5077458b-a955-438a-99e3-142a7b45c14f" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="0cd335e3-9a5b-4a5e-aab1-16ac77d9d32d" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="Model1.xsd" MetadataType="Schema" ID="f50df962-0b6d-41cf-a6a0-3db3858585bd" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
