@@ -26,7 +26,7 @@
         <Entry x:Name="Password" TextColor="#e3e3e3" IsPassword="true"  Placeholder="Password" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
         <Label x:Name="NoUserError" TextColor="Silver" IsVisible="true" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="10" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" />
 
-        <Button x:Name="LoginButton" BackgroundColor="#e3e3e3" HeightRequest="60" TextColor="#FF509BD0" Padding="15" CornerRadius="27" Clicked="LoginButton_Click" Grid.Row="4" Grid.RowSpan="2" VerticalOptions="End" Grid.Column="2" Grid.ColumnSpan="3" Text="Login" FontSize="20" FontAttributes="Bold"/>
+        <Button x:Name="LoginButton" BackgroundColor="#e3e3e3" HeightRequest="60" TextColor="#FF509BD0" Padding="15" CornerRadius="13" Clicked="LoginButton_Click" Grid.Row="4" Grid.RowSpan="2" VerticalOptions="End" Grid.Column="2" Grid.ColumnSpan="3" Text="Login" FontSize="20" FontAttributes="Bold"/>
         <Button x:Name="RegisterButton" VerticalOptions="End" Clicked="RegisterButton_Click" BackgroundColor="Transparent" TextColor="Silver" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Text="Create Account" />
 
         <Button x:Name="AdminFillButton" Clicked="AdminFillButton_Clicked" Text="Fill" Grid.Row="4" Grid.Column="0"/>

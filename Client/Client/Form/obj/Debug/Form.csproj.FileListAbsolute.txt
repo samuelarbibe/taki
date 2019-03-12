@@ -103,7 +103,6 @@ D:\Taki\Client\Client\Form\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
 D:\Taki\Client\Client\Form\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 D:\Taki\Client\Client\Form\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\Taki\Client\Client\Form\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-D:\Taki\Client\Client\Form\obj\Debug\Form.csprojAssemblyReference.cache
 D:\Taki\Client\Client\Form\obj\Debug\AdminUserPage.g.cs
 D:\Taki\Client\Client\Form\obj\Debug\Dialogs\PlayerProfile.g.cs
 D:\Taki\Client\Client\Form\obj\Debug\Dialogs\ExitDialog.g.cs

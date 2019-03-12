@@ -260,13 +260,13 @@
     <AndroidResource Include="Resources\drawable\card0068.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\drawable\Back_Icon.png" />
+    <AndroidResource Include="Resources\drawable\Back_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\drawable\Logout_Icon.png" />
+    <AndroidResource Include="Resources\drawable\Logout_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\drawable\Settings.png" />
+    <AndroidResource Include="Resources\drawable\Settings.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\TAKI.png" />

@@ -6229,8 +6229,8 @@ namespace TakiApp.Droid
 			// aapt resource value: 0x7F160006
 			public const int Animation_Design_BottomSheetDialog = 2132148230;
 			
-			// aapt resource value: 0x7F030004
-			public const int AppCompatDialogStyle = 2130903044;
+			// aapt resource value: 0x7F030006
+			public const int AppCompatDialogStyle = 2130903046;
 			
 			// aapt resource value: 0x7F160007
 			public const int Base_AlertDialog_AppCompat = 2132148231;
@@ -6738,6 +6738,12 @@ namespace TakiApp.Droid
 			
 			// aapt resource value: 0x7F030003
 			public const int MainTheme_Base = 2130903043;
+			
+			// aapt resource value: 0x7F030005
+			public const int MyTextAppearance_Material_Button = 2130903045;
+			
+			// aapt resource value: 0x7F030004
+			public const int MyTheme = 2130903044;
 			
 			// aapt resource value: 0x7F1600AA
 			public const int Platform_AppCompat = 2132148394;

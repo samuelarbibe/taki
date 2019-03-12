@@ -36,7 +36,6 @@ namespace TakiApp
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                MainMenu.CurrentUser = null;
                 string msg = null;
 
                 if (e.Error != null)

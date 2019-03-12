@@ -95,19 +95,9 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Resources\Fonts\Asap\Asap-Bold.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-BoldItalic.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-Italic.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-Medium.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-MediumItalic.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-Regular.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-SemiBold.ttf" />
-    <None Include="Resources\Fonts\Asap\Asap-SemiBoldItalic.ttf" />
-    <None Include="Resources\Fonts\Fredoka_One\FredokaOne-Regular.ttf" />
-    <None Include="Resources\Fonts\Varela_Round\VarelaRound-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -174,222 +164,390 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0001.png" />
+    <BundleResource Include="Resources\Back_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0002.png" />
+    <BundleResource Include="Resources\card0001.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0003.png" />
+    <BundleResource Include="Resources\card0002.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0004.png" />
+    <BundleResource Include="Resources\card0003.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0005.png" />
+    <BundleResource Include="Resources\card0004.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0006.png" />
+    <BundleResource Include="Resources\card0005.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0007.png" />
+    <BundleResource Include="Resources\card0006.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0008.png" />
+    <BundleResource Include="Resources\card0007.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0009.png" />
+    <BundleResource Include="Resources\card0008.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0010.png" />
+    <BundleResource Include="Resources\card0009.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0011.png" />
+    <BundleResource Include="Resources\card0010.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0012.png" />
+    <BundleResource Include="Resources\card0011.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0013.png" />
+    <BundleResource Include="Resources\card0012.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0014.png" />
+    <BundleResource Include="Resources\card0013.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0017.png" />
+    <BundleResource Include="Resources\card0014.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0018.png" />
+    <BundleResource Include="Resources\card0017.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0019.png" />
+    <BundleResource Include="Resources\card0018.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0020.png" />
+    <BundleResource Include="Resources\card0019.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0021.png" />
+    <BundleResource Include="Resources\card0020.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0022.png" />
+    <BundleResource Include="Resources\card0021.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0023.png" />
+    <BundleResource Include="Resources\card0022.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0024.png" />
+    <BundleResource Include="Resources\card0023.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0025.png" />
+    <BundleResource Include="Resources\card0024.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0026.png" />
+    <BundleResource Include="Resources\card0025.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0027.png" />
+    <BundleResource Include="Resources\card0026.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0028.png" />
+    <BundleResource Include="Resources\card0027.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0029.png" />
+    <BundleResource Include="Resources\card0028.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0030.png" />
+    <BundleResource Include="Resources\card0029.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0033.png" />
+    <BundleResource Include="Resources\card0030.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0034.png" />
+    <BundleResource Include="Resources\card0033.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0035.png" />
+    <BundleResource Include="Resources\card0034.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0036.png" />
+    <BundleResource Include="Resources\card0035.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0037.png" />
+    <BundleResource Include="Resources\card0036.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0038.png" />
+    <BundleResource Include="Resources\card0037.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0039.png" />
+    <BundleResource Include="Resources\card0038.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0040.png" />
+    <BundleResource Include="Resources\card0039.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0041.png" />
+    <BundleResource Include="Resources\card0040.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0042.png" />
+    <BundleResource Include="Resources\card0041.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0043.png" />
+    <BundleResource Include="Resources\card0042.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0044.png" />
+    <BundleResource Include="Resources\card0043.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0045.png" />
+    <BundleResource Include="Resources\card0044.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0046.png" />
+    <BundleResource Include="Resources\card0045.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0049.png" />
+    <BundleResource Include="Resources\card0046.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0050.png" />
+    <BundleResource Include="Resources\card0049.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0051.png" />
+    <BundleResource Include="Resources\card0050.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0052.png" />
+    <BundleResource Include="Resources\card0051.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0053.png" />
+    <BundleResource Include="Resources\card0052.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0054.png" />
+    <BundleResource Include="Resources\card0053.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0055.png" />
+    <BundleResource Include="Resources\card0054.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0056.png" />
+    <BundleResource Include="Resources\card0055.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0057.png" />
+    <BundleResource Include="Resources\card0056.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0058.png" />
+    <BundleResource Include="Resources\card0057.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0059.png" />
+    <BundleResource Include="Resources\card0058.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0060.png" />
+    <BundleResource Include="Resources\card0059.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0061.png" />
+    <BundleResource Include="Resources\card0060.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0062.png" />
+    <BundleResource Include="Resources\card0061.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0065.png" />
+    <BundleResource Include="Resources\card0062.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0066.png" />
+    <BundleResource Include="Resources\card0065.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0067.png" />
+    <BundleResource Include="Resources\card0066.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cards\card0068.png" />
+    <BundleResource Include="Resources\card0067.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Fonts\Asap\OFL.txt" />
+    <BundleResource Include="Resources\card0068.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Fonts\Fredoka_One\OFL.txt" />
+    <BundleResource Include="Resources\icon.ico">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Fonts\Varela_Round\OFL.txt" />
+    <BundleResource Include="Resources\Logout_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Back_Icon.png" />
+    <BundleResource Include="Resources\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Logout_Icon.png" />
+    <BundleResource Include="Resources\TAKI.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Images\TAKI.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Images\wallpaper_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Profile_Pictures\aviv.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Profile_Pictures\liam.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Profile_Pictures\samuel.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Profile_Pictures\yoav.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Profile_Pictures\yogev.jpg" />
+    <BundleResource Include="Resources\wallpaper.jpg">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
   </ItemGroup>
 </Project>
