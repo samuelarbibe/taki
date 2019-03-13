@@ -1,10 +1,10 @@
+D:\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\TakiApp.csprojAssemblyReference.cache
 D:\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\TakiApp.deps.json
 D:\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\TakiApp.dll
 D:\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\TakiApp.pdb
 D:\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\Form.exe
 D:\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\Form.pdb
 D:\Taki\Client\Client\TakiApp\TakiApp\bin\Debug\netstandard2.0\Form.exe.config
-D:\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\TakiApp.csprojAssemblyReference.cache
 D:\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\App.xaml.g.cs
 D:\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\FriendsPage.xaml.g.cs
 D:\Taki\Client\Client\TakiApp\TakiApp\obj\Debug\netstandard2.0\GamePage.xaml.g.cs

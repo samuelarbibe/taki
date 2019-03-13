@@ -2,9 +2,10 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TakiApp.UserControls.Player3Uc">
-  <ContentView.Content>
-      <Grid x:Name="MyGrid">
+    <Grid x:Name="StackGrid">
+        <Label Text="{Binding Username}"/>
+        <Grid x:Name="MyGrid" Margin="0,15,0,0">
 
-      </Grid>
-    </ContentView.Content>
+        </Grid>
+    </Grid>
 </ContentView>
