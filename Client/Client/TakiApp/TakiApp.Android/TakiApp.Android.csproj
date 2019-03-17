@@ -277,5 +277,20 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\wallpaper.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawable\aviv.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawable\liam.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawable\samuel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawable\yoav.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawable\yogev.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

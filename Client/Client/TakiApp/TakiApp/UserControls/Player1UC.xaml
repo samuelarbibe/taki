@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:TakiApp.Utilities"
              x:Class="TakiApp.UserControls.Player1Uc">
     <Grid x:Name="StackGrid">
-        <Label Text="{Binding Username}"></Label>
         <Grid x:Name="MyGrid" Margin="0,15,0,0">
 
         </Grid>

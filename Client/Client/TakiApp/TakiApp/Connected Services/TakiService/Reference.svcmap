@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a3d960e0-2ee9-48d5-9942-8ab8d6bf8cf9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2f7b2a7e-29b8-409c-90bc-477033b4b8b2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,11 +23,11 @@
     <MetadataSource Address="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="878bfb64-a2ae-4c8c-904f-bf299ae87976" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="4642796b-9f67-4fd4-8a52-763c2874b736" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="6bb17cfa-58f8-4ec2-968a-86118a7f0eac" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?disco" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0d757577-c5a4-4064-8ccf-fba71f6f6a03" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="84f461c5-806c-4d06-89a0-2ebb36346f1b" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2bd8d476-d3e3-42af-bcd5-0c29c31a2539" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="df2215df-5e57-484f-b869-75b91036ecdc" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="aa69e885-b5ec-49bd-8872-7dcdc48b7be8" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0189afbb-5f4b-425a-9193-94f1f446f778" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="6c6e963e-df9d-40b5-80f0-e50b85858eac" SourceId="1" SourceUrl="http://192.168.140.50:8733/Design_Time_Addresses/Service/Service/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

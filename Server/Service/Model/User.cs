@@ -18,6 +18,9 @@ namespace Model
         public string Password { get; set; }
 
         [DataMember]
+        public string ProfileImage { get; set; }
+
+        [DataMember]
         public int Score { get; set; }
 
         [DataMember]

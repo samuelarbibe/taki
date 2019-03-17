@@ -21,6 +21,7 @@ namespace ViewModel
             user.Password = Reader["password"].ToString();
             user.FirstName = Reader["first_name"].ToString();
             user.LastName = Reader["last_name"].ToString();
+            user.ProfileImage = Reader["profile_image"].ToString();
             user.Score = (int) Reader["score"];
             user.Level = (int) Reader["level"];
             user.Admin = Reader["admin"] as bool? ?? false;
@@ -152,7 +153,7 @@ namespace ViewModel
             User user = entity as User;
 
             command.CommandText =
-                "INSERT INTO User_Table ( [username], [password], [first_name], [last_name]) VALUES (@username,  @password, @firstName, @lastName)";
+                "INSERT INTO User_Table ([username], [password], [first_name], [last_name]) VALUES (@username,  @password, @firstName, @lastName)";
 
             //parameters
 

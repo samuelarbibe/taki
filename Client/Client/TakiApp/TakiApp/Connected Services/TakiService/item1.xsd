@@ -80,6 +80,7 @@
           <xs:element minOccurs="0" name="Level" type="xs:int" />
           <xs:element minOccurs="0" name="Losses" type="xs:int" />
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProfileImage" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Score" type="xs:int" />
           <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Wins" type="xs:int" />

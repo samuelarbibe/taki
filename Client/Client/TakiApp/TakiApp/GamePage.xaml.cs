@@ -89,25 +89,32 @@ namespace TakiApp
             BindingContext = PlayersList;
 
             uc1.SetCurrentPlayer(CurrentPlayer);
+            uInfo1 = new UserControls.UserInfo(CurrentPlayer);
 
             switch (CurrentGame.Players.Count)
             {
                 case 3:
                     uc2.IsVisible = false;
                     uc3.SetCurrentPlayer(PlayersList[1]);
+                    uInfo3 = new UserControls.UserInfo(PlayersList[1]);
                     uc4.IsVisible = false;
                     uctable.SetCurrentPlayer(Table);
                     break;
                 case 4:
                     uc2.SetCurrentPlayer(PlayersList[1]);
+                    uInfo3 = new UserControls.UserInfo(PlayersList[1]);
                     uc3.SetCurrentPlayer(PlayersList[2]);
+                    uInfo3 = new UserControls.UserInfo(PlayersList[2]);
                     uc4.IsVisible = false;
                     uctable.SetCurrentPlayer(Table);
                     break;
                 case 5:
                     uc2.SetCurrentPlayer(PlayersList[1]);
+                    uInfo3 = new UserControls.UserInfo(PlayersList[1]);
                     uc3.SetCurrentPlayer(PlayersList[2]);
+                    uInfo3 = new UserControls.UserInfo(PlayersList[2]);
                     uc4.SetCurrentPlayer(PlayersList[3]);
+                    uInfo3 = new UserControls.UserInfo(PlayersList[3]);
                     uctable.SetCurrentPlayer(Table);
                     break;
             }

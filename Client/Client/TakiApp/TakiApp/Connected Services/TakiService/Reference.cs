@@ -137,6 +137,8 @@ namespace TakiApp.TakiService {
         
         private string PasswordField;
         
+        private string ProfileImageField;
+        
         private int ScoreField;
         
         private string UsernameField;
@@ -217,6 +219,19 @@ namespace TakiApp.TakiService {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProfileImage {
+            get {
+                return this.ProfileImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfileImageField, value) != true)) {
+                    this.ProfileImageField = value;
+                    this.RaisePropertyChanged("ProfileImage");
                 }
             }
         }
