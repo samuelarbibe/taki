@@ -55,6 +55,7 @@ namespace Form
                 Username = _cu.Username,
                 Password = _cu.Password,
                 Level = _cu.Level,
+                ProfileImage = _cu.ProfileImage,
                 Score = _cu.Score,
                 Admin = _cu.Admin,
                 Wins = _cu.Wins,

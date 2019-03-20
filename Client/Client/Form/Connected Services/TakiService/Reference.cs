@@ -167,6 +167,9 @@ namespace Form.TakiService {
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProfileImageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -249,6 +252,19 @@ namespace Form.TakiService {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProfileImage {
+            get {
+                return this.ProfileImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfileImageField, value) != true)) {
+                    this.ProfileImageField = value;
+                    this.RaisePropertyChanged("ProfileImage");
                 }
             }
         }

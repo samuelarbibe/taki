@@ -4,8 +4,8 @@
              x:Class="TakiApp.UserControls.UserInfo">
   <ContentView.Content>
       <StackLayout>
-            <ImageButton x:Name="Image" Clicked="Image_Clicked" Source="{Binding ProfileImage}" HeightRequest="30" WidthRequest="30"></ImageButton>
-            <Label Text="{Binding Username}"></Label>
+            <Image x:Name="UserImage" Source="{Binding ProfileImage}" Aspect="Fill"></Image>
+            <Label Text="Username"></Label>
       </StackLayout>
   </ContentView.Content>
 </ContentView>

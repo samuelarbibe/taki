@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Form;
 using TakiApp;
 using TakiApp.TakiService;
+using TakiApp.UserControls;
 using Xamarin.Forms;
 
 namespace TakiApp
@@ -15,6 +16,8 @@ namespace TakiApp
         public MainMenu()
         {
             InitializeComponent();
+
+            //InfoUC = new UserInfo((Player)CurrentUser);
 
             BindingContext = CurrentUser;
 

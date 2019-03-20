@@ -16,7 +16,7 @@
                 <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="/Form;component/Resources/Fonts/Asap/#Asap"></TextBlock>
             </Button>
 
-            <ListView BorderThickness="0" x:Name="HandView" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,20,0,0">
+            <ListView BorderThickness="0" x:Name="HandView" Background="Transparent" HorizontalAlignment="Stretch">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Margin="-40,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" IsItemsHost="True" VerticalAlignment="Top"/>

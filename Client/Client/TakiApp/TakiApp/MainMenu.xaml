@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TakiApp.MainMenu">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:userControls="clr-namespace:TakiApp.UserControls;assembly=TakiApp"
+             x:Class="TakiApp.MainMenu">
     <Grid x:Name="MyGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />

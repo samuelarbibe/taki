@@ -24,7 +24,6 @@ namespace TakiApp.UserControls
             InitializeComponent();
 
             BindingContext = p1;
-
         }
 
         private void Image_Clicked(object sender, EventArgs e)

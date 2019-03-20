@@ -90,14 +90,17 @@ namespace TakiApp
 
             uc1.SetCurrentPlayer(CurrentPlayer);
             uInfo1 = new UserControls.UserInfo(CurrentPlayer);
+            
 
             switch (CurrentGame.Players.Count)
             {
                 case 3:
                     uc2.IsVisible = false;
+                    uInfo2.IsVisible = false;
                     uc3.SetCurrentPlayer(PlayersList[1]);
                     uInfo3 = new UserControls.UserInfo(PlayersList[1]);
                     uc4.IsVisible = false;
+                    uInfo4.IsVisible = false;
                     uctable.SetCurrentPlayer(Table);
                     break;
                 case 4:
@@ -106,6 +109,7 @@ namespace TakiApp
                     uc3.SetCurrentPlayer(PlayersList[2]);
                     uInfo3 = new UserControls.UserInfo(PlayersList[2]);
                     uc4.IsVisible = false;
+                    uInfo4.IsVisible = false;
                     uctable.SetCurrentPlayer(Table);
                     break;
                 case 5:
