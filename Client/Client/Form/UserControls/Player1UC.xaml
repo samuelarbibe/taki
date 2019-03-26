@@ -25,7 +25,7 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding Image}" Height="135" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Source="{Binding Image}" Height="135" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
 

@@ -19,11 +19,9 @@ namespace TakiApp.UserControls
             InitializeComponent();
         }
 
-        public UserInfo(Player p1)
+        public void SetPlayer(Player p1)
         {
-            InitializeComponent();
-
-            BindingContext = p1;
+            this.BindingContext = p1;
         }
 
         private void Image_Clicked(object sender, EventArgs e)

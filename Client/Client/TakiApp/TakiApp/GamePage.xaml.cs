@@ -89,7 +89,7 @@ namespace TakiApp
             BindingContext = PlayersList;
 
             uc1.SetCurrentPlayer(CurrentPlayer);
-            uInfo1 = new UserControls.UserInfo(CurrentPlayer);
+            uInfo1.SetPlayer(CurrentPlayer);
             
 
             switch (CurrentGame.Players.Count)
@@ -98,27 +98,27 @@ namespace TakiApp
                     uc2.IsVisible = false;
                     uInfo2.IsVisible = false;
                     uc3.SetCurrentPlayer(PlayersList[1]);
-                    uInfo3 = new UserControls.UserInfo(PlayersList[1]);
+                    uInfo3.SetPlayer(PlayersList[1]);
                     uc4.IsVisible = false;
                     uInfo4.IsVisible = false;
                     uctable.SetCurrentPlayer(Table);
                     break;
                 case 4:
                     uc2.SetCurrentPlayer(PlayersList[1]);
-                    uInfo3 = new UserControls.UserInfo(PlayersList[1]);
+                    uInfo3.SetPlayer(PlayersList[1]);
                     uc3.SetCurrentPlayer(PlayersList[2]);
-                    uInfo3 = new UserControls.UserInfo(PlayersList[2]);
+                    uInfo3.SetPlayer(PlayersList[2]);
                     uc4.IsVisible = false;
                     uInfo4.IsVisible = false;
                     uctable.SetCurrentPlayer(Table);
                     break;
                 case 5:
                     uc2.SetCurrentPlayer(PlayersList[1]);
-                    uInfo3 = new UserControls.UserInfo(PlayersList[1]);
+                    uInfo3.SetPlayer(PlayersList[1]);
                     uc3.SetCurrentPlayer(PlayersList[2]);
-                    uInfo3 = new UserControls.UserInfo(PlayersList[2]);
+                    uInfo3.SetPlayer(PlayersList[2]);
                     uc4.SetCurrentPlayer(PlayersList[3]);
-                    uInfo3 = new UserControls.UserInfo(PlayersList[3]);
+                    uInfo3.SetPlayer(PlayersList[3]);
                     uctable.SetCurrentPlayer(Table);
                     break;
             }

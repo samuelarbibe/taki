@@ -82,16 +82,16 @@ namespace Form
 
         private void User2FillButton_Click(object sender, RoutedEventArgs e)
         {
-            Username.Text = "testtest";
-            Password.Password = "testtest";
+            Username.Text = "itai";
+            Password.Password = "menes";
 
             LoginButton_Click(null, null);
         }
 
         private void User3FillButton_Click(object sender, RoutedEventArgs e)
         {
-            Username.Text = "itai";
-            Password.Password = "menes";
+            Username.Text = "el_primo";
+            Password.Password = "123456";
 
             LoginButton_Click(null, null);
         }

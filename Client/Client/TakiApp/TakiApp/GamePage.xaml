@@ -27,16 +27,16 @@
         <Button x:Name="ExitGameButton" Text="Quit" Clicked="ExitGameButton_Click"></Button>
 
         <control:Player1Uc x:Name="uc1" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
-        <control:UserInfo x:Name="uInfo1" Grid.Column="6" Grid.Row="6" />
+        <control:UserInfo x:Name="uInfo1" Grid.Column="6" Grid.Row="5" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="End" HorizontalOptions="Center"/>
 
-        <control:Player2Uc x:Name="uc2" Grid.Column="5" Grid.RowSpan="4" Rotation="270" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <control:UserInfo x:Name="uInfo2" Grid.Column="5" Grid.Row="1"/>
+        <control:Player2Uc x:Name="uc2" Grid.Column="6" Grid.RowSpan="4" Rotation="270" Grid.ColumnSpan="1" Grid.Row="1"/>
+        <control:UserInfo x:Name="uInfo2" Grid.Column="5" Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
 
         <control:Player3Uc x:Name="uc3" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" Rotation="180" Grid.ColumnSpan="3" />
-        <control:UserInfo x:Name="uInfo3" Grid.Column="1" Grid.Row="1"/>
+        <control:UserInfo x:Name="uInfo3" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
 
-        <control:Player4Uc x:Name="uc4" Grid.Row="1" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="2" Rotation="90" />
-        <control:UserInfo x:Name="uInfo4" Grid.Column="0" Grid.Row="6"/>
+        <control:Player4Uc x:Name="uc4" Grid.Row="1" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="1" Rotation="90" />
+        <control:UserInfo x:Name="uInfo4" Grid.Column="0" Grid.Row="5" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
 
         <control:TableUc x:Name="uctable" Grid.ColumnSpan="5" Grid.RowSpan="3" Grid.Column="1" Grid.Row="2"/>
     </Grid>

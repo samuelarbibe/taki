@@ -4,8 +4,10 @@
              x:Class="TakiApp.UserControls.UserInfo">
   <ContentView.Content>
       <StackLayout>
-            <Image x:Name="UserImage" Source="{Binding ProfileImage}" Aspect="Fill"></Image>
-            <Label Text="Username"></Label>
+            <Frame CornerRadius="25" WidthRequest="50" HeightRequest="50" Margin="0" Padding="0" IsClippedToBounds="True" HorizontalOptions="Center">
+                <ImageButton Clicked="Image_Clicked"  Source="{Binding ProfileImage}" Aspect="AspectFit"></ImageButton>
+            </Frame>
+            <Label Text="{Binding Username}" FontSize="15" HorizontalOptions="Center"></Label>
       </StackLayout>
   </ContentView.Content>
 </ContentView>
