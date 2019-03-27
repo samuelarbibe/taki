@@ -24,7 +24,11 @@
             <ColumnDefinition Width="41*"/>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="ResponseTextBox"  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1">
-            <TextBlock Padding="10" Margin="30,0,30,0" FontSize="20" Text="{Binding Username}"></TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="30,0,30,0">
+                <TextBlock Padding="10" FontSize="20" Text="{Binding Username}"></TextBlock>
+                <Image Source="{Binding ProfileImage}"></Image>
+            </StackPanel>
+            
             <TextBlock Padding="5" Margin="30,0,30,0" FontSize="15" Text="{Binding Level}"></TextBlock>
             <TextBlock Padding="5" Margin="30,0,30,0" x:Name="AreFriends"></TextBlock>
         </StackPanel>

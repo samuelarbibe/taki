@@ -77,12 +77,12 @@ namespace TakiApp.UserControls
 
         public void SetAsActive()
         {
-            MyGrid.BackgroundColor = Color.FromRgba(0, 250, 0, 0.3);
+            StackGrid.BackgroundColor = Color.FromRgba(0, 250, 0, 0.3);
         }
 
         public void SetAsNonActive()
         {
-            MyGrid.BackgroundColor = Color.Transparent;
+            StackGrid.BackgroundColor = Color.Transparent;
         }
 
         public void SetCurrentPlayer(Player currentPlayer)

@@ -89,7 +89,7 @@ namespace TakiApp
             BindingContext = PlayersList;
 
             uc1.SetCurrentPlayer(CurrentPlayer);
-            uInfo1.SetPlayer(CurrentPlayer);
+            //uInfo1.SetPlayer(CurrentPlayer);
             
 
             switch (CurrentGame.Players.Count)
@@ -105,7 +105,7 @@ namespace TakiApp
                     break;
                 case 4:
                     uc2.SetCurrentPlayer(PlayersList[1]);
-                    uInfo3.SetPlayer(PlayersList[1]);
+                    uInfo2.SetPlayer(PlayersList[1]);
                     uc3.SetCurrentPlayer(PlayersList[2]);
                     uInfo3.SetPlayer(PlayersList[2]);
                     uc4.IsVisible = false;
@@ -114,11 +114,11 @@ namespace TakiApp
                     break;
                 case 5:
                     uc2.SetCurrentPlayer(PlayersList[1]);
-                    uInfo3.SetPlayer(PlayersList[1]);
+                    uInfo2.SetPlayer(PlayersList[1]);
                     uc3.SetCurrentPlayer(PlayersList[2]);
                     uInfo3.SetPlayer(PlayersList[2]);
                     uc4.SetCurrentPlayer(PlayersList[3]);
-                    uInfo3.SetPlayer(PlayersList[3]);
+                    uInfo4.SetPlayer(PlayersList[3]);
                     uctable.SetCurrentPlayer(Table);
                     break;
             }

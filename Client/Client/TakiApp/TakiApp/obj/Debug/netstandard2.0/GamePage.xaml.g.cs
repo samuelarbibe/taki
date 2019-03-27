@@ -23,9 +23,6 @@ namespace TakiApp {
         private global::TakiApp.UserControls.Player1Uc uc1;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::TakiApp.UserControls.UserInfo uInfo1;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::TakiApp.UserControls.Player2Uc uc2;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -51,7 +48,6 @@ namespace TakiApp {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(GamePage));
             ExitGameButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "ExitGameButton");
             uc1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player1Uc>(this, "uc1");
-            uInfo1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.UserInfo>(this, "uInfo1");
             uc2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player2Uc>(this, "uc2");
             uInfo2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.UserInfo>(this, "uInfo2");
             uc3 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::TakiApp.UserControls.Player3Uc>(this, "uc3");

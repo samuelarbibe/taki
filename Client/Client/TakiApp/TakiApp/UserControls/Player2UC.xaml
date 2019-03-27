@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TakiApp.UserControls.Player2Uc">
     <Grid x:Name="StackGrid">
-        <Grid x:Name="MyGrid" Margin="0,0,0,15">
+        <Grid x:Name="MyGrid" Margin="0,10,0,10">
 
         </Grid>
     </Grid>
