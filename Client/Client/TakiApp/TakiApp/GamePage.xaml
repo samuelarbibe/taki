@@ -33,7 +33,7 @@
         <control:UserInfo x:Name="uInfo2" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="End" HorizontalOptions="Start"/>
 
         <control:Player3Uc x:Name="uc3" Grid.Column="2" Grid.RowSpan="2" Grid.Row="0" Rotation="180" Grid.ColumnSpan="3" />
-        <control:UserInfo x:Name="uInfo3" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="End" HorizontalOptions="Center"/>
+        <control:UserInfo x:Name="uInfo3" Grid.Column="5" Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="End" HorizontalOptions="Center"/>
 
         <control:Player4Uc x:Name="uc4" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" Rotation="90" Margin="-100,0,0,0"/>
         <control:UserInfo x:Name="uInfo4" Grid.Column="0" Grid.Row="6" Grid.RowSpan="2" HeightRequest="80" VerticalOptions="Start" HorizontalOptions="Center"/>

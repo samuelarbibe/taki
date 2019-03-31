@@ -61,9 +61,11 @@ namespace Model
     [DataContract]
     public class Card : BaseEntity
     {
-        [DataMember] public Color Color { get; set; }
+        [DataMember]
+        public Color Color { get; set; }
 
-        [DataMember] public Value Value { get; set; }
+        [DataMember]
+        public Value Value { get; set; }
 
         [DataMember]
         public string Image { get; set; }

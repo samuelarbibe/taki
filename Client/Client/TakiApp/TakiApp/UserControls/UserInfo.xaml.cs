@@ -27,8 +27,11 @@ namespace TakiApp.UserControls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserInfo : ContentView
     {
+        public delegate void UserInfoRequestedEventHandler(object sender, EventArgs e, bool isFriend, Player p1, User u2);
+
+        public event UserInfoRequestedEventHandler UserInfoRequested;
         ServiceClient _service;
-        private Player p;
+        Player p;
 
         public UserInfo()
         {
@@ -65,21 +68,10 @@ namespace TakiApp.UserControls
                 else if (e.Cancelled) { msg = "Didn't Work!"; Console.WriteLine(msg); }
                 else
                 {
-                    Prompt(true);
+                    UserInfoRequested?.Invoke(sender, EventArgs.Empty, e.Result, p, MainMenu.CurrentUser);
                 }
                 Console.WriteLine(msg);
             });
-        }
-
-        private async void Prompt(bool isFriend)
-        {
-            var answer = await DisplayAlert("Quit", "Are you sure you want to quit? all progress will be lost", "Yes", "No");
-
-            if (answer)
-            {
-                PlayerQuit();
-                await Navigation.PushModalAsync(new MainMenu());
-            }
         }
     }
 }

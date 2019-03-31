@@ -20,14 +20,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://10.116.1.200:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2bd8d476-d3e3-42af-bcd5-0c29c31a2539" SourceId="1" SourceUrl="http://10.116.1.200:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="df2215df-5e57-484f-b869-75b91036ecdc" SourceId="1" SourceUrl="http://10.116.1.200:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="aa69e885-b5ec-49bd-8872-7dcdc48b7be8" SourceId="1" SourceUrl="http://10.116.1.200:8733/Design_Time_Addresses/Service/Service/?disco" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0189afbb-5f4b-425a-9193-94f1f446f778" SourceId="1" SourceUrl="http://10.116.1.200:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="6c6e963e-df9d-40b5-80f0-e50b85858eac" SourceId="1" SourceUrl="http://10.116.1.200:8733/Design_Time_Addresses/Service/Service/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2bd8d476-d3e3-42af-bcd5-0c29c31a2539" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="df2215df-5e57-484f-b869-75b91036ecdc" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="aa69e885-b5ec-49bd-8872-7dcdc48b7be8" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0189afbb-5f4b-425a-9193-94f1f446f778" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="6c6e963e-df9d-40b5-80f0-e50b85858eac" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

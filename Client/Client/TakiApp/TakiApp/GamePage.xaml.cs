@@ -82,6 +82,10 @@ namespace TakiApp
 
             uctable.TakeCardFromDeckButtonClicked += TakeCardFromDeck;
 
+            uInfo2.UserInfoRequested += PromptFriend;
+            uInfo3.UserInfoRequested += PromptFriend;
+            uInfo4.UserInfoRequested += PromptFriend;
+
             uctable.PassCardToStackButtonClicked += PassCardToDeck;
 
             Deck = PlayersList[PlayersList.Count - 1].Hand.ToList();
@@ -183,7 +187,6 @@ namespace TakiApp
                                 {
                                     PlayerWin();
                                     PlayerQuit();
-                                    Navigation.PushModalAsync(new MainMenu());
                                 }
                                 else
                                 {
@@ -249,11 +252,14 @@ namespace TakiApp
 
                             case TakiService.Action.PlayerQuit:
 
+                                if(m.Target.Id == CurrentPlayer.Id) // if self quits, the service messaging system inactive
+                                {
+                                    Active = false;
+                                }
+
                                 Player quitter = PlayersList.First(p => p.Id == m.Target.Id);
                                 PlayersList.Remove(quitter); // remove the quitting player from the local players list
 
-                                //PlayersList.TrimExcess(); 
-                                //CurrentGame.Players.TrimExcess();
 
                                 if (CurrentUser.Id == PlayersList[0].UserId)
                                 {
@@ -603,11 +609,9 @@ namespace TakiApp
             _service.AddActionsAsync(temp);
 
             if (MyTurn) TurnFinished(Value.Nine);
-            Active = false;
 
             Navigation.PushModalAsync(new MainMenu());
         }
-
 
         private bool CheckPlay(Card given, Card table)
         {
@@ -897,6 +901,25 @@ namespace TakiApp
             if (ClockWiseRotation) return PlayersList[PlayersList.Count - 2].Id;
             return PlayersList[1].Id;
 
+        }
+
+        private async void PromptFriend(object sender, EventArgs e, bool isFriend, Player p1, User u2)
+        {
+            User u1 = p1 as User;
+
+            if (!isFriend)
+            {
+                var answer = await DisplayAlert(u1.Username,"\n" + "Level " + u1.Level +" ,"+ u1.Score+" pts.", "Add Friend", "Cancel");
+
+                if (answer)
+                {
+                    _service.MakeFriendsAsync(u1, u2);
+                }
+            }
+            else
+            {
+                await DisplayAlert(u1.Username,"\n" + "Level " + u1.Level + " ," + u1.Score + " pts.\n You are already friends!", "OK");
+            }
         }
 
         private void Win()
