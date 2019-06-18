@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="0c690665-44b1-4fa2-ac65-d66c0662db73" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="1f77e1ff-5c6d-4111-8c88-07875335aae7" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="b3b6e1b5-e3f9-4ba4-af14-24da71cbcd5e" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/mex" />
-    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="dc850e7c-3e76-4fc0-9d2a-98ee0bffb097" SourceId="1" SourceUrl="http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="0c690665-44b1-4fa2-ac65-d66c0662db73" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="1f77e1ff-5c6d-4111-8c88-07875335aae7" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="b3b6e1b5-e3f9-4ba4-af14-24da71cbcd5e" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
+    <MetadataFile FileName="Model.xsd" MetadataType="Schema" ID="dc850e7c-3e76-4fc0-9d2a-98ee0bffb097" SourceId="1" SourceUrl="http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -2798,7 +2798,7 @@ namespace TakiApp.TakiService {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IService)) {
-                return new System.ServiceModel.EndpointAddress("http://10.116.2.90:8733/Design_Time_Addresses/Service/Service/");
+                return new System.ServiceModel.EndpointAddress("http://192.168.0.18:8733/Design_Time_Addresses/Service/Service/");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
