@@ -31,3 +31,6 @@ The Server solution consists of 5 mini-projects:
  - Service (a WCF service containing all the functions needed by the client, but mostly redirects the request to the Business Layer)
  - BL (stands for Business Layer, conatins all the functions from the player loging and checking, to the player matching algorithm and game mechanics algorithm. Essentialy, this is the brain behind the Server, and the heart of the game)
  - Host (a WPF application to host the WCF service)
+
+Here is a link to a full documentation of this project:
+https://www.dropbox.com/s/1mt67gmd5s0xptm/TAKI.pdf?dl=0
