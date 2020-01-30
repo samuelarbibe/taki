@@ -1,5 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-TakiApp.Android/* linguist-vendored
-TakiApp.UWP/* linguist-vendored
-TakiApp.IOS/* linguist-vendored
+*.java linguist-vendored
