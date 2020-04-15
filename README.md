@@ -1,16 +1,28 @@
-# What is This Project?
-High-School Project - a Desktop/mobile object-oriented card game, operated by a database service
-Taki is an Israeli game based on the game UNO. the game is played by 2 to 4 players.
+# Taki
+> An Israeli card game based on the game UNO
 
-# Why does it exist?
-The creator of this project is *Samuel Arbibe*, a 12th grade student in Ostrovsky High-School in Raanana.
-This project is my Computer Science matriculation Final project.
+## Table of contents
+* [General info](#general-info)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
 
-# About this Project
+## General info
+This project is my 12th grade CS Final project.
+The goal of this project was to learn multiplayer dynamics, database implementation and improce C# coding skills.
 
+## Screenshots
+![Example screenshot](./screenshots/TMS_recording.gif)
+
+## Technologies
 This Project is written in the C# .NET Framework, using Visual Studio 2017 Community/IntelliJ RIDER with git extension, and Microsoft Access for managing the Database.
 
 The Technologies used in this project are WPF and WCF services.
+
+## Structre
 
 This game is a Multiplayer Card game, played on windows-based PCs' and Android/IOS devices.
 
@@ -32,5 +44,16 @@ The Server solution consists of 5 mini-projects:
  - BL (stands for Business Layer, conatins all the functions from the player loging and checking, to the player matching algorithm and game mechanics algorithm. Essentialy, this is the brain behind the Server, and the heart of the game)
  - Host (a WPF application to host the WCF service)
 
-Here is a link to a full documentation of this project:
-https://www.dropbox.com/s/1mt67gmd5s0xptm/TAKI.pdf?dl=0
+## Status
+Project is: _finished_.
+
+## Inspiration
+Taki Project was inspired by the well-known card game UNO.
+I really like the isareli edition to this game, Taki, so I decided to make it instead.
+
+## Documentation
+
+Full Documentation (in Hebrew): link_to_docu_
+
+### Contact
+samuel.arbibe@gmail.com
