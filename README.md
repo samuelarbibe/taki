@@ -53,7 +53,7 @@ I really like the isareli edition to this game, Taki, so I decided to make it in
 
 ## Documentation
 
-Full Documentation (in Hebrew): link_to_docu_
+Full Documentation (in Hebrew) [here](docs/TAKI.pdf)
 
 ### Contact
 samuel.arbibe@gmail.com
