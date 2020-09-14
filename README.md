@@ -15,7 +15,7 @@ This project is my 12th grade CS Final project.
 The goal of this project was to learn multiplayer dynamics, database implementation and improce C# coding skills.
 
 ## Screenshots
-![Example screenshot](./screenshots/TMS_recording.gif)
+![Example screenshot](./docs/screenshot.png)
 
 ## Technologies
 This Project is written in the C# .NET Framework, using Visual Studio 2017 Community/IntelliJ RIDER with git extension, and Microsoft Access for managing the Database.
